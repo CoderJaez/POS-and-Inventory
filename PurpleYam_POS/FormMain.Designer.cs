@@ -41,7 +41,7 @@
             this.MainPanel.HorizontalScrollbarSize = 10;
             this.MainPanel.Location = new System.Drawing.Point(0, 60);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(929, 437);
+            this.MainPanel.Size = new System.Drawing.Size(968, 461);
             this.MainPanel.TabIndex = 1;
             this.MainPanel.VerticalScrollbarBarColor = true;
             this.MainPanel.VerticalScrollbarHighlightOnWheel = false;
@@ -51,9 +51,9 @@
             // 
             this.mlBack.Image = ((System.Drawing.Image)(resources.GetObject("mlBack.Image")));
             this.mlBack.ImageSize = 30;
-            this.mlBack.Location = new System.Drawing.Point(14, 18);
+            this.mlBack.Location = new System.Drawing.Point(3, 21);
             this.mlBack.Name = "mlBack";
-            this.mlBack.Size = new System.Drawing.Size(48, 40);
+            this.mlBack.Size = new System.Drawing.Size(39, 33);
             this.mlBack.TabIndex = 0;
             this.mlBack.UseSelectable = true;
             this.mlBack.Click += new System.EventHandler(this.mlBack_Click);
@@ -62,13 +62,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 497);
+            this.ClientSize = new System.Drawing.Size(968, 521);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.mlBack);
             this.Name = "FormMain";
             this.Padding = new System.Windows.Forms.Padding(0, 60, 0, 0);
             this.Style = MetroFramework.MetroColorStyle.Purple;
-            this.Text = "     Purple Yam : Home made cakes and pastries";
+            this.Text = "  Home made cakes and pastries";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
 

@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using PurpleYam_POS.helper;
-namespace PurpleYam_POS.model
+
+namespace PurpleYam_POS.Model
 {
-    public class Unit
+    public class Unit : IUnit
     {
         public int Id { get; set; }
 

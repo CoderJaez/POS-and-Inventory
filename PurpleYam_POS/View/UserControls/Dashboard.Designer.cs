@@ -29,142 +29,47 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.mbDashboard = new MetroFramework.Controls.MetroButton();
-            this.mbTransaction = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
-            this.mPanel = new MetroFramework.Controls.MetroPanel();
+            this.mpNav = new MetroFramework.Controls.MetroPanel();
             this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.mbSettings = new MetroFramework.Controls.MetroButton();
-            this.mbLogout = new MetroFramework.Controls.MetroButton();
-            this.metroPanel1.SuspendLayout();
+            this.mPanel = new MetroFramework.Controls.MetroPanel();
+            this.btnDashboard = new System.Windows.Forms.Button();
+            this.btnSalesTransaction = new System.Windows.Forms.Button();
+            this.btnExpenses = new System.Windows.Forms.Button();
+            this.btnProduction = new System.Windows.Forms.Button();
+            this.btnInventory = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.btnAccount = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.mpNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
-            // metroPanel1
+            // mpNav
             // 
-            this.metroPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
-            this.metroPanel1.Controls.Add(this.mbLogout);
-            this.metroPanel1.Controls.Add(this.mbSettings);
-            this.metroPanel1.Controls.Add(this.metroButton3);
-            this.metroPanel1.Controls.Add(this.metroButton2);
-            this.metroPanel1.Controls.Add(this.metroButton1);
-            this.metroPanel1.Controls.Add(this.mbTransaction);
-            this.metroPanel1.Controls.Add(this.mbDashboard);
-            this.metroPanel1.Controls.Add(this.pbLogo);
-            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.metroPanel1.HorizontalScrollbarBarColor = true;
-            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(0, 0);
-            this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(200, 477);
-            this.metroPanel1.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroPanel1.TabIndex = 0;
-            this.metroPanel1.UseCustomBackColor = true;
-            this.metroPanel1.UseStyleColors = true;
-            this.metroPanel1.VerticalScrollbarBarColor = true;
-            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
-            // 
-            // mbDashboard
-            // 
-            this.mbDashboard.Dock = System.Windows.Forms.DockStyle.Top;
-            this.mbDashboard.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.mbDashboard.FontWeight = MetroFramework.MetroButtonWeight.Light;
-            this.mbDashboard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.mbDashboard.Location = new System.Drawing.Point(0, 122);
-            this.mbDashboard.Name = "mbDashboard";
-            this.mbDashboard.Size = new System.Drawing.Size(200, 35);
-            this.mbDashboard.Style = MetroFramework.MetroColorStyle.Purple;
-            this.mbDashboard.TabIndex = 2;
-            this.mbDashboard.Text = "Dashboard";
-            this.mbDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.mbDashboard.UseSelectable = true;
-            this.mbDashboard.UseStyleColors = true;
-            this.mbDashboard.Click += new System.EventHandler(this.mbDashboard_Click);
-            // 
-            // mbTransaction
-            // 
-            this.mbTransaction.Dock = System.Windows.Forms.DockStyle.Top;
-            this.mbTransaction.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.mbTransaction.FontWeight = MetroFramework.MetroButtonWeight.Light;
-            this.mbTransaction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.mbTransaction.Location = new System.Drawing.Point(0, 157);
-            this.mbTransaction.Name = "mbTransaction";
-            this.mbTransaction.Size = new System.Drawing.Size(200, 35);
-            this.mbTransaction.Style = MetroFramework.MetroColorStyle.Purple;
-            this.mbTransaction.TabIndex = 3;
-            this.mbTransaction.Text = "Sales Transaction";
-            this.mbTransaction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.mbTransaction.UseSelectable = true;
-            this.mbTransaction.UseStyleColors = true;
-            this.mbTransaction.Click += new System.EventHandler(this.mbTransaction_Click);
-            // 
-            // metroButton1
-            // 
-            this.metroButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.metroButton1.FontWeight = MetroFramework.MetroButtonWeight.Light;
-            this.metroButton1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.metroButton1.Location = new System.Drawing.Point(0, 192);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(200, 35);
-            this.metroButton1.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroButton1.TabIndex = 4;
-            this.metroButton1.Text = "Expenses";
-            this.metroButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.UseStyleColors = true;
-            // 
-            // metroButton2
-            // 
-            this.metroButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.metroButton2.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.metroButton2.FontWeight = MetroFramework.MetroButtonWeight.Light;
-            this.metroButton2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.metroButton2.Location = new System.Drawing.Point(0, 227);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(200, 35);
-            this.metroButton2.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroButton2.TabIndex = 5;
-            this.metroButton2.Text = "Productions";
-            this.metroButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.UseStyleColors = true;
-            // 
-            // metroButton3
-            // 
-            this.metroButton3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.metroButton3.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.metroButton3.FontWeight = MetroFramework.MetroButtonWeight.Light;
-            this.metroButton3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.metroButton3.Location = new System.Drawing.Point(0, 262);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(200, 35);
-            this.metroButton3.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroButton3.TabIndex = 6;
-            this.metroButton3.Text = "Inventory";
-            this.metroButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.metroButton3.UseSelectable = true;
-            this.metroButton3.UseStyleColors = true;
-            // 
-            // mPanel
-            // 
-            this.mPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mPanel.HorizontalScrollbarBarColor = true;
-            this.mPanel.HorizontalScrollbarHighlightOnWheel = false;
-            this.mPanel.HorizontalScrollbarSize = 10;
-            this.mPanel.Location = new System.Drawing.Point(200, 0);
-            this.mPanel.Name = "mPanel";
-            this.mPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.mPanel.Size = new System.Drawing.Size(678, 477);
-            this.mPanel.TabIndex = 1;
-            this.mPanel.VerticalScrollbarBarColor = true;
-            this.mPanel.VerticalScrollbarHighlightOnWheel = false;
-            this.mPanel.VerticalScrollbarSize = 10;
+            this.mpNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
+            this.mpNav.Controls.Add(this.button1);
+            this.mpNav.Controls.Add(this.btnAccount);
+            this.mpNav.Controls.Add(this.btnSettings);
+            this.mpNav.Controls.Add(this.btnInventory);
+            this.mpNav.Controls.Add(this.btnProduction);
+            this.mpNav.Controls.Add(this.btnExpenses);
+            this.mpNav.Controls.Add(this.btnSalesTransaction);
+            this.mpNav.Controls.Add(this.btnDashboard);
+            this.mpNav.Controls.Add(this.pbLogo);
+            this.mpNav.Dock = System.Windows.Forms.DockStyle.Left;
+            this.mpNav.HorizontalScrollbarBarColor = true;
+            this.mpNav.HorizontalScrollbarHighlightOnWheel = false;
+            this.mpNav.HorizontalScrollbarSize = 10;
+            this.mpNav.Location = new System.Drawing.Point(0, 0);
+            this.mpNav.Name = "mpNav";
+            this.mpNav.Size = new System.Drawing.Size(190, 477);
+            this.mpNav.Style = MetroFramework.MetroColorStyle.Purple;
+            this.mpNav.TabIndex = 0;
+            this.mpNav.UseCustomBackColor = true;
+            this.mpNav.UseStyleColors = true;
+            this.mpNav.VerticalScrollbarBarColor = true;
+            this.mpNav.VerticalScrollbarHighlightOnWheel = false;
+            this.mpNav.VerticalScrollbarSize = 10;
             // 
             // pbLogo
             // 
@@ -173,53 +78,199 @@
             this.pbLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pbLogo.Location = new System.Drawing.Point(0, 0);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(200, 122);
+            this.pbLogo.Size = new System.Drawing.Size(190, 122);
             this.pbLogo.TabIndex = 2;
             this.pbLogo.TabStop = false;
             // 
-            // mbSettings
+            // mPanel
             // 
-            this.mbSettings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.mbSettings.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.mbSettings.FontWeight = MetroFramework.MetroButtonWeight.Light;
-            this.mbSettings.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.mbSettings.Location = new System.Drawing.Point(0, 297);
-            this.mbSettings.Name = "mbSettings";
-            this.mbSettings.Size = new System.Drawing.Size(200, 35);
-            this.mbSettings.Style = MetroFramework.MetroColorStyle.Purple;
-            this.mbSettings.TabIndex = 7;
-            this.mbSettings.Text = "Settings";
-            this.mbSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.mbSettings.UseSelectable = true;
-            this.mbSettings.UseStyleColors = true;
-            this.mbSettings.Click += new System.EventHandler(this.mbSettings_Click);
+            this.mPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mPanel.HorizontalScrollbarBarColor = true;
+            this.mPanel.HorizontalScrollbarHighlightOnWheel = false;
+            this.mPanel.HorizontalScrollbarSize = 10;
+            this.mPanel.Location = new System.Drawing.Point(190, 0);
+            this.mPanel.Name = "mPanel";
+            this.mPanel.Padding = new System.Windows.Forms.Padding(10);
+            this.mPanel.Size = new System.Drawing.Size(688, 477);
+            this.mPanel.TabIndex = 1;
+            this.mPanel.VerticalScrollbarBarColor = true;
+            this.mPanel.VerticalScrollbarHighlightOnWheel = false;
+            this.mPanel.VerticalScrollbarSize = 10;
             // 
-            // mbLogout
+            // btnDashboard
             // 
-            this.mbLogout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.mbLogout.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.mbLogout.FontWeight = MetroFramework.MetroButtonWeight.Light;
-            this.mbLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.mbLogout.Location = new System.Drawing.Point(0, 332);
-            this.mbLogout.Name = "mbLogout";
-            this.mbLogout.Size = new System.Drawing.Size(200, 35);
-            this.mbLogout.Style = MetroFramework.MetroColorStyle.Purple;
-            this.mbLogout.TabIndex = 8;
-            this.mbLogout.Text = "Logout";
-            this.mbLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.mbLogout.UseSelectable = true;
-            this.mbLogout.UseStyleColors = true;
+            this.btnDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDashboard.FlatAppearance.BorderSize = 0;
+            this.btnDashboard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDashboard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDashboard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashboard.Image")));
+            this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDashboard.Location = new System.Drawing.Point(0, 122);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Size = new System.Drawing.Size(190, 39);
+            this.btnDashboard.TabIndex = 2;
+            this.btnDashboard.Text = "Dashboard";
+            this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDashboard.UseVisualStyleBackColor = false;
+            this.btnDashboard.Click += new System.EventHandler(this.mbDashboard_Click);
+            // 
+            // btnSalesTransaction
+            // 
+            this.btnSalesTransaction.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSalesTransaction.FlatAppearance.BorderSize = 0;
+            this.btnSalesTransaction.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnSalesTransaction.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnSalesTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalesTransaction.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalesTransaction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSalesTransaction.Image = ((System.Drawing.Image)(resources.GetObject("btnSalesTransaction.Image")));
+            this.btnSalesTransaction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalesTransaction.Location = new System.Drawing.Point(0, 161);
+            this.btnSalesTransaction.Name = "btnSalesTransaction";
+            this.btnSalesTransaction.Size = new System.Drawing.Size(190, 39);
+            this.btnSalesTransaction.TabIndex = 3;
+            this.btnSalesTransaction.Text = "Sales Transaction";
+            this.btnSalesTransaction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalesTransaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalesTransaction.UseVisualStyleBackColor = true;
+            this.btnSalesTransaction.Click += new System.EventHandler(this.mbTransaction_Click);
+            // 
+            // btnExpenses
+            // 
+            this.btnExpenses.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnExpenses.FlatAppearance.BorderSize = 0;
+            this.btnExpenses.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnExpenses.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnExpenses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExpenses.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExpenses.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnExpenses.Image = ((System.Drawing.Image)(resources.GetObject("btnExpenses.Image")));
+            this.btnExpenses.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExpenses.Location = new System.Drawing.Point(0, 200);
+            this.btnExpenses.Name = "btnExpenses";
+            this.btnExpenses.Size = new System.Drawing.Size(190, 39);
+            this.btnExpenses.TabIndex = 4;
+            this.btnExpenses.Text = "Expenses";
+            this.btnExpenses.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExpenses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExpenses.UseVisualStyleBackColor = true;
+            // 
+            // btnProduction
+            // 
+            this.btnProduction.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProduction.FlatAppearance.BorderSize = 0;
+            this.btnProduction.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnProduction.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProduction.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProduction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnProduction.Image = ((System.Drawing.Image)(resources.GetObject("btnProduction.Image")));
+            this.btnProduction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProduction.Location = new System.Drawing.Point(0, 239);
+            this.btnProduction.Name = "btnProduction";
+            this.btnProduction.Size = new System.Drawing.Size(190, 39);
+            this.btnProduction.TabIndex = 5;
+            this.btnProduction.Text = "Production";
+            this.btnProduction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProduction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProduction.UseVisualStyleBackColor = true;
+            // 
+            // btnInventory
+            // 
+            this.btnInventory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInventory.FlatAppearance.BorderSize = 0;
+            this.btnInventory.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnInventory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInventory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventory.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnInventory.Image = ((System.Drawing.Image)(resources.GetObject("btnInventory.Image")));
+            this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInventory.Location = new System.Drawing.Point(0, 278);
+            this.btnInventory.Name = "btnInventory";
+            this.btnInventory.Size = new System.Drawing.Size(190, 39);
+            this.btnInventory.TabIndex = 6;
+            this.btnInventory.Text = "Inventory";
+            this.btnInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInventory.UseVisualStyleBackColor = true;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSettings.FlatAppearance.BorderSize = 0;
+            this.btnSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
+            this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettings.Location = new System.Drawing.Point(0, 317);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(190, 39);
+            this.btnSettings.TabIndex = 7;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.mbSettings_Click);
+            // 
+            // btnAccount
+            // 
+            this.btnAccount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccount.FlatAppearance.BorderSize = 0;
+            this.btnAccount.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnAccount.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccount.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnAccount.Image")));
+            this.btnAccount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAccount.Location = new System.Drawing.Point(0, 356);
+            this.btnAccount.Name = "btnAccount";
+            this.btnAccount.Size = new System.Drawing.Size(190, 39);
+            this.btnAccount.TabIndex = 8;
+            this.btnAccount.Text = "My Account";
+            this.btnAccount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAccount.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(0, 395);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(190, 39);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Logout";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.mPanel);
-            this.Controls.Add(this.metroPanel1);
+            this.Controls.Add(this.mpNav);
             this.Name = "Dashboard";
             this.Size = new System.Drawing.Size(878, 477);
             this.Load += new System.EventHandler(this.Dashboard_Load);
-            this.metroPanel1.ResumeLayout(false);
+            this.mpNav.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
 
@@ -227,15 +278,16 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroPanel mpNav;
         private System.Windows.Forms.PictureBox pbLogo;
-        private MetroFramework.Controls.MetroButton mbDashboard;
-        private MetroFramework.Controls.MetroButton mbTransaction;
-        private MetroFramework.Controls.MetroButton metroButton2;
-        private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroButton metroButton3;
         private MetroFramework.Controls.MetroPanel mPanel;
-        private MetroFramework.Controls.MetroButton mbLogout;
-        private MetroFramework.Controls.MetroButton mbSettings;
+        private System.Windows.Forms.Button btnSalesTransaction;
+        private System.Windows.Forms.Button btnDashboard;
+        private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Button btnInventory;
+        private System.Windows.Forms.Button btnProduction;
+        private System.Windows.Forms.Button btnExpenses;
+        private System.Windows.Forms.Button btnAccount;
+        private System.Windows.Forms.Button button1;
     }
 }

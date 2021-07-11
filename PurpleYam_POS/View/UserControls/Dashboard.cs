@@ -38,7 +38,8 @@ namespace PurpleYam_POS.View.UserControls
 
         private void mbDashboard_Click(object sender, EventArgs e)
         {
-            if(!mPanel.Controls.ContainsKey("Summary"))
+            isClicked(btnDashboard);
+            if (!mPanel.Controls.ContainsKey("Summary"))
             {
                 Summary summary = new Summary();
                 summary.Dock = DockStyle.Fill;
@@ -49,6 +50,7 @@ namespace PurpleYam_POS.View.UserControls
 
         private void mbTransaction_Click(object sender, EventArgs e)
         {
+            isClicked(btnSalesTransaction);
             if (!mPanel.Controls.ContainsKey("SaleTransaction"))
             {
                 SaleTransaction sales = new SaleTransaction();
@@ -68,6 +70,23 @@ namespace PurpleYam_POS.View.UserControls
             }
             FormMain.Instance.MetroContainer.Controls["Settings"].BringToFront();
             FormMain.Instance.Back.Visible = true;
+        }
+
+        private void isClicked(object button)
+        {
+            foreach(Control btn in mpNav.Controls)
+            {
+                if (btn.GetType() == typeof(Button))
+                {
+                    if (btn == button)
+                    {
+                        btn.BackColor = Color.FromArgb(50, 12, 61);
+                    } else
+                    {
+                        btn.BackColor = Color.FromArgb(129, 45, 148);
+                    }
+                }
+            }
         }
     }
 }
