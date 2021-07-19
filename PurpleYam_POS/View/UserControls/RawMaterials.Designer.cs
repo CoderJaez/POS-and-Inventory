@@ -35,18 +35,23 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RawMaterials));
             this.dgRawMat = new System.Windows.Forms.DataGridView();
+            this.checkbox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.BaseUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DisplayUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.rawMaterialsModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cbAll = new System.Windows.Forms.CheckBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.mtbSearch = new MetroFramework.Controls.MetroTextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BaseUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DisplayUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.rawMaterialsModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rawMaterialsModelBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -55,9 +60,11 @@
             // 
             this.dgRawMat.AllowUserToAddRows = false;
             this.dgRawMat.AllowUserToResizeRows = false;
+            this.dgRawMat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dgRawMat.AutoGenerateColumns = false;
             this.dgRawMat.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgRawMat.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgRawMat.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgRawMat.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Purple;
@@ -70,12 +77,13 @@
             this.dgRawMat.ColumnHeadersHeight = 30;
             this.dgRawMat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
+            this.checkbox,
             this.productDataGridViewTextBoxColumn,
             this.BaseUnit,
             this.DisplayUnit,
             this.createdAtDataGridViewTextBoxColumn,
-            this.delete,
-            this.edit});
+            this.edit,
+            this.delete});
             this.dgRawMat.DataSource = this.rawMaterialsModelBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -88,7 +96,7 @@
             this.dgRawMat.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgRawMat.EnableHeadersVisualStyles = false;
             this.dgRawMat.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgRawMat.Location = new System.Drawing.Point(37, 140);
+            this.dgRawMat.Location = new System.Drawing.Point(44, 89);
             this.dgRawMat.MultiSelect = false;
             this.dgRawMat.Name = "dgRawMat";
             this.dgRawMat.ReadOnly = true;
@@ -107,8 +115,51 @@
             this.dgRawMat.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgRawMat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgRawMat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgRawMat.Size = new System.Drawing.Size(597, 294);
+            this.dgRawMat.Size = new System.Drawing.Size(597, 482);
             this.dgRawMat.TabIndex = 13;
+            // 
+            // checkbox
+            // 
+            this.checkbox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.checkbox.DataPropertyName = "Deleted";
+            this.checkbox.HeaderText = "";
+            this.checkbox.Name = "checkbox";
+            this.checkbox.ReadOnly = true;
+            this.checkbox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.checkbox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.checkbox.Width = 22;
+            // 
+            // BaseUnit
+            // 
+            this.BaseUnit.DataPropertyName = "BaseUnit";
+            this.BaseUnit.HeaderText = "BaseUnit";
+            this.BaseUnit.Name = "BaseUnit";
+            this.BaseUnit.ReadOnly = true;
+            // 
+            // DisplayUnit
+            // 
+            this.DisplayUnit.DataPropertyName = "DisplayUnit";
+            this.DisplayUnit.HeaderText = "DisplayUnit";
+            this.DisplayUnit.Name = "DisplayUnit";
+            this.DisplayUnit.ReadOnly = true;
+            // 
+            // edit
+            // 
+            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.edit.HeaderText = "";
+            this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
+            this.edit.Name = "edit";
+            this.edit.ReadOnly = true;
+            this.edit.Width = 6;
+            // 
+            // delete
+            // 
+            this.delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.delete.HeaderText = "";
+            this.delete.Image = ((System.Drawing.Image)(resources.GetObject("delete.Image")));
+            this.delete.Name = "delete";
+            this.delete.ReadOnly = true;
+            this.delete.Width = 6;
             // 
             // btnAdd
             // 
@@ -120,11 +171,11 @@
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(555, 104);
+            this.btnAdd.Location = new System.Drawing.Point(447, 53);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(79, 30);
             this.btnAdd.TabIndex = 12;
-            this.btnAdd.Text = "Add new";
+            this.btnAdd.Text = "&Add new";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = false;
             // 
@@ -137,7 +188,7 @@
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(5);
-            this.label1.Size = new System.Drawing.Size(745, 39);
+            this.label1.Size = new System.Drawing.Size(864, 39);
             this.label1.TabIndex = 11;
             this.label1.Text = "Raw Materials";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -158,75 +209,124 @@
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.ReadOnly = true;
             // 
-            // rawMaterialsModelBindingSource
+            // cbAll
             // 
-            this.rawMaterialsModelBindingSource.DataSource = typeof(PurpleYam_POS.Model.RawMaterialsModel);
+            this.cbAll.AutoSize = true;
+            this.cbAll.BackColor = System.Drawing.Color.Purple;
+            this.cbAll.Location = new System.Drawing.Point(55, 100);
+            this.cbAll.Name = "cbAll";
+            this.cbAll.Size = new System.Drawing.Size(15, 14);
+            this.cbAll.TabIndex = 14;
+            this.cbAll.UseVisualStyleBackColor = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(0)))), ((int)(((byte)(12)))));
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(532, 53);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(109, 30);
+            this.btnDelete.TabIndex = 12;
+            this.btnDelete.Text = "&Delete selected";
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // mtbSearch
+            // 
+            // 
+            // 
+            // 
+            this.mtbSearch.CustomButton.Image = null;
+            this.mtbSearch.CustomButton.Location = new System.Drawing.Point(166, 1);
+            this.mtbSearch.CustomButton.Name = "";
+            this.mtbSearch.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.mtbSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.mtbSearch.CustomButton.TabIndex = 1;
+            this.mtbSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.mtbSearch.CustomButton.UseSelectable = true;
+            this.mtbSearch.CustomButton.Visible = false;
+            this.mtbSearch.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.mtbSearch.Lines = new string[0];
+            this.mtbSearch.Location = new System.Drawing.Point(44, 60);
+            this.mtbSearch.MaxLength = 32767;
+            this.mtbSearch.Name = "mtbSearch";
+            this.mtbSearch.PasswordChar = '\0';
+            this.mtbSearch.PromptText = "Search raw material";
+            this.mtbSearch.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.mtbSearch.SelectedText = "";
+            this.mtbSearch.SelectionLength = 0;
+            this.mtbSearch.SelectionStart = 0;
+            this.mtbSearch.ShortcutsEnabled = true;
+            this.mtbSearch.Size = new System.Drawing.Size(188, 23);
+            this.mtbSearch.TabIndex = 15;
+            this.mtbSearch.UseSelectable = true;
+            this.mtbSearch.WaterMark = "Search raw material";
+            this.mtbSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.mtbSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(172, 577);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(469, 36);
+            this.flowLayoutPanel1.TabIndex = 32;
             // 
             // idDataGridViewTextBoxColumn
             // 
+            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            this.idDataGridViewTextBoxColumn.Width = 48;
             // 
             // productDataGridViewTextBoxColumn
             // 
+            this.productDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
             this.productDataGridViewTextBoxColumn.HeaderText = "Product";
             this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
             this.productDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // BaseUnit
-            // 
-            this.BaseUnit.DataPropertyName = "BaseUnit";
-            this.BaseUnit.HeaderText = "BaseUnit";
-            this.BaseUnit.Name = "BaseUnit";
-            this.BaseUnit.ReadOnly = true;
-            // 
-            // DisplayUnit
-            // 
-            this.DisplayUnit.DataPropertyName = "DisplayUnit";
-            this.DisplayUnit.HeaderText = "DisplayUnit";
-            this.DisplayUnit.Name = "DisplayUnit";
-            this.DisplayUnit.ReadOnly = true;
-            // 
             // createdAtDataGridViewTextBoxColumn
             // 
             this.createdAtDataGridViewTextBoxColumn.DataPropertyName = "CreatedAt";
+            this.createdAtDataGridViewTextBoxColumn.FillWeight = 200F;
             this.createdAtDataGridViewTextBoxColumn.HeaderText = "CreatedAt";
             this.createdAtDataGridViewTextBoxColumn.Name = "createdAtDataGridViewTextBoxColumn";
             this.createdAtDataGridViewTextBoxColumn.ReadOnly = true;
+            this.createdAtDataGridViewTextBoxColumn.Width = 200;
             // 
-            // delete
+            // rawMaterialsModelBindingSource
             // 
-            this.delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.delete.HeaderText = "";
-            this.delete.Image = ((System.Drawing.Image)(resources.GetObject("delete.Image")));
-            this.delete.Name = "delete";
-            this.delete.ReadOnly = true;
-            this.delete.Width = 6;
-            // 
-            // edit
-            // 
-            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.edit.HeaderText = "";
-            this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
-            this.edit.Name = "edit";
-            this.edit.ReadOnly = true;
-            this.edit.Width = 6;
+            this.rawMaterialsModelBindingSource.DataSource = typeof(PurpleYam_POS.Model.RawMaterial);
             // 
             // RawMaterials
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.mtbSearch);
+            this.Controls.Add(this.cbAll);
             this.Controls.Add(this.dgRawMat);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label1);
             this.Name = "RawMaterials";
-            this.Size = new System.Drawing.Size(745, 470);
+            this.Size = new System.Drawing.Size(864, 628);
+            this.Load += new System.EventHandler(this.RawMaterials_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rawMaterialsModelBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -239,12 +339,17 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn rawMaterialDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource rawMaterialsModelBindingSource;
+        private System.Windows.Forms.CheckBox cbAll;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn checkbox;
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn BaseUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn DisplayUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewImageColumn delete;
         private System.Windows.Forms.DataGridViewImageColumn edit;
+        private System.Windows.Forms.DataGridViewImageColumn delete;
+        private MetroFramework.Controls.MetroTextBox mtbSearch;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

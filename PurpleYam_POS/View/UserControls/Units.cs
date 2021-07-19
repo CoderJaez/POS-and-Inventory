@@ -22,7 +22,6 @@ namespace PurpleYam_POS.View.UserControls
             InitializeComponent();
             unitVM = new UnitViewModel();
             unitVM.UnitBindingSource = unitBindingSource;
-            unitVM.Load();
             btnAdd.Click += delegate { unitVM.New(new Unit()); };
         }
 
@@ -44,6 +43,11 @@ namespace PurpleYam_POS.View.UserControls
                         break;
                 }
             }
+        }
+
+        private async void Units_Load(object sender, EventArgs e)
+        {
+          await  unitVM.LoadDataAsync();
         }
     }
 }

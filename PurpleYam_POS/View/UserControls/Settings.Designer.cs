@@ -140,6 +140,7 @@
             // 
             // metroLabel1
             // 
+            this.metroLabel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.metroLabel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
@@ -177,6 +178,7 @@
             this.Controls.Add(this.mpNav);
             this.Name = "Settings";
             this.Size = new System.Drawing.Size(953, 503);
+            this.Load += new System.EventHandler(this.Settings_Load);
             this.mpNav.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -14,22 +14,42 @@ namespace PurpleYam_POS.View.Forms
 {
     public partial class FormRawMaterial : MetroFramework.Forms.MetroForm
     {
-        private static RawMaterialsModel model;
         private static RawMaterialVM vModel;
-        public static FormRawMaterial Instance(RawMaterialVM _vModel, RawMaterialsModel _model)
+        public static FormRawMaterial instance;
+        public static FormRawMaterial Instance(RawMaterialVM _vModel)
         {
-            model = _model;
             vModel = _vModel;
-            return new FormRawMaterial();
+                instance = new FormRawMaterial();
+            return instance;
         }
+
+        public MetroFramework.Controls.MetroTextBox mtProduct
+        {
+            get { return mtProductName; }
+        }
+
         public FormRawMaterial()
         {
             InitializeComponent();
+            rawMaterialsModelBindingSource = vModel.page.bindingSource;
+            btnSave.Click += delegate {
+                vModel.model.Product = mtProductName.Text;
+                 vModel.SaveRawMat();
+            };
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FormRawMaterial_Load(object sender, EventArgs e)
+        {
+            if(vModel.model != null)
+            {
+                mtProductName.Text = vModel.model.Product;
+            }
+
         }
     }
 }

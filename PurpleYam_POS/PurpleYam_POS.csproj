@@ -67,6 +67,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tulpep.NotificationWindow, Version=1.1.38.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tulpep.NotificationWindow.1.1.38\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.25\lib\net452\Ubiety.Dns.Core.dll</HintPath>
       <Private>True</Private>
@@ -77,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Notification.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,13 +89,14 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="helper\Duplicate.cs" />
+    <Compile Include="helper\Pagination.cs" />
     <Compile Include="Model\IProductModel.cs" />
     <Compile Include="Model\IProductUnit.cs" />
     <Compile Include="Model\IUnit.cs" />
     <Compile Include="Model\IUserRole.cs" />
     <Compile Include="Model\ProductModel.cs" />
     <Compile Include="Model\ProduUnitModel.cs" />
-    <Compile Include="Model\RawMaterialsModel.cs" />
+    <Compile Include="Model\RawMaterial.cs" />
     <Compile Include="Model\Unit.cs" />
     <Compile Include="Model\UserRole.cs" />
     <Compile Include="Program.cs" />
@@ -210,6 +216,7 @@
       <DependentUpon>UserRoles.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\PurpleYam_POS.Model.ProduUnitModel.datasource" />
     <None Include="Properties\DataSources\PurpleYam_POS.Model.RawMaterialsModel.datasource" />
     <None Include="Properties\DataSources\PurpleYam_POS.model.Unit.datasource" />
     <None Include="Properties\Settings.settings">
@@ -234,7 +241,21 @@
       <Name>Repository</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Error.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

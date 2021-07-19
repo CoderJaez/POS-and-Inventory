@@ -10,6 +10,7 @@ namespace PurpleYam_POS.Model
         int Id { get; set; }
         string Product { get; set; }
         string CreatedAt { get; set; }
+
         bool Deleted { get; set; }
 
     }

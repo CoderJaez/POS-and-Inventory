@@ -38,21 +38,10 @@ namespace PurpleYam_POS.View.UserControls
                     }
                     mPanel.Controls["Units"].BringToFront();
                     break;
-
-                case "btnUserRoles":
-                    if (!mPanel.Controls.ContainsKey("UserRoles"))
-                    {
-                        UserRoles uc = new UserRoles();
-                        uc.Dock = DockStyle.Fill;
-                        mPanel.Controls.Add(uc);
-                    }
-                    mPanel.Controls["UserRoles"].BringToFront();
-                    break;
-
                 case "btnRawMaterials":
                     if (!mPanel.Controls.ContainsKey("RawMaterials"))
                     {
-                         var uc = RawMaterials.Instance;
+                         RawMaterials uc = new RawMaterials();
                         uc.Dock = DockStyle.Fill;
                         mPanel.Controls.Add(uc);
                     }
@@ -77,6 +66,11 @@ namespace PurpleYam_POS.View.UserControls
                     }
                 }
             }
+        }
+
+        private void Settings_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using PurpleYam_POS.Model;
 using System.ComponentModel.DataAnnotations;
 using PurpleYam_POS.View.Forms;
+using PurpleYam_POS.Components;
 
 namespace PurpleYam_POS.ViewModel
 {
@@ -16,10 +17,11 @@ namespace PurpleYam_POS.ViewModel
         public BindingSource UnitBindingSource { get; set; }
         private FormUnit frmUnit;
         private string sql;
-        public void Load()
+
+        public async Task LoadDataAsync()
         {
             string sql = "SELECT * FROM tbl_unit where deleted = false";
-            UnitBindingSource.DataSource = LoadData<Unit, dynamic>(sql, new {});
+            UnitBindingSource.DataSource = await Task.Run(()=> LoadData<Unit, dynamic>(sql, new {}));
             
         }
 
@@ -33,19 +35,18 @@ namespace PurpleYam_POS.ViewModel
 
         public void Delete(Unit unit)
         {
-            DialogResult res = MetroFramework.MetroMessageBox.Show(FormMain.Instance,"Do you want to delete selected row?","Delete data", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
-            if(res == DialogResult.Yes)
+            DialogResult res = Notification.Confim(FormMain.Instance, "Do want to delete selected row?", "Delete unit");
+            if (res == DialogResult.Yes)
             {
                 sql = $"UPDATE tbl_unit set deleted = false where Id = @Id";
                 var p = new
                 {
                     Id = unit.Id
                 };
-                if(SaveData(sql, p))
-                {
-                    MessageBox.Show("Successfully deleted");
+
+                 Task.Run(() => SaveData(sql, p));
+                    Notification.AlertMessage("Unit deleted", "Delete unit", Notification.AlertType.SUCCESS);
                     UnitBindingSource.RemoveCurrent();
-                }
 
             }
         }
@@ -60,12 +61,12 @@ namespace PurpleYam_POS.ViewModel
                 StringBuilder errorMsg = new StringBuilder();
                 foreach (ValidationResult res in errs)
                     errorMsg.Append($"{res.ErrorMessage}\n");
-                MessageBox.Show(errorMsg.ToString());
+                Notification.ValidationMessage(FormMain.Instance, errorMsg.ToString(), "Validation Error");
                 return;
             }
 
             if (currentUnit.Id == 0)
-                 sql = "INSERT INTO tbl_unit (UnitCode, UnitDesc) values (@UnitCode, @UnitDesc)";
+                 sql = "INSERT INTO tbl_unit (UnitCode, UnitDesc) values (@UnitCode, @UnitDesc); SELECT last_insert_id()";
             else
                  sql = $"update tbl_unit set UnitCode = @UnitCode, UnitDesc = @UnitDesc where id = {currentUnit.Id}";
 
@@ -75,21 +76,22 @@ namespace PurpleYam_POS.ViewModel
                 UnitCode = currentUnit.UnitCode,
                 UnitDesc = currentUnit.UnitDesc 
             };
+
             
-            if(SaveData(sql, p))
-            {
-                if (currentUnit.Id == 0)
+            
+              if (currentUnit.Id == 0)
                 {
-                    MessageBox.Show("New unit onserted");
+                    currentUnit.Id = SaveGetId(sql, p); ;
+                    Notification.AlertMessage("New unit saved","Success", Notification.AlertType.SUCCESS);
                     UnitBindingSource.Add(currentUnit);
                 }
                 else
                 {
-                    MessageBox.Show("Unit updated");
+                    SaveData(sql, p);
+                    Notification.AlertMessage("Unit updated","Success", Notification.AlertType.SUCCESS );
                     UnitBindingSource.EndEdit();
                 }
                 frmUnit.Close();
-            }
         }
 
         public void Dispose()

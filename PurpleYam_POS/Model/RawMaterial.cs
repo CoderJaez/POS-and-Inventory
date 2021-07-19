@@ -3,25 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using PurpleYam_POS.helper;
 
 namespace PurpleYam_POS.Model
 {
-   public  class RawMaterialsModel:IProductUnit
+   public  class RawMaterial:IProductUnit
     {
         public string CreatedAt { get; set; }
-
-        public bool Deleted
-        {
-            get;
-            set;
-        } = false;
 
         public int Id
         {
             get;
             set;
         }
-
+        [Required()]
+        [Duplicate(column = "Product",table ="rawmaterial")]
         public string Product
         {
             get;
@@ -41,6 +38,7 @@ namespace PurpleYam_POS.Model
         {
             get;set;
         }
+        public bool Deleted { get; set; }
 
     }
 }
