@@ -28,16 +28,60 @@ namespace PurpleYam_POS.View.Forms
             get { return mtProductName; }
         }
 
+
+        public MetroFramework.Controls.MetroTextBox mtQuantity
+        {
+            get { return mtQty; }
+        }
+
+        public Button NewRawmat
+        {
+            get { return btnNewRawmat; }
+        }
+        public Button btnSaveRawmatUnit
+        {
+            get { return btnSaveUnit; }
+        }
+
+        public Button btnSaveRawmat
+        {
+            get { return btnSave; }
+        }
+
+        public MetroFramework.Controls.MetroComboBox mcunitCode
+        {
+            get { return mcUnitCode; }
+        }
+
+        public DataGridView dgRawmatunit
+        {
+            get { return dgRawMat; }
+        }
         public FormRawMaterial()
         {
             InitializeComponent();
             rawMaterialsModelBindingSource = vModel.page.bindingSource;
+            vModel.PrudUnitBS = produUnitModelBindingSource;
+            vModel.UnitCodeBS = UnitCodeBS;
+            dgRawMat.CellClick += vModel.cbBaseDisplayCellClick;
+            mcUnitCode.SelectedValueChanged += vModel.mcUnitCodeSelectedValueChanged;
+            btnNewRawmat.Click += delegate
+             {
+                 vModel.model = new RawMaterial();
+                 btnNewRawmat.Enabled = false;
+                 btnSave.Enabled = true;
+             };
+            btnSaveUnit.Click += delegate
+            {
+                vModel.SaveRawMatUnit();
+            };
             btnSave.Click += delegate {
                 vModel.model.Product = mtProductName.Text;
                  vModel.SaveRawMat();
             };
         }
 
+        
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -48,8 +92,15 @@ namespace PurpleYam_POS.View.Forms
             if(vModel.model != null)
             {
                 mtProductName.Text = vModel.model.Product;
+                vModel.LoadRawMatUnit();
             }
 
+        }
+
+        private void mtQty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                e.Handled = true;
         }
     }
 }

@@ -8,9 +8,12 @@ using PurpleYam_POS.Model;
 using PurpleYam_POS.View.UserControls;
 using PurpleYam_POS.View.Forms;
 using static Repository.DataAccess;
+using static Repository.RawMaterial;
 using System.ComponentModel.DataAnnotations;
 using PurpleYam_POS.Components;
 using PurpleYam_POS.helper;
+using System.Dynamic;
+using MetroFramework.Controls;
 
 namespace PurpleYam_POS.ViewModel
 {
@@ -22,9 +25,16 @@ namespace PurpleYam_POS.ViewModel
         public RawMaterials uc;
         private List<RawMaterial> models = new List<RawMaterial>();
         public Pagination page;
+        public ProduUnitModel unitmodel;
+        public BindingSource PrudUnitBS { get; set; }
+        public BindingSource UnitCodeBS { get; set; }
 
 
-
+        /// <summary>
+        /// Loads the next page raw material data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         internal async void NextPage(object sender, EventArgs e)
         {
             page.start += page.limit;
@@ -37,13 +47,13 @@ namespace PurpleYam_POS.ViewModel
                 page.btnNext.Enabled = false;
             }
 
-            //uc.ButtonPrev.Enabled = true;
-            //uc.ButtonFirst.Enabled = true;
             page.btnPrev.Enabled = true;
             page.btnFirstPage.Enabled = true;
             await LoadDataAsync(uc.SearchRawMat);
 
         }
+
+        
 
         internal async void FirstPage(object sender, EventArgs e)
         {
@@ -52,10 +62,13 @@ namespace PurpleYam_POS.ViewModel
             page.btnFirstPage.Enabled = false;
             page.btnLastPage.Enabled = true;
             page.btnPrev.Enabled = false;
-            //btnFirstPage.Enabled = false;
-            //btnLastPage.Enabled = true;
-            //btnPrev.Enabled = false;
             await LoadDataAsync(uc.SearchRawMat);
+        }
+
+        internal void mcUnitCodeSelectedValueChanged(object sender, EventArgs e)
+        {
+            //if(unitmodel == null)
+            //    unitmodel = UnitCodeBS.Current as ProduUnitModel;
         }
 
         internal async void LimitPerPage(object sender, EventArgs e)
@@ -75,9 +88,7 @@ namespace PurpleYam_POS.ViewModel
             page.btnPrev.Enabled = true;
             page.btnLastPage.Enabled = false;
             page.btnFirstPage.Enabled = true;
-            //uc.ButtonPrev.Enabled = true;
-            //uc.ButtonLast.Enabled = false;
-            //uc.ButtonFirst.Enabled = true;
+            
             await LoadDataAsync(uc.SearchRawMat);
         }
 
@@ -91,12 +102,11 @@ namespace PurpleYam_POS.ViewModel
                 page.page = 1;
                 page.btnPrev.Enabled = false;
                 page.btnFirstPage.Enabled = false;
-                //uc.ButtonFirst.Enabled = false;
             }
             page.btnLastPage.Enabled = true;
-            //uc.ButtonLast.Enabled = true;
             await LoadDataAsync(uc.SearchRawMat);
         }
+
         public async Task LoadDataAsync(string search = "")
         {
             sql = @"SELECT rm.Id, rm.Product, rm.CreatedAt,  
@@ -113,8 +123,7 @@ namespace PurpleYam_POS.ViewModel
             page.totalRowsQry = @"SELECT COUNT(*) AS total FROM rawmaterial AS rm where rm.Deleted = false ";
             page.fileteredQry = @"SELECT COUNT(*) AS total FROM rawmaterial AS rm where rm.Deleted = false AND rm.Product LIKE @Product ORDER BY rm.Product ASC ";
 
-
-            await page.LoadDataTableAsync<RawMaterial,dynamic>(p); 
+            await page.LoadDataTableAsync<RawMaterial,dynamic>(p);
         }
 
 
@@ -126,6 +135,12 @@ namespace PurpleYam_POS.ViewModel
             await LoadDataAsync(search.Text);
         }
 
+
+        /// <summary>
+        /// Deletes every raw materials selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         internal void DeleteSelected(object sender, EventArgs e)
         {
             if (models.Count > 0)
@@ -171,8 +186,74 @@ namespace PurpleYam_POS.ViewModel
             
         }
 
-      
 
+        internal void cbBaseDisplayCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var dg = (DataGridView)sender;
+            if(e.RowIndex >= 0)
+            {
+                var obj = PrudUnitBS.Current as ProduUnitModel;
+                switch(dg.Columns[e.ColumnIndex].Name)
+                {
+                    case "setBaseUnit":
+                        if(!obj.BaseUnit)
+                        {
+                            if(Notification.Confim(FormMain.Instance, "The selected unit will now as base unit. \nDo you want to proceed?","Setting Base unit") == DialogResult.Yes)
+                            {
+                                setBaseUnit(obj);
+                                foreach( DataGridViewRow row in FormRawMaterial.instance.dgRawmatunit.Rows)
+                                    row.Cells["setBaseUnit"].Value = false;
+
+                                obj.BaseUnit = !obj.BaseUnit;
+                                model.BaseUnit = obj.UnitCode;
+                                PrudUnitBS.EndEdit();
+                                dg.CurrentRow.Selected = false;
+                            }
+
+                        }
+                       
+                        break;
+                    case "setDisplayUnit":
+
+                        if (!obj.DisplayUnit)
+                        {
+                            if (Notification.Confim(FormMain.Instance, "The selected unit will now as display unit. \nDo you want to proceed?", "Setting Base unit") == DialogResult.Yes)
+                            {
+                                setDisplayUnit(obj);
+
+                                foreach (DataGridViewRow row in FormRawMaterial.instance.dgRawmatunit.Rows)
+                                    row.Cells["setDisplayUnit"].Value = false;
+
+                                obj.DisplayUnit = !obj.DisplayUnit;
+                                model.DisplayUnit = obj.UnitCode;
+                                PrudUnitBS.EndEdit();
+                                dg.CurrentRow.Selected = false;
+                            }
+
+                        }
+                        break;
+                    case "edit":
+                        unitmodel = PrudUnitBS.Current as ProduUnitModel;
+                        FormRawMaterial.instance.mtQuantity.Text = unitmodel.Qty.ToString();
+                        FormRawMaterial.instance.mcunitCode.Text = unitmodel.UnitCode;
+                        break;
+                    case "delete":
+                        if(Notification.Confim(FormMain.Instance, "Do you want to delete selected row?","Delete") == DialogResult.Yes)
+                        {
+                            deleteRawmatUnit(obj);
+                            Notification.AlertMessage("Unit deleted.", "Success", Notification.AlertType.SUCCESS);
+                            PrudUnitBS.Remove(obj);
+                        }
+                        break;
+                }
+            }
+        }
+
+        private void deleteRawmatUnit(ProduUnitModel _model)
+        {
+            sql = "UPDATE tbl_unitgroup SET Deleted = true where Id = @Id";
+            SaveData(sql, new { Id = _model.Id });
+        }
         public void rawMatCellClick(Object sender, DataGridViewCellEventArgs e)
         {
             var dg = (DataGridView)sender;
@@ -183,6 +264,7 @@ namespace PurpleYam_POS.ViewModel
                 {
                     case "edit":
                         New(obj);
+                        dg.CurrentRow.Selected = false;
                         break;
                     case "delete":
                         break;
@@ -203,23 +285,113 @@ namespace PurpleYam_POS.ViewModel
             
         }
 
-        public void LoadRawMatData()
+        /// <summary>
+        /// Loads Units for Raw Material Product Selected.
+        /// </summary>
+        public async void LoadRawMatUnit()
         {
-            sql = @"Sel";
+            sql = @"SELECT * FROM units WHERE ProductId = @ProductId";
+            var p = new
+            {
+                ProductId = model.Id
+            };
+            PrudUnitBS.DataSource = await LoadData<ProduUnitModel, dynamic>(sql, p);
+
+            sql = @"SELECT Id as UnitId, UnitCode FROM tbl_unit where Deleted = false";
+            UnitCodeBS.DataSource = await LoadData<ProduUnitModel, dynamic>(sql, new { });
         }
 
-        public void Delete()
+
+        public void setBaseUnit(ProduUnitModel _model)
         {
+            if(setbaseUnit(_model.Id, model.Id))
+            {
+                Notification.AlertMessage("Base Unit is now set.", "Success", Notification.AlertType.SUCCESS);
+            }
         }
 
+        public void setDisplayUnit(ProduUnitModel _model)
+        {
+            if (setdisplayUnit(_model.Id, model.Id))
+            {
+                Notification.AlertMessage("Display Unit is now set.", "Success", Notification.AlertType.SUCCESS);
+            }
+        }
+
+
+        public void SaveRawMatUnit()
+        {
+            if (unitmodel == null)
+                unitmodel = new ProduUnitModel();
+            int num;
+            bool success = int.TryParse(form.mtQuantity.Text, out num);
+            unitmodel.UnitID = (int)FormRawMaterial.instance.mcunitCode.SelectedValue;
+            unitmodel.UnitCode = FormRawMaterial.instance.mcunitCode.Text;
+            unitmodel.Qty = success?num:0;
+            unitmodel.ProductId = model.Id;
+            ValidationContext context = new ValidationContext(unitmodel);
+            IList<ValidationResult> errs = new List<ValidationResult>();
+
+            if(!Validator.TryValidateObject(unitmodel, context, errs, true))
+            {
+                StringBuilder errorMsg = new StringBuilder();
+                foreach (ValidationResult res in errs)
+                    errorMsg.Append($"{res.ErrorMessage}\n");
+                Notification.ValidationMessage(FormMain.Instance, errorMsg.ToString(), "Validation Error");
+
+                return;
+            }
+            if(unitmodel.Id == 0)
+                sql = "INSERT INTO tbl_unitgroup (ProductId, UnitId, Qty) VALUES(@ProductId, @UnitId, @Qty)";
+            else
+                sql = $"UPDATE tbl_unitgroup SET ProductId = @ProductId, UnitId = @UnitId, Qty = @Qty WHERE Id = {unitmodel.Id}";
+
+            var p = new
+            {
+                ProductId = unitmodel.ProductId,
+                UnitId = unitmodel.UnitID,
+                Qty = unitmodel.Qty
+            };
+            try
+            {
+                SaveData<dynamic>(sql, p);
+                Notification.AlertMessage("Product Unit Saved.", "Success", Notification.AlertType.SUCCESS);
+                form.mtQuantity.Text = string.Empty;
+                if(unitmodel.Id == 0)
+                    PrudUnitBS.Add(unitmodel);
+                else
+                {
+                    PrudUnitBS.EndEdit();
+                    FormRawMaterial.instance.dgRawmatunit.Rows[0].Selected = false;
+                }
+                unitmodel = null;
+            }
+            catch (Exception ex)
+            {
+                Notification.ValidationMessage(FormMain.Instance, ex.Message, "Error");
+            }
+        }
+
+        /// <summary>
+        /// Shows RawMaterial Form
+        /// </summary>
+        /// <param name="_model"></param>
         public void New(RawMaterial _model)
         {
-                model = _model;
+            model = _model;
             using (form = FormRawMaterial.Instance(this))
             {
+                if (model.Id != 0)
+                {
+                    form.btnSaveRawmatUnit.Enabled = true;
+                    unitmodel = null;
+                }
                 form.ShowDialog();
             }   
         }
+
+
+       
         public void SaveRawMat()
         {
             ValidationContext context = new ValidationContext(model);
@@ -243,8 +415,13 @@ namespace PurpleYam_POS.ViewModel
                     sql = "INSERT INTO rawmaterial (Product) VALUES (@Product); SELECT last_insert_id();";
                     model.Id =  SaveGetId(sql, p);
                     page.bindingSource.Add(model);
-                    model = new RawMaterial();
+                    unitmodel = new ProduUnitModel {
+                        ProductId = model.Id
+                    };
+                    FormRawMaterial.instance.btnSaveRawmatUnit.Enabled = true;
                     FormRawMaterial.instance.mtProduct.Text = null;
+                    FormRawMaterial.instance.btnSaveRawmat.Enabled = false;
+                    FormRawMaterial.instance.NewRawmat.Enabled = true;
                 }
                 else
                 {

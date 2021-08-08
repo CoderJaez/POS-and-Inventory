@@ -39,10 +39,11 @@
             this.rawMaterialsModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSave = new System.Windows.Forms.Button();
             this.dgRawMat = new System.Windows.Forms.DataGridView();
-            this.productIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.baseUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.displayUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.setBaseUnit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.setDisplayUnit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
@@ -51,17 +52,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.mtQty = new MetroFramework.Controls.MetroTextBox();
             this.mcUnitCode = new MetroFramework.Controls.MetroComboBox();
+            this.UnitCodeBS = new System.Windows.Forms.BindingSource(this.components);
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.btnSaveUnit = new System.Windows.Forms.Button();
-            this.mcBaseUnit = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.mcDisplayUnit = new MetroFramework.Controls.MetroComboBox();
+            this.btnNewRawmat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rawMaterialsModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produUnitModelBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UnitCodeBS)).BeginInit();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -133,6 +133,7 @@
             this.dgRawMat.AllowUserToResizeRows = false;
             this.dgRawMat.AutoGenerateColumns = false;
             this.dgRawMat.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgRawMat.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgRawMat.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Purple;
@@ -144,10 +145,11 @@
             this.dgRawMat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgRawMat.ColumnHeadersHeight = 30;
             this.dgRawMat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productIdDataGridViewTextBoxColumn,
+            this.unitIDDataGridViewTextBoxColumn,
             this.idDataGridViewTextBoxColumn,
-            this.baseUnitDataGridViewTextBoxColumn,
-            this.displayUnitDataGridViewTextBoxColumn,
+            this.unitCodeDataGridViewTextBoxColumn,
+            this.setBaseUnit,
+            this.setDisplayUnit,
             this.qtyDataGridViewTextBoxColumn,
             this.edit,
             this.delete});
@@ -185,13 +187,13 @@
             this.dgRawMat.Size = new System.Drawing.Size(398, 170);
             this.dgRawMat.TabIndex = 14;
             // 
-            // productIdDataGridViewTextBoxColumn
+            // unitIDDataGridViewTextBoxColumn
             // 
-            this.productIdDataGridViewTextBoxColumn.DataPropertyName = "ProductId";
-            this.productIdDataGridViewTextBoxColumn.HeaderText = "ProductId";
-            this.productIdDataGridViewTextBoxColumn.Name = "productIdDataGridViewTextBoxColumn";
-            this.productIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productIdDataGridViewTextBoxColumn.Visible = false;
+            this.unitIDDataGridViewTextBoxColumn.DataPropertyName = "UnitID";
+            this.unitIDDataGridViewTextBoxColumn.HeaderText = "UnitID";
+            this.unitIDDataGridViewTextBoxColumn.Name = "unitIDDataGridViewTextBoxColumn";
+            this.unitIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.unitIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -201,19 +203,27 @@
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
             // 
-            // baseUnitDataGridViewTextBoxColumn
+            // unitCodeDataGridViewTextBoxColumn
             // 
-            this.baseUnitDataGridViewTextBoxColumn.DataPropertyName = "BaseUnit";
-            this.baseUnitDataGridViewTextBoxColumn.HeaderText = "BaseUnit";
-            this.baseUnitDataGridViewTextBoxColumn.Name = "baseUnitDataGridViewTextBoxColumn";
-            this.baseUnitDataGridViewTextBoxColumn.ReadOnly = true;
+            this.unitCodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unitCodeDataGridViewTextBoxColumn.DataPropertyName = "UnitCode";
+            this.unitCodeDataGridViewTextBoxColumn.HeaderText = "UnitCode";
+            this.unitCodeDataGridViewTextBoxColumn.Name = "unitCodeDataGridViewTextBoxColumn";
+            this.unitCodeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // displayUnitDataGridViewTextBoxColumn
+            // setBaseUnit
             // 
-            this.displayUnitDataGridViewTextBoxColumn.DataPropertyName = "DisplayUnit";
-            this.displayUnitDataGridViewTextBoxColumn.HeaderText = "DisplayUnit";
-            this.displayUnitDataGridViewTextBoxColumn.Name = "displayUnitDataGridViewTextBoxColumn";
-            this.displayUnitDataGridViewTextBoxColumn.ReadOnly = true;
+            this.setBaseUnit.DataPropertyName = "BaseUnit";
+            this.setBaseUnit.HeaderText = "BaseUnit";
+            this.setBaseUnit.Name = "setBaseUnit";
+            this.setBaseUnit.ReadOnly = true;
+            // 
+            // setDisplayUnit
+            // 
+            this.setDisplayUnit.DataPropertyName = "DisplayUnit";
+            this.setDisplayUnit.HeaderText = "DisplayUnit";
+            this.setDisplayUnit.Name = "setDisplayUnit";
+            this.setDisplayUnit.ReadOnly = true;
             // 
             // qtyDataGridViewTextBoxColumn
             // 
@@ -296,12 +306,12 @@
             this.mtQty.UseSelectable = true;
             this.mtQty.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.mtQty.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.mtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtQty_KeyPress);
             // 
             // mcUnitCode
             // 
-            this.mcUnitCode.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.produUnitModelBindingSource, "Id", true));
-            this.mcUnitCode.DataSource = this.produUnitModelBindingSource;
-            this.mcUnitCode.DisplayMember = "BaseUnit";
+            this.mcUnitCode.DataSource = this.UnitCodeBS;
+            this.mcUnitCode.DisplayMember = "UnitCode";
             this.mcUnitCode.FormattingEnabled = true;
             this.mcUnitCode.ItemHeight = 23;
             this.mcUnitCode.Location = new System.Drawing.Point(97, 33);
@@ -309,7 +319,11 @@
             this.mcUnitCode.Size = new System.Drawing.Size(154, 29);
             this.mcUnitCode.TabIndex = 17;
             this.mcUnitCode.UseSelectable = true;
-            this.mcUnitCode.ValueMember = "Id";
+            this.mcUnitCode.ValueMember = "UnitID";
+            // 
+            // UnitCodeBS
+            // 
+            this.UnitCodeBS.DataSource = typeof(PurpleYam_POS.Model.ProduUnitModel);
             // 
             // metroLabel5
             // 
@@ -332,6 +346,7 @@
             // btnSaveUnit
             // 
             this.btnSaveUnit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
+            this.btnSaveUnit.Enabled = false;
             this.btnSaveUnit.FlatAppearance.BorderSize = 0;
             this.btnSaveUnit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
             this.btnSaveUnit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
@@ -347,66 +362,35 @@
             this.btnSaveUnit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSaveUnit.UseVisualStyleBackColor = false;
             // 
-            // mcBaseUnit
+            // btnNewRawmat
             // 
-            this.mcBaseUnit.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.produUnitModelBindingSource, "Id", true));
-            this.mcBaseUnit.DataSource = this.produUnitModelBindingSource;
-            this.mcBaseUnit.DisplayMember = "BaseUnit";
-            this.mcBaseUnit.FormattingEnabled = true;
-            this.mcBaseUnit.ItemHeight = 23;
-            this.mcBaseUnit.Location = new System.Drawing.Point(83, 371);
-            this.mcBaseUnit.Name = "mcBaseUnit";
-            this.mcBaseUnit.Size = new System.Drawing.Size(121, 29);
-            this.mcBaseUnit.TabIndex = 17;
-            this.mcBaseUnit.UseSelectable = true;
-            this.mcBaseUnit.ValueMember = "Id";
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(11, 371);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(66, 19);
-            this.metroLabel2.TabIndex = 0;
-            this.metroLabel2.Text = "Base Unit:";
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(212, 371);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(80, 19);
-            this.metroLabel3.TabIndex = 0;
-            this.metroLabel3.Text = "Display Unit:";
-            // 
-            // mcDisplayUnit
-            // 
-            this.mcDisplayUnit.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.produUnitModelBindingSource, "Id", true));
-            this.mcDisplayUnit.DataSource = this.produUnitModelBindingSource;
-            this.mcDisplayUnit.DisplayMember = "DisplayUnit";
-            this.mcDisplayUnit.FormattingEnabled = true;
-            this.mcDisplayUnit.ItemHeight = 23;
-            this.mcDisplayUnit.Location = new System.Drawing.Point(298, 371);
-            this.mcDisplayUnit.Name = "mcDisplayUnit";
-            this.mcDisplayUnit.Size = new System.Drawing.Size(121, 29);
-            this.mcDisplayUnit.TabIndex = 17;
-            this.mcDisplayUnit.UseSelectable = true;
-            this.mcDisplayUnit.ValueMember = "Id";
+            this.btnNewRawmat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
+            this.btnNewRawmat.FlatAppearance.BorderSize = 0;
+            this.btnNewRawmat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnNewRawmat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnNewRawmat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewRawmat.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewRawmat.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnNewRawmat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNewRawmat.Location = new System.Drawing.Point(295, 108);
+            this.btnNewRawmat.Name = "btnNewRawmat";
+            this.btnNewRawmat.Size = new System.Drawing.Size(75, 30);
+            this.btnNewRawmat.TabIndex = 10;
+            this.btnNewRawmat.Text = "New";
+            this.btnNewRawmat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNewRawmat.UseVisualStyleBackColor = false;
             // 
             // FormRawMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 413);
-            this.Controls.Add(this.mcDisplayUnit);
-            this.Controls.Add(this.mcBaseUnit);
+            this.ClientSize = new System.Drawing.Size(736, 385);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgRawMat);
+            this.Controls.Add(this.btnNewRawmat);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.mtProductName);
-            this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
@@ -420,6 +404,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.produUnitModelBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UnitCodeBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,18 +423,17 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private System.Windows.Forms.Button btnSaveUnit;
-        private MetroFramework.Controls.MetroComboBox mcBaseUnit;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroComboBox mcDisplayUnit;
         private System.Windows.Forms.BindingSource rawMaterialsModelBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource produUnitModelBindingSource;
+        private System.Windows.Forms.BindingSource UnitCodeBS;
+        private System.Windows.Forms.Button btnNewRawmat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn baseUnitDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn displayUnitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitCodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn setBaseUnit;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn setDisplayUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn delete;
-        private System.Windows.Forms.BindingSource produUnitModelBindingSource;
     }
 }

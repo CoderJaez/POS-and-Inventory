@@ -35,11 +35,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RawMaterials));
             this.dgRawMat = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkbox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BaseUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DisplayUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.rawMaterialsModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -48,10 +52,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.mtbSearch = new MetroFramework.Controls.MetroTextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rawMaterialsModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rawMaterialsModelBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -118,6 +118,16 @@
             this.dgRawMat.Size = new System.Drawing.Size(597, 482);
             this.dgRawMat.TabIndex = 13;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            this.idDataGridViewTextBoxColumn.Width = 45;
+            // 
             // checkbox
             // 
             this.checkbox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -128,6 +138,14 @@
             this.checkbox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.checkbox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.checkbox.Width = 22;
+            // 
+            // productDataGridViewTextBoxColumn
+            // 
+            this.productDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
+            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
+            this.productDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // BaseUnit
             // 
@@ -142,6 +160,15 @@
             this.DisplayUnit.HeaderText = "DisplayUnit";
             this.DisplayUnit.Name = "DisplayUnit";
             this.DisplayUnit.ReadOnly = true;
+            // 
+            // createdAtDataGridViewTextBoxColumn
+            // 
+            this.createdAtDataGridViewTextBoxColumn.DataPropertyName = "CreatedAt";
+            this.createdAtDataGridViewTextBoxColumn.FillWeight = 200F;
+            this.createdAtDataGridViewTextBoxColumn.HeaderText = "CreatedAt";
+            this.createdAtDataGridViewTextBoxColumn.Name = "createdAtDataGridViewTextBoxColumn";
+            this.createdAtDataGridViewTextBoxColumn.ReadOnly = true;
+            this.createdAtDataGridViewTextBoxColumn.Width = 200;
             // 
             // edit
             // 
@@ -160,6 +187,10 @@
             this.delete.Name = "delete";
             this.delete.ReadOnly = true;
             this.delete.Width = 6;
+            // 
+            // rawMaterialsModelBindingSource
+            // 
+            this.rawMaterialsModelBindingSource.DataSource = typeof(PurpleYam_POS.Model.RawMaterial);
             // 
             // btnAdd
             // 
@@ -272,42 +303,12 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(172, 577);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(469, 36);
             this.flowLayoutPanel1.TabIndex = 32;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            this.idDataGridViewTextBoxColumn.Width = 48;
-            // 
-            // productDataGridViewTextBoxColumn
-            // 
-            this.productDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
-            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
-            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
-            this.productDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // createdAtDataGridViewTextBoxColumn
-            // 
-            this.createdAtDataGridViewTextBoxColumn.DataPropertyName = "CreatedAt";
-            this.createdAtDataGridViewTextBoxColumn.FillWeight = 200F;
-            this.createdAtDataGridViewTextBoxColumn.HeaderText = "CreatedAt";
-            this.createdAtDataGridViewTextBoxColumn.Name = "createdAtDataGridViewTextBoxColumn";
-            this.createdAtDataGridViewTextBoxColumn.ReadOnly = true;
-            this.createdAtDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // rawMaterialsModelBindingSource
-            // 
-            this.rawMaterialsModelBindingSource.DataSource = typeof(PurpleYam_POS.Model.RawMaterial);
             // 
             // RawMaterials
             // 
@@ -341,15 +342,15 @@
         private System.Windows.Forms.BindingSource rawMaterialsModelBindingSource;
         private System.Windows.Forms.CheckBox cbAll;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkbox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn BaseUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn DisplayUnit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn delete;
         private MetroFramework.Controls.MetroTextBox mtbSearch;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn;
     }
 }

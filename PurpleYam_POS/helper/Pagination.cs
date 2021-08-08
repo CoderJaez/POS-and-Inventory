@@ -119,7 +119,7 @@ namespace PurpleYam_POS.helper
             panel.Controls.Add(btnNext);
         }
 
-        public async Task LoadDataTableAsync<T,U>(U p)
+        public async Task LoadDataTableAsync<T, U>(U p)
         {
             sql += $"LIMIT {start}, {limit}";
             bindingSource.DataSource = await Task.Run(() => LoadData<T, dynamic>(sql, p));
@@ -137,7 +137,7 @@ namespace PurpleYam_POS.helper
                     btnNext.Enabled = true;
                 }
 
-                if(totalPage == 1)
+                if (totalPage <= 1)
                 {
                     btnFirstPage.Enabled = false;
                     btnLastPage.Enabled = false;

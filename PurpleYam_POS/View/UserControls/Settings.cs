@@ -47,6 +47,15 @@ namespace PurpleYam_POS.View.UserControls
                     }
                     mPanel.Controls["RawMaterials"].BringToFront();
                     break;
+                case "btnProducts":
+                    if (!mPanel.Controls.ContainsKey("Products"))
+                    {
+                        var uc = new Products();
+                        uc.Dock = DockStyle.Fill;
+                        mPanel.Controls.Add(uc);
+                    }
+                    mPanel.Controls["Products"].BringToFront();
+                    break;
             }
         }
 

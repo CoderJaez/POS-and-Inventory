@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using MySql.Data.MySqlClient;
 using PurpleYam_POS.Model;
+using System.Windows.Forms;
+
 namespace PurpleYam_POS.helper
 {
-   public class Duplicate:ValidationAttribute
+   public class DuplicateRawmatUnit:ValidationAttribute
     {
 
-        public string table { get; set; }
-        public string column { get; set; }
         public string query { get; set; }
-        public string Id { get; set; }
         private MySqlConnection conn;
         private readonly string connString = "host=localhost;user=root;pass=;database=purpleyam_db;port=3306;";
         private string sql;
-        private int id;
-        public Duplicate(): base("{0} is already inserted.") {}
+        private int Id;
+        private int ProductId;
+        public DuplicateRawmatUnit(): base("{0} is already inserted.") {}
       
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
@@ -28,26 +28,18 @@ namespace PurpleYam_POS.helper
             {
                 var container = validationContext.ObjectInstance.GetType();
                 var field = container.GetProperty("Id");
-                if(field != null)
-                {
-                    id = (int)field.GetValue(validationContext.ObjectInstance, null);
-                }
-                if (id != 0)
-                    if (query == null)
-                        sql = $"SELECT * FROM {table} where deleted = false and Id != {id} and {column} = @{column}";
-                    else
-                        sql = $"{query} {id}";
+                var field2 = container.GetProperty("ProductId");
+                Id = (int)field.GetValue(validationContext.ObjectInstance, null);
+                ProductId = (int)field2.GetValue(validationContext.ObjectInstance, null);
+                if(Id == 0)
+                    sql = $"SELECT UnitCode FROM units where ProductId = {ProductId} and UnitCode = @UnitCode";
                 else
-                    if (query == null)
-                    sql = $"SELECT * FROM {table} where deleted = false and {column} = @{column}";
-                else
-                    sql = $"{query}";
-                
-                using(conn = new MySqlConnection(connString))
+                    sql = $"SELECT UnitCode FROM units where ProductId = {ProductId} and Id != {Id} and UnitCode = @UnitCode";
+                using (conn = new MySqlConnection(connString))
                 {
                     using (MySqlCommand cmd = new MySqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue($"@{column}", strValue);
+                        cmd.Parameters.AddWithValue($"@UnitCode", strValue);
                         conn.Open();
                         using (MySqlDataReader rd = cmd.ExecuteReader())
                         {
