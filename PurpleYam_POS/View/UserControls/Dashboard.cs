@@ -88,5 +88,17 @@ namespace PurpleYam_POS.View.UserControls
                 }
             }
         }
+
+        private void btnInventory_Click(object sender, EventArgs e)
+        {
+            if (!FormMain.Instance.MetroContainer.Controls.ContainsKey("InventorySettings"))
+            {
+                InventorySettings uc = new InventorySettings();
+                uc.Dock = DockStyle.Fill;
+                FormMain.Instance.MetroContainer.Controls.Add(uc);
+            }
+            FormMain.Instance.MetroContainer.Controls["InventorySettings"].BringToFront();
+            FormMain.Instance.Back.Visible = true;
+        }
     }
 }

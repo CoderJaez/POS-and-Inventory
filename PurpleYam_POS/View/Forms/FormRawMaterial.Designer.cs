@@ -36,7 +36,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRawMaterial));
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.mtProductName = new MetroFramework.Controls.MetroTextBox();
-            this.rawMaterialsModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.RawMatBS = new System.Windows.Forms.BindingSource(this.components);
             this.btnSave = new System.Windows.Forms.Button();
             this.dgRawMat = new System.Windows.Forms.DataGridView();
             this.unitIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +47,7 @@
             this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.produUnitModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ProductUnitBS = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.mtQty = new MetroFramework.Controls.MetroTextBox();
@@ -57,9 +57,13 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.btnSaveUnit = new System.Windows.Forms.Button();
             this.btnNewRawmat = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.rawMaterialsModelBindingSource)).BeginInit();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.mtbReOrder = new MetroFramework.Controls.MetroTextBox();
+            this.cbxHasExpiry = new System.Windows.Forms.CheckBox();
+            this.mtbDaysBeforeExpiry = new MetroFramework.Controls.MetroTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.RawMatBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produUnitModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductUnitBS)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UnitCodeBS)).BeginInit();
             this.SuspendLayout();
@@ -87,7 +91,7 @@
             this.mtProductName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.mtProductName.CustomButton.UseSelectable = true;
             this.mtProductName.CustomButton.Visible = false;
-            this.mtProductName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rawMaterialsModelBindingSource, "Product", true));
+            this.mtProductName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.RawMatBS, "Product", true));
             this.mtProductName.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.mtProductName.Lines = new string[0];
             this.mtProductName.Location = new System.Drawing.Point(170, 79);
@@ -105,9 +109,9 @@
             this.mtProductName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.mtProductName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // rawMaterialsModelBindingSource
+            // RawMatBS
             // 
-            this.rawMaterialsModelBindingSource.DataSource = typeof(PurpleYam_POS.Model.RawMaterial);
+            this.RawMatBS.DataSource = typeof(PurpleYam_POS.Model.RawMaterial);
             // 
             // btnSave
             // 
@@ -119,7 +123,7 @@
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(376, 108);
+            this.btnSave.Location = new System.Drawing.Point(376, 177);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(108, 30);
             this.btnSave.TabIndex = 10;
@@ -153,7 +157,7 @@
             this.qtyDataGridViewTextBoxColumn,
             this.edit,
             this.delete});
-            this.dgRawMat.DataSource = this.produUnitModelBindingSource;
+            this.dgRawMat.DataSource = this.ProductUnitBS;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -165,7 +169,7 @@
             this.dgRawMat.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgRawMat.EnableHeadersVisualStyles = false;
             this.dgRawMat.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgRawMat.Location = new System.Drawing.Point(23, 175);
+            this.dgRawMat.Location = new System.Drawing.Point(23, 243);
             this.dgRawMat.MultiSelect = false;
             this.dgRawMat.Name = "dgRawMat";
             this.dgRawMat.ReadOnly = true;
@@ -250,15 +254,15 @@
             this.delete.ReadOnly = true;
             this.delete.Width = 6;
             // 
-            // produUnitModelBindingSource
+            // ProductUnitBS
             // 
-            this.produUnitModelBindingSource.DataSource = typeof(PurpleYam_POS.Model.ProduUnitModel);
+            this.ProductUnitBS.DataSource = typeof(PurpleYam_POS.Model.ProduUnitModel);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 151);
+            this.label1.Location = new System.Drawing.Point(23, 219);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(189, 21);
             this.label1.TabIndex = 15;
@@ -271,7 +275,7 @@
             this.panel1.Controls.Add(this.metroLabel5);
             this.panel1.Controls.Add(this.metroLabel4);
             this.panel1.Controls.Add(this.btnSaveUnit);
-            this.panel1.Location = new System.Drawing.Point(442, 175);
+            this.panel1.Location = new System.Drawing.Point(442, 243);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(271, 170);
             this.panel1.TabIndex = 16;
@@ -372,7 +376,7 @@
             this.btnNewRawmat.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewRawmat.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnNewRawmat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNewRawmat.Location = new System.Drawing.Point(295, 108);
+            this.btnNewRawmat.Location = new System.Drawing.Point(295, 177);
             this.btnNewRawmat.Name = "btnNewRawmat";
             this.btnNewRawmat.Size = new System.Drawing.Size(75, 30);
             this.btnNewRawmat.TabIndex = 10;
@@ -380,16 +384,106 @@
             this.btnNewRawmat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNewRawmat.UseVisualStyleBackColor = false;
             // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(66, 108);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(99, 19);
+            this.metroLabel2.TabIndex = 0;
+            this.metroLabel2.Text = "Re-order Level:";
+            // 
+            // mtbReOrder
+            // 
+            // 
+            // 
+            // 
+            this.mtbReOrder.CustomButton.Image = null;
+            this.mtbReOrder.CustomButton.Location = new System.Drawing.Point(292, 1);
+            this.mtbReOrder.CustomButton.Name = "";
+            this.mtbReOrder.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.mtbReOrder.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.mtbReOrder.CustomButton.TabIndex = 1;
+            this.mtbReOrder.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.mtbReOrder.CustomButton.UseSelectable = true;
+            this.mtbReOrder.CustomButton.Visible = false;
+            this.mtbReOrder.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.mtbReOrder.Lines = new string[0];
+            this.mtbReOrder.Location = new System.Drawing.Point(170, 108);
+            this.mtbReOrder.MaxLength = 32767;
+            this.mtbReOrder.Name = "mtbReOrder";
+            this.mtbReOrder.PasswordChar = '\0';
+            this.mtbReOrder.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.mtbReOrder.SelectedText = "";
+            this.mtbReOrder.SelectionLength = 0;
+            this.mtbReOrder.SelectionStart = 0;
+            this.mtbReOrder.ShortcutsEnabled = true;
+            this.mtbReOrder.Size = new System.Drawing.Size(314, 23);
+            this.mtbReOrder.TabIndex = 1;
+            this.mtbReOrder.UseSelectable = true;
+            this.mtbReOrder.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.mtbReOrder.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.mtbReOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtQty_KeyPress);
+            // 
+            // cbxHasExpiry
+            // 
+            this.cbxHasExpiry.AutoSize = true;
+            this.cbxHasExpiry.Location = new System.Drawing.Point(170, 137);
+            this.cbxHasExpiry.Name = "cbxHasExpiry";
+            this.cbxHasExpiry.Size = new System.Drawing.Size(112, 17);
+            this.cbxHasExpiry.TabIndex = 17;
+            this.cbxHasExpiry.Text = "With Expiry Date";
+            this.cbxHasExpiry.UseVisualStyleBackColor = true;
+            this.cbxHasExpiry.CheckedChanged += new System.EventHandler(this.cbxHasExpiry_CheckedChanged);
+            // 
+            // mtbDaysBeforeExpiry
+            // 
+            // 
+            // 
+            // 
+            this.mtbDaysBeforeExpiry.CustomButton.Image = null;
+            this.mtbDaysBeforeExpiry.CustomButton.Location = new System.Drawing.Point(174, 1);
+            this.mtbDaysBeforeExpiry.CustomButton.Name = "";
+            this.mtbDaysBeforeExpiry.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.mtbDaysBeforeExpiry.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.mtbDaysBeforeExpiry.CustomButton.TabIndex = 1;
+            this.mtbDaysBeforeExpiry.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.mtbDaysBeforeExpiry.CustomButton.UseSelectable = true;
+            this.mtbDaysBeforeExpiry.CustomButton.Visible = false;
+            this.mtbDaysBeforeExpiry.Enabled = false;
+            this.mtbDaysBeforeExpiry.Lines = new string[0];
+            this.mtbDaysBeforeExpiry.Location = new System.Drawing.Point(288, 137);
+            this.mtbDaysBeforeExpiry.MaxLength = 32767;
+            this.mtbDaysBeforeExpiry.Name = "mtbDaysBeforeExpiry";
+            this.mtbDaysBeforeExpiry.PasswordChar = '\0';
+            this.mtbDaysBeforeExpiry.PromptText = "Set days berore expiration date";
+            this.mtbDaysBeforeExpiry.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.mtbDaysBeforeExpiry.SelectedText = "";
+            this.mtbDaysBeforeExpiry.SelectionLength = 0;
+            this.mtbDaysBeforeExpiry.SelectionStart = 0;
+            this.mtbDaysBeforeExpiry.ShortcutsEnabled = true;
+            this.mtbDaysBeforeExpiry.Size = new System.Drawing.Size(196, 23);
+            this.mtbDaysBeforeExpiry.TabIndex = 18;
+            this.mtbDaysBeforeExpiry.UseSelectable = true;
+            this.mtbDaysBeforeExpiry.WaterMark = "Set days berore expiration date";
+            this.mtbDaysBeforeExpiry.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.mtbDaysBeforeExpiry.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.mtbDaysBeforeExpiry.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtQty_KeyPress);
+            // 
             // FormRawMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 385);
+            this.ClientSize = new System.Drawing.Size(736, 431);
+            this.Controls.Add(this.mtbDaysBeforeExpiry);
+            this.Controls.Add(this.cbxHasExpiry);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgRawMat);
             this.Controls.Add(this.btnNewRawmat);
             this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.mtbReOrder);
+            this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.mtProductName);
             this.Controls.Add(this.metroLabel1);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -399,9 +493,9 @@
             this.Style = MetroFramework.MetroColorStyle.Purple;
             this.Text = "Manage Raw Material";
             this.Load += new System.EventHandler(this.FormRawMaterial_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.rawMaterialsModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RawMatBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produUnitModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductUnitBS)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UnitCodeBS)).EndInit();
@@ -423,8 +517,8 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private System.Windows.Forms.Button btnSaveUnit;
-        private System.Windows.Forms.BindingSource rawMaterialsModelBindingSource;
-        private System.Windows.Forms.BindingSource produUnitModelBindingSource;
+        private System.Windows.Forms.BindingSource RawMatBS;
+        private System.Windows.Forms.BindingSource ProductUnitBS;
         private System.Windows.Forms.BindingSource UnitCodeBS;
         private System.Windows.Forms.Button btnNewRawmat;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitIDDataGridViewTextBoxColumn;
@@ -435,5 +529,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn delete;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroTextBox mtbReOrder;
+        private System.Windows.Forms.CheckBox cbxHasExpiry;
+        private MetroFramework.Controls.MetroTextBox mtbDaysBeforeExpiry;
     }
 }

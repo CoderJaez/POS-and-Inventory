@@ -38,21 +38,17 @@
             this.panelPagination = new System.Windows.Forms.FlowLayoutPanel();
             this.mtbSearch = new MetroFramework.Controls.MetroTextBox();
             this.dgProducts = new System.Windows.Forms.DataGridView();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.productModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ProductBS = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deletedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qualityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.particularsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updatedAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recipiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgProducts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductBS)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -132,16 +128,13 @@
             this.dgProducts.ColumnHeadersHeight = 30;
             this.dgProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
-            this.deletedDataGridViewCheckBoxColumn,
             this.productDataGridViewTextBoxColumn,
             this.qualityDataGridViewTextBoxColumn,
             this.particularsDataGridViewTextBoxColumn,
-            this.createdAtDataGridViewTextBoxColumn,
-            this.updatedAtDataGridViewTextBoxColumn,
             this.recipiesDataGridViewTextBoxColumn,
             this.edit,
             this.delete});
-            this.dgProducts.DataSource = this.productModelBindingSource;
+            this.dgProducts.DataSource = this.ProductBS;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -176,24 +169,6 @@
             this.dgProducts.Size = new System.Drawing.Size(742, 446);
             this.dgProducts.TabIndex = 35;
             // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(0)))), ((int)(((byte)(12)))));
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(663, 61);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(109, 30);
-            this.btnDelete.TabIndex = 33;
-            this.btnDelete.Text = "&Delete selected";
-            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDelete.UseVisualStyleBackColor = false;
-            // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
@@ -204,7 +179,7 @@
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(578, 61);
+            this.btnAdd.Location = new System.Drawing.Point(693, 61);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(79, 30);
             this.btnAdd.TabIndex = 34;
@@ -212,9 +187,9 @@
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = false;
             // 
-            // productModelBindingSource
+            // ProductBS
             // 
-            this.productModelBindingSource.DataSource = typeof(PurpleYam_POS.Model.ProductModel);
+            this.ProductBS.DataSource = typeof(PurpleYam_POS.Model.ProductModel);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -223,15 +198,6 @@
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // deletedDataGridViewCheckBoxColumn
-            // 
-            this.deletedDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.deletedDataGridViewCheckBoxColumn.DataPropertyName = "Deleted";
-            this.deletedDataGridViewCheckBoxColumn.HeaderText = "";
-            this.deletedDataGridViewCheckBoxColumn.Name = "deletedDataGridViewCheckBoxColumn";
-            this.deletedDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.deletedDataGridViewCheckBoxColumn.Width = 6;
             // 
             // productDataGridViewTextBoxColumn
             // 
@@ -254,20 +220,6 @@
             this.particularsDataGridViewTextBoxColumn.HeaderText = "Particulars";
             this.particularsDataGridViewTextBoxColumn.Name = "particularsDataGridViewTextBoxColumn";
             this.particularsDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // createdAtDataGridViewTextBoxColumn
-            // 
-            this.createdAtDataGridViewTextBoxColumn.DataPropertyName = "CreatedAt";
-            this.createdAtDataGridViewTextBoxColumn.HeaderText = "CreatedAt";
-            this.createdAtDataGridViewTextBoxColumn.Name = "createdAtDataGridViewTextBoxColumn";
-            this.createdAtDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // updatedAtDataGridViewTextBoxColumn
-            // 
-            this.updatedAtDataGridViewTextBoxColumn.DataPropertyName = "UpdatedAt";
-            this.updatedAtDataGridViewTextBoxColumn.HeaderText = "UpdatedAt";
-            this.updatedAtDataGridViewTextBoxColumn.Name = "updatedAtDataGridViewTextBoxColumn";
-            this.updatedAtDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // recipiesDataGridViewTextBoxColumn
             // 
@@ -302,7 +254,6 @@
             this.Controls.Add(this.panelPagination);
             this.Controls.Add(this.mtbSearch);
             this.Controls.Add(this.dgProducts);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -310,7 +261,7 @@
             this.Name = "Products";
             this.Size = new System.Drawing.Size(802, 598);
             ((System.ComponentModel.ISupportInitialize)(this.dgProducts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductBS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -321,17 +272,15 @@
         private System.Windows.Forms.FlowLayoutPanel panelPagination;
         private MetroFramework.Controls.MetroTextBox mtbSearch;
         private System.Windows.Forms.DataGridView dgProducts;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalRecipiesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource productModelBindingSource;
+        private System.Windows.Forms.BindingSource ProductBS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updatedAtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn deletedDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn qualityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn particularsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updatedAtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn recipiesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn delete;

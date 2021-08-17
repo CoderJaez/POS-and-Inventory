@@ -12,7 +12,7 @@ namespace Repository
 {
    public static class RawMaterial
     {
-        private static string connString = "host=localhost;user=root;pass=;database=purpleyam_db;port=3306;";
+        private static string connString = DatabaseConnection.ConnectionString;
 
         public static bool setbaseUnit(int id, int productId)
         {

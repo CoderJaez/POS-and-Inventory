@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PurpleYam_POS.Model;
 using PurpleYam_POS.ViewModel;
+using MetroFramework.Controls;
 
 namespace PurpleYam_POS.View.Forms
 {
@@ -53,6 +54,14 @@ namespace PurpleYam_POS.View.Forms
             get { return mcUnitCode; }
         }
 
+        public MetroTextBox MtbDaysBeforeExypiry
+        {
+            get { return mtbDaysBeforeExpiry; }
+        }
+        public CheckBox ChBxHasExpiry
+        {
+            get { return cbxHasExpiry; }
+        }
         public DataGridView dgRawmatunit
         {
             get { return dgRawMat; }
@@ -60,14 +69,18 @@ namespace PurpleYam_POS.View.Forms
         public FormRawMaterial()
         {
             InitializeComponent();
-            rawMaterialsModelBindingSource = vModel.page.bindingSource;
-            vModel.PrudUnitBS = produUnitModelBindingSource;
+            RawMatBS = vModel.page.bindingSource;
+            vModel.PrudUnitBS = ProductUnitBS;
             vModel.UnitCodeBS = UnitCodeBS;
             dgRawMat.CellClick += vModel.cbBaseDisplayCellClick;
             mcUnitCode.SelectedValueChanged += vModel.mcUnitCodeSelectedValueChanged;
             btnNewRawmat.Click += delegate
              {
                  vModel.model = new RawMaterial();
+                 mtProduct.Text = null;
+                 mtbReOrder.Text = null;
+                 mtbDaysBeforeExpiry.Text = null;
+                 cbxHasExpiry.Checked = false;
                  btnNewRawmat.Enabled = false;
                  btnSave.Enabled = true;
              };
@@ -77,6 +90,9 @@ namespace PurpleYam_POS.View.Forms
             };
             btnSave.Click += delegate {
                 vModel.model.Product = mtProductName.Text;
+                vModel.model.HasExpiry = cbxHasExpiry.Checked;
+                vModel.model.ReOrder = !string.IsNullOrEmpty(mtbReOrder.Text) ? int.Parse(mtbReOrder.Text) : 0;
+                vModel.model.DaysBeforeExpiry = !string.IsNullOrEmpty(mtbDaysBeforeExpiry.Text) ? int.Parse(mtbDaysBeforeExpiry.Text) : 0;
                  vModel.SaveRawMat();
             };
         }
@@ -99,8 +115,16 @@ namespace PurpleYam_POS.View.Forms
 
         private void mtQty_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
                 e.Handled = true;
+
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+                e.Handled = true;
+        }
+
+        private void cbxHasExpiry_CheckedChanged(object sender, EventArgs e)
+        {
+            mtbDaysBeforeExpiry.Enabled = cbxHasExpiry.Checked;
         }
     }
 }

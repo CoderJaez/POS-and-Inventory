@@ -109,7 +109,7 @@ namespace PurpleYam_POS.ViewModel
 
         public async Task LoadDataAsync(string search = "")
         {
-            sql = @"SELECT rm.Id, rm.Product, rm.CreatedAt,  
+            sql = @"SELECT rm.Id, rm.Product,rm.DaysBeforeExpiry, rm.ReOrder, rm.HasExpiry, rm.CreatedAt,  
 	                (SELECT u.UnitCode FROM tbl_unit AS u LEFT JOIN tbl_unitgroup AS ugrp ON ugrp.UnitId = u.Id WHERE ugrp.BaseUnit = TRUE AND ugrp.ProductId = rm.Id) AS BaseUnit, 
 	                (SELECT u.UnitCode FROM tbl_unit AS u LEFT JOIN tbl_unitgroup AS ugrp ON ugrp.UnitId = u.Id WHERE ugrp.DisplayUnit = TRUE AND ugrp.ProductId = rm.Id) AS DisplayUnit 
 	                FROM rawmaterial AS rm where rm.Deleted = false AND rm.Product LIKE @Product ORDER BY rm.Product ASC ";
@@ -267,16 +267,17 @@ namespace PurpleYam_POS.ViewModel
                         dg.CurrentRow.Selected = false;
                         break;
                     case "delete":
+                        DeleteRawMat(obj);
                         break;
                     case "checkbox":
-                        if(model.Deleted)
+                        if(obj.Deleted)
                         {
-                            model.Deleted = false;
-                            models.Remove(model);
+                            obj.Deleted = false;
+                            models.Remove(obj);
                         } else
                         {
-                            model.Deleted = true;
-                            models.Add(model);
+                            obj.Deleted = true;
+                            models.Add(obj);
                         }
                         page.bindingSource.EndEdit();
                         break;
@@ -341,8 +342,10 @@ namespace PurpleYam_POS.ViewModel
 
                 return;
             }
+
+
             if(unitmodel.Id == 0)
-                sql = "INSERT INTO tbl_unitgroup (ProductId, UnitId, Qty) VALUES(@ProductId, @UnitId, @Qty)";
+                sql = "INSERT INTO tbl_unitgroup (ProductId, UnitId, Qty) VALUES(@ProductId, @UnitId, @Qty);SELECT last_insert_id()";
             else
                 sql = $"UPDATE tbl_unitgroup SET ProductId = @ProductId, UnitId = @UnitId, Qty = @Qty WHERE Id = {unitmodel.Id}";
 
@@ -354,14 +357,19 @@ namespace PurpleYam_POS.ViewModel
             };
             try
             {
-                SaveData<dynamic>(sql, p);
-                Notification.AlertMessage("Product Unit Saved.", "Success", Notification.AlertType.SUCCESS);
+               
                 form.mtQuantity.Text = string.Empty;
                 if(unitmodel.Id == 0)
+                {
+                    unitmodel.Id = SaveGetId(sql, p);
+                    Notification.AlertMessage("Product Unit Saved.", "Success", Notification.AlertType.SUCCESS);
                     PrudUnitBS.Add(unitmodel);
+                }
                 else
                 {
+                    SaveData(sql, p);
                     PrudUnitBS.EndEdit();
+                    Notification.AlertMessage("Product Unit Saved.", "Success", Notification.AlertType.SUCCESS);
                     FormRawMaterial.instance.dgRawmatunit.Rows[0].Selected = false;
                 }
                 unitmodel = null;
@@ -390,7 +398,16 @@ namespace PurpleYam_POS.ViewModel
             }   
         }
 
-
+        public void DeleteRawMat(RawMaterial _model)
+        {
+            if(Notification.Confim(FormMain.Instance, "Do you want to delete selected product","Delete product") == DialogResult.Yes)
+            {
+                sql = "UPDATE rawmaterial SET Deleted = true where Id = @Id";
+                SaveData(sql, new { Id = _model.Id });
+                Notification.AlertMessage("Product deleted", "Success", Notification.AlertType.SUCCESS);
+                page.bindingSource.Remove(_model);
+            }
+        }
        
         public void SaveRawMat()
         {
@@ -406,14 +423,15 @@ namespace PurpleYam_POS.ViewModel
 
                 return;
             }
-            var p = new { Product = model.Product };
+            var p = new { Product = model.Product, DaysBeforeExpiry = model.DaysBeforeExpiry, HasExpiry = model.HasExpiry, ReOrder = model.ReOrder };
 
             try
             {
                 if (model.Id == 0)
                 {
-                    sql = "INSERT INTO rawmaterial (Product) VALUES (@Product); SELECT last_insert_id();";
+                    sql = "INSERT INTO rawmaterial (Product,DaysBeforeExpiry,HasExpiry,ReOrder) VALUES (@Product, @DaysBeforeExpiry, @HasExpiry, @ReOrder); SELECT last_insert_id();";
                     model.Id =  SaveGetId(sql, p);
+                    Notification.AlertMessage("Product created.", "Success", Notification.AlertType.SUCCESS);
                     page.bindingSource.Add(model);
                     unitmodel = new ProduUnitModel {
                         ProductId = model.Id
@@ -425,11 +443,11 @@ namespace PurpleYam_POS.ViewModel
                 }
                 else
                 {
-                    sql = $"UPDATE rawmaterial SET Product = @Product WHERE Id = {model.Id}";
+                    sql = $"UPDATE rawmaterial SET Product = @Product, DaysBeforeExpiry = @DaysBeforeExpiry, HasExpiry = @HasExpiry, ReOrder = @ReOrder   WHERE Id = {model.Id}";
                     SaveData(sql, p);
                     page.bindingSource.EndEdit();
+                    Notification.AlertMessage("Product updated.", "Success", Notification.AlertType.SUCCESS);
                 }
-                Notification.AlertMessage("Product saved.", "Success", Notification.AlertType.SUCCESS);
             }
             catch (Exception ex)
             {

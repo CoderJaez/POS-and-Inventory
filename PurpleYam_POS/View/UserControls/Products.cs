@@ -22,6 +22,11 @@ namespace PurpleYam_POS.View.UserControls
         {
             get { return mtbSearch.Text; }
         }
+
+        public DataGridView DgProducts
+        {
+            get { return dgProducts; }
+        }
         public Products()
         {
             InitializeComponent();
@@ -33,8 +38,9 @@ namespace PurpleYam_POS.View.UserControls
             viewModel.page.btnNext.Click += viewModel.NextPage;
             viewModel.page.btnPrev.Click += viewModel.PreviousPage;
             viewModel.page.cbPerPage.SelectedValueChanged += viewModel.LimitPerPage;
-            viewModel.page.bindingSource = productModelBindingSource;
-            btnAdd.Click += delegate { viewModel.New(); };
+            viewModel.page.bindingSource = ProductBS;
+            btnAdd.Click += delegate { viewModel.productModel = null; viewModel.New(); };
+            dgProducts.CellClick += viewModel.dgProducts_CellClick;
             this.Load += async delegate { await viewModel.GetAllAsync(mtbSearch.Text); };    
         }
     }

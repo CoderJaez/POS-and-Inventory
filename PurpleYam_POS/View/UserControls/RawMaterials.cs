@@ -47,7 +47,7 @@ namespace PurpleYam_POS.View.UserControls
             rawMatVM.page.btnNext.Click += rawMatVM.NextPage;
             rawMatVM.page.btnPrev.Click += rawMatVM.PreviousPage;
             rawMatVM.page.cbPerPage.SelectedValueChanged += rawMatVM.LimitPerPage;
-            rawMatVM.page.bindingSource = rawMaterialsModelBindingSource;
+            rawMatVM.page.bindingSource = RawMatBS;
             dgRawMat.CellClick += rawMatVM.rawMatCellClick;
             btnAdd.Click += delegate { rawMatVM.New(new RawMaterial()); };
             btnDelete.Click += rawMatVM.DeleteSelected;

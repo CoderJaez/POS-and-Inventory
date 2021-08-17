@@ -28,45 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageProduct));
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.mcbRawMat = new MetroFramework.Controls.MetroComboBox();
+            this.RawMatBS = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.dgRawMat = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RawmatId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GrpUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
+            this.RecipeBS = new System.Windows.Forms.BindingSource(this.components);
+            this.tbProduct = new System.Windows.Forms.TextBox();
+            this.mcbUnit = new MetroFramework.Controls.MetroComboBox();
+            this.UnitBS = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.metroComboBox3 = new MetroFramework.Controls.MetroComboBox();
+            this.tbQty = new System.Windows.Forms.TextBox();
+            this.mcbParticulars = new MetroFramework.Controls.MetroComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.metroComboBox4 = new MetroFramework.Controls.MetroComboBox();
+            this.mcbQuality = new MetroFramework.Controls.MetroComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnNewRawmat = new System.Windows.Forms.Button();
+            this.btnSaveRecipe = new System.Windows.Forms.Button();
+            this.btnNewProduct = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnSaveUnit = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.RawMatBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecipeBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UnitBS)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // metroComboBox1
+            // mcbRawMat
             // 
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 23;
-            this.metroComboBox1.Location = new System.Drawing.Point(161, 43);
-            this.metroComboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(167, 29);
-            this.metroComboBox1.TabIndex = 0;
-            this.metroComboBox1.UseSelectable = true;
+            this.mcbRawMat.DataSource = this.RawMatBS;
+            this.mcbRawMat.DisplayMember = "Product";
+            this.mcbRawMat.FormattingEnabled = true;
+            this.mcbRawMat.ItemHeight = 23;
+            this.mcbRawMat.Location = new System.Drawing.Point(161, 43);
+            this.mcbRawMat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.mcbRawMat.Name = "mcbRawMat";
+            this.mcbRawMat.Size = new System.Drawing.Size(167, 29);
+            this.mcbRawMat.TabIndex = 10;
+            this.mcbRawMat.UseSelectable = true;
+            this.mcbRawMat.ValueMember = "Id";
+            // 
+            // RawMatBS
+            // 
+            this.RawMatBS.DataSource = typeof(PurpleYam_POS.Model.RawMaterial);
             // 
             // label1
             // 
@@ -83,6 +103,7 @@
             // 
             this.dgRawMat.AllowUserToAddRows = false;
             this.dgRawMat.AllowUserToResizeRows = false;
+            this.dgRawMat.AutoGenerateColumns = false;
             this.dgRawMat.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgRawMat.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgRawMat.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -96,8 +117,15 @@
             this.dgRawMat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgRawMat.ColumnHeadersHeight = 30;
             this.dgRawMat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.productDataGridViewTextBoxColumn,
+            this.UnitCode,
+            this.RawmatId,
+            this.GrpUnitId,
+            this.qtyDataGridViewTextBoxColumn,
             this.edit,
             this.delete});
+            this.dgRawMat.DataSource = this.RecipeBS;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -109,7 +137,7 @@
             this.dgRawMat.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgRawMat.EnableHeadersVisualStyles = false;
             this.dgRawMat.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgRawMat.Location = new System.Drawing.Point(434, 105);
+            this.dgRawMat.Location = new System.Drawing.Point(398, 105);
             this.dgRawMat.MultiSelect = false;
             this.dgRawMat.Name = "dgRawMat";
             this.dgRawMat.ReadOnly = true;
@@ -128,8 +156,52 @@
             this.dgRawMat.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgRawMat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgRawMat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgRawMat.Size = new System.Drawing.Size(411, 319);
+            this.dgRawMat.Size = new System.Drawing.Size(447, 319);
             this.dgRawMat.TabIndex = 15;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // productDataGridViewTextBoxColumn
+            // 
+            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
+            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
+            this.productDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // UnitCode
+            // 
+            this.UnitCode.DataPropertyName = "UnitCode";
+            this.UnitCode.HeaderText = "UnitCode";
+            this.UnitCode.Name = "UnitCode";
+            this.UnitCode.ReadOnly = true;
+            // 
+            // RawmatId
+            // 
+            this.RawmatId.DataPropertyName = "RawmatId";
+            this.RawmatId.HeaderText = "RawmatId";
+            this.RawmatId.Name = "RawmatId";
+            this.RawmatId.ReadOnly = true;
+            this.RawmatId.Visible = false;
+            // 
+            // GrpUnitId
+            // 
+            this.GrpUnitId.DataPropertyName = "GrpUnitId";
+            this.GrpUnitId.HeaderText = "GrpUnitId";
+            this.GrpUnitId.Name = "GrpUnitId";
+            this.GrpUnitId.ReadOnly = true;
+            this.GrpUnitId.Visible = false;
+            // 
+            // qtyDataGridViewTextBoxColumn
+            // 
+            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
+            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
+            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // edit
             // 
@@ -149,24 +221,36 @@
             this.delete.ReadOnly = true;
             this.delete.Width = 6;
             // 
-            // textBox1
+            // RecipeBS
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(140, 65);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 29);
-            this.textBox1.TabIndex = 16;
+            this.RecipeBS.DataSource = typeof(PurpleYam_POS.Model.Recipe);
             // 
-            // metroComboBox2
+            // tbProduct
             // 
-            this.metroComboBox2.FormattingEnabled = true;
-            this.metroComboBox2.ItemHeight = 23;
-            this.metroComboBox2.Location = new System.Drawing.Point(161, 80);
-            this.metroComboBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.metroComboBox2.Name = "metroComboBox2";
-            this.metroComboBox2.Size = new System.Drawing.Size(167, 29);
-            this.metroComboBox2.TabIndex = 0;
-            this.metroComboBox2.UseSelectable = true;
+            this.tbProduct.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbProduct.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProduct.Location = new System.Drawing.Point(140, 65);
+            this.tbProduct.Name = "tbProduct";
+            this.tbProduct.Size = new System.Drawing.Size(238, 29);
+            this.tbProduct.TabIndex = 1;
+            // 
+            // mcbUnit
+            // 
+            this.mcbUnit.DataSource = this.UnitBS;
+            this.mcbUnit.DisplayMember = "UnitCode";
+            this.mcbUnit.FormattingEnabled = true;
+            this.mcbUnit.ItemHeight = 23;
+            this.mcbUnit.Location = new System.Drawing.Point(161, 80);
+            this.mcbUnit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.mcbUnit.Name = "mcbUnit";
+            this.mcbUnit.Size = new System.Drawing.Size(167, 29);
+            this.mcbUnit.TabIndex = 11;
+            this.mcbUnit.UseSelectable = true;
+            this.mcbUnit.ValueMember = "Id";
+            // 
+            // UnitBS
+            // 
+            this.UnitBS.DataSource = typeof(PurpleYam_POS.Model.Unit);
             // 
             // label2
             // 
@@ -201,24 +285,30 @@
             this.label4.Text = "Quantity:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox2
+            // tbQty
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(164, 116);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(164, 29);
-            this.textBox2.TabIndex = 16;
+            this.tbQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbQty.Location = new System.Drawing.Point(164, 116);
+            this.tbQty.Name = "tbQty";
+            this.tbQty.Size = new System.Drawing.Size(164, 29);
+            this.tbQty.TabIndex = 12;
+            this.tbQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbQty_KeyPress);
             // 
-            // metroComboBox3
+            // mcbParticulars
             // 
-            this.metroComboBox3.FormattingEnabled = true;
-            this.metroComboBox3.ItemHeight = 23;
-            this.metroComboBox3.Location = new System.Drawing.Point(140, 138);
-            this.metroComboBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.metroComboBox3.Name = "metroComboBox3";
-            this.metroComboBox3.Size = new System.Drawing.Size(238, 29);
-            this.metroComboBox3.TabIndex = 0;
-            this.metroComboBox3.UseSelectable = true;
+            this.mcbParticulars.FormattingEnabled = true;
+            this.mcbParticulars.ItemHeight = 23;
+            this.mcbParticulars.Items.AddRange(new object[] {
+            "LARGE",
+            "MEDIUM",
+            "TIN CAN",
+            "SLICE"});
+            this.mcbParticulars.Location = new System.Drawing.Point(140, 138);
+            this.mcbParticulars.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.mcbParticulars.Name = "mcbParticulars";
+            this.mcbParticulars.Size = new System.Drawing.Size(238, 29);
+            this.mcbParticulars.TabIndex = 3;
+            this.mcbParticulars.UseSelectable = true;
             // 
             // label5
             // 
@@ -231,16 +321,20 @@
             this.label5.Text = "Particulars:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // metroComboBox4
+            // mcbQuality
             // 
-            this.metroComboBox4.FormattingEnabled = true;
-            this.metroComboBox4.ItemHeight = 23;
-            this.metroComboBox4.Location = new System.Drawing.Point(140, 101);
-            this.metroComboBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.metroComboBox4.Name = "metroComboBox4";
-            this.metroComboBox4.Size = new System.Drawing.Size(238, 29);
-            this.metroComboBox4.TabIndex = 0;
-            this.metroComboBox4.UseSelectable = true;
+            this.mcbQuality.FormattingEnabled = true;
+            this.mcbQuality.ItemHeight = 23;
+            this.mcbQuality.Items.AddRange(new object[] {
+            "CHOCO",
+            "DURIAN",
+            "UBE"});
+            this.mcbQuality.Location = new System.Drawing.Point(140, 101);
+            this.mcbQuality.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.mcbQuality.Name = "mcbQuality";
+            this.mcbQuality.Size = new System.Drawing.Size(238, 29);
+            this.mcbQuality.TabIndex = 2;
+            this.mcbQuality.UseSelectable = true;
             // 
             // label6
             // 
@@ -256,10 +350,10 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.btnSaveUnit);
-            this.groupBox1.Controls.Add(this.metroComboBox1);
-            this.groupBox1.Controls.Add(this.metroComboBox2);
+            this.groupBox1.Controls.Add(this.tbQty);
+            this.groupBox1.Controls.Add(this.btnSaveRecipe);
+            this.groupBox1.Controls.Add(this.mcbRawMat);
+            this.groupBox1.Controls.Add(this.mcbUnit);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -270,23 +364,43 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Manage Recipies";
             // 
-            // btnNewRawmat
+            // btnSaveRecipe
             // 
-            this.btnNewRawmat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
-            this.btnNewRawmat.FlatAppearance.BorderSize = 0;
-            this.btnNewRawmat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnNewRawmat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnNewRawmat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewRawmat.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewRawmat.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnNewRawmat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNewRawmat.Location = new System.Drawing.Point(140, 176);
-            this.btnNewRawmat.Name = "btnNewRawmat";
-            this.btnNewRawmat.Size = new System.Drawing.Size(112, 30);
-            this.btnNewRawmat.TabIndex = 18;
-            this.btnNewRawmat.Text = "&New Product";
-            this.btnNewRawmat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNewRawmat.UseVisualStyleBackColor = false;
+            this.btnSaveRecipe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
+            this.btnSaveRecipe.Enabled = false;
+            this.btnSaveRecipe.FlatAppearance.BorderSize = 0;
+            this.btnSaveRecipe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnSaveRecipe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnSaveRecipe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveRecipe.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveRecipe.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSaveRecipe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveRecipe.Location = new System.Drawing.Point(231, 151);
+            this.btnSaveRecipe.Name = "btnSaveRecipe";
+            this.btnSaveRecipe.Size = new System.Drawing.Size(115, 30);
+            this.btnSaveRecipe.TabIndex = 20;
+            this.btnSaveRecipe.Text = "Save &Recipe";
+            this.btnSaveRecipe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSaveRecipe.UseVisualStyleBackColor = false;
+            // 
+            // btnNewProduct
+            // 
+            this.btnNewProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
+            this.btnNewProduct.Enabled = false;
+            this.btnNewProduct.FlatAppearance.BorderSize = 0;
+            this.btnNewProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnNewProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnNewProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewProduct.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewProduct.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnNewProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNewProduct.Location = new System.Drawing.Point(140, 176);
+            this.btnNewProduct.Name = "btnNewProduct";
+            this.btnNewProduct.Size = new System.Drawing.Size(112, 30);
+            this.btnNewProduct.TabIndex = 18;
+            this.btnNewProduct.Text = "&New Product";
+            this.btnNewProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNewProduct.UseVisualStyleBackColor = false;
             // 
             // btnSave
             // 
@@ -306,25 +420,6 @@
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = false;
             // 
-            // btnSaveUnit
-            // 
-            this.btnSaveUnit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
-            this.btnSaveUnit.Enabled = false;
-            this.btnSaveUnit.FlatAppearance.BorderSize = 0;
-            this.btnSaveUnit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnSaveUnit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnSaveUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveUnit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveUnit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSaveUnit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveUnit.Location = new System.Drawing.Point(213, 151);
-            this.btnSaveUnit.Name = "btnSaveUnit";
-            this.btnSaveUnit.Size = new System.Drawing.Size(115, 30);
-            this.btnSaveUnit.TabIndex = 20;
-            this.btnSaveUnit.Text = "Save &Recipe";
-            this.btnSaveUnit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSaveUnit.UseVisualStyleBackColor = false;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -340,25 +435,28 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 449);
-            this.Controls.Add(this.btnNewRawmat);
+            this.ClientSize = new System.Drawing.Size(871, 447);
+            this.Controls.Add(this.btnNewProduct);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbProduct);
             this.Controls.Add(this.dgRawMat);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.metroComboBox4);
-            this.Controls.Add(this.metroComboBox3);
+            this.Controls.Add(this.mcbQuality);
+            this.Controls.Add(this.mcbParticulars);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormManageProduct";
             this.Padding = new System.Windows.Forms.Padding(23, 78, 23, 26);
             this.Style = MetroFramework.MetroColorStyle.Purple;
             this.Text = "Manage Product";
+            ((System.ComponentModel.ISupportInitialize)(this.RawMatBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecipeBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UnitBS)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -368,25 +466,34 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroComboBox mcbRawMat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgRawMat;
-        private System.Windows.Forms.DataGridViewImageColumn edit;
-        private System.Windows.Forms.DataGridViewImageColumn delete;
-        private System.Windows.Forms.TextBox textBox1;
-        private MetroFramework.Controls.MetroComboBox metroComboBox2;
+        private System.Windows.Forms.TextBox tbProduct;
+        private MetroFramework.Controls.MetroComboBox mcbUnit;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
-        private MetroFramework.Controls.MetroComboBox metroComboBox3;
+        private System.Windows.Forms.TextBox tbQty;
+        private MetroFramework.Controls.MetroComboBox mcbParticulars;
         private System.Windows.Forms.Label label5;
-        private MetroFramework.Controls.MetroComboBox metroComboBox4;
+        private MetroFramework.Controls.MetroComboBox mcbQuality;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnSaveUnit;
-        private System.Windows.Forms.Button btnNewRawmat;
+        private System.Windows.Forms.Button btnSaveRecipe;
+        private System.Windows.Forms.Button btnNewProduct;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.BindingSource RawMatBS;
+        private System.Windows.Forms.BindingSource UnitBS;
+        private System.Windows.Forms.BindingSource RecipeBS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RawmatId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GrpUnitId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn edit;
+        private System.Windows.Forms.DataGridViewImageColumn delete;
     }
 }

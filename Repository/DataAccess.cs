@@ -7,12 +7,20 @@ using MySql.Data.MySqlClient;
 using Dapper;
 using System.Data;
 using Z.Dapper.Plus;
+using System.Configuration;
 
 namespace Repository
 {
+    public static class DatabaseConnection
+    {
+        static ConnectionStringSettingsCollection settings = ConfigurationManager.ConnectionStrings;
+        private static string connString = settings["Development"].ConnectionString;
+        public static string ConnectionString { get { return connString; } set { connString = value; } }
+    }
+
     public static class DataAccess
     {
-        private static string connString = "host=localhost;user=root;pass=;database=purpleyam_db;port=3306;";
+        private static string connString = DatabaseConnection.ConnectionString;
 
         public  static async Task<List<T>> LoadData<T,U>(string sql, U parameters)
         {

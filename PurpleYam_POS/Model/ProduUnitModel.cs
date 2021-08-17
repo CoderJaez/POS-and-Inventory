@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using PurpleYam_POS.helper;
+using Repository;
+
 namespace PurpleYam_POS.Model
 {
     public class ProduUnitModel

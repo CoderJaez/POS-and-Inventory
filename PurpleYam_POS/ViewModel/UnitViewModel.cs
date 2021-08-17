@@ -20,7 +20,7 @@ namespace PurpleYam_POS.ViewModel
 
         public async Task LoadDataAsync()
         {
-            string sql = "SELECT * FROM tbl_unit where deleted = false";
+            string sql = "SELECT * FROM tbl_unit where Deleted = false";
             UnitBindingSource.DataSource = await Task.Run(()=> LoadData<Unit, dynamic>(sql, new {}));
             
         }
@@ -38,14 +38,14 @@ namespace PurpleYam_POS.ViewModel
             DialogResult res = Notification.Confim(FormMain.Instance, "Do want to delete selected row?", "Delete unit");
             if (res == DialogResult.Yes)
             {
-                sql = $"UPDATE tbl_unit set deleted = false where Id = @Id";
+                sql = $"UPDATE tbl_unit set Deleted = true where Id = @Id";
                 var p = new
                 {
                     Id = unit.Id
                 };
 
                  Task.Run(() => SaveData(sql, p));
-                    Notification.AlertMessage("Unit deleted", "Delete unit", Notification.AlertType.SUCCESS);
+                    Notification.AlertMessage("Unit deleted", "Success", Notification.AlertType.SUCCESS);
                     UnitBindingSource.RemoveCurrent();
 
             }
