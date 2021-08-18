@@ -84,10 +84,13 @@ namespace PurpleYam_POS.View.UserControls
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             var currentRow = viewModel.StockInBS.Current as RawMaterial;
-            currentRow.DateExpiry = dateTimePicker.Value;
-            dgRawMatStockin.CurrentRow.Selected = false;
-            viewModel.StockInBS.EndEdit();
-            //dateTimePicker.Visible = false;
+           if(currentRow != null)
+            {
+                currentRow.DateExpiry = dateTimePicker.Value;
+                dgRawMatStockin.CurrentRow.Selected = false;
+                viewModel.StockInBS.EndEdit();
+            } else
+                dateTimePicker.Visible = false;
         }
 
         private void dgRawMatStockin_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -101,9 +104,14 @@ namespace PurpleYam_POS.View.UserControls
             if (cbUnitCode.SelectedValue != null)
             {
                 var currentRow = viewModel.StockInBS.Current as RawMaterial;
-                currentRow.UnitId = (int)cbUnitCode.SelectedValue;
-                currentRow.DisplayUnit = cbUnitCode.Text;
-                cbUnitCode.Visible = false;
+                if (currentRow != null)
+                {
+                    currentRow.UnitId = (int)cbUnitCode.SelectedValue;
+                    currentRow.DisplayUnit = cbUnitCode.Text;
+                    cbUnitCode.Visible = false;
+                }
+                else
+                    cbUnitCode.Visible = false;
             }
 
         }

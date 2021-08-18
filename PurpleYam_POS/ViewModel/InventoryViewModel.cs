@@ -43,6 +43,9 @@ namespace PurpleYam_POS.ViewModel
         public BindingSource UnitBS { get; set; }
         public BindingSource InventoryBS { get; set; }
         private BackgroundWorker backgroundWorker;
+
+        //Rectangle
+        private Rectangle rect = new Rectangle();
         struct DataParams
         {
             public int Process;
@@ -298,7 +301,6 @@ namespace PurpleYam_POS.ViewModel
                 if (StockInBS.List.OfType<RawMaterial>().ToList().Find(r => r.Id == currentRow.Id) == null)
                 {
                     StockInBS.Add(currentRow);
-                    if (ucRawmatStockin.DgStockIn.Rows.Count > 0)
                         ucRawmatStockin.DgStockIn.Rows[0].Selected = false;
                 }
                
@@ -332,6 +334,9 @@ namespace PurpleYam_POS.ViewModel
                     default:
                         if (StockInDG.Columns[e.ColumnIndex].Name == "delete")
                             StockInBS.RemoveCurrent();
+
+                        ucRawmatStockin.CbUnitCode.Visible = false;
+                        ucRawmatStockin.DateExpiryDTP.Visible = false;
                         break;
                 }
                

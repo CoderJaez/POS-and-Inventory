@@ -46,9 +46,12 @@
             // tvInventoryMenu
             // 
             this.tvInventoryMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
+            this.tvInventoryMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tvInventoryMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tvInventoryMenu.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
             this.tvInventoryMenu.ForeColor = System.Drawing.Color.White;
             this.tvInventoryMenu.FullRowSelect = true;
+            this.tvInventoryMenu.Indent = 15;
             this.tvInventoryMenu.ItemHeight = 39;
             this.tvInventoryMenu.LineColor = System.Drawing.Color.White;
             this.tvInventoryMenu.Location = new System.Drawing.Point(0, 0);
@@ -74,8 +77,11 @@
             this.tvInventoryMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3,
             treeNode6});
+            this.tvInventoryMenu.ShowLines = false;
+            this.tvInventoryMenu.ShowNodeToolTips = true;
             this.tvInventoryMenu.Size = new System.Drawing.Size(223, 612);
             this.tvInventoryMenu.TabIndex = 2;
+            this.tvInventoryMenu.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.tvInventoryMenu_DrawNode);
             // 
             // mPanel
             // 
