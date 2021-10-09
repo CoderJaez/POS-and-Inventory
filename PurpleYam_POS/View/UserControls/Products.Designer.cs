@@ -41,7 +41,9 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.ProductBS = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qualityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.particularsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recipiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,7 +96,7 @@
             this.mtbSearch.MaxLength = 32767;
             this.mtbSearch.Name = "mtbSearch";
             this.mtbSearch.PasswordChar = '\0';
-            this.mtbSearch.PromptText = "Search raw material";
+            this.mtbSearch.PromptText = "Search Products";
             this.mtbSearch.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.mtbSearch.SelectedText = "";
             this.mtbSearch.SelectionLength = 0;
@@ -103,9 +105,10 @@
             this.mtbSearch.Size = new System.Drawing.Size(188, 23);
             this.mtbSearch.TabIndex = 36;
             this.mtbSearch.UseSelectable = true;
-            this.mtbSearch.WaterMark = "Search raw material";
+            this.mtbSearch.WaterMark = "Search Products";
             this.mtbSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.mtbSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.mtbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mtbSearch_KeyDown);
             // 
             // dgProducts
             // 
@@ -128,7 +131,9 @@
             this.dgProducts.ColumnHeadersHeight = 30;
             this.dgProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
+            this.Image,
             this.productDataGridViewTextBoxColumn,
+            this.Price,
             this.qualityDataGridViewTextBoxColumn,
             this.particularsDataGridViewTextBoxColumn,
             this.recipiesDataGridViewTextBoxColumn,
@@ -168,6 +173,7 @@
             this.dgProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgProducts.Size = new System.Drawing.Size(742, 446);
             this.dgProducts.TabIndex = 35;
+            this.dgProducts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgProducts_DataBindingComplete);
             // 
             // btnAdd
             // 
@@ -199,6 +205,14 @@
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
             // 
+            // Image
+            // 
+            this.Image.DataPropertyName = "Image";
+            this.Image.HeaderText = "Image";
+            this.Image.Name = "Image";
+            this.Image.ReadOnly = true;
+            this.Image.Visible = false;
+            // 
             // productDataGridViewTextBoxColumn
             // 
             this.productDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -206,6 +220,13 @@
             this.productDataGridViewTextBoxColumn.HeaderText = "Product";
             this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
             this.productDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
             // 
             // qualityDataGridViewTextBoxColumn
             // 
@@ -278,7 +299,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn updatedAtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn Image;
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn qualityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn particularsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn recipiesDataGridViewTextBoxColumn;

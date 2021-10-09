@@ -155,9 +155,6 @@
 </value>
   </data>
   <metadata name="RecipeBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>203, 18</value>
-  </metadata>
-  <metadata name="UnitBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>126, 18</value>
+    <value>165, 21</value>
   </metadata>
 </root>

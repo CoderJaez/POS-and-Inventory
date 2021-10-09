@@ -35,6 +35,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RawMaterials));
             this.dgRawMat = new System.Windows.Forms.DataGridView();
+            this.checkbox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.BaseUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DisplayUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HasExpiry = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.DaysBeforeExpiry = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -43,18 +51,10 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.mtbSearch = new MetroFramework.Controls.MetroTextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.RawMatBS = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.checkbox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BaseUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DisplayUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HasExpiry = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.DaysBeforeExpiry = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.RawMatBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RawMatBS)).BeginInit();
             this.SuspendLayout();
@@ -125,6 +125,71 @@
             this.dgRawMat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgRawMat.Size = new System.Drawing.Size(804, 482);
             this.dgRawMat.TabIndex = 13;
+            this.dgRawMat.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgRawMat_DataBindingComplete);
+            // 
+            // checkbox
+            // 
+            this.checkbox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.checkbox.DataPropertyName = "Deleted";
+            this.checkbox.HeaderText = "";
+            this.checkbox.Name = "checkbox";
+            this.checkbox.ReadOnly = true;
+            this.checkbox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.checkbox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.checkbox.Width = 22;
+            // 
+            // BaseUnit
+            // 
+            this.BaseUnit.DataPropertyName = "BaseUnit";
+            this.BaseUnit.HeaderText = "BaseUnit";
+            this.BaseUnit.Name = "BaseUnit";
+            this.BaseUnit.ReadOnly = true;
+            // 
+            // DisplayUnit
+            // 
+            this.DisplayUnit.DataPropertyName = "DisplayUnit";
+            this.DisplayUnit.HeaderText = "DisplayUnit";
+            this.DisplayUnit.Name = "DisplayUnit";
+            this.DisplayUnit.ReadOnly = true;
+            // 
+            // ReOrder
+            // 
+            this.ReOrder.DataPropertyName = "ReOrder";
+            this.ReOrder.HeaderText = "ReOrder";
+            this.ReOrder.Name = "ReOrder";
+            this.ReOrder.ReadOnly = true;
+            // 
+            // HasExpiry
+            // 
+            this.HasExpiry.DataPropertyName = "HasExpiry";
+            this.HasExpiry.HeaderText = "HasExpiry";
+            this.HasExpiry.Name = "HasExpiry";
+            this.HasExpiry.ReadOnly = true;
+            // 
+            // DaysBeforeExpiry
+            // 
+            this.DaysBeforeExpiry.DataPropertyName = "DaysBeforeExpiry";
+            this.DaysBeforeExpiry.HeaderText = "DaysBeforeExpiry";
+            this.DaysBeforeExpiry.Name = "DaysBeforeExpiry";
+            this.DaysBeforeExpiry.ReadOnly = true;
+            // 
+            // edit
+            // 
+            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.edit.HeaderText = "";
+            this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
+            this.edit.Name = "edit";
+            this.edit.ReadOnly = true;
+            this.edit.Width = 6;
+            // 
+            // delete
+            // 
+            this.delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.delete.HeaderText = "";
+            this.delete.Image = ((System.Drawing.Image)(resources.GetObject("delete.Image")));
+            this.delete.Name = "delete";
+            this.delete.ReadOnly = true;
+            this.delete.Width = 6;
             // 
             // btnAdd
             // 
@@ -179,7 +244,7 @@
             // 
             this.cbAll.AutoSize = true;
             this.cbAll.BackColor = System.Drawing.Color.Purple;
-            this.cbAll.Location = new System.Drawing.Point(55, 100);
+            this.cbAll.Location = new System.Drawing.Point(38, 99);
             this.cbAll.Name = "cbAll";
             this.cbAll.Size = new System.Drawing.Size(15, 14);
             this.cbAll.TabIndex = 14;
@@ -236,6 +301,7 @@
             this.mtbSearch.WaterMark = "Search raw material";
             this.mtbSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.mtbSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.mtbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mtbSearch_KeyDown);
             // 
             // flowLayoutPanel1
             // 
@@ -245,10 +311,6 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(469, 36);
             this.flowLayoutPanel1.TabIndex = 32;
-            // 
-            // RawMatBS
-            // 
-            this.RawMatBS.DataSource = typeof(PurpleYam_POS.Model.RawMaterial);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -260,17 +322,6 @@
             this.idDataGridViewTextBoxColumn.Visible = false;
             this.idDataGridViewTextBoxColumn.Width = 48;
             // 
-            // checkbox
-            // 
-            this.checkbox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.checkbox.DataPropertyName = "Deleted";
-            this.checkbox.HeaderText = "";
-            this.checkbox.Name = "checkbox";
-            this.checkbox.ReadOnly = true;
-            this.checkbox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.checkbox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.checkbox.Width = 22;
-            // 
             // productDataGridViewTextBoxColumn
             // 
             this.productDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -278,41 +329,6 @@
             this.productDataGridViewTextBoxColumn.HeaderText = "Product";
             this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
             this.productDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // BaseUnit
-            // 
-            this.BaseUnit.DataPropertyName = "BaseUnit";
-            this.BaseUnit.HeaderText = "BaseUnit";
-            this.BaseUnit.Name = "BaseUnit";
-            this.BaseUnit.ReadOnly = true;
-            // 
-            // DisplayUnit
-            // 
-            this.DisplayUnit.DataPropertyName = "DisplayUnit";
-            this.DisplayUnit.HeaderText = "DisplayUnit";
-            this.DisplayUnit.Name = "DisplayUnit";
-            this.DisplayUnit.ReadOnly = true;
-            // 
-            // ReOrder
-            // 
-            this.ReOrder.DataPropertyName = "ReOrder";
-            this.ReOrder.HeaderText = "ReOrder";
-            this.ReOrder.Name = "ReOrder";
-            this.ReOrder.ReadOnly = true;
-            // 
-            // HasExpiry
-            // 
-            this.HasExpiry.DataPropertyName = "HasExpiry";
-            this.HasExpiry.HeaderText = "HasExpiry";
-            this.HasExpiry.Name = "HasExpiry";
-            this.HasExpiry.ReadOnly = true;
-            // 
-            // DaysBeforeExpiry
-            // 
-            this.DaysBeforeExpiry.DataPropertyName = "DaysBeforeExpiry";
-            this.DaysBeforeExpiry.HeaderText = "DaysBeforeExpiry";
-            this.DaysBeforeExpiry.Name = "DaysBeforeExpiry";
-            this.DaysBeforeExpiry.ReadOnly = true;
             // 
             // createdAtDataGridViewTextBoxColumn
             // 
@@ -323,23 +339,9 @@
             this.createdAtDataGridViewTextBoxColumn.ReadOnly = true;
             this.createdAtDataGridViewTextBoxColumn.Width = 200;
             // 
-            // edit
+            // RawMatBS
             // 
-            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.edit.HeaderText = "";
-            this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
-            this.edit.Name = "edit";
-            this.edit.ReadOnly = true;
-            this.edit.Width = 6;
-            // 
-            // delete
-            // 
-            this.delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.delete.HeaderText = "";
-            this.delete.Image = ((System.Drawing.Image)(resources.GetObject("delete.Image")));
-            this.delete.Name = "delete";
-            this.delete.ReadOnly = true;
-            this.delete.Width = 6;
+            this.RawMatBS.DataSource = typeof(PurpleYam_POS.Model.RawMaterial);
             // 
             // RawMaterials
             // 
@@ -354,7 +356,6 @@
             this.Controls.Add(this.label1);
             this.Name = "RawMaterials";
             this.Size = new System.Drawing.Size(864, 628);
-            this.Load += new System.EventHandler(this.RawMaterials_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RawMatBS)).EndInit();
             this.ResumeLayout(false);

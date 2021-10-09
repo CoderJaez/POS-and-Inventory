@@ -46,6 +46,8 @@ namespace PurpleYam_POS.View.UserControls
                         mPanel.Controls.Add(uc);
                     }
                     mPanel.Controls["RawMaterials"].BringToFront();
+                    var formRM = mPanel.Controls["RawMaterials"] as RawMaterials;
+                    formRM.LoadData();
                     break;
                 case "btnProducts":
                     if (!mPanel.Controls.ContainsKey("Products"))
@@ -55,6 +57,8 @@ namespace PurpleYam_POS.View.UserControls
                         mPanel.Controls.Add(uc);
                     }
                     mPanel.Controls["Products"].BringToFront();
+                    var formP = mPanel.Controls["Products"] as Products;
+                    formP.LoadData();
                     break;
             }
         }

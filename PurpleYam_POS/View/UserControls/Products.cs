@@ -41,7 +41,24 @@ namespace PurpleYam_POS.View.UserControls
             viewModel.page.bindingSource = ProductBS;
             btnAdd.Click += delegate { viewModel.productModel = null; viewModel.New(); };
             dgProducts.CellClick += viewModel.dgProducts_CellClick;
-            this.Load += async delegate { await viewModel.GetAllAsync(mtbSearch.Text); };    
+        }
+
+
+        public async void LoadData()
+        {
+           await viewModel.GetAllAsync(mtbSearch.Text);
+        }
+
+        private void mtbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                LoadData();
+        }
+
+        private void dgProducts_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            ((DataGridView)sender).ClearSelection();
+
         }
     }
 }

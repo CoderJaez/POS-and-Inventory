@@ -61,6 +61,7 @@ namespace PurpleYam_POS.Components
             MetroFramework.MetroMessageBox.Show(form, message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+       
      
     }
 }

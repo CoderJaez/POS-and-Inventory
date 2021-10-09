@@ -256,7 +256,7 @@
             // 
             // ProductUnitBS
             // 
-            this.ProductUnitBS.DataSource = typeof(PurpleYam_POS.Model.ProduUnitModel);
+            this.ProductUnitBS.DataSource = typeof(PurpleYam_POS.Model.ProductUnitModel);
             // 
             // label1
             // 
@@ -327,7 +327,7 @@
             // 
             // UnitCodeBS
             // 
-            this.UnitCodeBS.DataSource = typeof(PurpleYam_POS.Model.ProduUnitModel);
+            this.UnitCodeBS.DataSource = typeof(PurpleYam_POS.Model.ProductUnitModel);
             // 
             // metroLabel5
             // 

@@ -96,7 +96,7 @@ namespace PurpleYam_POS.ViewModel
             await GetAllAsync(uc.SearchProduct);
         }
 
-      
+        
 
         internal async void PreviousPage(object sender, EventArgs e)
         {
@@ -115,7 +115,7 @@ namespace PurpleYam_POS.ViewModel
 
         public async Task GetAllAsync(string search)
         {
-            sql = "SELECT Id, Product,Quality, Particulars,DateTimeStamp, ( SELECT COUNT(*) FROM tbl_recipe WHERE ProductId = tbl_product.Id)  AS Recipies FROM tbl_product WHERE Deleted = FALSE AND Product LIKE @Product ORDER BY Product ASC ";
+            sql = "SELECT Id, Product,Quality,Image,Price, Particulars,DateTimeStamp, ( SELECT COUNT(*) FROM tbl_recipe WHERE ProductId = tbl_product.Id)  AS Recipies FROM tbl_product WHERE Deleted = FALSE AND Product LIKE @Product ORDER BY Product ASC ";
             var p = new
             {
                 Product = $"%{search}%"
@@ -149,6 +149,11 @@ namespace PurpleYam_POS.ViewModel
 
                 }
             }
+        }
+
+        public ProductUnitModel BaseUnit(int ProductId)
+        {
+            return Get<ProductUnitModel, dynamic>("select UnitCode, Id from units where ProductId = @ProductId and BaseUnit = true", new { ProductId = ProductId });
         }
 
         /// <summary>
@@ -214,12 +219,14 @@ namespace PurpleYam_POS.ViewModel
                 Product = productModel.Product,
                 Particulars = productModel.Particulars,
                 Quality = productModel.Quality,
+                Image = productModel.Image,
+                Price = productModel.Price,
                 Id = productModel.Id
             };
 
             if (productModel.Id == 0)
             {
-                sql = "INSERT INTO tbl_product (Product, Particulars, Quality) VALUES (@Product, @Particulars, @Quality);SELECT last_insert_id();";
+                sql = "INSERT INTO tbl_product (Product,Price, Particulars, Quality,Image) VALUES (@Product, @Price, @Particulars, @Quality, @Image);SELECT last_insert_id();";
                 productModel.Id = SaveGetId(sql, p);
                 page.bindingSource.Add(productModel);
                 Notification.AlertMessage("New product saved.", "Success", Notification.AlertType.SUCCESS);
@@ -228,9 +235,8 @@ namespace PurpleYam_POS.ViewModel
                 form.BtnSaveRecipe.Enabled = true;
             } else
             {
-                sql = "UPDATE tbl_product SET Product = @Product, Particulars = @Particulars, Quality = @Quality WHERE Id = @Id";
+                sql = "UPDATE tbl_product SET Product = @Product,Price = @Price, Particulars = @Particulars, Quality = @Quality, Image = @Image WHERE Id = @Id";
                 SaveData(sql, p);
-                uc.DgProducts.Rows[0].Selected = false;
                 page.bindingSource.EndEdit();
                 Notification.AlertMessage("Product update.", "Success", Notification.AlertType.SUCCESS);
                 form.ResetField();
@@ -281,6 +287,9 @@ namespace PurpleYam_POS.ViewModel
                 sql = "INSERT INTO tbl_recipe (ProductId, RawmatId, GrpUnitId, Qty) VALUES (@ProductId, @RawmatId, @GrpUnitId, @Qty);select last_insert_id()";
                 recipeModel.Id = SaveGetId(sql, p);
                 Notification.AlertMessage("Recipe added.", "Success", Notification.AlertType.SUCCESS);
+                var currentProduct = page.bindingSource.Current as ProductModel;
+                currentProduct.Recipies++;
+                page.bindingSource.EndEdit();
                 RecipeBS.Add(recipeModel);
                 form.TbQty.Text = null;
                 recipeModel = null;
@@ -306,6 +315,9 @@ namespace PurpleYam_POS.ViewModel
                 SaveData(sql, new { Id = recipeModel.Id });
                 Notification.AlertMessage("Recipe deleted.", "Success", Notification.AlertType.SUCCESS);
                 RecipeBS.Remove(recipeModel);
+                var currentProduct = page.bindingSource.Current as ProductModel;
+                currentProduct.Recipies--;
+                page.bindingSource.EndEdit();
                 recipeModel = null;
             }
         }

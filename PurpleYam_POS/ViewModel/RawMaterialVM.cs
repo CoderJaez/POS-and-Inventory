@@ -25,7 +25,7 @@ namespace PurpleYam_POS.ViewModel
         public RawMaterials uc;
         private List<RawMaterial> models = new List<RawMaterial>();
         public Pagination page;
-        public ProduUnitModel unitmodel;
+        public ProductUnitModel unitmodel;
         public BindingSource PrudUnitBS { get; set; }
         public BindingSource UnitCodeBS { get; set; }
 
@@ -192,7 +192,7 @@ namespace PurpleYam_POS.ViewModel
             var dg = (DataGridView)sender;
             if(e.RowIndex >= 0)
             {
-                var obj = PrudUnitBS.Current as ProduUnitModel;
+                var obj = PrudUnitBS.Current as ProductUnitModel;
                 switch(dg.Columns[e.ColumnIndex].Name)
                 {
                     case "setBaseUnit":
@@ -233,7 +233,7 @@ namespace PurpleYam_POS.ViewModel
                         }
                         break;
                     case "edit":
-                        unitmodel = PrudUnitBS.Current as ProduUnitModel;
+                        unitmodel = PrudUnitBS.Current as ProductUnitModel;
                         FormRawMaterial.instance.mtQuantity.Text = unitmodel.Qty.ToString();
                         FormRawMaterial.instance.mcunitCode.Text = unitmodel.UnitCode;
                         break;
@@ -249,7 +249,7 @@ namespace PurpleYam_POS.ViewModel
             }
         }
 
-        private void deleteRawmatUnit(ProduUnitModel _model)
+        private void deleteRawmatUnit(ProductUnitModel _model)
         {
             sql = "UPDATE tbl_unitgroup SET Deleted = true where Id = @Id";
             SaveData(sql, new { Id = _model.Id });
@@ -296,14 +296,14 @@ namespace PurpleYam_POS.ViewModel
             {
                 ProductId = model.Id
             };
-            PrudUnitBS.DataSource = await LoadData<ProduUnitModel, dynamic>(sql, p);
+            PrudUnitBS.DataSource = await LoadData<ProductUnitModel, dynamic>(sql, p);
 
             sql = @"SELECT Id as UnitId, UnitCode FROM tbl_unit where Deleted = false";
-            UnitCodeBS.DataSource = await LoadData<ProduUnitModel, dynamic>(sql, new { });
+            UnitCodeBS.DataSource = await LoadData<ProductUnitModel, dynamic>(sql, new { });
         }
 
 
-        public void setBaseUnit(ProduUnitModel _model)
+        public void setBaseUnit(ProductUnitModel _model)
         {
             if(setbaseUnit(_model.Id, model.Id))
             {
@@ -311,7 +311,7 @@ namespace PurpleYam_POS.ViewModel
             }
         }
 
-        public void setDisplayUnit(ProduUnitModel _model)
+        public void setDisplayUnit(ProductUnitModel _model)
         {
             if (setdisplayUnit(_model.Id, model.Id))
             {
@@ -323,7 +323,7 @@ namespace PurpleYam_POS.ViewModel
         public void SaveRawMatUnit()
         {
             if (unitmodel == null)
-                unitmodel = new ProduUnitModel();
+                unitmodel = new ProductUnitModel();
             int num;
             bool success = int.TryParse(form.mtQuantity.Text, out num);
             unitmodel.UnitID = (int)FormRawMaterial.instance.mcunitCode.SelectedValue;
@@ -433,7 +433,7 @@ namespace PurpleYam_POS.ViewModel
                     model.Id =  SaveGetId(sql, p);
                     Notification.AlertMessage("Product created.", "Success", Notification.AlertType.SUCCESS);
                     page.bindingSource.Add(model);
-                    unitmodel = new ProduUnitModel {
+                    unitmodel = new ProductUnitModel {
                         ProductId = model.Id
                     };
                     FormRawMaterial.instance.btnSaveRawmatUnit.Enabled = true;

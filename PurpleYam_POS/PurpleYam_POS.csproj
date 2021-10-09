@@ -89,6 +89,12 @@
       <DependentUpon>LoadingScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Notification.cs" />
+    <Compile Include="Components\Product.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Product.Designer.cs">
+      <DependentUpon>Product.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,21 +102,26 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="helper\Pagination.cs" />
+    <Compile Include="Model\CustomerModel.cs" />
     <Compile Include="Model\IProductModel.cs" />
     <Compile Include="Model\IProductUnit.cs" />
     <Compile Include="Model\IUnit.cs" />
     <Compile Include="Model\IUserRole.cs" />
     <Compile Include="Model\ProductModel.cs" />
-    <Compile Include="Model\ProduUnitModel.cs" />
+    <Compile Include="Model\ProductUnitModel.cs" />
     <Compile Include="Model\RawMaterial.cs" />
     <Compile Include="Model\Recipe.cs" />
+    <Compile Include="Model\SaleTransactionModel.cs" />
+    <Compile Include="Model\SoldProductModel.cs" />
     <Compile Include="Model\Unit.cs" />
     <Compile Include="Model\UserRole.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\InventoryViewModel.cs" />
+    <Compile Include="ViewModel\PosViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="ViewModel\RawMaterialVM.cs" />
+    <Compile Include="ViewModel\SaleTransactionViewModel.cs" />
     <Compile Include="ViewModel\UnitViewModel.cs" />
     <Compile Include="View\Forms\FormManageProduct.cs">
       <SubType>Form</SubType>
@@ -136,17 +147,35 @@
     <Compile Include="View\Forms\FormUserRoles.Designer.cs">
       <DependentUpon>FormUserRoles.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControls\Checkout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControls\Checkout.Designer.cs">
+      <DependentUpon>Checkout.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\Dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\UserControls\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\Inventory.cs">
+    <Compile Include="View\UserControls\PointOfSale.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\UserControls\Inventory.Designer.cs">
-      <DependentUpon>Inventory.cs</DependentUpon>
+    <Compile Include="View\UserControls\PointOfSale.Designer.cs">
+      <DependentUpon>PointOfSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ProductionInventory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControls\ProductionInventory.Designer.cs">
+      <DependentUpon>ProductionInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\RawmatInventory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControls\RawmatInventory.Designer.cs">
+      <DependentUpon>RawmatInventory.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\InventorySettings.cs">
       <SubType>UserControl</SubType>
@@ -229,6 +258,9 @@
     <EmbeddedResource Include="Components\LoadingScreen.resx">
       <DependentUpon>LoadingScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\Product.resx">
+      <DependentUpon>Product.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,11 +286,20 @@
     <EmbeddedResource Include="View\Forms\FormUserRoles.resx">
       <DependentUpon>FormUserRoles.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControls\Checkout.resx">
+      <DependentUpon>Checkout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\UserControls\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\UserControls\Inventory.resx">
-      <DependentUpon>Inventory.cs</DependentUpon>
+    <EmbeddedResource Include="View\UserControls\PointOfSale.resx">
+      <DependentUpon>PointOfSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControls\ProductionInventory.resx">
+      <DependentUpon>ProductionInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControls\RawmatInventory.resx">
+      <DependentUpon>RawmatInventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserControls\InventorySettings.resx">
       <DependentUpon>InventorySettings.cs</DependentUpon>
@@ -277,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserControls\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControls\StockAdjProduction.resx">
+      <DependentUpon>StockAdjProduction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserControls\StockAdjRawMat.resx">
       <DependentUpon>StockAdjRawMat.cs</DependentUpon>
@@ -298,9 +342,12 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\PurpleYam_POS.Model.ProductModel.datasource" />
+    <None Include="Properties\DataSources\PurpleYam_POS.Model.ProductUnitModel.datasource" />
     <None Include="Properties\DataSources\PurpleYam_POS.Model.ProduUnitModel.datasource" />
     <None Include="Properties\DataSources\PurpleYam_POS.Model.RawMaterial.datasource" />
     <None Include="Properties\DataSources\PurpleYam_POS.Model.Recipe.datasource" />
+    <None Include="Properties\DataSources\PurpleYam_POS.Model.SaleTransactionModel.datasource" />
+    <None Include="Properties\DataSources\PurpleYam_POS.Model.SoldProductModel.datasource" />
     <None Include="Properties\DataSources\PurpleYam_POS.model.Unit.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -338,6 +385,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repository\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cake_96px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

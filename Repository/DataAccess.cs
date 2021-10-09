@@ -58,7 +58,14 @@ namespace Repository
             }
         }
 
-        
+        public static T Get<T, U>(string sql, U parameter)
+        {
+            using (IDbConnection conn = new MySqlConnection(connString))
+            {
+                var result = conn.Query<T>(sql, parameter);
+                return result.Single();
+            }
+        }
 
        
     }

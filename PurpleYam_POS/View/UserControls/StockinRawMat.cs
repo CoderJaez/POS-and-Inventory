@@ -115,5 +115,10 @@ namespace PurpleYam_POS.View.UserControls
             }
 
         }
+
+        private void dgRawMat_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            ((DataGridView)sender).ClearSelection();
+        }
     }
 }

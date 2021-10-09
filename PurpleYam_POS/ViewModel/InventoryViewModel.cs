@@ -7,6 +7,7 @@ using PurpleYam_POS.View.UserControls;
 using PurpleYam_POS.View.Forms;
 using PurpleYam_POS.Model;
 using static Repository.DataAccess;
+using static Repository.ProductionInventory;
 using System.Windows.Forms;
 using PurpleYam_POS.Components;
 using System.Drawing;
@@ -22,12 +23,20 @@ namespace PurpleYam_POS.ViewModel
         //UserControls
         public InventorySettings ucInventorySettings;
         private StockinRawMat ucRawmatStockin;
-        private Inventory ucInvetory;
-        private StockAdjRawMat ucRawmanAdj; 
+        private RawmatInventory ucRawmatInvetory;
+        private StockAdjRawMat ucRawmanAdj;
+        private ProductionInventory ucProductionInventory;
+        private StockinProduction ucProductionStockin;
+        private StockAdjProduction ucProductionAdj;
 
         //Form Controls
         private DataGridView StockInDG;
         private DataGridView RawmatDG;
+        private DataGridView ProdStockinDG;
+        private DataGridView ProductDG;
+
+        //Production Model
+        private ProductModel productModel;
 
         //RawMat Models
         private RawMaterial rawmatModel;
@@ -37,15 +46,20 @@ namespace PurpleYam_POS.ViewModel
         //Public Variables
         public string search = "%%";
         
-        //BindingSources
+        //BindingSources for Raw Materials
         public BindingSource StockInBS { get; set; }
         public BindingSource RawmatBS { get; set; }
         public BindingSource UnitBS { get; set; }
         public BindingSource InventoryBS { get; set; }
+
+        //BindingSources for Productions
+        public BindingSource ProductBS { get; set; }
+        public BindingSource ProductInvBS { get; set; }
+        public BindingSource ProductStockinBS { get; set; }
+        public BindingSource ProductPendingBS { get; set; }
+
         private BackgroundWorker backgroundWorker;
 
-        //Rectangle
-        private Rectangle rect = new Rectangle();
         struct DataParams
         {
             public int Process;
@@ -71,6 +85,7 @@ namespace PurpleYam_POS.ViewModel
                     SaveStockInRawMat(e);
                     break;
                 case "Production":
+                    SaveStockinProduction(e);
                     break;
             }
         }
@@ -84,14 +99,22 @@ namespace PurpleYam_POS.ViewModel
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            Notification.AlertMessage("New Stocks added.", "Success", Notification.AlertType.SUCCESS);
             if(ucRawmatStockin != null)
             {
+                Notification.AlertMessage("New Stocks added.", "Success", Notification.AlertType.SUCCESS);
                 ucRawmatStockin.DateExpiryDTP.Visible = false;
+                StockInBS.Clear();
                 ucRawmatStockin.CbUnitCode.Visible = false;
             }
+
+            if(ucProductionStockin != null)
+            {
+                Notification.AlertMessage("New Production stocks added.                    ", "Success", Notification.AlertType.SUCCESS);
+                ProductStockinBS.Clear();
+            }
+           
             loadingScreen.Close();
-            StockInBS.Clear();
+            
         }
 
         internal void InventoryMenu(object sender, TreeNodeMouseClickEventArgs e)
@@ -125,27 +148,46 @@ namespace PurpleYam_POS.ViewModel
                     ucInventorySettings.MainPanel.Controls["StockAdjRawMat"].BringToFront();
                     break;
                 case "RawMat":
-                    if (!ucInventorySettings.MainPanel.Controls.ContainsKey("Inventory"))
+                    if (!ucInventorySettings.MainPanel.Controls.ContainsKey("RawmatInventory"))
                     {
-                        ucInvetory = new Inventory(this);
-                        ucInvetory.Dock = DockStyle.Fill;
-                        ucInventorySettings.MainPanel.Controls.Add(ucInvetory);
+                        ucRawmatInvetory = new RawmatInventory(this);
+                        ucRawmatInvetory.Dock = DockStyle.Fill;
+                        ucInventorySettings.MainPanel.Controls.Add(ucRawmatInvetory);
                     }
                     GetRawmatInventory();
-                    ucInvetory.Title = "Raw Materials Inventory";
-                    ucInvetory.DgRawmat.BringToFront();
-                    ucInventorySettings.MainPanel.Controls["Inventory"].BringToFront();
+                    ucInventorySettings.MainPanel.Controls["RawmatInventory"].BringToFront();
                     break;
                 case "Production":
-                    if (!ucInventorySettings.MainPanel.Controls.ContainsKey("Inventory"))
+                    if (!ucInventorySettings.MainPanel.Controls.ContainsKey("ProductionInventory"))
                     {
-                        ucInvetory = new Inventory(this);
-                        ucInvetory.Dock = DockStyle.Fill;
-                        ucInventorySettings.MainPanel.Controls.Add(ucInvetory);
+                        ucProductionInventory = new ProductionInventory(this);
+                        ucProductionInventory.Dock = DockStyle.Fill;
+                        ucInventorySettings.MainPanel.Controls.Add(ucProductionInventory);
                     }
-                    ucInvetory.Title = "Productions Inventory";
-                    ucInvetory.DgProduction.BringToFront();
-                    ucInventorySettings.MainPanel.Controls["Inventory"].BringToFront();
+                    ucProductionInventory.LoadData();
+                    ucInventorySettings.MainPanel.Controls["ProductionInventory"].BringToFront();
+                    break;
+
+                case "ProductionStockIn":
+                    if (!ucInventorySettings.MainPanel.Controls.ContainsKey("StockinProduction"))
+                    {
+                        ucProductionStockin = new StockinProduction(this);
+                        ucProductionStockin.Dock = DockStyle.Fill;
+                        ucInventorySettings.MainPanel.Controls.Add(ucProductionStockin);
+                    }
+                    GetProduct();
+                    ucInventorySettings.MainPanel.Controls["StockinProduction"].BringToFront();
+                    break;
+                case "ProductionAdj":
+
+                    if (!ucInventorySettings.MainPanel.Controls.ContainsKey("StockAdjProduction"))
+                    {
+                        ucProductionAdj = new StockAdjProduction(this);
+                        ucProductionAdj.Dock = DockStyle.Fill;
+                        ucInventorySettings.MainPanel.Controls.Add(ucProductionAdj);
+                    }
+                    ucProductionAdj.LoadData();
+                    ucInventorySettings.MainPanel.Controls["StockAdjProduction"].BringToFront();
                     break;
             }
         }
@@ -258,8 +300,8 @@ namespace PurpleYam_POS.ViewModel
             int process = ((DataParams)e.Argument).Process;
             int delay = ((DataParams)e.Argument).Delay;
             int index = 1;
-            //try
-            //{
+            try
+            {
                 StockInBS.List.OfType<RawMaterial>().ToList().ForEach(rm => {
                         sql = $@"INSERT INTO tbl_rawmat_stockin (RawMatId, GrpUnitId, Qty, QtyOnhand, DateArrival{(rm.HasExpiry ? ", DateExpiry": "" )}) 
                                         VALUES (@RawMatId,@GrpUnitId,@Qty,@QtyOnhand,@DateArrival {(rm.HasExpiry ? ", @DateExpiry":"")}) ";
@@ -276,12 +318,12 @@ namespace PurpleYam_POS.ViewModel
                     backgroundWorker.ReportProgress(index++ * 100 / process);
                     Thread.Sleep(delay);
                 });
-            //}
-            //catch (Exception ex)
-            //{
-            //    backgroundWorker.CancelAsync();
-            //    Notification.AlertMessage(ex.Message, "", Notification.AlertType.ERROR);
-            //}
+            }
+            catch (Exception ex)
+            {
+                backgroundWorker.CancelAsync();
+                Notification.AlertMessage(ex.Message, "", Notification.AlertType.ERROR);
+            }
 
         }
 
@@ -346,6 +388,168 @@ namespace PurpleYam_POS.ViewModel
 
         #endregion
 
+        #region Production 
+        public void StockinProduction()
+        {
+            StringBuilder errMsg = new StringBuilder();
+            int errNo = 0;
 
+            ProductStockinBS.List.OfType<ProductModel>().ToList().ForEach(p =>
+            {
+                if( p.Qty <= 0)
+                {
+                    errMsg.Append($"{p.Product} qty must be qreater than 0\n");
+                    errNo++;
+                }
+            });
+
+            if(errNo >0)
+            {
+                Notification.ValidationMessage(FormMain.Instance, errMsg.ToString(), "");
+                return;
+            }
+
+            if (!backgroundWorker.IsBusy)
+            {
+                loadingScreen = new LoadingScreen();
+                setStockIn = "Production";
+                InputParams.Delay = 200;
+                InputParams.Process = ProductStockinBS.Count;
+                backgroundWorker.RunWorkerAsync(InputParams);
+                loadingScreen.ShowDialog();
+            }
+        }
+
+        private void SaveStockinProduction(DoWorkEventArgs e)
+        {
+            int process = ((DataParams)e.Argument).Process;
+            int delay = ((DataParams)e.Argument).Delay;
+            int index = 1;
+
+            ProductStockinBS.List.OfType<ProductModel>().ToList().ForEach(pr => {
+                sql = "insert into tbl_production_stockin (ProductId, Qty, QtyOnhand, UserId) Values (@ProductId, @Qty, @QtyOnhand, @UserId)";
+                var p = new
+                {
+                    ProductId = pr.Id,
+                    Qty = pr.Qty,
+                    QtyOnhand = pr.Qty,
+                    UserId = 0
+                };
+                SaveData(sql, p);
+                backgroundWorker.ReportProgress(index++ * 100 / process);
+                Thread.Sleep(delay);
+            });
+            
+        }
+        public void DgProductionCellClick (object sender, DataGridViewCellEventArgs e)
+        {
+            ProdStockinDG = (DataGridView)sender;
+            if(ProdStockinDG.Rows.Count > 0)
+            {
+                if (ProdStockinDG.Columns[e.ColumnIndex].Name == "delete")
+                    ProductStockinBS.RemoveCurrent();
+            }
+        }
+
+        private async void GetProduct()
+        {
+            sql = "select Id, Product,Particulars, Quality from tbl_product where Deleted = false";
+            ProductBS.DataSource = await LoadData<ProductModel, dynamic>(sql, new { });
+        }
+
+        public void AddToStockProduct(object sender, DataGridViewCellEventArgs e)
+        {
+            ProductDG = (DataGridView)sender;
+            if (ProductDG.Rows.Count > 0)
+            {
+                var currentRow = ProductBS.Current as ProductModel;
+                //ProductInvBS.Add(currentRow);
+                if (ProductStockinBS.List.OfType<ProductModel>().ToList().Find(r => r.Id == currentRow.Id) == null)
+                {
+                    ProductStockinBS.Add(currentRow);
+                }
+
+            }
+        }
+
+        public void ClearProductionStockin()
+        {
+            ProductStockinBS.Clear();
+        }
+
+        public async void LoadProduction()
+        {
+            ProductInvBS.DataSource = await LoadData<ProductModel, dynamic>("select Id,ProductId, Product, Particulars, Quality, QtyOnhand as Qty from product_inventory    order by Product ASC", new { });
+        }
+
+        public async void LoadPendingProduction()
+        {
+            ProductPendingBS.DataSource = await LoadData<ProductModel,dynamic>("select Id,ProductId, Product, Particulars, Quality, QtyOnhand AS Qty,Status, DateStockin from production_stockin where Status = 'pending' Order by DateStockin ASC", new { });
+        }
+
+        public void PendingProdCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var dg = (DataGridView)sender;
+            if (dg.Rows.Count > 0)
+            {
+                if (dg.Columns[e.ColumnIndex].Name == "BakeComplete")
+                {
+                    if(Notification.Confim(FormMain.Instance, "Is the selected product completed?", "Done baked") == DialogResult.Yes)
+                    {
+                        var product = ProductPendingBS.Current as ProductModel;
+                        UpdatePRStocks(product.Id, product.ProductId, product.Qty);
+                        ProductPendingBS.RemoveCurrent();
+                        Notification.AlertMessage("Production is added to inventory.", "Production completed", Notification.AlertType.SUCCESS);
+                    }
+                }
+            }
+        }
+
+
+        public async void ProductionInvCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var obj = ProductInvBS.Current as ProductModel;
+            ProductStockinBS.DataSource = await LoadData<ProductModel, dynamic>("select Id,ProductId, Product, Particulars, Quality, sum(QtyOnhand) as Qty, DateStockin from production_stockin where ProductId = @ProductId and QtyOnhand > 0 ORDER by DateStockin DESC ", new { ProductId = obj.ProductId });
+        }
+
+
+
+        public void ProductionStockCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var dg = sender as DataGridView;
+            if(dg.Rows.Count > 0)
+            {
+                productModel = ProductStockinBS.Current as ProductModel;
+                ucProductionAdj.TbProduct.Text = productModel.Product;
+            }
+        }
+
+
+        public void AdjustProductiontStock()
+        {
+            bool isChecked = ucProductionAdj.CkbAdd.Checked ? true : (ucProductionAdj.CkbRemove.Checked ? true : false);
+            
+            if (productModel != null)
+            {
+                if (!isChecked || string.IsNullOrEmpty(ucProductionAdj.CbRemarks.Text) || string.IsNullOrEmpty(ucProductionAdj.TbQty.Text))
+                {
+                    Notification.ValidationMessage(FormMain.Instance, "Fill up all the required fields.\n 1. Quantity\n2. Remarks\n3. Add or Remove checkbox", "Field/s empty");
+                    return;
+                }
+                if (ucProductionAdj.CkbRemove.Checked && int.Parse(ucProductionAdj.TbQty.Text) > productModel.Qty)
+                {
+                    Notification.ValidationMessage(FormMain.Instance, $"The quantity must not exceeded to {productModel.Qty}.", "Quantity is exceeded.");
+                    return;
+                }
+
+                AdjustPRStocks(productModel.Id, productModel.ProductId, decimal.Parse(ucProductionAdj.TbQty.Text), ucProductionAdj.CbRemarks.Text, ucProductionAdj.CkbAdd.Checked);
+                Notification.AlertMessage($"Product {productModel.Product} stocks adjusted.", "Success", Notification.AlertType.SUCCESS);
+                ucProductionAdj.TbQty.Text = null;
+                ucProductionAdj.TbProduct.Text = null;
+                ProductStockinBS.Clear();
+                LoadProduction();
+            }
+        }
+        #endregion
     }
 }

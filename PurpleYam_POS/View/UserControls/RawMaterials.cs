@@ -56,9 +56,26 @@ namespace PurpleYam_POS.View.UserControls
           
         }
 
-        private async void RawMaterials_Load(object sender, EventArgs e)
+        private  void RawMaterials_Load(object sender, EventArgs e)
         {
-          await rawMatVM.LoadDataAsync();
+            LoadData();
+        }
+
+        public async void LoadData()
+        {
+            await rawMatVM.LoadDataAsync();
+
+        }
+
+        private void mtbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                LoadData();
+        }
+
+        private void dgRawMat_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            ((DataGridView)sender).ClearSelection();
         }
     }
 }

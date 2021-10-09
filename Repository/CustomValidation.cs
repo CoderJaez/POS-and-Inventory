@@ -126,7 +126,25 @@ namespace Repository
         }
     }
 
+    public class CashTendered:ValidationAttribute
+    {
+        public CashTendered() : base("{0} Must not below to down payment.") { }
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
 
+            PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(validationContext.ObjectInstance);
+            decimal cashTendered = (decimal)properties.Find("CashTendered", true).GetValue(validationContext.ObjectInstance);
+            decimal downPayment = (decimal)properties.Find("DownPayment", true).GetValue(validationContext.ObjectInstance);
+
+            if (cashTendered < downPayment)
+            {
+                var errorMessage = FormatErrorMessage($"{validationContext.DisplayName}");
+                return new ValidationResult(errorMessage);
+            }
+
+            return ValidationResult.Success;
+        }
+    }
 
     public class DuplicateRawmatUnit : ValidationAttribute
     {
@@ -173,5 +191,7 @@ namespace Repository
             }
             return ValidationResult.Success;
         }
+
+
     }
 }

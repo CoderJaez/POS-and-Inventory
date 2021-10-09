@@ -48,9 +48,6 @@
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.RecipeBS = new System.Windows.Forms.BindingSource(this.components);
             this.tbProduct = new System.Windows.Forms.TextBox();
-            this.mcbUnit = new MetroFramework.Controls.MetroComboBox();
-            this.UnitBS = new System.Windows.Forms.BindingSource(this.components);
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tbQty = new System.Windows.Forms.TextBox();
@@ -59,15 +56,21 @@
             this.mcbQuality = new MetroFramework.Controls.MetroComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelUnit = new System.Windows.Forms.Label();
             this.btnSaveRecipe = new System.Windows.Forms.Button();
             this.btnNewProduct = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.Img = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tbPrice = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.RawMatBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipeBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UnitBS)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Img)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPrice)).BeginInit();
             this.SuspendLayout();
             // 
             // mcbRawMat
@@ -137,7 +140,7 @@
             this.dgRawMat.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgRawMat.EnableHeadersVisualStyles = false;
             this.dgRawMat.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgRawMat.Location = new System.Drawing.Point(398, 105);
+            this.dgRawMat.Location = new System.Drawing.Point(398, 216);
             this.dgRawMat.MultiSelect = false;
             this.dgRawMat.Name = "dgRawMat";
             this.dgRawMat.ReadOnly = true;
@@ -156,7 +159,7 @@
             this.dgRawMat.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgRawMat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgRawMat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgRawMat.Size = new System.Drawing.Size(447, 319);
+            this.dgRawMat.Size = new System.Drawing.Size(447, 208);
             this.dgRawMat.TabIndex = 15;
             // 
             // idDataGridViewTextBoxColumn
@@ -234,35 +237,6 @@
             this.tbProduct.Size = new System.Drawing.Size(238, 29);
             this.tbProduct.TabIndex = 1;
             // 
-            // mcbUnit
-            // 
-            this.mcbUnit.DataSource = this.UnitBS;
-            this.mcbUnit.DisplayMember = "UnitCode";
-            this.mcbUnit.FormattingEnabled = true;
-            this.mcbUnit.ItemHeight = 23;
-            this.mcbUnit.Location = new System.Drawing.Point(161, 80);
-            this.mcbUnit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.mcbUnit.Name = "mcbUnit";
-            this.mcbUnit.Size = new System.Drawing.Size(167, 29);
-            this.mcbUnit.TabIndex = 11;
-            this.mcbUnit.UseSelectable = true;
-            this.mcbUnit.ValueMember = "Id";
-            // 
-            // UnitBS
-            // 
-            this.UnitBS.DataSource = typeof(PurpleYam_POS.Model.Unit);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(73, 80);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 21);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Unit Code:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -278,7 +252,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(85, 119);
+            this.label4.Location = new System.Drawing.Point(85, 82);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 21);
             this.label4.TabIndex = 1;
@@ -288,9 +262,9 @@
             // tbQty
             // 
             this.tbQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbQty.Location = new System.Drawing.Point(164, 116);
+            this.tbQty.Location = new System.Drawing.Point(164, 79);
             this.tbQty.Name = "tbQty";
-            this.tbQty.Size = new System.Drawing.Size(164, 29);
+            this.tbQty.Size = new System.Drawing.Size(113, 29);
             this.tbQty.TabIndex = 12;
             this.tbQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbQty_KeyPress);
             // 
@@ -303,18 +277,18 @@
             "MEDIUM",
             "TIN CAN",
             "SLICE"});
-            this.mcbParticulars.Location = new System.Drawing.Point(140, 138);
+            this.mcbParticulars.Location = new System.Drawing.Point(140, 168);
             this.mcbParticulars.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.mcbParticulars.Name = "mcbParticulars";
             this.mcbParticulars.Size = new System.Drawing.Size(238, 29);
-            this.mcbParticulars.TabIndex = 3;
+            this.mcbParticulars.TabIndex = 4;
             this.mcbParticulars.UseSelectable = true;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(48, 139);
+            this.label5.Location = new System.Drawing.Point(48, 168);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 21);
             this.label5.TabIndex = 1;
@@ -329,18 +303,18 @@
             "CHOCO",
             "DURIAN",
             "UBE"});
-            this.mcbQuality.Location = new System.Drawing.Point(140, 101);
+            this.mcbQuality.Location = new System.Drawing.Point(140, 132);
             this.mcbQuality.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.mcbQuality.Name = "mcbQuality";
             this.mcbQuality.Size = new System.Drawing.Size(238, 29);
-            this.mcbQuality.TabIndex = 2;
+            this.mcbQuality.TabIndex = 3;
             this.mcbQuality.UseSelectable = true;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(71, 105);
+            this.label6.Location = new System.Drawing.Point(71, 132);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 21);
             this.label6.TabIndex = 1;
@@ -349,20 +323,30 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.labelUnit);
             this.groupBox1.Controls.Add(this.tbQty);
             this.groupBox1.Controls.Add(this.btnSaveRecipe);
             this.groupBox1.Controls.Add(this.mcbRawMat);
-            this.groupBox1.Controls.Add(this.mcbUnit);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(26, 216);
+            this.groupBox1.Location = new System.Drawing.Point(26, 269);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(352, 208);
+            this.groupBox1.Size = new System.Drawing.Size(352, 155);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Manage Recipies";
+            // 
+            // labelUnit
+            // 
+            this.labelUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelUnit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUnit.Location = new System.Drawing.Point(283, 79);
+            this.labelUnit.Name = "labelUnit";
+            this.labelUnit.Size = new System.Drawing.Size(45, 29);
+            this.labelUnit.TabIndex = 1;
+            this.labelUnit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnSaveRecipe
             // 
@@ -375,7 +359,7 @@
             this.btnSaveRecipe.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveRecipe.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSaveRecipe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveRecipe.Location = new System.Drawing.Point(231, 151);
+            this.btnSaveRecipe.Location = new System.Drawing.Point(213, 114);
             this.btnSaveRecipe.Name = "btnSaveRecipe";
             this.btnSaveRecipe.Size = new System.Drawing.Size(115, 30);
             this.btnSaveRecipe.TabIndex = 20;
@@ -394,13 +378,14 @@
             this.btnNewProduct.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewProduct.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnNewProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNewProduct.Location = new System.Drawing.Point(140, 176);
+            this.btnNewProduct.Location = new System.Drawing.Point(140, 206);
             this.btnNewProduct.Name = "btnNewProduct";
             this.btnNewProduct.Size = new System.Drawing.Size(112, 30);
             this.btnNewProduct.TabIndex = 18;
             this.btnNewProduct.Text = "&New Product";
             this.btnNewProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNewProduct.UseVisualStyleBackColor = false;
+            this.btnNewProduct.Click += new System.EventHandler(this.btnNewProduct_Click);
             // 
             // btnSave
             // 
@@ -412,7 +397,7 @@
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(266, 176);
+            this.btnSave.Location = new System.Drawing.Point(266, 206);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(112, 30);
             this.btnSave.TabIndex = 19;
@@ -424,23 +409,79 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(429, 65);
+            this.label7.Location = new System.Drawing.Point(405, 178);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 28);
             this.label7.TabIndex = 1;
             this.label7.Text = "Recipies";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // Img
+            // 
+            this.Img.BackgroundImage = global::PurpleYam_POS.Properties.Resources.cake_96px;
+            this.Img.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Img.Location = new System.Drawing.Point(398, 65);
+            this.Img.Name = "Img";
+            this.Img.Size = new System.Drawing.Size(135, 102);
+            this.Img.TabIndex = 20;
+            this.Img.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(410, 139);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 29);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "&Open File";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // tbPrice
+            // 
+            this.tbPrice.Location = new System.Drawing.Point(140, 100);
+            this.tbPrice.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.tbPrice.Name = "tbPrice";
+            this.tbPrice.Size = new System.Drawing.Size(238, 25);
+            this.tbPrice.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(87, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 21);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Price:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FormManageProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 447);
+            this.Controls.Add(this.tbPrice);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Img);
             this.Controls.Add(this.btnNewProduct);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tbProduct);
             this.Controls.Add(this.dgRawMat);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
@@ -456,9 +497,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.RawMatBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipeBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UnitBS)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Img)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPrice)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -470,8 +512,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgRawMat;
         private System.Windows.Forms.TextBox tbProduct;
-        private MetroFramework.Controls.MetroComboBox mcbUnit;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbQty;
@@ -485,7 +525,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.BindingSource RawMatBS;
-        private System.Windows.Forms.BindingSource UnitBS;
         private System.Windows.Forms.BindingSource RecipeBS;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
@@ -495,5 +534,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn delete;
+        private System.Windows.Forms.Label labelUnit;
+        private System.Windows.Forms.PictureBox Img;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown tbPrice;
+        private System.Windows.Forms.Label label2;
     }
 }

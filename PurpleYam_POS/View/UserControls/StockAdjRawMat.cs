@@ -90,5 +90,10 @@ namespace PurpleYam_POS.View.UserControls
                 e.Handled = true;
             }
         }
+
+        private void dgRMInventory_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            ((DataGridView)sender).ClearSelection();
+        }
     }
 }

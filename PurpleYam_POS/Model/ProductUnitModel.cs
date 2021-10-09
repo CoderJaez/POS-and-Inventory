@@ -9,7 +9,7 @@ using Repository;
 
 namespace PurpleYam_POS.Model
 {
-    public class ProduUnitModel
+    public class ProductUnitModel
     {
         public int ProductId { get; set; }
         public int UnitID { get; set; }

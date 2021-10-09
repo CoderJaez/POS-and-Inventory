@@ -13,7 +13,7 @@ namespace PurpleYam_POS.View.UserControls
     public partial class Dashboard : MetroFramework.Controls.MetroUserControl
     {
         static Dashboard _instance;
-
+        SaleTransaction sales;
         public static Dashboard Instance
         {
             get
@@ -45,6 +45,7 @@ namespace PurpleYam_POS.View.UserControls
                 summary.Dock = DockStyle.Fill;
                 mPanel.Controls.Add(summary);
             }
+            FormMain.Instance.UserControl.Add("Summary");
             mPanel.Controls["Summary"].BringToFront();
         }
 
@@ -53,10 +54,11 @@ namespace PurpleYam_POS.View.UserControls
             isClicked(btnSalesTransaction);
             if (!mPanel.Controls.ContainsKey("SaleTransaction"))
             {
-                SaleTransaction sales = new SaleTransaction();
+                sales = new SaleTransaction();
                 sales.Dock = DockStyle.Fill;
                 mPanel.Controls.Add(sales);
             }
+            sales.LoadSales();
             mPanel.Controls["SaleTransaction"].BringToFront();
         }
 
@@ -68,6 +70,7 @@ namespace PurpleYam_POS.View.UserControls
                 settings.Dock = DockStyle.Fill;
                 FormMain.Instance.MetroContainer.Controls.Add(settings);
             }
+            FormMain.Instance.UserControl.Add("Settings");
             FormMain.Instance.MetroContainer.Controls["Settings"].BringToFront();
             FormMain.Instance.Back.Visible = true;
         }
@@ -97,7 +100,21 @@ namespace PurpleYam_POS.View.UserControls
                 uc.Dock = DockStyle.Fill;
                 FormMain.Instance.MetroContainer.Controls.Add(uc);
             }
+            FormMain.Instance.UserControl.Add("InventorySettings");
             FormMain.Instance.MetroContainer.Controls["InventorySettings"].BringToFront();
+            FormMain.Instance.Back.Visible = true;
+        }
+
+        private void btnPOS_Click(object sender, EventArgs e)
+        {
+            if (!FormMain.Instance.MetroContainer.Controls.ContainsKey("PointOfSale"))
+            {
+                PointOfSale uc = new PointOfSale();
+                uc.Dock = DockStyle.Fill;
+                FormMain.Instance.MetroContainer.Controls.Add(uc);
+            }
+            FormMain.Instance.UserControl.Add("PointOfSale");
+            FormMain.Instance.MetroContainer.Controls["PointOfSale"].BringToFront();
             FormMain.Instance.Back.Visible = true;
         }
     }

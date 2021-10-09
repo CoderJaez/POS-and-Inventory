@@ -17,6 +17,16 @@ namespace PurpleYam_POS.Components
             get { return labelLoad; }
         }
 
+        public Panel PanelChange
+        {
+            get { return panelChange; }
+        }
+
+        public string Change
+        {
+            get { return labelChange.Text; }
+            set { labelChange.Text = value; }
+        }
         public ProgressBar ProgressBar
         {
             get { return progressBar; }
@@ -25,6 +35,11 @@ namespace PurpleYam_POS.Components
         public LoadingScreen()
         {
             InitializeComponent();
+        }
+
+        private void LoadingScreen_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.Close();
         }
     }
 }

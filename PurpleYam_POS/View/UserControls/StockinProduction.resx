@@ -117,4 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="delete.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="delete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAALNJREFUOE9j
+        GFxgy7w7Vlvm3A7dOON2zMKWS9fmN136D8KLWi9fBYmB5EBqoMoxwea5t38B8X8C+BdUOSaYVnomdGrp
+        2f/4MEgNVDkmgBnQn38SrHhCwUkwRhYjyoDSkM1gxfXxe8AYWYwoA0rgBuwGY2SxUQOINKAyYjtYcWPi
+        vv9NSfvAbJgYXgOACjxAivDjM25Q5ZigoWE/y9TSc+1AvAobnlZ6tnVV6CpmqHJqAAYGAELDVuqLsJQG
+        AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="ProductStockinBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>154, 17</value>
+  </metadata>
+  <metadata name="ProductionBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
