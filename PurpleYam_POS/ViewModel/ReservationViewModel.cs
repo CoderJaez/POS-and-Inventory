@@ -152,6 +152,7 @@ namespace PurpleYam_POS.ViewModel
             }
         }
 
+
         private void OrderClaim()
         {
             SaveData("update tbl_sale_transaction set ClaimStatus = 'CLAIMED' where TransactionNo = @TransactionNo", new { TransactionNo = transactionNo });
@@ -162,6 +163,7 @@ namespace PurpleYam_POS.ViewModel
         {
            ProductBS.DataSource = await LoadData<SoldProductModel, dynamic>("select ps.*,p.Product, u.UnitCode from tbl_product_sold ps LEFT JOIN tbl_product p on p.Id = ps.ProductId LEFT JOIN tbl_unit u ON u.Id = p.UnitId  where ps.TransactionNo = @TransactionNo", new { TransactionNo = TransactionNo });
         }
+
 
         public void CancelTransaction()
         {
