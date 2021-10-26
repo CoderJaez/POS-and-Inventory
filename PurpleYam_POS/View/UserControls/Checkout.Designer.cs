@@ -31,18 +31,22 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Checkout));
             this.label1 = new System.Windows.Forms.Label();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbCashTendered = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.labelBalance = new System.Windows.Forms.Label();
             this.btnSettlePayment = new System.Windows.Forms.Button();
+            this.tbDownPayment = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.customerName = new System.Windows.Forms.TextBox();
             this.reserveTime = new System.Windows.Forms.DateTimePicker();
             this.reserveDate = new System.Windows.Forms.DateTimePicker();
             this.panelTotal = new System.Windows.Forms.Panel();
@@ -54,10 +58,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgOrders = new System.Windows.Forms.DataGridView();
-            this.label11 = new System.Windows.Forms.Label();
-            this.tbDownPayment = new System.Windows.Forms.TextBox();
-            this.tbCashTendered = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,7 +66,8 @@
             this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductBS = new System.Windows.Forms.BindingSource(this.components);
-            this.contactNumber = new System.Windows.Forms.TextBox();
+            this.lblCustomer = new System.Windows.Forms.Label();
+            this.lblContactNo = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelTotal.SuspendLayout();
@@ -103,7 +105,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.contactNumber);
+            this.panel1.Controls.Add(this.lblContactNo);
+            this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.tbCashTendered);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.labelBalance);
@@ -116,19 +119,42 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.customerName);
             this.panel1.Controls.Add(this.reserveTime);
             this.panel1.Controls.Add(this.reserveDate);
+            this.panel1.Controls.Add(this.lblCustomer);
             this.panel1.Location = new System.Drawing.Point(456, 26);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(395, 490);
             this.panel1.TabIndex = 24;
             // 
+            // tbCashTendered
+            // 
+            this.tbCashTendered.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbCashTendered.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCashTendered.Location = new System.Drawing.Point(21, 360);
+            this.tbCashTendered.Name = "tbCashTendered";
+            this.tbCashTendered.Size = new System.Drawing.Size(349, 32);
+            this.tbCashTendered.TabIndex = 23;
+            this.tbCashTendered.TextChanged += new System.EventHandler(this.tbCashTendered_TextChanged);
+            this.tbCashTendered.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbCashTendered_KeyDown);
+            this.tbCashTendered.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDownPayment_KeyPress);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(21, 337);
+            this.label13.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(108, 17);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Cash tendered:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // labelBalance
             // 
             this.labelBalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelBalance.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBalance.Location = new System.Drawing.Point(21, 296);
+            this.labelBalance.Location = new System.Drawing.Point(21, 293);
             this.labelBalance.Name = "labelBalance";
             this.labelBalance.Size = new System.Drawing.Size(349, 38);
             this.labelBalance.TabIndex = 21;
@@ -151,16 +177,38 @@
             this.btnSettlePayment.UseVisualStyleBackColor = false;
             this.btnSettlePayment.Click += new System.EventHandler(this.btnSettlePayment_Click);
             // 
+            // tbDownPayment
+            // 
+            this.tbDownPayment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbDownPayment.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDownPayment.Location = new System.Drawing.Point(21, 239);
+            this.tbDownPayment.Name = "tbDownPayment";
+            this.tbDownPayment.Size = new System.Drawing.Size(349, 25);
+            this.tbDownPayment.TabIndex = 20;
+            this.tbDownPayment.TextChanged += new System.EventHandler(this.tbDownPayment_TextChanged);
+            this.tbDownPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDownPayment_KeyPress);
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 274);
+            this.label12.Location = new System.Drawing.Point(21, 270);
             this.label12.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(64, 17);
             this.label12.TabIndex = 19;
             this.label12.Text = "Balance:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(21, 216);
+            this.label11.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(113, 17);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Down payment:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
@@ -178,7 +226,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 48);
+            this.label4.Location = new System.Drawing.Point(21, 48);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 17);
             this.label4.TabIndex = 9;
@@ -188,7 +236,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 104);
+            this.label5.Location = new System.Drawing.Point(21, 106);
             this.label5.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 17);
@@ -199,7 +247,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 160);
+            this.label6.Location = new System.Drawing.Point(21, 164);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 17);
@@ -218,14 +266,6 @@
             this.label7.Text = "Time:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // customerName
-            // 
-            this.customerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.customerName.Location = new System.Drawing.Point(21, 68);
-            this.customerName.Name = "customerName";
-            this.customerName.Size = new System.Drawing.Size(349, 23);
-            this.customerName.TabIndex = 11;
-            // 
             // reserveTime
             // 
             this.reserveTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
@@ -236,7 +276,7 @@
             // 
             // reserveDate
             // 
-            this.reserveDate.Location = new System.Drawing.Point(21, 180);
+            this.reserveDate.Location = new System.Drawing.Point(21, 187);
             this.reserveDate.Name = "reserveDate";
             this.reserveDate.Size = new System.Drawing.Size(226, 23);
             this.reserveDate.TabIndex = 15;
@@ -392,50 +432,17 @@
             this.dgOrders.TabIndex = 21;
             this.dgOrders.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgOrders_DataBindingComplete);
             // 
-            // label11
+            // btnSearch
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 216);
-            this.label11.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(113, 17);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "Down payment:";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tbDownPayment
-            // 
-            this.tbDownPayment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbDownPayment.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDownPayment.Location = new System.Drawing.Point(21, 236);
-            this.tbDownPayment.Name = "tbDownPayment";
-            this.tbDownPayment.Size = new System.Drawing.Size(349, 25);
-            this.tbDownPayment.TabIndex = 20;
-            this.tbDownPayment.TextChanged += new System.EventHandler(this.tbDownPayment_TextChanged);
-            this.tbDownPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDownPayment_KeyPress);
-            // 
-            // tbCashTendered
-            // 
-            this.tbCashTendered.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbCashTendered.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCashTendered.Location = new System.Drawing.Point(21, 364);
-            this.tbCashTendered.Name = "tbCashTendered";
-            this.tbCashTendered.Size = new System.Drawing.Size(349, 32);
-            this.tbCashTendered.TabIndex = 23;
-            this.tbCashTendered.TextChanged += new System.EventHandler(this.tbCashTendered_TextChanged);
-            this.tbCashTendered.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbCashTendered_KeyDown);
-            this.tbCashTendered.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDownPayment_KeyPress);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(15, 344);
-            this.label13.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(108, 17);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "Cash tendered:";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearch.Location = new System.Drawing.Point(295, 73);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 25;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -492,14 +499,23 @@
             // 
             this.ProductBS.DataSource = typeof(PurpleYam_POS.Model.SoldProductModel);
             // 
-            // contactNumber
+            // lblCustomer
             // 
-            this.contactNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.contactNumber.Location = new System.Drawing.Point(21, 124);
-            this.contactNumber.Name = "contactNumber";
-            this.contactNumber.Size = new System.Drawing.Size(349, 23);
-            this.contactNumber.TabIndex = 24;
-            this.contactNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDownPayment_KeyPress);
+            this.lblCustomer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblCustomer.Location = new System.Drawing.Point(21, 71);
+            this.lblCustomer.Name = "lblCustomer";
+            this.lblCustomer.Size = new System.Drawing.Size(349, 25);
+            this.lblCustomer.TabIndex = 26;
+            this.lblCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblContactNo
+            // 
+            this.lblContactNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblContactNo.Location = new System.Drawing.Point(21, 129);
+            this.lblContactNo.Name = "lblContactNo";
+            this.lblContactNo.Size = new System.Drawing.Size(349, 25);
+            this.lblContactNo.TabIndex = 27;
+            this.lblContactNo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Checkout
             // 
@@ -537,7 +553,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox customerName;
         private System.Windows.Forms.DateTimePicker reserveTime;
         private System.Windows.Forms.DateTimePicker reserveDate;
         private System.Windows.Forms.Panel panelTotal;
@@ -559,6 +574,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox tbDownPayment;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox contactNumber;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label lblContactNo;
+        private System.Windows.Forms.Label lblCustomer;
     }
 }

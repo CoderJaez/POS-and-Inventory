@@ -14,6 +14,7 @@ namespace PurpleYam_POS.View.UserControls
     {
         static Dashboard _instance;
         SaleTransaction sales;
+        Expenses expenses;
         public static Dashboard Instance
         {
             get
@@ -110,12 +111,26 @@ namespace PurpleYam_POS.View.UserControls
             if (!FormMain.Instance.MetroContainer.Controls.ContainsKey("PointOfSale"))
             {
                 PointOfSale uc = new PointOfSale();
+
                 uc.Dock = DockStyle.Fill;
                 FormMain.Instance.MetroContainer.Controls.Add(uc);
             }
             FormMain.Instance.UserControl.Add("PointOfSale");
             FormMain.Instance.MetroContainer.Controls["PointOfSale"].BringToFront();
             FormMain.Instance.Back.Visible = true;
+        }
+
+        private void btnExpenses_Click(object sender, EventArgs e)
+        {
+            isClicked(btnExpenses);
+            if (!mPanel.Controls.ContainsKey("Expenses"))
+            {
+                expenses = new Expenses();
+                expenses.Dock = DockStyle.Fill;
+                mPanel.Controls.Add(expenses);
+            }
+            expenses.LoadData();
+            mPanel.Controls["Expenses"].BringToFront();
         }
     }
 }

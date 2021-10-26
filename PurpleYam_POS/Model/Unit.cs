@@ -12,7 +12,6 @@ namespace PurpleYam_POS.Model
     public class Unit : IUnit
     {
         public int Id { get; set; }
-
         [Required(AllowEmptyStrings = false, ErrorMessage = "UnitCode is required")]
         [Duplicate(table = "tbl_unit",column ="UnitCode")]
         public string UnitCode { get; set; }

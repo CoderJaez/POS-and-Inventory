@@ -11,11 +11,6 @@ namespace PurpleYam_POS.Model
     {
         public string  TransactionNo { get; set; }
         [Required]
-        public string CustomerName { get; set; }
-        [Required]
-        [MinLength(11)]//09124561077
-        public string ContactNo { get; set; }
-        [Required]
         public decimal DownPayment { get; set; }
         public decimal Balance { get; set; }
         public decimal Vat { get; set; }
@@ -28,6 +23,8 @@ namespace PurpleYam_POS.Model
         public DateTime TransactionDate { get; set; }
         public DateTime ReservationDate { get; set; }
         public string ClaimStatus { get; set; }
+        public string TransactionType { get; set; }
+        public CustomerModel Customer { get; set; }
 
     }
 }

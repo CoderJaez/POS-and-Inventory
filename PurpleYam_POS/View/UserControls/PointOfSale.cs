@@ -48,14 +48,19 @@ namespace PurpleYam_POS.View.UserControls
         {
             get { return btnClear; }
         }
+
+
         public PointOfSale()
         {
             InitializeComponent();
-            viewModel = new PosViewModel(this);
+            viewModel = new PosViewModel();
+            viewModel.uc = this;
             viewModel.ProductBS = ProductBS;
             dgOrders.CellClick += viewModel.AdjustQty;
             btnCheckout.Click += viewModel.Checkout_Click;
-            this.Load +=  delegate {  viewModel.LoadProducts(); };
+            this.Load +=  delegate {  viewModel.LoadProducts(); viewModel.LoadMenuButtons(); };
+            btnCustomer.Click += viewModel.OpenCustomerClick;
+            btnReservation.Click += delegate { viewModel.Reservations(); };
         }
 
         private void dgOrders_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -63,7 +68,7 @@ namespace PurpleYam_POS.View.UserControls
             dgOrders.ClearSelection();
         }
 
-        private void btnFilterProduct_Click(object sender, EventArgs e)
+        public void btnFilterProduct_Click(object sender, EventArgs e)
         {
             var btn = (Button)sender;
             isClicked(btn);
@@ -75,6 +80,7 @@ namespace PurpleYam_POS.View.UserControls
         private void btnClear_Click(object sender, EventArgs e)
         {
             viewModel.ProductBS.Clear();
+            viewModel.LoadProducts();
             Tax = "0.00";
             SubTotal = "0.00";
             TotalAmount = "0.00";

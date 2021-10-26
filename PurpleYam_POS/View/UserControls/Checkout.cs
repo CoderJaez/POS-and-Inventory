@@ -57,6 +57,7 @@ namespace PurpleYam_POS.View.UserControls
             InitializeComponent();
             viewModel = _viewModel;
             viewModel.CheckoutBS = ProductBS;
+            btnSearch.Click += viewModel.OpenCustomerClick;
 
         }
 
@@ -119,13 +120,18 @@ namespace PurpleYam_POS.View.UserControls
 
         private void MakePayment()
         {
-            viewModel.stModel.CustomerName = customerName.Text;
-            viewModel.stModel.ContactNo = contactNumber.Text;
+            
             viewModel.stModel.ReservationDate = DateTime.Parse($"{reserveDate.Value.ToString("yyyy-MM-dd")} {reserveTime.Value.ToString("HH:mm:ss")}");
             viewModel.stModel.CashTendered = decimal.Parse(tbCashTendered.Text);
             viewModel.stModel.Change = viewModel.stModel.CashTendered - viewModel.stModel.DownPayment;
             viewModel.SettlePayment();
 
+        }
+
+        public void AssignCustomer()
+        {
+            lblCustomer.Text = viewModel.stModel.Customer.Fullname;
+            lblContactNo.Text = viewModel.stModel.Customer.ContactNo;
         }
     }
 }

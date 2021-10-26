@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.mpNav = new MetroFramework.Controls.MetroPanel();
-            this.mPanel = new MetroFramework.Controls.MetroPanel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnAccount = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
@@ -41,6 +40,7 @@
             this.btnSalesTransaction = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.mPanel = new MetroFramework.Controls.MetroPanel();
             this.mpNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
@@ -72,21 +72,6 @@
             this.mpNav.VerticalScrollbarBarColor = true;
             this.mpNav.VerticalScrollbarHighlightOnWheel = false;
             this.mpNav.VerticalScrollbarSize = 10;
-            // 
-            // mPanel
-            // 
-            this.mPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mPanel.HorizontalScrollbarBarColor = true;
-            this.mPanel.HorizontalScrollbarHighlightOnWheel = false;
-            this.mPanel.HorizontalScrollbarSize = 10;
-            this.mPanel.Location = new System.Drawing.Point(190, 0);
-            this.mPanel.Name = "mPanel";
-            this.mPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.mPanel.Size = new System.Drawing.Size(933, 667);
-            this.mPanel.TabIndex = 1;
-            this.mPanel.VerticalScrollbarBarColor = true;
-            this.mPanel.VerticalScrollbarHighlightOnWheel = false;
-            this.mPanel.VerticalScrollbarSize = 10;
             // 
             // btnLogout
             // 
@@ -209,6 +194,7 @@
             this.btnExpenses.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExpenses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExpenses.UseVisualStyleBackColor = true;
+            this.btnExpenses.Click += new System.EventHandler(this.btnExpenses_Click);
             // 
             // btnPOS
             // 
@@ -284,6 +270,21 @@
             this.pbLogo.Size = new System.Drawing.Size(190, 122);
             this.pbLogo.TabIndex = 2;
             this.pbLogo.TabStop = false;
+            // 
+            // mPanel
+            // 
+            this.mPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mPanel.HorizontalScrollbarBarColor = true;
+            this.mPanel.HorizontalScrollbarHighlightOnWheel = false;
+            this.mPanel.HorizontalScrollbarSize = 10;
+            this.mPanel.Location = new System.Drawing.Point(190, 0);
+            this.mPanel.Name = "mPanel";
+            this.mPanel.Padding = new System.Windows.Forms.Padding(10);
+            this.mPanel.Size = new System.Drawing.Size(933, 667);
+            this.mPanel.TabIndex = 1;
+            this.mPanel.VerticalScrollbarBarColor = true;
+            this.mPanel.VerticalScrollbarHighlightOnWheel = false;
+            this.mPanel.VerticalScrollbarSize = 10;
             // 
             // Dashboard
             // 

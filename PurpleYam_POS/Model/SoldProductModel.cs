@@ -16,6 +16,9 @@ namespace PurpleYam_POS.Model
         public decimal Price { get; set; }
         public decimal Qty { get; set; }
         public decimal SubTotal { get; set; }
+        public bool WithAddon { get; set; }
+        public string  Type { get; set; }
+        public string UnitCode { get; set; }
         public DateTime TransactionDate { get; set; }
 
     }

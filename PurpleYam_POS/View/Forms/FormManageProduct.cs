@@ -69,7 +69,8 @@ namespace PurpleYam_POS.View.Forms
                             Quality = mcbQuality.Text,
                             Particulars = mcbParticulars.Text,
                             Price = tbPrice.Value,
-                            Image = ms.GetBuffer()
+                            Image = ms.GetBuffer(),
+                            WithAddon = cbWithAddon.Checked
                         };
                 }
                 else
@@ -79,6 +80,7 @@ namespace PurpleYam_POS.View.Forms
                     viewModel.productModel.Quality = mcbQuality.Text;
                     viewModel.productModel.Image = ms.GetBuffer();
                     viewModel.productModel.Price = tbPrice.Value;
+                    viewModel.productModel.WithAddon = cbWithAddon.Checked;
                 }
                 viewModel.SaveProduct();
             };
@@ -93,7 +95,8 @@ namespace PurpleYam_POS.View.Forms
                         RawmatId = mcbRawMat.SelectedValue != null ? (int)mcbRawMat.SelectedValue : 0,
                         Qty = !string.IsNullOrEmpty(tbQty.Text) ? decimal.Parse(tbQty.Text) : 0,
                         GrpUnitId = unit.Id,
-                        UnitCode = unit.UnitCode
+                        UnitCode = unit.UnitCode,
+                        
                     };
                 }
                 else
@@ -116,8 +119,10 @@ namespace PurpleYam_POS.View.Forms
             mcbParticulars.Text = null;
             mcbQuality.Text = null;
             tbPrice.Value = 0;
+            cbWithAddon.Checked = false;
             Img.BackgroundImage = Properties.Resources.cake_96px;
             tbProduct.Focus();
+            
 
         }
 
@@ -127,6 +132,7 @@ namespace PurpleYam_POS.View.Forms
             mcbParticulars.Text = viewModel.productModel.Particulars;
             mcbQuality.Text = viewModel.productModel.Quality;
             tbPrice.Value = viewModel.productModel.Price;
+            cbWithAddon.Checked = viewModel.productModel.WithAddon;
             viewModel.recipeModel = new Recipe { ProductId = viewModel.productModel.Id };
             if(viewModel.productModel.Image != null)
                 using (ms = new MemoryStream(viewModel.productModel.Image))
@@ -198,6 +204,11 @@ namespace PurpleYam_POS.View.Forms
             viewModel.RecipeBS.Clear();
             ResetField();
             
+        }
+
+        private void cbWithAddon_CheckedChanged(object sender, EventArgs e)
+        {
+            cbWithAddon.Text = cbWithAddon.Checked ? "With add-ons" : "Without add-ons";
         }
     }
 }

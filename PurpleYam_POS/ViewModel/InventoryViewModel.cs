@@ -453,7 +453,7 @@ namespace PurpleYam_POS.ViewModel
 
         private async void GetProduct()
         {
-            sql = "select Id, Product,Particulars, Quality from tbl_product where Deleted = false";
+            sql = "select Id, Product,Particulars, Quality from tbl_product where Deleted = false and Type = 'Production'";
             ProductBS.DataSource = await LoadData<ProductModel, dynamic>(sql, new { });
         }
 

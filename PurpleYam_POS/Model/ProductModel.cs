@@ -13,13 +13,16 @@ namespace PurpleYam_POS.Model
     {
         public int Id { get; set; }
         public int ProductId { get; set; }
+        public int UnitId { get; set; }
+        public string UnitCode { get; set; }
         [Required(ErrorMessage = "Product name field is required")]
-        [Duplicate(column = "Product",table ="tbl_product")]
+        [ProductDuplicate(column = "Product",table ="tbl_product")]
         public string Product { get; set; }
         [Required]
         public string Quality { get; set; }
         [Required]
         public string  Particulars { get; set; }
+        public string Type { get; set; }
         public byte[] Image { get; set; }
         public DateTime DateTimeStamp { get; set; }
         public DateTime DateStockin { get; set; }
@@ -29,5 +32,7 @@ namespace PurpleYam_POS.Model
         public Decimal Price { get; set; }
         public DateTime DateDiscountEnd { get; set; }
         public string Status { get; set; }
+        public bool WithAddon { get; set; }
+        public bool IsAvailable { get; set; }
     }
 }

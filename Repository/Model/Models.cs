@@ -6,6 +6,40 @@ using System.Threading.Tasks;
 
 namespace Repository.Model
 {
+    public class CustomerModel
+    {
+        public int Id { get; set; }
+        public string Lastname { get; set; }
+        public string Middlename { get; set; }
+        public string Firstname { get; set; }
+        public string ContactNo { get; set; }
+        public DateTime DateTimeStamp { get; set; }
+
+        public string Fullname
+        {
+            get { return $"{Lastname.ToUpper()}, {Firstname.ToUpper()} {Middlename.ToUpper()} "; }
+        }
+
+    }
+
+    public class SaleTransactionModel
+    {
+        public string TransactionNo { get; set; }
+        public decimal DownPayment { get; set; }
+        public decimal Balance { get; set; }
+        public decimal Vat { get; set; }
+        public decimal SubTotal { get; set; }
+        public decimal TotalAmount { get; set; }
+        public decimal CashTendered { get; set; }
+        public decimal Change { get; set; }
+        public DateTime TransactionDate { get; set; }
+        public DateTime ReservationDate { get; set; }
+        public string ClaimStatus { get; set; }
+        public string TransactionType { get; set; }
+        public CustomerModel Customer { get; set; }
+
+
+    }
     public class RawMaterialModel
     {
 

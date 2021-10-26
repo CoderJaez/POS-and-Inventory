@@ -14,9 +14,8 @@ namespace PurpleYam_POS.Components
 {
     public partial class Product : UserControl
     {
-        public string productName { get { return lblProductName.Text; } set { lblProductName.Text = value; } }
-        public string Price { get { return lblPrice.Text; } set { lblPrice.Text = value; } }
-        public PictureBox Img { get { return pictureBox; } set { pictureBox = value; } }
+      public Button ButtonProduct
+        { get { return btnProduct; } }
         public SoldProductModel productModel { get; set; }
         public Product()
         {
@@ -26,14 +25,16 @@ namespace PurpleYam_POS.Components
         
         public void SetProduct()
         {
-            productName = productModel.Product;
-            Price = productModel.Price.ToString();
+            lblProduct.Text = $"{productModel.Product}\n{productModel.Price.ToString("N")}";
             if (productModel.Image != null)
             {
                 using (var ms = new MemoryStream(productModel.Image))
-                    Img.BackgroundImage = Image.FromStream(ms);
+                    btnProduct.BackgroundImage = Image.FromStream(ms);
             } else
-                Img.BackgroundImage = Properties.Resources.cake_96px;
+            {
+                btnProduct.Text = $"{productModel.Product} {productModel.UnitCode}\n{productModel.Price.ToString("N")}";
+                lblProduct.Visible = false;
+            }
         }
     }
 }

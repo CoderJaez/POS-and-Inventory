@@ -31,17 +31,21 @@
             this.mpNav = new MetroFramework.Controls.MetroPanel();
             this.btnUserRoles = new System.Windows.Forms.Button();
             this.btnUnits = new System.Windows.Forms.Button();
+            this.btnAddons = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
             this.btnRawMaterials = new System.Windows.Forms.Button();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.mPanel = new MetroFramework.Controls.MetroPanel();
+            this.btnExpenses = new System.Windows.Forms.Button();
             this.mpNav.SuspendLayout();
             this.SuspendLayout();
             // 
             // mpNav
             // 
+            this.mpNav.Controls.Add(this.btnExpenses);
             this.mpNav.Controls.Add(this.btnUserRoles);
             this.mpNav.Controls.Add(this.btnUnits);
+            this.mpNav.Controls.Add(this.btnAddons);
             this.mpNav.Controls.Add(this.btnProducts);
             this.mpNav.Controls.Add(this.btnRawMaterials);
             this.mpNav.Dock = System.Windows.Forms.DockStyle.Left;
@@ -68,7 +72,7 @@
             this.btnUserRoles.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUserRoles.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnUserRoles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUserRoles.Location = new System.Drawing.Point(0, 117);
+            this.btnUserRoles.Location = new System.Drawing.Point(0, 156);
             this.btnUserRoles.Name = "btnUserRoles";
             this.btnUserRoles.Size = new System.Drawing.Size(190, 39);
             this.btnUserRoles.TabIndex = 7;
@@ -88,7 +92,7 @@
             this.btnUnits.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUnits.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnUnits.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUnits.Location = new System.Drawing.Point(0, 78);
+            this.btnUnits.Location = new System.Drawing.Point(0, 117);
             this.btnUnits.Name = "btnUnits";
             this.btnUnits.Size = new System.Drawing.Size(190, 39);
             this.btnUnits.TabIndex = 6;
@@ -97,6 +101,26 @@
             this.btnUnits.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUnits.UseVisualStyleBackColor = true;
             this.btnUnits.Click += new System.EventHandler(this.buttonMenu);
+            // 
+            // btnAddons
+            // 
+            this.btnAddons.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddons.FlatAppearance.BorderSize = 0;
+            this.btnAddons.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnAddons.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnAddons.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddons.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddons.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAddons.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddons.Location = new System.Drawing.Point(0, 78);
+            this.btnAddons.Name = "btnAddons";
+            this.btnAddons.Size = new System.Drawing.Size(190, 39);
+            this.btnAddons.TabIndex = 8;
+            this.btnAddons.Text = "Add-ons";
+            this.btnAddons.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddons.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddons.UseVisualStyleBackColor = true;
+            this.btnAddons.Click += new System.EventHandler(this.buttonMenu);
             // 
             // btnProducts
             // 
@@ -168,6 +192,26 @@
             this.mPanel.VerticalScrollbarHighlightOnWheel = false;
             this.mPanel.VerticalScrollbarSize = 10;
             // 
+            // btnExpenses
+            // 
+            this.btnExpenses.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnExpenses.FlatAppearance.BorderSize = 0;
+            this.btnExpenses.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnExpenses.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnExpenses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExpenses.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExpenses.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnExpenses.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExpenses.Location = new System.Drawing.Point(0, 195);
+            this.btnExpenses.Name = "btnExpenses";
+            this.btnExpenses.Size = new System.Drawing.Size(190, 39);
+            this.btnExpenses.TabIndex = 9;
+            this.btnExpenses.Text = "Expenses";
+            this.btnExpenses.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExpenses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExpenses.UseVisualStyleBackColor = true;
+            this.btnExpenses.Click += new System.EventHandler(this.buttonMenu);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,5 +237,7 @@
         private System.Windows.Forms.Button btnRawMaterials;
         private System.Windows.Forms.Button btnUserRoles;
         private MetroFramework.Controls.MetroPanel mPanel;
+        private System.Windows.Forms.Button btnAddons;
+        private System.Windows.Forms.Button btnExpenses;
     }
 }

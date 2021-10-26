@@ -8,6 +8,7 @@ using Dapper;
 using System.Data;
 using Z.Dapper.Plus;
 using System.Configuration;
+using Repository.Model;
 
 namespace Repository
 {
@@ -67,6 +68,20 @@ namespace Repository
             }
         }
 
-       
+        public static  List<SaleTransactionModel> GetReservation<P>(string sql, P p)
+        {
+            using (IDbConnection conn = new MySqlConnection(connString))
+            {
+
+                var result =  conn.Query<SaleTransactionModel, CustomerModel, SaleTransactionModel>(sql, (r, c) => 
+                {
+                    r.Customer = c;
+                    return r;
+                },p);
+                return result.AsList();
+
+            }
+        }
+
     }
 }

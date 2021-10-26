@@ -115,7 +115,7 @@ namespace PurpleYam_POS.ViewModel
 
         public async Task GetAllAsync(string search)
         {
-            sql = "SELECT Id, Product,Quality,Image,Price, Particulars,DateTimeStamp, ( SELECT COUNT(*) FROM tbl_recipe WHERE ProductId = tbl_product.Id)  AS Recipies FROM tbl_product WHERE Deleted = FALSE AND Product LIKE @Product ORDER BY Product ASC ";
+            sql = "SELECT Id, Product,Quality,Image,Price, Particulars,DateTimeStamp, WithAddon, ( SELECT COUNT(*) FROM tbl_recipe WHERE ProductId = tbl_product.Id)  AS Recipies FROM tbl_product WHERE Type = 'Production' and Deleted = FALSE AND Product LIKE @Product ORDER BY Product ASC ";
             var p = new
             {
                 Product = $"%{search}%"
@@ -123,8 +123,8 @@ namespace PurpleYam_POS.ViewModel
 
             page.sql = sql;
             page.search = search;
-            page.totalRowsQry = @"SELECT COUNT(*) AS total FROM tbl_product where Deleted = false ";
-            page.fileteredQry = @"SELECT COUNT(*) AS total FROM tbl_product where Deleted = false AND @Product LIKE @Product";
+            page.totalRowsQry = @"SELECT COUNT(*) AS total FROM tbl_product where Type = 'Production' and  Deleted = false ";
+            page.fileteredQry = @"SELECT COUNT(*) AS total FROM tbl_product where Type = 'Production' and Deleted = false AND @Product LIKE @Product";
 
             if (uc.DgProducts.Rows.Count > 0)
                 uc.DgProducts.Rows[0].Selected = false;
@@ -221,24 +221,28 @@ namespace PurpleYam_POS.ViewModel
                 Quality = productModel.Quality,
                 Image = productModel.Image,
                 Price = productModel.Price,
-                Id = productModel.Id
+                Id = productModel.Id,
+                WithAddon = productModel.WithAddon,
+                Type = "Production"
             };
 
             if (productModel.Id == 0)
             {
-                sql = "INSERT INTO tbl_product (Product,Price, Particulars, Quality,Image) VALUES (@Product, @Price, @Particulars, @Quality, @Image);SELECT last_insert_id();";
+                sql = "INSERT INTO tbl_product (Product,Price, Particulars, Quality,Image,Type, WithAddon) VALUES (@Product, @Price, @Particulars, @Quality, @Image, @Type, @WithAddon);SELECT last_insert_id();";
                 productModel.Id = SaveGetId(sql, p);
                 page.bindingSource.Add(productModel);
                 Notification.AlertMessage("New product saved.", "Success", Notification.AlertType.SUCCESS);
                 form.BtnSaveProduct.Enabled = false;
                 form.BtnNewProduct.Enabled = true;
                 form.BtnSaveRecipe.Enabled = true;
-            } else
+            }
+            else
             {
-                sql = "UPDATE tbl_product SET Product = @Product,Price = @Price, Particulars = @Particulars, Quality = @Quality, Image = @Image WHERE Id = @Id";
+                sql = "UPDATE tbl_product SET Product = @Product,Price = @Price, Particulars = @Particulars, Quality = @Quality, Image = @Image, WithAddon = @WithAddon WHERE Id = @Id";
                 SaveData(sql, p);
                 page.bindingSource.EndEdit();
                 Notification.AlertMessage("Product update.", "Success", Notification.AlertType.SUCCESS);
+                uc.DgProducts.ClearSelection();
                 form.ResetField();
                 form.BtnSaveProduct.Enabled = false;
                 form.BtnNewProduct.Enabled = true;
@@ -342,5 +346,7 @@ namespace PurpleYam_POS.ViewModel
             }
         }
         #endregion
+
+
     }
 }

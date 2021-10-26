@@ -47,6 +47,7 @@
             this.qualityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.particularsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recipiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WithAddons = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgProducts)).BeginInit();
@@ -137,6 +138,7 @@
             this.qualityDataGridViewTextBoxColumn,
             this.particularsDataGridViewTextBoxColumn,
             this.recipiesDataGridViewTextBoxColumn,
+            this.WithAddons,
             this.edit,
             this.delete});
             this.dgProducts.DataSource = this.ProductBS;
@@ -249,6 +251,13 @@
             this.recipiesDataGridViewTextBoxColumn.Name = "recipiesDataGridViewTextBoxColumn";
             this.recipiesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // WithAddons
+            // 
+            this.WithAddons.DataPropertyName = "WithAddon";
+            this.WithAddons.HeaderText = "WithAddons";
+            this.WithAddons.Name = "WithAddons";
+            this.WithAddons.ReadOnly = true;
+            // 
             // edit
             // 
             this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -305,6 +314,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn qualityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn particularsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn recipiesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn WithAddons;
         private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn delete;
     }

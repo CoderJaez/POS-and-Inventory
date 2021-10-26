@@ -12,6 +12,12 @@ namespace PurpleYam_POS.View.UserControls
 {
     public partial class Settings : MetroFramework.Controls.MetroUserControl
     {
+        //UserControls
+        private Units units;
+        private RawMaterials rawMat;
+        private Products products;
+        private AddOns addons;
+        private ExpensesSettings expenseSettings;
         public Settings()
         {
             InitializeComponent();
@@ -32,7 +38,7 @@ namespace PurpleYam_POS.View.UserControls
                 case "btnUnits":
                     if (!mPanel.Controls.ContainsKey("Units"))
                     {
-                        Units units = new Units();
+                        units = new Units();
                         units.Dock = DockStyle.Fill;
                         mPanel.Controls.Add(units);
                     }
@@ -41,24 +47,43 @@ namespace PurpleYam_POS.View.UserControls
                 case "btnRawMaterials":
                     if (!mPanel.Controls.ContainsKey("RawMaterials"))
                     {
-                         RawMaterials uc = new RawMaterials();
-                        uc.Dock = DockStyle.Fill;
-                        mPanel.Controls.Add(uc);
+                         rawMat = new RawMaterials();
+                        rawMat.Dock = DockStyle.Fill;
+                        mPanel.Controls.Add(rawMat);
                     }
                     mPanel.Controls["RawMaterials"].BringToFront();
-                    var formRM = mPanel.Controls["RawMaterials"] as RawMaterials;
-                    formRM.LoadData();
+                    rawMat.LoadData();
                     break;
                 case "btnProducts":
                     if (!mPanel.Controls.ContainsKey("Products"))
                     {
-                        var uc = new Products();
-                        uc.Dock = DockStyle.Fill;
-                        mPanel.Controls.Add(uc);
+                        products = new Products();
+                        products.Dock = DockStyle.Fill;
+                        mPanel.Controls.Add(products);
                     }
                     mPanel.Controls["Products"].BringToFront();
-                    var formP = mPanel.Controls["Products"] as Products;
-                    formP.LoadData();
+                    products.LoadData();
+                    break;
+
+                case "btnAddons":
+                    if (!mPanel.Controls.ContainsKey("Addons"))
+                    {
+                        addons = new AddOns();
+                        addons.Dock = DockStyle.Fill;
+                        mPanel.Controls.Add(addons);
+                    }
+                    mPanel.Controls["AddOns"].BringToFront();
+                    addons.LoadData();
+                    break;
+                case "btnExpenses":
+                    if(!mPanel.Controls.ContainsKey("ExpensesSettings"))
+                    {
+                        expenseSettings = new ExpensesSettings();
+                        expenseSettings.Dock = DockStyle.Fill;
+                        mPanel.Controls.Add(expenseSettings);
+                    }
+                    mPanel.Controls["ExpensesSettings"].BringToFront();
+                    expenseSettings.LoadData();
                     break;
             }
         }

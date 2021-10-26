@@ -70,6 +70,65 @@ namespace Repository
             return ValidationResult.Success;
         }
     }
+
+
+    public class ProductDuplicate : ValidationAttribute
+    {
+
+        public string table { get; set; }
+        public string column { get; set; }
+        public string query { get; set; }
+        public string Id { get; set; }
+        private MySqlConnection conn;
+        private static string connString = DatabaseConnection.ConnectionString;
+        private string sql;
+        private int id;
+        public ProductDuplicate() : base("{0} is already exist.") { }
+
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            string strValue = value as string;
+            if (!string.IsNullOrEmpty(strValue))
+            {
+                var container = validationContext.ObjectInstance.GetType();
+                var field = container.GetProperty("Id");
+                string type = (string)container.GetProperty("Type").GetValue(validationContext.ObjectInstance, null);
+                if (field != null)
+                {
+                    id = (int)field.GetValue(validationContext.ObjectInstance, null);
+                }
+                if (id != 0)
+                    if (query == null)
+                        sql = $"SELECT * FROM {table} where Deleted = false and Type = '{type}' and Id != {id} and {column} = @{column}";
+                    else
+                        sql = $"{query} {id}";
+                else
+                    if (query == null)
+                    sql = $"SELECT * FROM {table} where Deleted = false and {column} = @{column}";
+                else
+                    sql = $"{query}";
+                using (conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue($"@{column}", strValue);
+                        conn.Open();
+                        using (MySqlDataReader rd = cmd.ExecuteReader())
+                        {
+                            if (rd.HasRows)
+                            {
+                                var errorMessage = FormatErrorMessage($"{validationContext.DisplayName} {strValue}");
+                                return new ValidationResult(errorMessage);
+                            }
+                        }
+                    }
+                }
+
+            }
+            return ValidationResult.Success;
+        }
+    }
+
     public class Duplicate : ValidationAttribute
     {
 
