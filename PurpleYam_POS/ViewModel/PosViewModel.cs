@@ -468,8 +468,8 @@ namespace PurpleYam_POS.ViewModel
             };
             if(customerModel.Id == 0)
             {
-                sql = "insert into tbl_customer(Lastname, Firstname, Middlename, ContactNo) values (@Lastname, @Firstname, @Middlename, @ContactNo)";
-                SaveData(sql, p);
+                sql = "insert into tbl_customer(Lastname, Firstname, Middlename, ContactNo) values (@Lastname, @Firstname, @Middlename, @ContactNo); SELECT last_insert_id();";
+                customerModel.Id = SaveGetId(sql, p);
                 Notification.AlertMessage("New Customer info saved.", "Success", Notification.AlertType.SUCCESS);
                 CustomerBS.Add(customerModel);
             }
