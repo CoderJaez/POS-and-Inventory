@@ -59,7 +59,6 @@ namespace PurpleYam_POS.View.UserControls
                 sales.Dock = DockStyle.Fill;
                 mPanel.Controls.Add(sales);
             }
-            sales.LoadSales();
             mPanel.Controls["SaleTransaction"].BringToFront();
         }
 

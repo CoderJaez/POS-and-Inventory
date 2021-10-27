@@ -90,8 +90,8 @@ namespace PurpleYam_POS.ViewModel
             if(dg.Rows.Count > 0)
             {
                 var currentRow = dg.CurrentRow;
-                GetProductOrdered(currentRow.Cells["TransactionNo"].Value.ToString());
                 transactionNo = dg.CurrentRow.Cells["TransactionNo"].Value.ToString();
+                GetProductOrdered(transactionNo);
                 switch(dg.Columns[e.ColumnIndex].Name)
                 {
                     case "pay":
@@ -119,7 +119,12 @@ namespace PurpleYam_POS.ViewModel
                     case "cancel":
                        if(currentRow.Cells["TransactionType"].Value.ToString() != "CANCELLED")
                         {
-                            if (Notification.Confim(FormMain.Instance, "Do you want to cancel the reservation?", "Cancel reservation") == DialogResult.Yes)
+                            if(currentRow.Cells["ClaimStatus"].Value != null && currentRow.Cells["ClaimStatus"].Value.ToString() == "CLAIMED")
+                            {
+                                Notification.AlertMessage("The product has been claimed, it cannot be cancelled. ", "Thes reservation cannot be cancel.", Notification.AlertType.INFO);
+                                return;
+                            }
+                                if (Notification.Confim(FormMain.Instance, "Do you want to cancel the reservation?", "Cancel reservation") == DialogResult.Yes)
                             {
                                 CancelTransaction();
 

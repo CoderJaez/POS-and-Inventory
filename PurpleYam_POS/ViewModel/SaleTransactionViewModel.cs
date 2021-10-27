@@ -16,6 +16,7 @@ namespace PurpleYam_POS.ViewModel
         public SaleTransaction ucST;
         //BindingSource
         public BindingSource SaleTransactionBS { get; set; }
+        public BindingSource ProductBS { get; set; }
 
         //Constructor
         public SaleTransactionViewModel()
@@ -23,9 +24,53 @@ namespace PurpleYam_POS.ViewModel
 
         }
 
-        public async void LoadTransactions()
+        public async void LoadWalkinTransaction()
         {
-            SaleTransactionBS.DataSource = await LoadData<SaleTransactionModel, dynamic>("select * from tbl_sale_transaction order by TransactionDate DESC",new { });
+            SaleTransactionBS.DataSource = await LoadData<SaleTransactionModel, dynamic>("select * from tbl_sale_transaction where TransactionType = 'WALK_IN' and TransactionDate between @dateFrom and @dateTo order by TransactionDate DESC",new { dateFrom =  ucST.DtpwFrom.AddDays(-1), dateTo = ucST.DtpwTo.AddDays(1) });
+        }
+
+
+        public void LoadReservation()
+        {
+            ucST.DgReservation.Rows.Clear();
+            int index = 0;
+            var list = GetReservation("select r.*, c.* from tbl_sale_transaction r left join tbl_customer c on c.Id = r.CustomerId Where TransactionType != 'WALK_IN' AND (c.Lastname LIKE @Search or c.Firstname LIKE @Search or r.TransactionNo LIKE @Search ) and r.TransactionDate between @dateFrom and @dateTo", new { Search = $"%{ucST.Search}%", dateFrom = ucST.DtprFrom.AddDays(-1), dateTo = ucST.DtprTo.AddDays(1) });
+            list.ForEach(p =>
+            {
+                ucST.DgReservation.Rows.Add(
+                    p.TransactionNo,
+                    p.Customer.Fullname,
+                    p.DownPayment,
+                    p.Balance,
+                    p.TotalAmount,
+                    p.CashTendered,
+                    p.Change,
+                    p.TransactionDate,
+                    p.ReservationDate,
+                    p.TransactionType,
+                    p.ClaimStatus
+                    );
+                ucST.DgReservation.Rows[index].Cells["cancel"].Value = ucST.DgReservation.Rows[index].Cells["TransactionType"].Value.ToString() == "CANCELLED" ? Properties.Resources.order_cancelled : Properties.Resources.cancel_order;
+                ucST.DgReservation.Rows[index].Cells["claim"].Value = ucST.DgReservation.Rows[index].Cells["ClaimStatus"].Value != null ? Properties.Resources.claimed : Properties.Resources.claim;
+                index++;
+            });
+        }
+
+
+        public void DgTransactionClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var dg = (DataGridView)sender;
+
+            if(dg.Rows.Count > 0)
+            {
+                string transactionNo = ucST.TabSales.SelectedTab.Name == "reservationTab" ? dg.CurrentRow.Cells["TransactionNo"].Value.ToString():((SaleTransactionModel)SaleTransactionBS.Current).TransactionNo;
+                LoadProductSold(transactionNo);
+            }
+        }
+
+        public async void LoadProductSold(string transactionNo)
+        {
+            ProductBS.DataSource = await LoadData<SoldProductModel, dynamic>("select ps.*,p.Product, u.UnitCode from tbl_product_sold ps LEFT JOIN tbl_product p on p.Id = ps.ProductId LEFT JOIN tbl_unit u ON u.Id = p.UnitId  where ps.TransactionNo = @TransactionNo", new { TransactionNo = transactionNo });
         }
     }
 }

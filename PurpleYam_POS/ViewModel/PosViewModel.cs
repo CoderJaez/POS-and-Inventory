@@ -407,6 +407,12 @@ namespace PurpleYam_POS.ViewModel
             {
                 SaveData("UPDATE tbl_sale_transaction set Balance = @Balance, CashTendered = CashTendered + @CashTendered, `Change` = `Change` + @Change where TransactionNo = @TransactionNo ", new { TransactionNo = stModel.TransactionNo, Balance = stModel.Balance, CashTendered = stModel.CashTendered, Change = stModel.Change });
                 Notification.AlertMessage("Payment Successfull","Success", Notification.AlertType.SUCCESS);
+                using (loadingScreen = new LoadingScreen())
+                {
+                    loadingScreen.PanelChange.Visible = true;
+                    loadingScreen.Change = stModel.Change.ToString("N");
+                    loadingScreen.ShowDialog();
+                }
                 FormMain.Instance.Back.PerformClick();
                 ucReservation.LoadData();
             }

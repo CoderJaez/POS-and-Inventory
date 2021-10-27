@@ -34,7 +34,6 @@
             this.btnAccount = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnInventory = new System.Windows.Forms.Button();
-            this.btnProduction = new System.Windows.Forms.Button();
             this.btnExpenses = new System.Windows.Forms.Button();
             this.btnPOS = new System.Windows.Forms.Button();
             this.btnSalesTransaction = new System.Windows.Forms.Button();
@@ -52,7 +51,6 @@
             this.mpNav.Controls.Add(this.btnAccount);
             this.mpNav.Controls.Add(this.btnSettings);
             this.mpNav.Controls.Add(this.btnInventory);
-            this.mpNav.Controls.Add(this.btnProduction);
             this.mpNav.Controls.Add(this.btnExpenses);
             this.mpNav.Controls.Add(this.btnPOS);
             this.mpNav.Controls.Add(this.btnSalesTransaction);
@@ -84,7 +82,7 @@
             this.btnLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(0, 434);
+            this.btnLogout.Location = new System.Drawing.Point(0, 395);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(190, 39);
             this.btnLogout.TabIndex = 9;
@@ -104,7 +102,7 @@
             this.btnAccount.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnAccount.Image")));
             this.btnAccount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAccount.Location = new System.Drawing.Point(0, 395);
+            this.btnAccount.Location = new System.Drawing.Point(0, 356);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(190, 39);
             this.btnAccount.TabIndex = 8;
@@ -124,7 +122,7 @@
             this.btnSettings.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.Location = new System.Drawing.Point(0, 356);
+            this.btnSettings.Location = new System.Drawing.Point(0, 317);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(190, 39);
             this.btnSettings.TabIndex = 7;
@@ -145,7 +143,7 @@
             this.btnInventory.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnInventory.Image = ((System.Drawing.Image)(resources.GetObject("btnInventory.Image")));
             this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInventory.Location = new System.Drawing.Point(0, 317);
+            this.btnInventory.Location = new System.Drawing.Point(0, 278);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Size = new System.Drawing.Size(190, 39);
             this.btnInventory.TabIndex = 6;
@@ -154,26 +152,6 @@
             this.btnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnInventory.UseVisualStyleBackColor = true;
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
-            // 
-            // btnProduction
-            // 
-            this.btnProduction.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnProduction.FlatAppearance.BorderSize = 0;
-            this.btnProduction.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnProduction.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProduction.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProduction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnProduction.Image = ((System.Drawing.Image)(resources.GetObject("btnProduction.Image")));
-            this.btnProduction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduction.Location = new System.Drawing.Point(0, 278);
-            this.btnProduction.Name = "btnProduction";
-            this.btnProduction.Size = new System.Drawing.Size(190, 39);
-            this.btnProduction.TabIndex = 5;
-            this.btnProduction.Text = "Production";
-            this.btnProduction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProduction.UseVisualStyleBackColor = true;
             // 
             // btnExpenses
             // 
@@ -310,7 +288,6 @@
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnInventory;
-        private System.Windows.Forms.Button btnProduction;
         private System.Windows.Forms.Button btnExpenses;
         private System.Windows.Forms.Button btnAccount;
         private System.Windows.Forms.Button btnLogout;
