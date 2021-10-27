@@ -43,6 +43,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dgProduction = new System.Windows.Forms.DataGridView();
+            this.WTransactionNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.downPaymentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.balanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cashTenderedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.changeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleTransactionBS = new System.Windows.Forms.BindingSource(this.components);
             this.tabSales = new MetroFramework.Controls.MetroTabControl();
             this.walk_inTab = new MetroFramework.Controls.MetroTabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -52,15 +62,12 @@
             this.dtpwTo = new System.Windows.Forms.DateTimePicker();
             this.reservationTab = new MetroFramework.Controls.MetroTabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tbSearch = new MetroFramework.Controls.MetroTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dtprFrom = new System.Windows.Forms.DateTimePicker();
             this.dtprTo = new System.Windows.Forms.DateTimePicker();
             this.dgReservation = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dgProduct = new System.Windows.Forms.DataGridView();
-            this.tbSearch = new MetroFramework.Controls.MetroTextBox();
             this.TransactionNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DownPayment = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,22 +81,16 @@
             this.ClaimStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cancel = new System.Windows.Forms.DataGridViewImageColumn();
             this.claim = new System.Windows.Forms.DataGridViewImageColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dgProduct = new System.Windows.Forms.DataGridView();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subTotalDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductBS = new System.Windows.Forms.BindingSource(this.components);
-            this.SaleTransactionBS = new System.Windows.Forms.BindingSource(this.components);
-            this.WTransactionNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.downPaymentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.balanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashTenderedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.changeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduction)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaleTransactionBS)).BeginInit();
             this.tabSales.SuspendLayout();
             this.walk_inTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -99,7 +100,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SaleTransactionBS)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -181,6 +181,77 @@
             this.dgProduction.Size = new System.Drawing.Size(539, 392);
             this.dgProduction.TabIndex = 27;
             this.dgProduction.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgProduction_DataBindingComplete);
+            // 
+            // WTransactionNo
+            // 
+            this.WTransactionNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.WTransactionNo.DataPropertyName = "TransactionNo";
+            this.WTransactionNo.HeaderText = "TransactionNo";
+            this.WTransactionNo.Name = "WTransactionNo";
+            this.WTransactionNo.ReadOnly = true;
+            this.WTransactionNo.Width = 5;
+            // 
+            // transactionDateDataGridViewTextBoxColumn
+            // 
+            this.transactionDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.transactionDateDataGridViewTextBoxColumn.DataPropertyName = "TransactionDate";
+            this.transactionDateDataGridViewTextBoxColumn.HeaderText = "TransactionDate";
+            this.transactionDateDataGridViewTextBoxColumn.Name = "transactionDateDataGridViewTextBoxColumn";
+            this.transactionDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.transactionDateDataGridViewTextBoxColumn.Width = 5;
+            // 
+            // downPaymentDataGridViewTextBoxColumn
+            // 
+            this.downPaymentDataGridViewTextBoxColumn.DataPropertyName = "DownPayment";
+            this.downPaymentDataGridViewTextBoxColumn.HeaderText = "Down";
+            this.downPaymentDataGridViewTextBoxColumn.Name = "downPaymentDataGridViewTextBoxColumn";
+            this.downPaymentDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // balanceDataGridViewTextBoxColumn
+            // 
+            this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
+            this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
+            this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
+            this.balanceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // vatDataGridViewTextBoxColumn
+            // 
+            this.vatDataGridViewTextBoxColumn.DataPropertyName = "Vat";
+            this.vatDataGridViewTextBoxColumn.HeaderText = "Vat";
+            this.vatDataGridViewTextBoxColumn.Name = "vatDataGridViewTextBoxColumn";
+            this.vatDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // subTotalDataGridViewTextBoxColumn
+            // 
+            this.subTotalDataGridViewTextBoxColumn.DataPropertyName = "SubTotal";
+            this.subTotalDataGridViewTextBoxColumn.HeaderText = "SubTotal";
+            this.subTotalDataGridViewTextBoxColumn.Name = "subTotalDataGridViewTextBoxColumn";
+            this.subTotalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalAmountDataGridViewTextBoxColumn
+            // 
+            this.totalAmountDataGridViewTextBoxColumn.DataPropertyName = "TotalAmount";
+            this.totalAmountDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.totalAmountDataGridViewTextBoxColumn.Name = "totalAmountDataGridViewTextBoxColumn";
+            this.totalAmountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cashTenderedDataGridViewTextBoxColumn
+            // 
+            this.cashTenderedDataGridViewTextBoxColumn.DataPropertyName = "CashTendered";
+            this.cashTenderedDataGridViewTextBoxColumn.HeaderText = "Cash Tendered";
+            this.cashTenderedDataGridViewTextBoxColumn.Name = "cashTenderedDataGridViewTextBoxColumn";
+            this.cashTenderedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // changeDataGridViewTextBoxColumn
+            // 
+            this.changeDataGridViewTextBoxColumn.DataPropertyName = "Change";
+            this.changeDataGridViewTextBoxColumn.HeaderText = "Change";
+            this.changeDataGridViewTextBoxColumn.Name = "changeDataGridViewTextBoxColumn";
+            this.changeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // SaleTransactionBS
+            // 
+            this.SaleTransactionBS.DataSource = typeof(PurpleYam_POS.Model.SaleTransactionModel);
             // 
             // tabSales
             // 
@@ -279,7 +350,7 @@
             this.reservationTab.Controls.Add(this.dgReservation);
             this.reservationTab.HorizontalScrollbarBarColor = true;
             this.reservationTab.HorizontalScrollbarHighlightOnWheel = false;
-            this.reservationTab.HorizontalScrollbarSize = 10;
+            this.reservationTab.HorizontalScrollbarSize = 8;
             this.reservationTab.Location = new System.Drawing.Point(4, 41);
             this.reservationTab.Margin = new System.Windows.Forms.Padding(4);
             this.reservationTab.Name = "reservationTab";
@@ -288,7 +359,7 @@
             this.reservationTab.Text = "Reservation";
             this.reservationTab.VerticalScrollbarBarColor = true;
             this.reservationTab.VerticalScrollbarHighlightOnWheel = false;
-            this.reservationTab.VerticalScrollbarSize = 10;
+            this.reservationTab.VerticalScrollbarSize = 8;
             // 
             // groupBox2
             // 
@@ -306,6 +377,39 @@
             this.groupBox2.TabIndex = 32;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Date";
+            // 
+            // tbSearch
+            // 
+            // 
+            // 
+            // 
+            this.tbSearch.CustomButton.Image = null;
+            this.tbSearch.CustomButton.Location = new System.Drawing.Point(158, 1);
+            this.tbSearch.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSearch.CustomButton.Name = "";
+            this.tbSearch.CustomButton.Size = new System.Drawing.Size(16, 16);
+            this.tbSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbSearch.CustomButton.TabIndex = 1;
+            this.tbSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbSearch.CustomButton.UseSelectable = true;
+            this.tbSearch.CustomButton.Visible = false;
+            this.tbSearch.Lines = new string[0];
+            this.tbSearch.Location = new System.Drawing.Point(300, 25);
+            this.tbSearch.MaxLength = 32767;
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.PasswordChar = '\0';
+            this.tbSearch.PromptText = "Search customer/transactionNo";
+            this.tbSearch.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbSearch.SelectedText = "";
+            this.tbSearch.SelectionLength = 0;
+            this.tbSearch.SelectionStart = 0;
+            this.tbSearch.ShortcutsEnabled = true;
+            this.tbSearch.Size = new System.Drawing.Size(232, 23);
+            this.tbSearch.TabIndex = 32;
+            this.tbSearch.UseSelectable = true;
+            this.tbSearch.WaterMark = "Search customer/transactionNo";
+            this.tbSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label5
             // 
@@ -412,123 +516,6 @@
             this.dgReservation.Size = new System.Drawing.Size(539, 392);
             this.dgReservation.TabIndex = 28;
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.dgProduct);
-            this.panel1.Location = new System.Drawing.Point(628, 193);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(352, 392);
-            this.panel1.TabIndex = 34;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(0);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(5);
-            this.label4.Size = new System.Drawing.Size(350, 39);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Orders";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // dgProduct
-            // 
-            this.dgProduct.AllowUserToAddRows = false;
-            this.dgProduct.AllowUserToResizeRows = false;
-            this.dgProduct.AutoGenerateColumns = false;
-            this.dgProduct.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgProduct.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgProduct.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgProduct.ColumnHeadersHeight = 35;
-            this.dgProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn,
-            this.qtyDataGridViewTextBoxColumn,
-            this.subTotalDataGridViewTextBoxColumn1});
-            this.dgProduct.DataSource = this.ProductBS;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Plum;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgProduct.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dgProduct.EnableHeadersVisualStyles = false;
-            this.dgProduct.Location = new System.Drawing.Point(-1, 39);
-            this.dgProduct.Margin = new System.Windows.Forms.Padding(40, 0, 40, 4);
-            this.dgProduct.MultiSelect = false;
-            this.dgProduct.Name = "dgProduct";
-            this.dgProduct.ReadOnly = true;
-            this.dgProduct.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Purple;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgProduct.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.dgProduct.RowHeadersVisible = false;
-            this.dgProduct.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgProduct.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgProduct.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgProduct.Size = new System.Drawing.Size(351, 347);
-            this.dgProduct.TabIndex = 34;
-            // 
-            // tbSearch
-            // 
-            // 
-            // 
-            // 
-            this.tbSearch.CustomButton.Image = null;
-            this.tbSearch.CustomButton.Location = new System.Drawing.Point(210, 1);
-            this.tbSearch.CustomButton.Name = "";
-            this.tbSearch.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.tbSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.tbSearch.CustomButton.TabIndex = 1;
-            this.tbSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tbSearch.CustomButton.UseSelectable = true;
-            this.tbSearch.CustomButton.Visible = false;
-            this.tbSearch.Lines = new string[0];
-            this.tbSearch.Location = new System.Drawing.Point(300, 25);
-            this.tbSearch.MaxLength = 32767;
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.PasswordChar = '\0';
-            this.tbSearch.PromptText = "Search customer/transactionNo";
-            this.tbSearch.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tbSearch.SelectedText = "";
-            this.tbSearch.SelectionLength = 0;
-            this.tbSearch.SelectionStart = 0;
-            this.tbSearch.ShortcutsEnabled = true;
-            this.tbSearch.Size = new System.Drawing.Size(232, 23);
-            this.tbSearch.TabIndex = 32;
-            this.tbSearch.UseSelectable = true;
-            this.tbSearch.WaterMark = "Search customer/transactionNo";
-            this.tbSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.tbSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // TransactionNo
             // 
             this.TransactionNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -613,6 +600,91 @@
             this.claim.Name = "claim";
             this.claim.ReadOnly = true;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.dgProduct);
+            this.panel1.Location = new System.Drawing.Point(628, 193);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(352, 392);
+            this.panel1.TabIndex = 34;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Margin = new System.Windows.Forms.Padding(0);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(5);
+            this.label4.Size = new System.Drawing.Size(350, 39);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Orders";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dgProduct
+            // 
+            this.dgProduct.AllowUserToAddRows = false;
+            this.dgProduct.AllowUserToResizeRows = false;
+            this.dgProduct.AutoGenerateColumns = false;
+            this.dgProduct.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgProduct.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgProduct.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgProduct.ColumnHeadersHeight = 35;
+            this.dgProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.productDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn,
+            this.qtyDataGridViewTextBoxColumn,
+            this.subTotalDataGridViewTextBoxColumn1});
+            this.dgProduct.DataSource = this.ProductBS;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgProduct.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dgProduct.EnableHeadersVisualStyles = false;
+            this.dgProduct.Location = new System.Drawing.Point(-1, 39);
+            this.dgProduct.Margin = new System.Windows.Forms.Padding(40, 0, 40, 4);
+            this.dgProduct.MultiSelect = false;
+            this.dgProduct.Name = "dgProduct";
+            this.dgProduct.ReadOnly = true;
+            this.dgProduct.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgProduct.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgProduct.RowHeadersVisible = false;
+            this.dgProduct.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgProduct.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgProduct.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgProduct.Size = new System.Drawing.Size(351, 347);
+            this.dgProduct.TabIndex = 34;
+            // 
             // productDataGridViewTextBoxColumn
             // 
             this.productDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -651,77 +723,6 @@
             // 
             this.ProductBS.DataSource = typeof(PurpleYam_POS.Model.SoldProductModel);
             // 
-            // SaleTransactionBS
-            // 
-            this.SaleTransactionBS.DataSource = typeof(PurpleYam_POS.Model.SaleTransactionModel);
-            // 
-            // WTransactionNo
-            // 
-            this.WTransactionNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.WTransactionNo.DataPropertyName = "TransactionNo";
-            this.WTransactionNo.HeaderText = "TransactionNo";
-            this.WTransactionNo.Name = "WTransactionNo";
-            this.WTransactionNo.ReadOnly = true;
-            this.WTransactionNo.Width = 5;
-            // 
-            // transactionDateDataGridViewTextBoxColumn
-            // 
-            this.transactionDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.transactionDateDataGridViewTextBoxColumn.DataPropertyName = "TransactionDate";
-            this.transactionDateDataGridViewTextBoxColumn.HeaderText = "TransactionDate";
-            this.transactionDateDataGridViewTextBoxColumn.Name = "transactionDateDataGridViewTextBoxColumn";
-            this.transactionDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.transactionDateDataGridViewTextBoxColumn.Width = 5;
-            // 
-            // downPaymentDataGridViewTextBoxColumn
-            // 
-            this.downPaymentDataGridViewTextBoxColumn.DataPropertyName = "DownPayment";
-            this.downPaymentDataGridViewTextBoxColumn.HeaderText = "Down";
-            this.downPaymentDataGridViewTextBoxColumn.Name = "downPaymentDataGridViewTextBoxColumn";
-            this.downPaymentDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // balanceDataGridViewTextBoxColumn
-            // 
-            this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
-            this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
-            this.balanceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // vatDataGridViewTextBoxColumn
-            // 
-            this.vatDataGridViewTextBoxColumn.DataPropertyName = "Vat";
-            this.vatDataGridViewTextBoxColumn.HeaderText = "Vat";
-            this.vatDataGridViewTextBoxColumn.Name = "vatDataGridViewTextBoxColumn";
-            this.vatDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // subTotalDataGridViewTextBoxColumn
-            // 
-            this.subTotalDataGridViewTextBoxColumn.DataPropertyName = "SubTotal";
-            this.subTotalDataGridViewTextBoxColumn.HeaderText = "SubTotal";
-            this.subTotalDataGridViewTextBoxColumn.Name = "subTotalDataGridViewTextBoxColumn";
-            this.subTotalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalAmountDataGridViewTextBoxColumn
-            // 
-            this.totalAmountDataGridViewTextBoxColumn.DataPropertyName = "TotalAmount";
-            this.totalAmountDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.totalAmountDataGridViewTextBoxColumn.Name = "totalAmountDataGridViewTextBoxColumn";
-            this.totalAmountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cashTenderedDataGridViewTextBoxColumn
-            // 
-            this.cashTenderedDataGridViewTextBoxColumn.DataPropertyName = "CashTendered";
-            this.cashTenderedDataGridViewTextBoxColumn.HeaderText = "Cash Tendered";
-            this.cashTenderedDataGridViewTextBoxColumn.Name = "cashTenderedDataGridViewTextBoxColumn";
-            this.cashTenderedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // changeDataGridViewTextBoxColumn
-            // 
-            this.changeDataGridViewTextBoxColumn.DataPropertyName = "Change";
-            this.changeDataGridViewTextBoxColumn.HeaderText = "Change";
-            this.changeDataGridViewTextBoxColumn.Name = "changeDataGridViewTextBoxColumn";
-            this.changeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // SaleTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -734,6 +735,7 @@
             this.Name = "SaleTransaction";
             this.Size = new System.Drawing.Size(995, 655);
             ((System.ComponentModel.ISupportInitialize)(this.dgProduction)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaleTransactionBS)).EndInit();
             this.tabSales.ResumeLayout(false);
             this.walk_inTab.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -745,7 +747,6 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SaleTransactionBS)).EndInit();
             this.ResumeLayout(false);
 
         }
