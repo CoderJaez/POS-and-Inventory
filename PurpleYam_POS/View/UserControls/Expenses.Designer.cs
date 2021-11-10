@@ -35,6 +35,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Expenses));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbRemarks = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbReciept = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dtp = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbDescription = new System.Windows.Forms.ComboBox();
+            this.ExpensesBS = new System.Windows.Forms.BindingSource(this.components);
+            this.ExpenseCatBS = new System.Windows.Forms.BindingSource(this.components);
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.tbAmount = new System.Windows.Forms.TextBox();
@@ -42,31 +52,31 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgExpenses = new System.Windows.Forms.DataGridView();
-            this.cbDescription = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.ReceiptNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateTimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dtp = new System.Windows.Forms.DateTimePicker();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpensesBS = new System.Windows.Forms.BindingSource(this.components);
-            this.ExpenseCatBS = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgExpenses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpensesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpenseCatBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgExpenses)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.tbRemarks);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.tbReciept);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.dtp);
             this.panel1.Controls.Add(this.label4);
@@ -78,8 +88,91 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(687, 106);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(300, 282);
+            this.panel1.Size = new System.Drawing.Size(300, 380);
             this.panel1.TabIndex = 45;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(24, 270);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(66, 17);
+            this.label9.TabIndex = 55;
+            this.label9.Text = "Remarks:";
+            // 
+            // tbRemarks
+            // 
+            this.tbRemarks.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbRemarks.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbRemarks.Location = new System.Drawing.Point(24, 294);
+            this.tbRemarks.Name = "tbRemarks";
+            this.tbRemarks.Size = new System.Drawing.Size(258, 24);
+            this.tbRemarks.TabIndex = 47;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(21, 216);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(84, 17);
+            this.label8.TabIndex = 53;
+            this.label8.Text = "Reciept No:";
+            // 
+            // tbReciept
+            // 
+            this.tbReciept.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbReciept.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbReciept.Location = new System.Drawing.Point(21, 240);
+            this.tbReciept.Name = "tbReciept";
+            this.tbReciept.Size = new System.Drawing.Size(258, 24);
+            this.tbReciept.TabIndex = 46;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(21, 112);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 17);
+            this.label7.TabIndex = 51;
+            this.label7.Text = "Date:";
+            // 
+            // dtp
+            // 
+            this.dtp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp.Location = new System.Drawing.Point(21, 136);
+            this.dtp.Name = "dtp";
+            this.dtp.Size = new System.Drawing.Size(258, 23);
+            this.dtp.TabIndex = 50;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(21, 162);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 17);
+            this.label4.TabIndex = 48;
+            this.label4.Text = "Amount";
+            // 
+            // cbDescription
+            // 
+            this.cbDescription.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.ExpensesBS, "ExpenseId", true));
+            this.cbDescription.DataSource = this.ExpenseCatBS;
+            this.cbDescription.DisplayMember = "Description";
+            this.cbDescription.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDescription.FormattingEnabled = true;
+            this.cbDescription.Location = new System.Drawing.Point(21, 85);
+            this.cbDescription.Name = "cbDescription";
+            this.cbDescription.Size = new System.Drawing.Size(258, 25);
+            this.cbDescription.TabIndex = 47;
+            this.cbDescription.ValueMember = "ExpenseId";
+            // 
+            // ExpensesBS
+            // 
+            this.ExpensesBS.DataSource = typeof(PurpleYam_POS.Model.ExpensesModel);
+            // 
+            // ExpenseCatBS
+            // 
+            this.ExpenseCatBS.DataSource = typeof(PurpleYam_POS.Model.ExpensesModel);
             // 
             // btnCancel
             // 
@@ -91,7 +184,7 @@
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(55, 225);
+            this.btnCancel.Location = new System.Drawing.Point(51, 324);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 30);
             this.btnCancel.TabIndex = 46;
@@ -110,7 +203,7 @@
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(170, 225);
+            this.btnSave.Location = new System.Drawing.Point(166, 324);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(109, 30);
             this.btnSave.TabIndex = 45;
@@ -123,7 +216,7 @@
             // 
             this.tbAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbAmount.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAmount.Location = new System.Drawing.Point(21, 141);
+            this.tbAmount.Location = new System.Drawing.Point(21, 186);
             this.tbAmount.Name = "tbAmount";
             this.tbAmount.Size = new System.Drawing.Size(258, 24);
             this.tbAmount.TabIndex = 44;
@@ -178,18 +271,20 @@
             this.dgExpenses.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgExpenses.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgExpenses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgExpenses.ColumnHeadersHeight = 30;
             this.dgExpenses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ReceiptNo,
             this.descriptionDataGridViewTextBoxColumn,
             this.Amount,
             this.DateTimeStamp,
+            this.Remarks,
             this.edit,
             this.delete});
             this.dgExpenses.DataSource = this.ExpensesBS;
@@ -198,7 +293,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgExpenses.DefaultCellStyle = dataGridViewCellStyle2;
@@ -227,28 +322,6 @@
             this.dgExpenses.Size = new System.Drawing.Size(629, 446);
             this.dgExpenses.TabIndex = 42;
             // 
-            // cbDescription
-            // 
-            this.cbDescription.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.ExpensesBS, "ExpenseId", true));
-            this.cbDescription.DataSource = this.ExpenseCatBS;
-            this.cbDescription.DisplayMember = "Description";
-            this.cbDescription.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDescription.FormattingEnabled = true;
-            this.cbDescription.Location = new System.Drawing.Point(21, 85);
-            this.cbDescription.Name = "cbDescription";
-            this.cbDescription.Size = new System.Drawing.Size(258, 25);
-            this.cbDescription.TabIndex = 47;
-            this.cbDescription.ValueMember = "ExpenseId";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 117);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 17);
-            this.label4.TabIndex = 48;
-            this.label4.Text = "Amount";
-            // 
             // dtpFrom
             // 
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -256,6 +329,7 @@
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(121, 23);
             this.dtpFrom.TabIndex = 46;
+            this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
             // label5
             // 
@@ -282,6 +356,22 @@
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(121, 23);
             this.dtpTo.TabIndex = 48;
+            this.dtpTo.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
+            // 
+            // ReceiptNo
+            // 
+            this.ReceiptNo.DataPropertyName = "ReceiptNo";
+            this.ReceiptNo.HeaderText = "ReceiptNo";
+            this.ReceiptNo.Name = "ReceiptNo";
+            this.ReceiptNo.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Amount
             // 
@@ -296,6 +386,14 @@
             this.DateTimeStamp.HeaderText = "Date";
             this.DateTimeStamp.Name = "DateTimeStamp";
             this.DateTimeStamp.ReadOnly = true;
+            // 
+            // Remarks
+            // 
+            this.Remarks.DataPropertyName = "Remarks";
+            this.Remarks.HeaderText = "Remarks";
+            this.Remarks.Name = "Remarks";
+            this.Remarks.ReadOnly = true;
+            this.Remarks.Width = 200;
             // 
             // edit
             // 
@@ -315,39 +413,6 @@
             this.delete.ReadOnly = true;
             this.delete.Width = 6;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 172);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 17);
-            this.label7.TabIndex = 51;
-            this.label7.Text = "Date:";
-            // 
-            // dtp
-            // 
-            this.dtp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp.Location = new System.Drawing.Point(21, 196);
-            this.dtp.Name = "dtp";
-            this.dtp.Size = new System.Drawing.Size(258, 23);
-            this.dtp.TabIndex = 50;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ExpensesBS
-            // 
-            this.ExpensesBS.DataSource = typeof(PurpleYam_POS.Model.ExpensesModel);
-            // 
-            // ExpenseCatBS
-            // 
-            this.ExpenseCatBS.DataSource = typeof(PurpleYam_POS.Model.ExpensesModel);
-            // 
             // Expenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -361,14 +426,14 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgExpenses);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Expenses";
             this.Size = new System.Drawing.Size(1015, 568);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgExpenses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpensesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpenseCatBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgExpenses)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,13 +456,19 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtpTo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateTimeStamp;
-        private System.Windows.Forms.DataGridViewImageColumn edit;
-        private System.Windows.Forms.DataGridViewImageColumn delete;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtp;
         private System.Windows.Forms.BindingSource ExpenseCatBS;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbRemarks;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tbReciept;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReceiptNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateTimeStamp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Remarks;
+        private System.Windows.Forms.DataGridViewImageColumn edit;
+        private System.Windows.Forms.DataGridViewImageColumn delete;
     }
 }

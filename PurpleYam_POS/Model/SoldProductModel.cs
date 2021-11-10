@@ -20,6 +20,7 @@ namespace PurpleYam_POS.Model
         public string  Type { get; set; }
         public string UnitCode { get; set; }
         public DateTime TransactionDate { get; set; }
+        public CustomerModel Custumer { get; set; }
 
     }
 }

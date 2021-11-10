@@ -33,23 +33,24 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageCustomer));
             this.dgCustomer = new System.Windows.Forms.DataGridView();
+            this.Fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.tbSearch = new MetroFramework.Controls.MetroTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbLastname = new System.Windows.Forms.TextBox();
-            this.tbFirstname = new System.Windows.Forms.TextBox();
-            this.tbMiddlename = new System.Windows.Forms.TextBox();
-            this.tbContoctNo = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
-            this.CustomerBS = new System.Windows.Forms.BindingSource(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbContoctNo = new System.Windows.Forms.TextBox();
+            this.tbMiddlename = new System.Windows.Forms.TextBox();
+            this.tbFirstname = new System.Windows.Forms.TextBox();
+            this.tbLastname = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.CustomerBS = new System.Windows.Forms.BindingSource(this.components);
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomer)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerBS)).BeginInit();
@@ -103,6 +104,23 @@
             this.dgCustomer.Size = new System.Drawing.Size(445, 469);
             this.dgCustomer.TabIndex = 22;
             // 
+            // Fullname
+            // 
+            this.Fullname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Fullname.DataPropertyName = "Fullname";
+            this.Fullname.HeaderText = "Fullname";
+            this.Fullname.Name = "Fullname";
+            this.Fullname.ReadOnly = true;
+            // 
+            // edit
+            // 
+            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.edit.HeaderText = "";
+            this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
+            this.edit.Name = "edit";
+            this.edit.ReadOnly = true;
+            this.edit.Width = 11;
+            // 
             // tbSearch
             // 
             // 
@@ -135,6 +153,7 @@
             this.tbSearch.WaterMark = "Search Customer";
             this.tbSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
             // 
             // panel1
             // 
@@ -154,90 +173,6 @@
             this.panel1.Size = new System.Drawing.Size(360, 355);
             this.panel1.TabIndex = 24;
             // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(358, 42);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Manage Customer infomation";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Lastname:";
-            // 
-            // tbLastname
-            // 
-            this.tbLastname.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLastname.Location = new System.Drawing.Point(31, 93);
-            this.tbLastname.Name = "tbLastname";
-            this.tbLastname.Size = new System.Drawing.Size(297, 25);
-            this.tbLastname.TabIndex = 2;
-            // 
-            // tbFirstname
-            // 
-            this.tbFirstname.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbFirstname.Location = new System.Drawing.Point(31, 145);
-            this.tbFirstname.Name = "tbFirstname";
-            this.tbFirstname.Size = new System.Drawing.Size(294, 25);
-            this.tbFirstname.TabIndex = 3;
-            // 
-            // tbMiddlename
-            // 
-            this.tbMiddlename.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMiddlename.Location = new System.Drawing.Point(31, 197);
-            this.tbMiddlename.Name = "tbMiddlename";
-            this.tbMiddlename.Size = new System.Drawing.Size(297, 25);
-            this.tbMiddlename.TabIndex = 4;
-            // 
-            // tbContoctNo
-            // 
-            this.tbContoctNo.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbContoctNo.Location = new System.Drawing.Point(31, 249);
-            this.tbContoctNo.Name = "tbContoctNo";
-            this.tbContoctNo.Size = new System.Drawing.Size(297, 25);
-            this.tbContoctNo.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 123);
-            this.label3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 17);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Firstname:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 175);
-            this.label4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Middlename:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 227);
-            this.label5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 17);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Contact Number:";
-            // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -253,9 +188,89 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             // 
-            // CustomerBS
+            // label5
             // 
-            this.CustomerBS.DataSource = typeof(PurpleYam_POS.Model.CustomerModel);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(31, 227);
+            this.label5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 17);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Contact Number:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(31, 175);
+            this.label4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 17);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Middlename:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(31, 123);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 17);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Firstname:";
+            // 
+            // tbContoctNo
+            // 
+            this.tbContoctNo.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbContoctNo.Location = new System.Drawing.Point(31, 249);
+            this.tbContoctNo.Name = "tbContoctNo";
+            this.tbContoctNo.Size = new System.Drawing.Size(297, 25);
+            this.tbContoctNo.TabIndex = 5;
+            // 
+            // tbMiddlename
+            // 
+            this.tbMiddlename.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMiddlename.Location = new System.Drawing.Point(31, 197);
+            this.tbMiddlename.Name = "tbMiddlename";
+            this.tbMiddlename.Size = new System.Drawing.Size(297, 25);
+            this.tbMiddlename.TabIndex = 4;
+            // 
+            // tbFirstname
+            // 
+            this.tbFirstname.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbFirstname.Location = new System.Drawing.Point(31, 145);
+            this.tbFirstname.Name = "tbFirstname";
+            this.tbFirstname.Size = new System.Drawing.Size(294, 25);
+            this.tbFirstname.TabIndex = 3;
+            // 
+            // tbLastname
+            // 
+            this.tbLastname.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbLastname.Location = new System.Drawing.Point(31, 93);
+            this.tbLastname.Name = "tbLastname";
+            this.tbLastname.Size = new System.Drawing.Size(297, 25);
+            this.tbLastname.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(31, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 17);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Lastname:";
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(358, 42);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Manage Customer infomation";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -265,14 +280,6 @@
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
             // 
-            // Fullname
-            // 
-            this.Fullname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Fullname.DataPropertyName = "Fullname";
-            this.Fullname.HeaderText = "Fullname";
-            this.Fullname.Name = "Fullname";
-            this.Fullname.ReadOnly = true;
-            // 
             // contactNoDataGridViewTextBoxColumn
             // 
             this.contactNoDataGridViewTextBoxColumn.DataPropertyName = "ContactNo";
@@ -280,25 +287,30 @@
             this.contactNoDataGridViewTextBoxColumn.Name = "contactNoDataGridViewTextBoxColumn";
             this.contactNoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // edit
+            // CustomerBS
             // 
-            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.edit.HeaderText = "";
-            this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
-            this.edit.Name = "edit";
-            this.edit.ReadOnly = true;
-            this.edit.Width = 11;
+            this.CustomerBS.DataSource = typeof(PurpleYam_POS.Model.CustomerModel);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(82, 596);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(445, 36);
+            this.flowLayoutPanel1.TabIndex = 33;
             // 
             // FormManageCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1044, 641);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.dgCustomer);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormManageCustomer";
             this.Padding = new System.Windows.Forms.Padding(27, 78, 27, 26);
             this.Style = MetroFramework.MetroColorStyle.Purple;
@@ -331,5 +343,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fullname;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn edit;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

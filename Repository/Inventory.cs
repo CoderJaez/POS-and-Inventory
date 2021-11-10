@@ -92,7 +92,7 @@ namespace Repository
                             conn.ExecuteAsync("update tbl_rawmat_stockin set QtyOnhand = QtyOnhand - @Qty where RawmatId = @RamatId ORDER BY DateExpiry ASC", new { Qty = recipe.Qty });
                         } else
                         {
-                            conn.ExecuteAsync("UPDATE tbl_rawmat_stockin SET QtyOnhand = CASE WHEN GrpUnitId = @GrpUnitId THEN QtyOnhand - @Qty ELSE QtyOnhand - (SELECT Qty FROM units WHERE Id = GrpUnitId) / @Qty  END WHERE RawmatId = @RawmatId ORDER BY DateStockin ASC LIMIT 1", new { Qty = recipe.Qty, GrpUnitId = recipe.GrpUnitId, RawmatId = recipe.RawmatId });
+                            conn.ExecuteAsync("UPDATE tbl_rawmat_stockin SET QtyOnhand = CASE WHEN GrpUnitId = @GrpUnitId THEN QtyOnhand - @Qty ELSE QtyOnhand - (@Qty / (SELECT Qty FROM units WHERE  Id = GrpUnitId )) END WHERE RawmatId = @RawmatId ORDER BY DateArrival ASC LIMIT 1", new { Qty = recipe.Qty, GrpUnitId = recipe.GrpUnitId, RawmatId = recipe.RawmatId, ProductId = ProductId });
                         }
 
                     });

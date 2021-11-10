@@ -21,6 +21,10 @@ namespace PurpleYam_POS.View.UserControls
             get { return panelProducts; }
         }
 
+        public string TotalAmountB
+        {
+            set { lblTotalBig.Text = value; }
+        }
         public string TotalAmount
         {
             get { return labelTotal.Text; }
@@ -61,6 +65,9 @@ namespace PurpleYam_POS.View.UserControls
             this.Load +=  delegate {  viewModel.LoadProducts(); viewModel.LoadMenuButtons(); };
             btnCustomer.Click += viewModel.OpenCustomerClick;
             btnReservation.Click += delegate { viewModel.Reservations(); };
+            SetPrinter();
+            timer1.Start();
+            lblDate.Text = DateTime.Now.ToLongDateString();
         }
 
         private void dgOrders_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -79,11 +86,13 @@ namespace PurpleYam_POS.View.UserControls
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
+            viewModel.stModel = new SaleTransactionModel();
             viewModel.ProductBS.Clear();
             viewModel.LoadProducts();
             Tax = "0.00";
             SubTotal = "0.00";
             TotalAmount = "0.00";
+            TotalAmountB = TotalAmount;
         }
 
         private void isClicked(object button)
@@ -101,10 +110,47 @@ namespace PurpleYam_POS.View.UserControls
                     {
                         btn.BackColor = Color.White;
                         btn.ForeColor = Color.Black;
-
                     }
                 }
             }
+        }
+
+        private void printer_Click(object sender, EventArgs e)
+        {
+
+            if(Notification.Confim(FormMain.Instance,$"{(Properties.Settings.Default.printer ? "Disable printer?":"Enable printer?")}","Printer setup") == DialogResult.Yes)
+            {
+                Properties.Settings.Default.printer = !Properties.Settings.Default.printer;
+                Properties.Settings.Default.Save();
+                Properties.Settings.Default.Reload();
+            }
+            
+            printer.Text = Properties.Settings.Default.printer ? "Printer enabled" : "Printer disabled";
+        }
+
+        private void SetPrinter()
+        {
+            printer.Text = Properties.Settings.Default.printer ? "Printer enabled" : "Printer disabled";
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToLongTimeString();
+        }
+
+        private void PointOfSale_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTime_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

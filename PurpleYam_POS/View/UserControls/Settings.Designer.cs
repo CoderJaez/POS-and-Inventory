@@ -29,21 +29,19 @@
         private void InitializeComponent()
         {
             this.mpNav = new MetroFramework.Controls.MetroPanel();
-            this.btnUserRoles = new System.Windows.Forms.Button();
+            this.btnExpenses = new System.Windows.Forms.Button();
             this.btnUnits = new System.Windows.Forms.Button();
             this.btnAddons = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
             this.btnRawMaterials = new System.Windows.Forms.Button();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.mPanel = new MetroFramework.Controls.MetroPanel();
-            this.btnExpenses = new System.Windows.Forms.Button();
             this.mpNav.SuspendLayout();
             this.SuspendLayout();
             // 
             // mpNav
             // 
             this.mpNav.Controls.Add(this.btnExpenses);
-            this.mpNav.Controls.Add(this.btnUserRoles);
             this.mpNav.Controls.Add(this.btnUnits);
             this.mpNav.Controls.Add(this.btnAddons);
             this.mpNav.Controls.Add(this.btnProducts);
@@ -62,25 +60,25 @@
             this.mpNav.VerticalScrollbarHighlightOnWheel = false;
             this.mpNav.VerticalScrollbarSize = 10;
             // 
-            // btnUserRoles
+            // btnExpenses
             // 
-            this.btnUserRoles.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUserRoles.FlatAppearance.BorderSize = 0;
-            this.btnUserRoles.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnUserRoles.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnUserRoles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserRoles.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserRoles.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnUserRoles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUserRoles.Location = new System.Drawing.Point(0, 156);
-            this.btnUserRoles.Name = "btnUserRoles";
-            this.btnUserRoles.Size = new System.Drawing.Size(190, 39);
-            this.btnUserRoles.TabIndex = 7;
-            this.btnUserRoles.Text = "User Roles";
-            this.btnUserRoles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUserRoles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnUserRoles.UseVisualStyleBackColor = true;
-            this.btnUserRoles.Click += new System.EventHandler(this.buttonMenu);
+            this.btnExpenses.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnExpenses.FlatAppearance.BorderSize = 0;
+            this.btnExpenses.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnExpenses.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnExpenses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExpenses.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExpenses.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnExpenses.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExpenses.Location = new System.Drawing.Point(0, 156);
+            this.btnExpenses.Name = "btnExpenses";
+            this.btnExpenses.Size = new System.Drawing.Size(190, 39);
+            this.btnExpenses.TabIndex = 9;
+            this.btnExpenses.Text = "Expenses";
+            this.btnExpenses.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExpenses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExpenses.UseVisualStyleBackColor = true;
+            this.btnExpenses.Click += new System.EventHandler(this.buttonMenu);
             // 
             // btnUnits
             // 
@@ -192,26 +190,6 @@
             this.mPanel.VerticalScrollbarHighlightOnWheel = false;
             this.mPanel.VerticalScrollbarSize = 10;
             // 
-            // btnExpenses
-            // 
-            this.btnExpenses.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnExpenses.FlatAppearance.BorderSize = 0;
-            this.btnExpenses.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnExpenses.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnExpenses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExpenses.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExpenses.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnExpenses.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExpenses.Location = new System.Drawing.Point(0, 195);
-            this.btnExpenses.Name = "btnExpenses";
-            this.btnExpenses.Size = new System.Drawing.Size(190, 39);
-            this.btnExpenses.TabIndex = 9;
-            this.btnExpenses.Text = "Expenses";
-            this.btnExpenses.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExpenses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExpenses.UseVisualStyleBackColor = true;
-            this.btnExpenses.Click += new System.EventHandler(this.buttonMenu);
-            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,7 +213,6 @@
         private System.Windows.Forms.Button btnUnits;
         private System.Windows.Forms.Button btnProducts;
         private System.Windows.Forms.Button btnRawMaterials;
-        private System.Windows.Forms.Button btnUserRoles;
         private MetroFramework.Controls.MetroPanel mPanel;
         private System.Windows.Forms.Button btnAddons;
         private System.Windows.Forms.Button btnExpenses;

@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.mpNav = new MetroFramework.Controls.MetroPanel();
-            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnReports = new System.Windows.Forms.Button();
             this.btnAccount = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnInventory = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@
             // mpNav
             // 
             this.mpNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
-            this.mpNav.Controls.Add(this.btnLogout);
+            this.mpNav.Controls.Add(this.btnReports);
             this.mpNav.Controls.Add(this.btnAccount);
             this.mpNav.Controls.Add(this.btnSettings);
             this.mpNav.Controls.Add(this.btnInventory);
@@ -71,25 +71,26 @@
             this.mpNav.VerticalScrollbarHighlightOnWheel = false;
             this.mpNav.VerticalScrollbarSize = 10;
             // 
-            // btnLogout
+            // btnReports
             // 
-            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLogout.FlatAppearance.BorderSize = 0;
-            this.btnLogout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnLogout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
-            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(0, 395);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(190, 39);
-            this.btnLogout.TabIndex = 9;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnReports.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReports.FlatAppearance.BorderSize = 0;
+            this.btnReports.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnReports.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReports.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReports.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReports.Image = ((System.Drawing.Image)(resources.GetObject("btnReports.Image")));
+            this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReports.Location = new System.Drawing.Point(0, 395);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Size = new System.Drawing.Size(190, 39);
+            this.btnReports.TabIndex = 11;
+            this.btnReports.Text = "Reports";
+            this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReports.UseVisualStyleBackColor = true;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnAccount
             // 
@@ -106,10 +107,11 @@
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(190, 39);
             this.btnAccount.TabIndex = 8;
-            this.btnAccount.Text = "My Account";
+            this.btnAccount.Text = "User Accounts";
             this.btnAccount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAccount.UseVisualStyleBackColor = true;
+            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
             // 
             // btnSettings
             // 
@@ -252,6 +254,7 @@
             // mPanel
             // 
             this.mPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mPanel.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mPanel.HorizontalScrollbarBarColor = true;
             this.mPanel.HorizontalScrollbarHighlightOnWheel = false;
             this.mPanel.HorizontalScrollbarSize = 10;
@@ -290,7 +293,7 @@
         private System.Windows.Forms.Button btnInventory;
         private System.Windows.Forms.Button btnExpenses;
         private System.Windows.Forms.Button btnAccount;
-        private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnPOS;
+        private System.Windows.Forms.Button btnReports;
     }
 }

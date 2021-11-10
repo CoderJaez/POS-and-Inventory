@@ -51,14 +51,13 @@
             this.cbRemarks = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.dgProductionInv = new System.Windows.Forms.DataGridView();
-            this.dgProductionStock = new System.Windows.Forms.DataGridView();
             this.productIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qualityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.particularsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductionInvBS = new System.Windows.Forms.BindingSource(this.components);
-            this.ProductionStockBS = new System.Windows.Forms.BindingSource(this.components);
+            this.dgProductionStock = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,10 +65,11 @@
             this.particularsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateStockinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtyDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductionStockBS = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductionInv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgProductionStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionInvBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProductionStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionStockBS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -174,9 +174,7 @@
             this.cbRemarks.FormattingEnabled = true;
             this.cbRemarks.Items.AddRange(new object[] {
             "ERRONEOUS ENTRY",
-            "EXPIRED",
-            "DAMAGE",
-            "SHORTAGE"});
+            "SPOILAGE"});
             this.cbRemarks.Location = new System.Drawing.Point(428, 71);
             this.cbRemarks.Name = "cbRemarks";
             this.cbRemarks.Size = new System.Drawing.Size(191, 25);
@@ -263,6 +261,47 @@
             this.dgProductionInv.TabIndex = 25;
             this.dgProductionInv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgRawMat_DataBindingComplete);
             // 
+            // productIdDataGridViewTextBoxColumn
+            // 
+            this.productIdDataGridViewTextBoxColumn.DataPropertyName = "ProductId";
+            this.productIdDataGridViewTextBoxColumn.HeaderText = "ProductId";
+            this.productIdDataGridViewTextBoxColumn.Name = "productIdDataGridViewTextBoxColumn";
+            this.productIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // productDataGridViewTextBoxColumn
+            // 
+            this.productDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
+            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
+            this.productDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qualityDataGridViewTextBoxColumn
+            // 
+            this.qualityDataGridViewTextBoxColumn.DataPropertyName = "Quality";
+            this.qualityDataGridViewTextBoxColumn.HeaderText = "Quality";
+            this.qualityDataGridViewTextBoxColumn.Name = "qualityDataGridViewTextBoxColumn";
+            this.qualityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // particularsDataGridViewTextBoxColumn
+            // 
+            this.particularsDataGridViewTextBoxColumn.DataPropertyName = "Particulars";
+            this.particularsDataGridViewTextBoxColumn.HeaderText = "Particulars";
+            this.particularsDataGridViewTextBoxColumn.Name = "particularsDataGridViewTextBoxColumn";
+            this.particularsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtyDataGridViewTextBoxColumn
+            // 
+            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
+            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
+            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ProductionInvBS
+            // 
+            this.ProductionInvBS.DataSource = typeof(PurpleYam_POS.Model.ProductModel);
+            // 
             // dgProductionStock
             // 
             this.dgProductionStock.AllowUserToAddRows = false;
@@ -329,51 +368,6 @@
             this.dgProductionStock.TabIndex = 24;
             this.dgProductionStock.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgRawMat_DataBindingComplete);
             // 
-            // productIdDataGridViewTextBoxColumn
-            // 
-            this.productIdDataGridViewTextBoxColumn.DataPropertyName = "ProductId";
-            this.productIdDataGridViewTextBoxColumn.HeaderText = "ProductId";
-            this.productIdDataGridViewTextBoxColumn.Name = "productIdDataGridViewTextBoxColumn";
-            this.productIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // productDataGridViewTextBoxColumn
-            // 
-            this.productDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
-            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
-            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
-            this.productDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // qualityDataGridViewTextBoxColumn
-            // 
-            this.qualityDataGridViewTextBoxColumn.DataPropertyName = "Quality";
-            this.qualityDataGridViewTextBoxColumn.HeaderText = "Quality";
-            this.qualityDataGridViewTextBoxColumn.Name = "qualityDataGridViewTextBoxColumn";
-            this.qualityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // particularsDataGridViewTextBoxColumn
-            // 
-            this.particularsDataGridViewTextBoxColumn.DataPropertyName = "Particulars";
-            this.particularsDataGridViewTextBoxColumn.HeaderText = "Particulars";
-            this.particularsDataGridViewTextBoxColumn.Name = "particularsDataGridViewTextBoxColumn";
-            this.particularsDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // qtyDataGridViewTextBoxColumn
-            // 
-            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
-            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
-            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
-            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ProductionInvBS
-            // 
-            this.ProductionInvBS.DataSource = typeof(PurpleYam_POS.Model.ProductModel);
-            // 
-            // ProductionStockBS
-            // 
-            this.ProductionStockBS.DataSource = typeof(PurpleYam_POS.Model.ProductModel);
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -428,6 +422,10 @@
             this.qtyDataGridViewTextBoxColumn1.Name = "qtyDataGridViewTextBoxColumn1";
             this.qtyDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
+            // ProductionStockBS
+            // 
+            this.ProductionStockBS.DataSource = typeof(PurpleYam_POS.Model.ProductModel);
+            // 
             // StockAdjProduction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -438,14 +436,14 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StockAdjProduction";
             this.Size = new System.Drawing.Size(883, 687);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductionInv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgProductionStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionInvBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProductionStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionStockBS)).EndInit();
             this.ResumeLayout(false);
 

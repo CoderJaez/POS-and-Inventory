@@ -34,35 +34,35 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockinProduction));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockinProduction));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dateTPDateArrival = new System.Windows.Forms.DateTimePicker();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.dtpProduction = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dgProductionStockin = new System.Windows.Forms.DataGridView();
-            this.dgProduct = new System.Windows.Forms.DataGridView();
-            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductionBS = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.particularsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qualityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.ProductStockinBS = new System.Windows.Forms.BindingSource(this.components);
-            this.btnClear = new System.Windows.Forms.Button();
+            this.dgProduct = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductionBS = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductionStockin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductStockinBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductStockinBS)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -81,7 +81,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnClear);
-            this.panel1.Controls.Add(this.dateTPDateArrival);
+            this.panel1.Controls.Add(this.dtpProduction);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -90,14 +90,33 @@
             this.panel1.Size = new System.Drawing.Size(1069, 54);
             this.panel1.TabIndex = 20;
             // 
-            // dateTPDateArrival
+            // btnClear
             // 
-            this.dateTPDateArrival.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTPDateArrival.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTPDateArrival.Location = new System.Drawing.Point(116, 24);
-            this.dateTPDateArrival.Name = "dateTPDateArrival";
-            this.dateTPDateArrival.Size = new System.Drawing.Size(161, 24);
-            this.dateTPDateArrival.TabIndex = 15;
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
+            this.btnClear.FlatAppearance.BorderSize = 0;
+            this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClear.Location = new System.Drawing.Point(571, 20);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(81, 30);
+            this.btnClear.TabIndex = 19;
+            this.btnClear.Text = "&Clear";
+            this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClear.UseVisualStyleBackColor = false;
+            // 
+            // dtpProduction
+            // 
+            this.dtpProduction.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpProduction.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpProduction.Location = new System.Drawing.Point(146, 26);
+            this.dtpProduction.Name = "dtpProduction";
+            this.dtpProduction.Size = new System.Drawing.Size(161, 24);
+            this.dtpProduction.TabIndex = 15;
             // 
             // btnSave
             // 
@@ -124,9 +143,9 @@
             this.label4.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(18, 27);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 19);
+            this.label4.Size = new System.Drawing.Size(126, 19);
             this.label4.TabIndex = 16;
-            this.label4.Text = "Date Arrival:";
+            this.label4.Text = "Date Production:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dgProductionStockin
@@ -195,6 +214,53 @@
             this.dgProductionStockin.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgProductionStockin_DataError);
             this.dgProductionStockin.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgProductionStockin_EditingControlShowing);
             // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // productDataGridViewTextBoxColumn1
+            // 
+            this.productDataGridViewTextBoxColumn1.DataPropertyName = "Product";
+            this.productDataGridViewTextBoxColumn1.HeaderText = "Product";
+            this.productDataGridViewTextBoxColumn1.Name = "productDataGridViewTextBoxColumn1";
+            this.productDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // particularsDataGridViewTextBoxColumn
+            // 
+            this.particularsDataGridViewTextBoxColumn.DataPropertyName = "Particulars";
+            this.particularsDataGridViewTextBoxColumn.HeaderText = "Particulars";
+            this.particularsDataGridViewTextBoxColumn.Name = "particularsDataGridViewTextBoxColumn";
+            this.particularsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qualityDataGridViewTextBoxColumn
+            // 
+            this.qualityDataGridViewTextBoxColumn.DataPropertyName = "Quality";
+            this.qualityDataGridViewTextBoxColumn.HeaderText = "Quality";
+            this.qualityDataGridViewTextBoxColumn.Name = "qualityDataGridViewTextBoxColumn";
+            this.qualityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtyDataGridViewTextBoxColumn
+            // 
+            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
+            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
+            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            // 
+            // delete
+            // 
+            this.delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.delete.HeaderText = "";
+            this.delete.Image = ((System.Drawing.Image)(resources.GetObject("delete.Image")));
+            this.delete.Name = "delete";
+            this.delete.ReadOnly = true;
+            this.delete.Width = 6;
+            // 
+            // ProductStockinBS
+            // 
+            this.ProductStockinBS.DataSource = typeof(PurpleYam_POS.Model.ProductModel);
+            // 
             // dgProduct
             // 
             this.dgProduct.AllowUserToAddRows = false;
@@ -255,15 +321,6 @@
             this.dgProduct.TabIndex = 23;
             this.dgProduct.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgProductionStockin_DataBindingComplete);
             // 
-            // delete
-            // 
-            this.delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.delete.HeaderText = "";
-            this.delete.Image = ((System.Drawing.Image)(resources.GetObject("delete.Image")));
-            this.delete.Name = "delete";
-            this.delete.ReadOnly = true;
-            this.delete.Width = 6;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -284,63 +341,6 @@
             // 
             this.ProductionBS.DataSource = typeof(PurpleYam_POS.Model.ProductModel);
             // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            this.idDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // productDataGridViewTextBoxColumn1
-            // 
-            this.productDataGridViewTextBoxColumn1.DataPropertyName = "Product";
-            this.productDataGridViewTextBoxColumn1.HeaderText = "Product";
-            this.productDataGridViewTextBoxColumn1.Name = "productDataGridViewTextBoxColumn1";
-            this.productDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // particularsDataGridViewTextBoxColumn
-            // 
-            this.particularsDataGridViewTextBoxColumn.DataPropertyName = "Particulars";
-            this.particularsDataGridViewTextBoxColumn.HeaderText = "Particulars";
-            this.particularsDataGridViewTextBoxColumn.Name = "particularsDataGridViewTextBoxColumn";
-            this.particularsDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // qualityDataGridViewTextBoxColumn
-            // 
-            this.qualityDataGridViewTextBoxColumn.DataPropertyName = "Quality";
-            this.qualityDataGridViewTextBoxColumn.HeaderText = "Quality";
-            this.qualityDataGridViewTextBoxColumn.Name = "qualityDataGridViewTextBoxColumn";
-            this.qualityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // qtyDataGridViewTextBoxColumn
-            // 
-            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
-            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
-            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
-            // 
-            // ProductStockinBS
-            // 
-            this.ProductStockinBS.DataSource = typeof(PurpleYam_POS.Model.ProductModel);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
-            this.btnClear.FlatAppearance.BorderSize = 0;
-            this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClear.Location = new System.Drawing.Point(571, 20);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(81, 30);
-            this.btnClear.TabIndex = 19;
-            this.btnClear.Text = "&Clear";
-            this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClear.UseVisualStyleBackColor = false;
-            // 
             // StockinProduction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -357,9 +357,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductionStockin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductStockinBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductStockinBS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -368,7 +368,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DateTimePicker dateTPDateArrival;
+        private System.Windows.Forms.DateTimePicker dtpProduction;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgProductionStockin;

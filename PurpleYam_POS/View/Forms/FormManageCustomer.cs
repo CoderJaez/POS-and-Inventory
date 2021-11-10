@@ -14,6 +14,7 @@ namespace PurpleYam_POS.View.Forms
     public partial class FormManageCustomer : MetroFramework.Forms.MetroForm
     {
         private PosViewModel viewModel;
+        public string Search { get { return tbSearch.Text; } set { tbSearch.Text = value; } }
         public FormManageCustomer(PosViewModel vm)
         {
             InitializeComponent();
@@ -60,6 +61,12 @@ namespace PurpleYam_POS.View.Forms
                     ((TextBox)ctr).Clear();
                 }
             }
+        }
+
+        private void tbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+                 viewModel.LoadCustomers(Search);
         }
     }
 }

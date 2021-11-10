@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Checkout));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblContactNo = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.tbCashTendered = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.labelBalance = new System.Windows.Forms.Label();
@@ -47,8 +49,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.reserveTime = new System.Windows.Forms.DateTimePicker();
             this.reserveDate = new System.Windows.Forms.DateTimePicker();
+            this.lblCustomer = new System.Windows.Forms.Label();
             this.panelTotal = new System.Windows.Forms.Panel();
             this.labelTax = new System.Windows.Forms.Label();
             this.labelTotal = new System.Windows.Forms.Label();
@@ -58,7 +60,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgOrders = new System.Windows.Forms.DataGridView();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,8 +67,7 @@
             this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductBS = new System.Windows.Forms.BindingSource(this.components);
-            this.lblCustomer = new System.Windows.Forms.Label();
-            this.lblContactNo = new System.Windows.Forms.Label();
+            this.reserveTime = new System.Windows.Forms.DateTimePicker();
             this.mainPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelTotal.SuspendLayout();
@@ -126,6 +126,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(395, 490);
             this.panel1.TabIndex = 24;
+            // 
+            // lblContactNo
+            // 
+            this.lblContactNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblContactNo.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContactNo.Location = new System.Drawing.Point(21, 129);
+            this.lblContactNo.Name = "lblContactNo";
+            this.lblContactNo.Size = new System.Drawing.Size(349, 25);
+            this.lblContactNo.TabIndex = 27;
+            this.lblContactNo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearch.Location = new System.Drawing.Point(295, 73);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 25;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // tbCashTendered
             // 
@@ -258,7 +280,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(250, 160);
+            this.label7.Location = new System.Drawing.Point(253, 167);
             this.label7.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 17);
@@ -266,20 +288,22 @@
             this.label7.Text = "Time:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // reserveTime
-            // 
-            this.reserveTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.reserveTime.Location = new System.Drawing.Point(253, 180);
-            this.reserveTime.Name = "reserveTime";
-            this.reserveTime.Size = new System.Drawing.Size(117, 23);
-            this.reserveTime.TabIndex = 16;
-            // 
             // reserveDate
             // 
+            this.reserveDate.CalendarFont = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reserveDate.Location = new System.Drawing.Point(21, 187);
             this.reserveDate.Name = "reserveDate";
             this.reserveDate.Size = new System.Drawing.Size(226, 23);
             this.reserveDate.TabIndex = 15;
+            // 
+            // lblCustomer
+            // 
+            this.lblCustomer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblCustomer.Location = new System.Drawing.Point(21, 71);
+            this.lblCustomer.Name = "lblCustomer";
+            this.lblCustomer.Size = new System.Drawing.Size(349, 25);
+            this.lblCustomer.TabIndex = 26;
+            this.lblCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panelTotal
             // 
@@ -388,14 +412,14 @@
             this.dgOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgOrders.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgOrders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgOrders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgOrders.ColumnHeadersHeight = 30;
             this.dgOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -406,15 +430,15 @@
             this.qtyDataGridViewTextBoxColumn,
             this.subTotalDataGridViewTextBoxColumn});
             this.dgOrders.DataSource = this.ProductBS;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgOrders.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgOrders.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgOrders.EnableHeadersVisualStyles = false;
             this.dgOrders.Location = new System.Drawing.Point(5, 58);
             this.dgOrders.Margin = new System.Windows.Forms.Padding(30);
@@ -431,18 +455,6 @@
             this.dgOrders.Size = new System.Drawing.Size(445, 352);
             this.dgOrders.TabIndex = 21;
             this.dgOrders.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgOrders_DataBindingComplete);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearch.Location = new System.Drawing.Point(295, 73);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 25;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -499,23 +511,15 @@
             // 
             this.ProductBS.DataSource = typeof(PurpleYam_POS.Model.SoldProductModel);
             // 
-            // lblCustomer
+            // reserveTime
             // 
-            this.lblCustomer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblCustomer.Location = new System.Drawing.Point(21, 71);
-            this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(349, 25);
-            this.lblCustomer.TabIndex = 26;
-            this.lblCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblContactNo
-            // 
-            this.lblContactNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblContactNo.Location = new System.Drawing.Point(21, 129);
-            this.lblContactNo.Name = "lblContactNo";
-            this.lblContactNo.Size = new System.Drawing.Size(349, 25);
-            this.lblContactNo.TabIndex = 27;
-            this.lblContactNo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.reserveTime.CalendarFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reserveTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.reserveTime.Location = new System.Drawing.Point(253, 187);
+            this.reserveTime.Name = "reserveTime";
+            this.reserveTime.ShowUpDown = true;
+            this.reserveTime.Size = new System.Drawing.Size(117, 23);
+            this.reserveTime.TabIndex = 16;
             // 
             // Checkout
             // 
@@ -553,7 +557,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker reserveTime;
         private System.Windows.Forms.DateTimePicker reserveDate;
         private System.Windows.Forms.Panel panelTotal;
         private System.Windows.Forms.Label labelTax;
@@ -577,5 +580,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblContactNo;
         private System.Windows.Forms.Label lblCustomer;
+        private System.Windows.Forms.DateTimePicker reserveTime;
     }
 }

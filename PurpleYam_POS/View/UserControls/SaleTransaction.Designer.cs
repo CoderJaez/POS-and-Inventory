@@ -43,16 +43,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dgProduction = new System.Windows.Forms.DataGridView();
-            this.WTransactionNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.downPaymentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.balanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashTenderedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.changeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaleTransactionBS = new System.Windows.Forms.BindingSource(this.components);
             this.tabSales = new MetroFramework.Controls.MetroTabControl();
             this.walk_inTab = new MetroFramework.Controls.MetroTabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -68,19 +58,6 @@
             this.dtprFrom = new System.Windows.Forms.DateTimePicker();
             this.dtprTo = new System.Windows.Forms.DateTimePicker();
             this.dgReservation = new System.Windows.Forms.DataGridView();
-            this.TransactionNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DownPayment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CashTendered = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Change = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReservationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransactionType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClaimStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cancel = new System.Windows.Forms.DataGridViewImageColumn();
-            this.claim = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.dgProduct = new System.Windows.Forms.DataGridView();
@@ -89,8 +66,24 @@
             this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subTotalDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductBS = new System.Windows.Forms.BindingSource(this.components);
+            this.SaleTransactionBS = new System.Windows.Forms.BindingSource(this.components);
+            this.ReservationBS = new System.Windows.Forms.BindingSource(this.components);
+            this.WTransactionNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cashTenderedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.changeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.downPaymentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalAmountDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.balanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cashTenderedDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.changeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionDateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reservationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.claim = new System.Windows.Forms.DataGridViewImageColumn();
+            this.cancel = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduction)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SaleTransactionBS)).BeginInit();
             this.tabSales.SuspendLayout();
             this.walk_inTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -100,6 +93,8 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaleTransactionBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReservationBS)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -140,10 +135,6 @@
             this.dgProduction.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.WTransactionNo,
             this.transactionDateDataGridViewTextBoxColumn,
-            this.downPaymentDataGridViewTextBoxColumn,
-            this.balanceDataGridViewTextBoxColumn,
-            this.vatDataGridViewTextBoxColumn,
-            this.subTotalDataGridViewTextBoxColumn,
             this.totalAmountDataGridViewTextBoxColumn,
             this.cashTenderedDataGridViewTextBoxColumn,
             this.changeDataGridViewTextBoxColumn});
@@ -153,7 +144,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Plum;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgProduction.DefaultCellStyle = dataGridViewCellStyle2;
@@ -182,77 +173,6 @@
             this.dgProduction.TabIndex = 27;
             this.dgProduction.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgProduction_DataBindingComplete);
             // 
-            // WTransactionNo
-            // 
-            this.WTransactionNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.WTransactionNo.DataPropertyName = "TransactionNo";
-            this.WTransactionNo.HeaderText = "TransactionNo";
-            this.WTransactionNo.Name = "WTransactionNo";
-            this.WTransactionNo.ReadOnly = true;
-            this.WTransactionNo.Width = 5;
-            // 
-            // transactionDateDataGridViewTextBoxColumn
-            // 
-            this.transactionDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.transactionDateDataGridViewTextBoxColumn.DataPropertyName = "TransactionDate";
-            this.transactionDateDataGridViewTextBoxColumn.HeaderText = "TransactionDate";
-            this.transactionDateDataGridViewTextBoxColumn.Name = "transactionDateDataGridViewTextBoxColumn";
-            this.transactionDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.transactionDateDataGridViewTextBoxColumn.Width = 5;
-            // 
-            // downPaymentDataGridViewTextBoxColumn
-            // 
-            this.downPaymentDataGridViewTextBoxColumn.DataPropertyName = "DownPayment";
-            this.downPaymentDataGridViewTextBoxColumn.HeaderText = "Down";
-            this.downPaymentDataGridViewTextBoxColumn.Name = "downPaymentDataGridViewTextBoxColumn";
-            this.downPaymentDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // balanceDataGridViewTextBoxColumn
-            // 
-            this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
-            this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
-            this.balanceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // vatDataGridViewTextBoxColumn
-            // 
-            this.vatDataGridViewTextBoxColumn.DataPropertyName = "Vat";
-            this.vatDataGridViewTextBoxColumn.HeaderText = "Vat";
-            this.vatDataGridViewTextBoxColumn.Name = "vatDataGridViewTextBoxColumn";
-            this.vatDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // subTotalDataGridViewTextBoxColumn
-            // 
-            this.subTotalDataGridViewTextBoxColumn.DataPropertyName = "SubTotal";
-            this.subTotalDataGridViewTextBoxColumn.HeaderText = "SubTotal";
-            this.subTotalDataGridViewTextBoxColumn.Name = "subTotalDataGridViewTextBoxColumn";
-            this.subTotalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalAmountDataGridViewTextBoxColumn
-            // 
-            this.totalAmountDataGridViewTextBoxColumn.DataPropertyName = "TotalAmount";
-            this.totalAmountDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.totalAmountDataGridViewTextBoxColumn.Name = "totalAmountDataGridViewTextBoxColumn";
-            this.totalAmountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cashTenderedDataGridViewTextBoxColumn
-            // 
-            this.cashTenderedDataGridViewTextBoxColumn.DataPropertyName = "CashTendered";
-            this.cashTenderedDataGridViewTextBoxColumn.HeaderText = "Cash Tendered";
-            this.cashTenderedDataGridViewTextBoxColumn.Name = "cashTenderedDataGridViewTextBoxColumn";
-            this.cashTenderedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // changeDataGridViewTextBoxColumn
-            // 
-            this.changeDataGridViewTextBoxColumn.DataPropertyName = "Change";
-            this.changeDataGridViewTextBoxColumn.HeaderText = "Change";
-            this.changeDataGridViewTextBoxColumn.Name = "changeDataGridViewTextBoxColumn";
-            this.changeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // SaleTransactionBS
-            // 
-            this.SaleTransactionBS.DataSource = typeof(PurpleYam_POS.Model.SaleTransactionModel);
-            // 
             // tabSales
             // 
             this.tabSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -264,7 +184,7 @@
             this.tabSales.Location = new System.Drawing.Point(35, 77);
             this.tabSales.Margin = new System.Windows.Forms.Padding(4);
             this.tabSales.Name = "tabSales";
-            this.tabSales.SelectedIndex = 0;
+            this.tabSales.SelectedIndex = 1;
             this.tabSales.Size = new System.Drawing.Size(590, 525);
             this.tabSales.Style = MetroFramework.MetroColorStyle.Purple;
             this.tabSales.TabIndex = 28;
@@ -350,7 +270,7 @@
             this.reservationTab.Controls.Add(this.dgReservation);
             this.reservationTab.HorizontalScrollbarBarColor = true;
             this.reservationTab.HorizontalScrollbarHighlightOnWheel = false;
-            this.reservationTab.HorizontalScrollbarSize = 8;
+            this.reservationTab.HorizontalScrollbarSize = 6;
             this.reservationTab.Location = new System.Drawing.Point(4, 41);
             this.reservationTab.Margin = new System.Windows.Forms.Padding(4);
             this.reservationTab.Name = "reservationTab";
@@ -359,7 +279,7 @@
             this.reservationTab.Text = "Reservation";
             this.reservationTab.VerticalScrollbarBarColor = true;
             this.reservationTab.VerticalScrollbarHighlightOnWheel = false;
-            this.reservationTab.VerticalScrollbarSize = 8;
+            this.reservationTab.VerticalScrollbarSize = 6;
             // 
             // groupBox2
             // 
@@ -385,7 +305,7 @@
             // 
             this.tbSearch.CustomButton.Image = null;
             this.tbSearch.CustomButton.Location = new System.Drawing.Point(158, 1);
-            this.tbSearch.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSearch.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.tbSearch.CustomButton.Name = "";
             this.tbSearch.CustomButton.Size = new System.Drawing.Size(16, 16);
             this.tbSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -457,6 +377,7 @@
             this.dgReservation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgReservation.AutoGenerateColumns = false;
             this.dgReservation.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgReservation.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgReservation.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -470,25 +391,23 @@
             this.dgReservation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgReservation.ColumnHeadersHeight = 35;
             this.dgReservation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TransactionNo,
-            this.Customer,
-            this.DownPayment,
-            this.Balance,
-            this.TotalAmount,
-            this.CashTendered,
-            this.Change,
-            this.TransactionDate,
-            this.ReservationDate,
-            this.TransactionType,
-            this.ClaimStatus,
-            this.cancel,
-            this.claim});
+            this.transactionNoDataGridViewTextBoxColumn,
+            this.downPaymentDataGridViewTextBoxColumn,
+            this.totalAmountDataGridViewTextBoxColumn1,
+            this.balanceDataGridViewTextBoxColumn,
+            this.cashTenderedDataGridViewTextBoxColumn1,
+            this.changeDataGridViewTextBoxColumn1,
+            this.transactionDateDataGridViewTextBoxColumn1,
+            this.reservationDateDataGridViewTextBoxColumn,
+            this.claim,
+            this.cancel});
+            this.dgReservation.DataSource = this.ReservationBS;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(73)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgReservation.DefaultCellStyle = dataGridViewCellStyle6;
@@ -515,90 +434,6 @@
             this.dgReservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgReservation.Size = new System.Drawing.Size(539, 392);
             this.dgReservation.TabIndex = 28;
-            // 
-            // TransactionNo
-            // 
-            this.TransactionNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.TransactionNo.HeaderText = "TransactionNo";
-            this.TransactionNo.Name = "TransactionNo";
-            this.TransactionNo.ReadOnly = true;
-            this.TransactionNo.Width = 5;
-            // 
-            // Customer
-            // 
-            this.Customer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Customer.HeaderText = "Customer";
-            this.Customer.Name = "Customer";
-            this.Customer.ReadOnly = true;
-            this.Customer.Width = 5;
-            // 
-            // DownPayment
-            // 
-            this.DownPayment.HeaderText = "Down";
-            this.DownPayment.Name = "DownPayment";
-            this.DownPayment.ReadOnly = true;
-            // 
-            // Balance
-            // 
-            this.Balance.HeaderText = "Balance";
-            this.Balance.Name = "Balance";
-            this.Balance.ReadOnly = true;
-            // 
-            // TotalAmount
-            // 
-            this.TotalAmount.HeaderText = "Total";
-            this.TotalAmount.Name = "TotalAmount";
-            this.TotalAmount.ReadOnly = true;
-            // 
-            // CashTendered
-            // 
-            this.CashTendered.HeaderText = "Cash Tendered";
-            this.CashTendered.Name = "CashTendered";
-            this.CashTendered.ReadOnly = true;
-            // 
-            // Change
-            // 
-            this.Change.HeaderText = "Change";
-            this.Change.Name = "Change";
-            this.Change.ReadOnly = true;
-            // 
-            // TransactionDate
-            // 
-            this.TransactionDate.HeaderText = "TransactionDate";
-            this.TransactionDate.Name = "TransactionDate";
-            this.TransactionDate.ReadOnly = true;
-            // 
-            // ReservationDate
-            // 
-            this.ReservationDate.HeaderText = "Reservation Date";
-            this.ReservationDate.Name = "ReservationDate";
-            this.ReservationDate.ReadOnly = true;
-            // 
-            // TransactionType
-            // 
-            this.TransactionType.HeaderText = "TransactionType";
-            this.TransactionType.Name = "TransactionType";
-            this.TransactionType.ReadOnly = true;
-            this.TransactionType.Visible = false;
-            // 
-            // ClaimStatus
-            // 
-            this.ClaimStatus.HeaderText = "ClaimStatus";
-            this.ClaimStatus.Name = "ClaimStatus";
-            this.ClaimStatus.ReadOnly = true;
-            this.ClaimStatus.Visible = false;
-            // 
-            // cancel
-            // 
-            this.cancel.HeaderText = "";
-            this.cancel.Name = "cancel";
-            this.cancel.ReadOnly = true;
-            // 
-            // claim
-            // 
-            this.claim.HeaderText = "";
-            this.claim.Name = "claim";
-            this.claim.ReadOnly = true;
             // 
             // panel1
             // 
@@ -723,6 +558,129 @@
             // 
             this.ProductBS.DataSource = typeof(PurpleYam_POS.Model.SoldProductModel);
             // 
+            // SaleTransactionBS
+            // 
+            this.SaleTransactionBS.DataSource = typeof(PurpleYam_POS.Model.SaleTransactionModel);
+            // 
+            // ReservationBS
+            // 
+            this.ReservationBS.DataSource = typeof(PurpleYam_POS.Model.SaleTransactionModel);
+            // 
+            // WTransactionNo
+            // 
+            this.WTransactionNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.WTransactionNo.DataPropertyName = "TransactionNo";
+            this.WTransactionNo.HeaderText = "TransactionNo";
+            this.WTransactionNo.Name = "WTransactionNo";
+            this.WTransactionNo.ReadOnly = true;
+            this.WTransactionNo.Width = 5;
+            // 
+            // transactionDateDataGridViewTextBoxColumn
+            // 
+            this.transactionDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.transactionDateDataGridViewTextBoxColumn.DataPropertyName = "TransactionDate";
+            this.transactionDateDataGridViewTextBoxColumn.HeaderText = "TransactionDate";
+            this.transactionDateDataGridViewTextBoxColumn.Name = "transactionDateDataGridViewTextBoxColumn";
+            this.transactionDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.transactionDateDataGridViewTextBoxColumn.Width = 5;
+            // 
+            // totalAmountDataGridViewTextBoxColumn
+            // 
+            this.totalAmountDataGridViewTextBoxColumn.DataPropertyName = "TotalAmount";
+            this.totalAmountDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.totalAmountDataGridViewTextBoxColumn.Name = "totalAmountDataGridViewTextBoxColumn";
+            this.totalAmountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cashTenderedDataGridViewTextBoxColumn
+            // 
+            this.cashTenderedDataGridViewTextBoxColumn.DataPropertyName = "CashTendered";
+            this.cashTenderedDataGridViewTextBoxColumn.HeaderText = "Cash Tendered";
+            this.cashTenderedDataGridViewTextBoxColumn.Name = "cashTenderedDataGridViewTextBoxColumn";
+            this.cashTenderedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // changeDataGridViewTextBoxColumn
+            // 
+            this.changeDataGridViewTextBoxColumn.DataPropertyName = "Change";
+            this.changeDataGridViewTextBoxColumn.HeaderText = "Change";
+            this.changeDataGridViewTextBoxColumn.Name = "changeDataGridViewTextBoxColumn";
+            this.changeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // transactionNoDataGridViewTextBoxColumn
+            // 
+            this.transactionNoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.transactionNoDataGridViewTextBoxColumn.DataPropertyName = "TransactionNo";
+            this.transactionNoDataGridViewTextBoxColumn.HeaderText = "TransactionNo";
+            this.transactionNoDataGridViewTextBoxColumn.Name = "transactionNoDataGridViewTextBoxColumn";
+            this.transactionNoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.transactionNoDataGridViewTextBoxColumn.Width = 5;
+            // 
+            // downPaymentDataGridViewTextBoxColumn
+            // 
+            this.downPaymentDataGridViewTextBoxColumn.DataPropertyName = "DownPayment";
+            this.downPaymentDataGridViewTextBoxColumn.HeaderText = "Down";
+            this.downPaymentDataGridViewTextBoxColumn.Name = "downPaymentDataGridViewTextBoxColumn";
+            this.downPaymentDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalAmountDataGridViewTextBoxColumn1
+            // 
+            this.totalAmountDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.totalAmountDataGridViewTextBoxColumn1.DataPropertyName = "TotalAmount";
+            this.totalAmountDataGridViewTextBoxColumn1.HeaderText = "Total";
+            this.totalAmountDataGridViewTextBoxColumn1.Name = "totalAmountDataGridViewTextBoxColumn1";
+            this.totalAmountDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.totalAmountDataGridViewTextBoxColumn1.Width = 68;
+            // 
+            // balanceDataGridViewTextBoxColumn
+            // 
+            this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
+            this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
+            this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
+            this.balanceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cashTenderedDataGridViewTextBoxColumn1
+            // 
+            this.cashTenderedDataGridViewTextBoxColumn1.DataPropertyName = "CashTendered";
+            this.cashTenderedDataGridViewTextBoxColumn1.HeaderText = "Cash";
+            this.cashTenderedDataGridViewTextBoxColumn1.Name = "cashTenderedDataGridViewTextBoxColumn1";
+            this.cashTenderedDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // changeDataGridViewTextBoxColumn1
+            // 
+            this.changeDataGridViewTextBoxColumn1.DataPropertyName = "Change";
+            this.changeDataGridViewTextBoxColumn1.HeaderText = "Change";
+            this.changeDataGridViewTextBoxColumn1.Name = "changeDataGridViewTextBoxColumn1";
+            this.changeDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // transactionDateDataGridViewTextBoxColumn1
+            // 
+            this.transactionDateDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.transactionDateDataGridViewTextBoxColumn1.DataPropertyName = "TransactionDate";
+            this.transactionDateDataGridViewTextBoxColumn1.HeaderText = "TransactionDate";
+            this.transactionDateDataGridViewTextBoxColumn1.Name = "transactionDateDataGridViewTextBoxColumn1";
+            this.transactionDateDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.transactionDateDataGridViewTextBoxColumn1.Width = 142;
+            // 
+            // reservationDateDataGridViewTextBoxColumn
+            // 
+            this.reservationDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.reservationDateDataGridViewTextBoxColumn.DataPropertyName = "ReservationDate";
+            this.reservationDateDataGridViewTextBoxColumn.HeaderText = "ReservationDate";
+            this.reservationDateDataGridViewTextBoxColumn.Name = "reservationDateDataGridViewTextBoxColumn";
+            this.reservationDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.reservationDateDataGridViewTextBoxColumn.Width = 144;
+            // 
+            // claim
+            // 
+            this.claim.HeaderText = "";
+            this.claim.Name = "claim";
+            this.claim.ReadOnly = true;
+            // 
+            // cancel
+            // 
+            this.cancel.HeaderText = "";
+            this.cancel.Name = "cancel";
+            this.cancel.ReadOnly = true;
+            // 
             // SaleTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -735,7 +693,6 @@
             this.Name = "SaleTransaction";
             this.Size = new System.Drawing.Size(995, 655);
             ((System.ComponentModel.ISupportInitialize)(this.dgProduction)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SaleTransactionBS)).EndInit();
             this.tabSales.ResumeLayout(false);
             this.walk_inTab.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -747,6 +704,8 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaleTransactionBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReservationBS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -781,27 +740,21 @@
         private System.Windows.Forms.DateTimePicker dtprFrom;
         private System.Windows.Forms.DateTimePicker dtprTo;
         private MetroFramework.Controls.MetroTextBox tbSearch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DownPayment;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CashTendered;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Change;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ReservationDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClaimStatus;
-        private System.Windows.Forms.DataGridViewImageColumn cancel;
-        private System.Windows.Forms.DataGridViewImageColumn claim;
+        private System.Windows.Forms.BindingSource ReservationBS;
         private System.Windows.Forms.DataGridViewTextBoxColumn WTransactionNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn transactionDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn downPaymentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn balanceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vatDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subTotalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalAmountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashTenderedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn changeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn transactionNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn downPaymentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalAmountDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn balanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cashTenderedDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn changeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn transactionDateDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reservationDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn claim;
+        private System.Windows.Forms.DataGridViewImageColumn cancel;
     }
 }

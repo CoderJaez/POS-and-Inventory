@@ -15,6 +15,8 @@ namespace PurpleYam_POS.View.UserControls
         static Dashboard _instance;
         SaleTransaction sales;
         Expenses expenses;
+        Accounts account;
+        Reports report;
         public static Dashboard Instance
         {
             get
@@ -130,6 +132,31 @@ namespace PurpleYam_POS.View.UserControls
             }
             expenses.LoadData();
             mPanel.Controls["Expenses"].BringToFront();
+        }
+
+        private void btnAccount_Click(object sender, EventArgs e)
+        {
+            isClicked(btnAccount);
+            if (!mPanel.Controls.ContainsKey("Accounts"))
+            {
+                account = new Accounts();
+                account.Dock = DockStyle.Fill;
+                mPanel.Controls.Add(account);
+            }
+            account.LoadData();
+            mPanel.Controls["Accounts"].BringToFront();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            isClicked(btnReports);
+            if (!mPanel.Controls.ContainsKey("Reports"))
+            {
+                report = new Reports();
+                report.Dock = DockStyle.Fill;
+                mPanel.Controls.Add(report);
+            }
+            mPanel.Controls["Reports"].BringToFront();
         }
     }
 }

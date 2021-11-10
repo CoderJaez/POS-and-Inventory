@@ -20,7 +20,7 @@ namespace PurpleYam_POS.View.UserControls
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            using (var frmUserRole = new FormUserRoles())
+            using (var frmUserRole = new FormManageUser())
             {
                 frmUserRole.ShowDialog();
             }

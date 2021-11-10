@@ -16,11 +16,17 @@ namespace PurpleYam_POS.Model
         [Required]
         [MinLength(5,ErrorMessage = "Pasword must at least 5 characters or more.")]
         public string Password { get; set; }
+       
         [Required]
         [Compare(nameof(Password),ErrorMessage = "Confirm Password does not matched")]
         public string ConfirmPassword { get; set; }
         [Required]
-        public string AccessRoles { get; set; }
+        public string AccessRole { get; set; }
+
+        public string  Fullname { get { return Customer.Fullname; } }
+
+        public CustomerModel Customer { get; set; }
+
 
     }
 }

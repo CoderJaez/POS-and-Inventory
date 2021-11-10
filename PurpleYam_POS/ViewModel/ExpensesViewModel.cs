@@ -127,19 +127,21 @@ namespace PurpleYam_POS.ViewModel
                 Id = expensesModel.Id,
                 ExpenseId = expensesModel.ExpenseId,
                 Amount = expensesModel.Amount,
-                Date = expensesModel.DateTimeStamp
+                Date = expensesModel.DateTimeStamp,
+                ReceiptNo = expensesModel.ReceiptNo,
+                Remarks = expensesModel.Remarks
             };
 
             if (expensesModel.Id == 0)
             {
-                SaveData("insert into tbl_expenses (ExpenseId, Amount, DateTimeStamp) values (@ExpenseId, @Amount, @Date)", p);
+                SaveData("insert into tbl_expenses (ExpenseId, Amount, DateTimeStamp, ReceiptNo, Remarks) values (@ExpenseId, @Amount, @Date, @ReceiptNo, @Remarks)", p);
                 ExpensesBS.Add(expensesModel);
                 Notification.AlertMessage("New expense added", "Success", Notification.AlertType.SUCCESS);
 
             }
             else
             {
-                SaveData("update tbl_expenses set ExpenseId = @ExpenseId, Amount = @Amount, DateTimeStamp = @Date where Id = @Id", p);
+                SaveData("update tbl_expenses set ExpenseId = @ExpenseId, Amount = @Amount, DateTimeStamp = @Date, ReceipNo = @ReceiptNo, Remarks = @Remarks  where Id = @Id", p);
                 Notification.AlertMessage("Expense updated", "Success", Notification.AlertType.SUCCESS);
             }
         }

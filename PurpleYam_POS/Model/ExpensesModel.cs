@@ -18,5 +18,7 @@ namespace PurpleYam_POS.Model
         public decimal Amount { get; set; }
         public DateTime DateTimeStamp { get; set; }
         public bool Deleted { get; set; }
+        public string Remarks { get; set; }
+        public string ReceiptNo { get; set; }
     }
 }

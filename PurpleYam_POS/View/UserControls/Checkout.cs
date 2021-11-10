@@ -58,7 +58,6 @@ namespace PurpleYam_POS.View.UserControls
             viewModel = _viewModel;
             viewModel.CheckoutBS = ProductBS;
             btnSearch.Click += viewModel.OpenCustomerClick;
-
         }
 
         private void dgOrders_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

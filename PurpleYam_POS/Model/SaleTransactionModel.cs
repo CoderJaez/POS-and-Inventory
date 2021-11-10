@@ -24,6 +24,7 @@ namespace PurpleYam_POS.Model
         public DateTime ReservationDate { get; set; }
         public string ClaimStatus { get; set; }
         public string TransactionType { get; set; }
+        public string Fullname { get { return Customer.Fullname; } }
         public CustomerModel Customer { get; set; }
 
     }

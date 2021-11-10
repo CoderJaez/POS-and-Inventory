@@ -1,7 +1,18 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PurpleYam_POS.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="printer" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="BusinessName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Purple Yam</Value>
+    </Setting>
+    <Setting Name="Header1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Pagadian City</Value>
+    </Setting>
+    <Setting Name="Header2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">09306688182</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

@@ -95,5 +95,21 @@ namespace PurpleYam_POS.View.UserControls
         {
             ((DataGridView)sender).ClearSelection();
         }
+
+        private void cbRemarks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbRemarks.Text == "ERRONEOUS ENTRY")
+            {
+                ckBAdd.Enabled = true;
+                CkbRemove.Enabled = true;
+                CkbRemove.Checked = false;
+                ckBAdd.Checked = false;
+            }
+            else
+            {
+                ckBAdd.Enabled = false;
+                CkbRemove.Checked = true;
+            }
+        }
     }
 }

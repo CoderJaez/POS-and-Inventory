@@ -12,6 +12,7 @@ using PurpleYam_POS.ViewModel;
 using PurpleYam_POS.Model;
 using System.IO;
 using System.Drawing.Drawing2D;
+using PurpleYam_POS.helper;
 
 namespace PurpleYam_POS.View.Forms
 {
@@ -54,12 +55,6 @@ namespace PurpleYam_POS.View.Forms
                 }
             };
             btnSave.Click += delegate {
-                using (ms = new MemoryStream())
-                {
-                    Img.BackgroundImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-
-                }
-
                 if (viewModel.productModel == null)
                 {
                    
@@ -69,7 +64,7 @@ namespace PurpleYam_POS.View.Forms
                             Quality = mcbQuality.Text,
                             Particulars = mcbParticulars.Text,
                             Price = tbPrice.Value,
-                            Image = ms.GetBuffer(),
+                            Image = ImageLoader.ImageBuffer(Img.BackgroundImage),
                             WithAddon = cbWithAddon.Checked
                         };
                 }
@@ -135,11 +130,8 @@ namespace PurpleYam_POS.View.Forms
             cbWithAddon.Checked = viewModel.productModel.WithAddon;
             viewModel.recipeModel = new Recipe { ProductId = viewModel.productModel.Id };
             if(viewModel.productModel.Image != null)
-                using (ms = new MemoryStream(viewModel.productModel.Image))
-                {
-                    Img.BackgroundImage = Image.FromStream(ms);
-
-                }
+                Img.BackgroundImage = ImageLoader.ImageFromStream(viewModel.productModel.Image);
+                
             btnSaveRecipe.Enabled = true;
         }
 
@@ -158,43 +150,13 @@ namespace PurpleYam_POS.View.Forms
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    Img.BackgroundImage = resizeImage(ofd.FileName, new Size(300,300));
+                    Img.BackgroundImage = ImageLoader.ResizeImage(ofd.FileName, new Size(300, 300));
 
                 }
             }
         }
 
-        private System.Drawing.Image resizeImage(string path, Size size)
-        {
-            Image img = new Bitmap(path);
-            //Get the image current width  
-            int sourceWidth = img.Width;
-            //Get the image current height  
-            int sourceHeight = img.Height;
-            float nPercent = 0;
-            float nPercentW = 0;
-            float nPercentH = 0;
-            //Calulate  width with new desired size  
-            nPercentW = ((float)size.Width / (float)sourceWidth);
-            //Calculate height with new desired size  
-            nPercentH = ((float)size.Height / (float)sourceHeight);
-            if (nPercentH < nPercentW)
-                nPercent = nPercentH;
-            else
-                nPercent = nPercentW;
-            //New Width  
-            int destWidth = (int)(sourceWidth * nPercent);
-            //New Height  
-            int destHeight = (int)(sourceHeight * nPercent);
-            Bitmap b = new Bitmap(destWidth, destHeight);
-            Graphics g = Graphics.FromImage((System.Drawing.Image)b);
-            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            // Draw image with new width and height  
-            g.DrawImage(img, 0, 0, destWidth, destHeight);
-            g.Dispose();
-            return (System.Drawing.Image)b;
-        }
-
+     
         private void btnNewProduct_Click(object sender, EventArgs e)
         {
             viewModel.productModel = null;

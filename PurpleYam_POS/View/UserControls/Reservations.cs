@@ -25,7 +25,9 @@ namespace PurpleYam_POS.View.UserControls
             viewModel = new ReservationViewModel();
             viewModel.ucReservation = this;
             viewModel.ProductBS = ProductBS;
-            btnRefresh.Click += delegate { LoadData(); };
+            viewModel.ReservationBS = ReservationBS;
+            dgOrders.DataBindingComplete += delegate { dgOrders.ClearSelection(); };
+            dgReservations.DataBindingComplete += delegate { dgReservations.ClearSelection(); };
             btnClear.Click += delegate { viewModel.ClearOrders(); };
             dgReservations.CellClick += viewModel.DgSettlePayment;
         }

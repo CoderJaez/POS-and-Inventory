@@ -24,7 +24,7 @@ namespace PurpleYam_POS.View.UserControls
             viewModel.ProductStockinBS = ProductStockinBS;
             btnSave.Click += delegate {
                 if (dgProductionStockin.Rows.Count <= 0) return;
-                viewModel.StockinProduction();
+                viewModel.StockinProduction(dtpProduction.Value.Date);
             };
 
             btnClear.Click += delegate { viewModel.ClearProductionStockin(); };

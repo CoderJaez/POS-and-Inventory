@@ -14,6 +14,7 @@ using System.ComponentModel;
 using System.Threading;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
+using PurpleYam_POS.helper;
 
 namespace PurpleYam_POS.ViewModel
 {
@@ -35,8 +36,9 @@ namespace PurpleYam_POS.ViewModel
 
         //Local variables
         private string sql;
-        private string[] particulars = { "ALL", "LARGE", "MEDIUM", "TIN CAN", "SLICE","NONE" };
+        private string[] particulars = { "ALL", "LARGE", "MEDIUM", "TIN CAN", "SLICE","HEART","OTHERS" };
         private int totalAddons = 0;
+
         public enum Transaction
         {
             WALK_IN,
@@ -93,9 +95,10 @@ namespace PurpleYam_POS.ViewModel
                     CashTendered = stModel.CashTendered,
                     Change = stModel.Change,
                     ReservationDate = stModel.ReservationDate,
-                    TransactionType = transactionType.ToString()
+                    TransactionType = stModel.TransactionType
                 });
-         
+            if(Properties.Settings.Default.printer)
+                PrintReceipt.Instance.PrintReciept(CheckoutBS, stModel);
             loadingScreen.PanelChange.Visible = true;
             loadingScreen.Change = stModel.Change.ToString("N");
             if(transactionType == Transaction.RESERVATION)
@@ -270,6 +273,7 @@ namespace PurpleYam_POS.ViewModel
       
         private void ComputePayments()
         {
+            
             stModel.TotalAmount = 0;
             ProductBS.List.OfType<SoldProductModel>().ToList().ForEach(
                 pr =>
@@ -282,6 +286,7 @@ namespace PurpleYam_POS.ViewModel
             uc.SubTotal = stModel.SubTotal.ToString("N");
             uc.Tax = stModel.Vat.ToString("N");
             uc.TotalAmount = stModel.TotalAmount.ToString("N");
+            uc.TotalAmountB = uc.TotalAmount;
         }
 
         public void AdjustQty(object sender, DataGridViewCellEventArgs e)
@@ -328,8 +333,8 @@ namespace PurpleYam_POS.ViewModel
 
             using (formTransaction = new FormTransaction(this))
                 formTransaction.ShowDialog();
-
-            if(transactionType == Transaction.RESERVATION)
+            stModel.TransactionType = transactionType.ToString();
+            if (transactionType == Transaction.RESERVATION)
             {
                 if (!FormMain.Instance.MetroContainer.Controls.ContainsKey("Checkout"))
                 {
@@ -358,7 +363,7 @@ namespace PurpleYam_POS.ViewModel
                     ucSettlePayment.Dock = DockStyle.Fill;
                     FormMain.Instance.MetroContainer.Controls.Add(ucSettlePayment);
                 }
-                if(CheckoutBS != null)
+                if (CheckoutBS != null)
                     CheckoutBS.List.Clear();
                 CheckoutBS.DataSource = null;
                 ProductBS.List.OfType<SoldProductModel>().ToList().ForEach(p => CheckoutBS.Add(p));
@@ -407,6 +412,9 @@ namespace PurpleYam_POS.ViewModel
             {
                 SaveData("UPDATE tbl_sale_transaction set Balance = @Balance, CashTendered = CashTendered + @CashTendered, `Change` = `Change` + @Change where TransactionNo = @TransactionNo ", new { TransactionNo = stModel.TransactionNo, Balance = stModel.Balance, CashTendered = stModel.CashTendered, Change = stModel.Change });
                 Notification.AlertMessage("Payment Successfull","Success", Notification.AlertType.SUCCESS);
+                if(Properties.Settings.Default.printer)
+                    PrintReceipt.Instance.PrintReciept(CheckoutBS, stModel);
+
                 using (loadingScreen = new LoadingScreen())
                 {
                     loadingScreen.PanelChange.Visible = true;

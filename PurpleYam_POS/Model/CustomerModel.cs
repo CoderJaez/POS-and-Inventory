@@ -18,10 +18,14 @@ namespace PurpleYam_POS.Model
         [Required]
         public string ContactNo { get; set; }
         public DateTime DateTimeStamp { get; set; }
+        public byte[] Image { get; set; }
 
+       
         public string Fullname
         {
             get { return $"{Lastname.ToUpper()}, {Firstname.ToUpper()} {Middlename.ToUpper()} "; }
         }
+
+       
     }
 }

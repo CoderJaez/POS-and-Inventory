@@ -16,6 +16,7 @@ namespace PurpleYam_POS.ViewModel
         public SaleTransaction ucST;
         //BindingSource
         public BindingSource SaleTransactionBS { get; set; }
+        public BindingSource ReservationBS { get; set; }
         public BindingSource ProductBS { get; set; }
 
         //Constructor
@@ -34,24 +35,11 @@ namespace PurpleYam_POS.ViewModel
         {
             ucST.DgReservation.Rows.Clear();
             int index = 0;
-            var list = GetReservation("select r.*, c.* from tbl_sale_transaction r left join tbl_customer c on c.Id = r.CustomerId Where TransactionType != 'WALK_IN' AND (c.Lastname LIKE @Search or c.Firstname LIKE @Search or r.TransactionNo LIKE @Search ) and r.TransactionDate between @dateFrom and @dateTo", new { Search = $"%{ucST.Search}%", dateFrom = ucST.DtprFrom.AddDays(-1), dateTo = ucST.DtprTo.AddDays(1) });
-            list.ForEach(p =>
+            ReservationBS.DataSource = GetReservation<SaleTransactionModel,CustomerModel,dynamic>("select r.*, c.* from tbl_sale_transaction r left join tbl_customer c on c.Id = r.CustomerId Where TransactionType != 'WALK_IN' AND (c.Lastname LIKE @Search or c.Firstname LIKE @Search or r.TransactionNo LIKE @Search ) and r.TransactionDate between @dateFrom and @dateTo", new { Search = $"%{ucST.Search}%", dateFrom = ucST.DtprFrom.AddDays(-1), dateTo = ucST.DtprTo.AddDays(1) });
+            ReservationBS.List.OfType<SaleTransactionModel>().ToList().ForEach(p =>
             {
-                ucST.DgReservation.Rows.Add(
-                    p.TransactionNo,
-                    p.Customer.Fullname,
-                    p.DownPayment,
-                    p.Balance,
-                    p.TotalAmount,
-                    p.CashTendered,
-                    p.Change,
-                    p.TransactionDate,
-                    p.ReservationDate,
-                    p.TransactionType,
-                    p.ClaimStatus
-                    );
-                ucST.DgReservation.Rows[index].Cells["cancel"].Value = ucST.DgReservation.Rows[index].Cells["TransactionType"].Value.ToString() == "CANCELLED" ? Properties.Resources.order_cancelled : Properties.Resources.cancel_order;
-                ucST.DgReservation.Rows[index].Cells["claim"].Value = ucST.DgReservation.Rows[index].Cells["ClaimStatus"].Value != null ? Properties.Resources.claimed : Properties.Resources.claim;
+                ucST.DgReservation.Rows[index].Cells["cancel"].Value = p.TransactionType == "CANCELLED" ? Properties.Resources.order_cancelled : Properties.Resources.cancel_order;
+                ucST.DgReservation.Rows[index].Cells["claim"].Value = p.ClaimStatus != null ? Properties.Resources.claimed : Properties.Resources.claim;
                 index++;
             });
         }
@@ -63,7 +51,7 @@ namespace PurpleYam_POS.ViewModel
 
             if(dg.Rows.Count > 0)
             {
-                string transactionNo = ucST.TabSales.SelectedTab.Name == "reservationTab" ? dg.CurrentRow.Cells["TransactionNo"].Value.ToString():((SaleTransactionModel)SaleTransactionBS.Current).TransactionNo;
+                string transactionNo = ucST.TabSales.SelectedTab.Name == "reservationTab" ? ((SaleTransactionModel)ReservationBS.Current).TransactionNo:((SaleTransactionModel)SaleTransactionBS.Current).TransactionNo;
                 LoadProductSold(transactionNo);
             }
         }

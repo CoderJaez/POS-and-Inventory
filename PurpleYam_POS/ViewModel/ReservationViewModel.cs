@@ -18,6 +18,7 @@ namespace PurpleYam_POS.ViewModel
     {
         //Binding Source 
         public BindingSource ProductBS { get; set; }
+        public BindingSource ReservationBS { get; set; }
         //Model
         private SaleTransactionModel stModel { get; set; }
 
@@ -58,26 +59,13 @@ namespace PurpleYam_POS.ViewModel
         {
             ucReservation.DgReservation.Rows.Clear();
             int index = 0;
-            var list = GetReservation("select r.*, c.* from tbl_sale_transaction r left join tbl_customer c on c.Id = r.CustomerId Where TransactionType != 'WALK_IN' AND (c.Lastname LIKE @Search or c.Firstname LIKE @Search ) and r.ReservationDate >= @ReservationDate", new { Search = $"%{ucReservation.Search}%", ReservationDate = ucReservation.DateReservation.AddDays(-1) });
-            list.ForEach(p =>
+            ReservationBS.DataSource = GetReservation<SaleTransactionModel,CustomerModel,dynamic>("select r.*, c.* from tbl_sale_transaction r left join tbl_customer c on c.Id = r.CustomerId Where TransactionType != 'WALK_IN' AND (c.Lastname LIKE @Search or c.Firstname LIKE @Search ) and r.ReservationDate >= @ReservationDate", new { Search = $"%{ucReservation.Search}%", ReservationDate = ucReservation.DateReservation.AddDays(-1) });
+            ReservationBS.List.OfType<SaleTransactionModel>().ToList().ForEach(p =>
             {
-                ucReservation.DgReservation.Rows.Add(
-                    p.TransactionNo,
-                    p.Customer.Fullname,
-                    p.DownPayment,
-                    p.Balance,
-                    p.TotalAmount,
-                    p.CashTendered,
-                    p.TransactionDate,
-                    p.ReservationDate,
-                    p.Vat,
-                    p.SubTotal,
-                    p.TransactionType,
-                    p.ClaimStatus
-                    );
-                ucReservation.DgReservation.Rows[index].Cells["pay"].Value = decimal.Parse(ucReservation.DgReservation.Rows[index].Cells["Balance"].Value.ToString()) > 0 ? Properties.Resources.settle_payment : Properties.Resources.paid;
-                ucReservation.DgReservation.Rows[index].Cells["cancel"].Value = ucReservation.DgReservation.Rows[index].Cells["TransactionType"].Value.ToString() == "CANCELLED" ? Properties.Resources.order_cancelled : Properties.Resources.cancel_order;
-                ucReservation.DgReservation.Rows[index].Cells["claim"].Value = ucReservation.DgReservation.Rows[index].Cells["ClaimStatus"].Value != null  ? Properties.Resources.claimed : Properties.Resources.claim;
+               
+                ucReservation.DgReservation.Rows[index].Cells["pay"].Value = p.Balance > 0 ? Properties.Resources.settle_payment : Properties.Resources.paid;
+                ucReservation.DgReservation.Rows[index].Cells["cancel"].Value = p.TransactionType == "CANCELLED" ? Properties.Resources.order_cancelled : Properties.Resources.cancel_order;
+                ucReservation.DgReservation.Rows[index].Cells["claim"].Value = p.ClaimStatus != null  ? Properties.Resources.claimed : Properties.Resources.claim;
                 index++;
             });
         }
@@ -89,13 +77,12 @@ namespace PurpleYam_POS.ViewModel
             
             if(dg.Rows.Count > 0)
             {
-                var currentRow = dg.CurrentRow;
-                transactionNo = dg.CurrentRow.Cells["TransactionNo"].Value.ToString();
-                GetProductOrdered(transactionNo);
+                var tr = ReservationBS.Current as SaleTransactionModel;
+                GetProductOrdered(tr.TransactionNo);
                 switch(dg.Columns[e.ColumnIndex].Name)
                 {
                     case "pay":
-                        if(decimal.Parse(currentRow.Cells["Balance"].Value.ToString()) > 0 )
+                        if(tr.Balance> 0 )
                         {
                            if(!FormMain.Instance.MetroContainer.Controls.ContainsKey("SettlePayments"))
                             {
@@ -103,12 +90,12 @@ namespace PurpleYam_POS.ViewModel
                                 posViewModel.ucSettlePayment.Dock = DockStyle.Fill;
                                 FormMain.Instance.MetroContainer.Controls.Add(posViewModel.ucSettlePayment);
                             }
-                            GetProductOrdered(currentRow.Cells["TransactionNo"].Value.ToString());
-                            posViewModel.ucSettlePayment.TransactionNo = currentRow.Cells["TransactionNo"].Value.ToString();
-                            posViewModel.ucSettlePayment.SubTotal = currentRow.Cells["SubTotal"].Value.ToString();
-                            posViewModel.ucSettlePayment.Balance = currentRow.Cells["Balance"].Value.ToString();
-                            posViewModel.ucSettlePayment.Tax = currentRow.Cells["Vat"].Value.ToString();
-                            posViewModel.ucSettlePayment.TotalAmount = currentRow.Cells["TotalAmount"].Value.ToString();
+                            GetProductOrdered(tr.TransactionNo);
+                            posViewModel.ucSettlePayment.TransactionNo = tr.TransactionNo;
+                            posViewModel.ucSettlePayment.SubTotal = tr.SubTotal.ToString();
+                            posViewModel.ucSettlePayment.Balance = tr.Balance.ToString();
+                            posViewModel.ucSettlePayment.Tax = tr.Vat.ToString();
+                            posViewModel.ucSettlePayment.TotalAmount =tr.TotalAmount.ToString();
                             posViewModel.CheckoutBS.Clear();
                             posViewModel.CheckoutBS.DataSource = ProductBS.DataSource;
                             FormMain.Instance.UserControl.Add("SettlePayments");
@@ -117,9 +104,9 @@ namespace PurpleYam_POS.ViewModel
                         break;
 
                     case "cancel":
-                       if(currentRow.Cells["TransactionType"].Value.ToString() != "CANCELLED")
+                       if(tr.TransactionType != "CANCELLED")
                         {
-                            if(currentRow.Cells["ClaimStatus"].Value != null && currentRow.Cells["ClaimStatus"].Value.ToString() == "CLAIMED")
+                            if(tr.ClaimStatus != null && tr.ClaimStatus== "CLAIMED")
                             {
                                 Notification.AlertMessage("The product has been claimed, it cannot be cancelled. ", "Thes reservation cannot be cancel.", Notification.AlertType.INFO);
                                 return;
@@ -132,19 +119,26 @@ namespace PurpleYam_POS.ViewModel
                         }
                         break;
                     case "claim":
-                        if(decimal.Parse(currentRow.Cells["Balance"].Value.ToString()) > 0)
+
+                        if(tr.Balance > 0)
                         {
                             Notification.AlertMessage("Settle the remaining balance before claiming.", "Settle balance", Notification.AlertType.INFO);
                             return;
                         }
-                        if (currentRow.Cells["TransactionType"].Value.ToString() == "CANCELLED")
+
+                        if (tr.TransactionType == "CANCELLED")
                         {
                             Notification.AlertMessage("The selected reservation is already cancelled.", "Cancelled reservation", Notification.AlertType.INFO);
                             return;
-
                         }
 
-                        if (currentRow.Cells["ClaimStatus"].Value == null)
+                        if(tr.ReservationDate >= DateTime.Now)
+                        {
+                            Notification.AlertMessage("Unable to make a reservation at this time.", "Claim reservation", Notification.AlertType.INFO);
+                            return;
+                        }
+
+                        if (tr.ClaimStatus == null)
                         {
                             if (Notification.Confim(FormMain.Instance, "Click YES to confirm.", "Reservation claim") == DialogResult.Yes)
                                 OrderClaim();

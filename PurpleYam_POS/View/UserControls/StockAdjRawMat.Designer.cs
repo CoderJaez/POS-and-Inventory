@@ -52,26 +52,26 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.dgRawMat = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgRMInventory = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.displayUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvRawMatBS = new System.Windows.Forms.BindingSource(this.components);
+            this.unitIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtyDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.displayUnitDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateArrivalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateStockinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateExpiryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RawMatBS = new System.Windows.Forms.BindingSource(this.components);
-            this.dgRMInventory = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.displayUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvRawMatBS = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RawMatBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRMInventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvRawMatBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RawMatBS)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -175,13 +175,13 @@
             this.cbRemarks.FormattingEnabled = true;
             this.cbRemarks.Items.AddRange(new object[] {
             "ERRONEOUS ENTRY",
-            "EXPIRED",
-            "DAMAGE",
-            "SHORTAGE"});
+            "SPOILAGE",
+            "CONSUME"});
             this.cbRemarks.Location = new System.Drawing.Point(428, 71);
             this.cbRemarks.Name = "cbRemarks";
             this.cbRemarks.Size = new System.Drawing.Size(191, 25);
             this.cbRemarks.TabIndex = 19;
+            this.cbRemarks.SelectedIndexChanged += new System.EventHandler(this.cbRemarks_SelectedIndexChanged);
             // 
             // btnSave
             // 
@@ -276,14 +276,6 @@
             this.Id.ReadOnly = true;
             this.Id.Visible = false;
             // 
-            // unitIdDataGridViewTextBoxColumn
-            // 
-            this.unitIdDataGridViewTextBoxColumn.DataPropertyName = "UnitId";
-            this.unitIdDataGridViewTextBoxColumn.HeaderText = "UnitId";
-            this.unitIdDataGridViewTextBoxColumn.Name = "unitIdDataGridViewTextBoxColumn";
-            this.unitIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.unitIdDataGridViewTextBoxColumn.Visible = false;
-            // 
             // Product
             // 
             this.Product.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -291,47 +283,6 @@
             this.Product.HeaderText = "Product";
             this.Product.Name = "Product";
             this.Product.ReadOnly = true;
-            // 
-            // qtyDataGridViewTextBoxColumn1
-            // 
-            this.qtyDataGridViewTextBoxColumn1.DataPropertyName = "Qty";
-            this.qtyDataGridViewTextBoxColumn1.HeaderText = "Qty";
-            this.qtyDataGridViewTextBoxColumn1.Name = "qtyDataGridViewTextBoxColumn1";
-            this.qtyDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // displayUnitDataGridViewTextBoxColumn1
-            // 
-            this.displayUnitDataGridViewTextBoxColumn1.DataPropertyName = "DisplayUnit";
-            this.displayUnitDataGridViewTextBoxColumn1.HeaderText = "DisplayUnit";
-            this.displayUnitDataGridViewTextBoxColumn1.Name = "displayUnitDataGridViewTextBoxColumn1";
-            this.displayUnitDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dateArrivalDataGridViewTextBoxColumn
-            // 
-            this.dateArrivalDataGridViewTextBoxColumn.DataPropertyName = "DateArrival";
-            this.dateArrivalDataGridViewTextBoxColumn.HeaderText = "DateArrival";
-            this.dateArrivalDataGridViewTextBoxColumn.Name = "dateArrivalDataGridViewTextBoxColumn";
-            this.dateArrivalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateStockinDataGridViewTextBoxColumn
-            // 
-            this.dateStockinDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.dateStockinDataGridViewTextBoxColumn.DataPropertyName = "DateStockin";
-            this.dateStockinDataGridViewTextBoxColumn.HeaderText = "DateStockin";
-            this.dateStockinDataGridViewTextBoxColumn.Name = "dateStockinDataGridViewTextBoxColumn";
-            this.dateStockinDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dateStockinDataGridViewTextBoxColumn.Width = 5;
-            // 
-            // dateExpiryDataGridViewTextBoxColumn
-            // 
-            this.dateExpiryDataGridViewTextBoxColumn.DataPropertyName = "DateExpiry";
-            this.dateExpiryDataGridViewTextBoxColumn.HeaderText = "DateExpiry";
-            this.dateExpiryDataGridViewTextBoxColumn.Name = "dateExpiryDataGridViewTextBoxColumn";
-            this.dateExpiryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // RawMatBS
-            // 
-            this.RawMatBS.DataSource = typeof(PurpleYam_POS.Model.RawMaterial);
             // 
             // dgRMInventory
             // 
@@ -396,14 +347,6 @@
             this.dgRMInventory.TabIndex = 23;
             this.dgRMInventory.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgRMInventory_DataBindingComplete);
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -420,6 +363,14 @@
             this.ReOrder.Name = "ReOrder";
             this.ReOrder.ReadOnly = true;
             this.ReOrder.Width = 88;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
             // qtyDataGridViewTextBoxColumn
             // 
@@ -441,6 +392,55 @@
             // 
             this.InvRawMatBS.DataSource = typeof(PurpleYam_POS.Model.RawMaterial);
             // 
+            // unitIdDataGridViewTextBoxColumn
+            // 
+            this.unitIdDataGridViewTextBoxColumn.DataPropertyName = "UnitId";
+            this.unitIdDataGridViewTextBoxColumn.HeaderText = "UnitId";
+            this.unitIdDataGridViewTextBoxColumn.Name = "unitIdDataGridViewTextBoxColumn";
+            this.unitIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.unitIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // qtyDataGridViewTextBoxColumn1
+            // 
+            this.qtyDataGridViewTextBoxColumn1.DataPropertyName = "Qty";
+            this.qtyDataGridViewTextBoxColumn1.HeaderText = "Qty";
+            this.qtyDataGridViewTextBoxColumn1.Name = "qtyDataGridViewTextBoxColumn1";
+            this.qtyDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // displayUnitDataGridViewTextBoxColumn1
+            // 
+            this.displayUnitDataGridViewTextBoxColumn1.DataPropertyName = "DisplayUnit";
+            this.displayUnitDataGridViewTextBoxColumn1.HeaderText = "DisplayUnit";
+            this.displayUnitDataGridViewTextBoxColumn1.Name = "displayUnitDataGridViewTextBoxColumn1";
+            this.displayUnitDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dateArrivalDataGridViewTextBoxColumn
+            // 
+            this.dateArrivalDataGridViewTextBoxColumn.DataPropertyName = "DateArrival";
+            this.dateArrivalDataGridViewTextBoxColumn.HeaderText = "DateArrival";
+            this.dateArrivalDataGridViewTextBoxColumn.Name = "dateArrivalDataGridViewTextBoxColumn";
+            this.dateArrivalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateStockinDataGridViewTextBoxColumn
+            // 
+            this.dateStockinDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.dateStockinDataGridViewTextBoxColumn.DataPropertyName = "DateStockin";
+            this.dateStockinDataGridViewTextBoxColumn.HeaderText = "DateStockin";
+            this.dateStockinDataGridViewTextBoxColumn.Name = "dateStockinDataGridViewTextBoxColumn";
+            this.dateStockinDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dateStockinDataGridViewTextBoxColumn.Width = 5;
+            // 
+            // dateExpiryDataGridViewTextBoxColumn
+            // 
+            this.dateExpiryDataGridViewTextBoxColumn.DataPropertyName = "DateExpiry";
+            this.dateExpiryDataGridViewTextBoxColumn.HeaderText = "DateExpiry";
+            this.dateExpiryDataGridViewTextBoxColumn.Name = "dateExpiryDataGridViewTextBoxColumn";
+            this.dateExpiryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // RawMatBS
+            // 
+            this.RawMatBS.DataSource = typeof(PurpleYam_POS.Model.RawMaterial);
+            // 
             // StockAdjRawMat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -457,9 +457,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRawMat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RawMatBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRMInventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvRawMatBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RawMatBS)).EndInit();
             this.ResumeLayout(false);
 
         }

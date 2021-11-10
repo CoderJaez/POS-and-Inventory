@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PurpleYam_POS.Model;
 using System.IO;
+using PurpleYam_POS.helper;
 
 namespace PurpleYam_POS.Components
 {
@@ -28,11 +29,26 @@ namespace PurpleYam_POS.Components
             lblProduct.Text = $"{productModel.Product}\n{productModel.Price.ToString("N")}";
             if (productModel.Image != null)
             {
-                using (var ms = new MemoryStream(productModel.Image))
-                    btnProduct.BackgroundImage = Image.FromStream(ms);
-            } else
+                btnProduct.BackgroundImage = ImageLoader.ImageFromStream(productModel.Image);
+            }
+            else
             {
                 btnProduct.Text = $"{productModel.Product} {productModel.UnitCode}\n{productModel.Price.ToString("N")}";
+                lblProduct.Visible = false;
+            }
+        }
+
+        public void SerProductForBaking()
+        {
+
+            lblProduct.Text = $"{productModel.Product}\nQTY:{productModel.Qty}";
+            if (productModel.Image != null)
+            {
+                btnProduct.BackgroundImage = ImageLoader.ImageFromStream(productModel.Image);
+            }
+            else
+            {
+                btnProduct.Text = $"{productModel.Product}\nQTY:{productModel.Qty}";
                 lblProduct.Visible = false;
             }
         }

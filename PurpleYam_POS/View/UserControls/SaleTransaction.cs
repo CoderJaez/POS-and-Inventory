@@ -29,6 +29,7 @@ namespace PurpleYam_POS.View.UserControls
             viewModel.ucST = this;
             viewModel.SaleTransactionBS = SaleTransactionBS;
             viewModel.ProductBS = ProductBS;
+            viewModel.ReservationBS = ReservationBS;
             dgProduction.CellClick += viewModel.DgTransactionClick;
             dgReservation.CellClick += viewModel.DgTransactionClick;
         }

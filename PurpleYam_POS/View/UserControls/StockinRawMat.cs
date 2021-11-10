@@ -86,7 +86,7 @@ namespace PurpleYam_POS.View.UserControls
             var currentRow = viewModel.StockInBS.Current as RawMaterial;
            if(currentRow != null)
             {
-                currentRow.DateExpiry = dateTimePicker.Value;
+                currentRow.DateExpiry = dateTimePicker.Value.Date;
                 dgRawMatStockin.CurrentRow.Selected = false;
                 viewModel.StockInBS.EndEdit();
             } else

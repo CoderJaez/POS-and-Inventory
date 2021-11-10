@@ -14,13 +14,49 @@ namespace Repository
 {
     public static class DatabaseConnection
     {
-        static ConnectionStringSettingsCollection settings = ConfigurationManager.ConnectionStrings;
-        private static string connString = settings["Development"].ConnectionString;
+        public static string ErrMsg;
+
+        //static ConnectionStringSettingsCollection settings = ConfigurationManager.ConnectionStrings;
+        //private static string connString = settings["Development"].ConnectionString;
+        private static string connString = Properties.Settings.Default.ConnString;
         public static string ConnectionString { get { return connString; } set { connString = value; } }
+
+
+        public static void UpdateDBConfig(string conn)
+        {
+            Properties.Settings.Default.ConnString = conn;
+            Properties.Settings.Default.Save();
+            Properties.Settings.Default.Reload();
+        }
+
+        public static bool IsDBConnected(string conString = null)
+        {
+            try
+            {
+                string sql;
+                if (!string.IsNullOrEmpty(conString))
+                    sql = conString;
+                else
+                    sql = connString;
+                using (IDbConnection conn = new MySqlConnection(sql))
+                {
+                    conn.Open();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrMsg = ex.Message;
+                //ValidationDialog.Show("Database disconnected", "Update your database configuration.\n", ValidationDialog.AlertType.ERROR);
+                return false;
+            }
+        }
     }
 
     public static class DataAccess
     {
+
+        public static string ErrMsg;
         private static string connString = DatabaseConnection.ConnectionString;
 
         public  static async Task<List<T>> LoadData<T,U>(string sql, U parameters)
@@ -64,21 +100,81 @@ namespace Repository
             using (IDbConnection conn = new MySqlConnection(connString))
             {
                 var result = conn.Query<T>(sql, parameter);
-                return result.Single();
+                return result.SingleOrDefault();
             }
         }
 
-        public static  List<SaleTransactionModel> GetReservation<P>(string sql, P p)
+        public static  List<R> GetReservation<R,C,P>(string sql, P p)
         {
             using (IDbConnection conn = new MySqlConnection(connString))
             {
 
-                var result =  conn.Query<SaleTransactionModel, CustomerModel, SaleTransactionModel>(sql, (r, c) => 
+                var result =  conn.Query<R, C, R>(sql, (r, c) => 
                 {
-                    r.Customer = c;
+                    r.GetType().GetProperty("Customer").SetValue(r, c);
                     return r;
                 },p);
                 return result.AsList();
+
+            }
+        }
+
+        public static List<U> GetUsers<U, C, T>(string sql, T p)
+        {
+            using (IDbConnection conn = new MySqlConnection(connString))
+            {
+
+                var result = conn.Query<U, C, U>(sql, (r, c) =>
+                {
+                    r.GetType().GetProperty("Customer").SetValue(r, c);
+                    return r;
+                }, p);
+                return result.AsList();
+
+            }
+        }
+        public static T GetUser<T,C, P>(string sql, P p)
+        {
+            using (IDbConnection conn = new MySqlConnection(connString))
+            {
+
+                var result = conn.Query<T, C, T>(sql, (r, c) =>
+                {
+                    r.GetType().GetProperty("Customer").SetValue(r,c) ;
+                    return r;
+                }, p);
+                return result.SingleOrDefault();
+
+            }
+        }
+
+        public static bool InsertUser<U>(U user)
+        {
+            
+            using (IDbConnection conn = new MySqlConnection(connString))
+            {
+                conn.Open();
+                var tr = conn.BeginTransaction();
+                try
+                {
+
+                    var id = conn.Query<int>("insert into tbl_customer (Firstname, Middlename, Lastname, ContactNo,Image) values(@Firstname, @Middlename, @Lastname, @ContactNo,@Image); select last_insert_id();", user).Single();
+                    conn.Execute("insert tbl_user (CustomerId, Username, Password, AccessRole) values (@CustomerId, @Username, @Password, @AccessRole)",new {
+                        CustomerId = id,
+                        Username = user.GetType().GetProperty("Username").GetValue(user,null),
+                        Password = user.GetType().GetProperty("Password").GetValue(user, null),
+                        AccessRole = user.GetType().GetProperty("AccessRole").GetValue(user, null),
+                    });
+                    tr.Commit();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    tr.Rollback();
+                    ErrMsg = e.Message;
+                    return false;
+                }
+               
 
             }
         }

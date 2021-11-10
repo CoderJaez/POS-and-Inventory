@@ -214,8 +214,11 @@ namespace PurpleYam_POS.ViewModel
                     sql = "update tbl_rawmat_stockin set QtyOnhand = QtyOnhand + @Qty, Qty = Qty + @Qty where Id = @StockInId";
                 else if (ucRawmanAdj.CkbRemove.Checked && ucRawmanAdj.CbRemarks.Text == "ERRONEOUS ENTRY") 
                     sql = "update tbl_rawmat_stockin set QtyOnhand = QtyOnhand - @Qty, Qty = Qty - @Qty where Id = @StockInId";
+                else if (ucRawmanAdj.CkbRemove.Checked && ucRawmanAdj.CbRemarks.Text == "SPOILAGE")
+                    sql = "update tbl_rawmat_stockin set QtyOnhand = QtyOnhand - @Qty, QtyDmg = QtyDmg +  @Qty where Id = @StockInId";
                 else
                     sql = "update tbl_rawmat_stockin set QtyOnhand = QtyOnhand - @Qty where Id = @StockInId";
+
                 var p = new
                 {
                     Qty = decimal.Parse(ucRawmanAdj.TbQty.Text),
@@ -389,7 +392,8 @@ namespace PurpleYam_POS.ViewModel
         #endregion
 
         #region Production 
-        public void StockinProduction()
+        private DateTime dateProduction;
+        public void StockinProduction(DateTime date)
         {
             StringBuilder errMsg = new StringBuilder();
             int errNo = 0;
@@ -408,7 +412,7 @@ namespace PurpleYam_POS.ViewModel
                 Notification.ValidationMessage(FormMain.Instance, errMsg.ToString(), "");
                 return;
             }
-
+            dateProduction = date;
             if (!backgroundWorker.IsBusy)
             {
                 loadingScreen = new LoadingScreen();
@@ -427,13 +431,14 @@ namespace PurpleYam_POS.ViewModel
             int index = 1;
 
             ProductStockinBS.List.OfType<ProductModel>().ToList().ForEach(pr => {
-                sql = "insert into tbl_production_stockin (ProductId, Qty, QtyOnhand, UserId) Values (@ProductId, @Qty, @QtyOnhand, @UserId)";
+                sql = "insert into tbl_production_stockin (ProductId, Qty, QtyOnhand, UserId,DateStockin) Values (@ProductId, @Qty, @QtyOnhand, @UserId, @Date)";
                 var p = new
                 {
                     ProductId = pr.Id,
                     Qty = pr.Qty,
                     QtyOnhand = pr.Qty,
-                    UserId = 0
+                    UserId = 0,
+                    Date = dateProduction
                 };
                 SaveData(sql, p);
                 backgroundWorker.ReportProgress(index++ * 100 / process);
@@ -494,7 +499,7 @@ namespace PurpleYam_POS.ViewModel
             {
                 if (dg.Columns[e.ColumnIndex].Name == "BakeComplete")
                 {
-                    if(Notification.Confim(FormMain.Instance, "Is the selected product completed?", "Done baked") == DialogResult.Yes)
+                    if(Notification.Confim(FormMain.Instance, "Is the selected product done?", "Done baked") == DialogResult.Yes)
                     {
                         var product = ProductPendingBS.Current as ProductModel;
                         UpdatePRStocks(product.Id, product.ProductId, product.Qty);

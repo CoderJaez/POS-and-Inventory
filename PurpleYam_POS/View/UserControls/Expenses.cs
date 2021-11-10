@@ -39,7 +39,8 @@ namespace PurpleYam_POS.View.UserControls
         public void SetExpenseField()
         {
             var index = viewModel.ExpenseCatBS.List.OfType<Model.ExpensesModel>().ToList().Find(e => e.Id == viewModel.expensesModel.ExpenseId);
-
+            tbReciept.Text = viewModel.expensesModel.ReceiptNo;
+            tbRemarks.Text = viewModel.expensesModel.Remarks;
             tbAmount.Text = viewModel.expensesModel.Amount.ToString() ;
             viewModel.ExpenseCatBS.Position = viewModel.ExpenseCatBS.IndexOf(index);
             cbDescription.SelectedValue = viewModel.expensesModel.ExpenseId;
@@ -73,18 +74,26 @@ namespace PurpleYam_POS.View.UserControls
                     ExpenseId = ((Model.ExpensesModel)ExpenseCatBS.Current).Id,
                     Amount = decimal.Parse(tbAmount.Text),
                     DateTimeStamp = dtp.Value,
-                    Description = ((Model.ExpensesModel)ExpenseCatBS.Current).Description
+                    Description = ((Model.ExpensesModel)ExpenseCatBS.Current).Description,
+                    ReceiptNo = tbReciept.Text,
+                    Remarks = tbRemarks.Text
                 };
             } else
             {
                 viewModel.expensesModel.ExpenseId = ((Model.ExpensesModel)ExpenseCatBS.Current).ExpenseId;
                 viewModel.expensesModel.Amount = decimal.Parse(tbAmount.Text);
                 viewModel.expensesModel.DateTimeStamp = dtp.Value;
-
+                viewModel.expensesModel.Remarks = tbRemarks.Text;
+                viewModel.expensesModel.ReceiptNo = tbReciept.Text;
             }
 
             viewModel.SaveExpense();
             btnCancel.PerformClick();
+        }
+
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            viewModel.LoadExpenses();
         }
     }
 }

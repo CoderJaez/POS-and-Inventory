@@ -22,6 +22,17 @@ namespace Repository.Model
 
     }
 
+    public class UserModel
+    {
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
+        public string AccessRole { get; set; }
+        public string Fullname { get { return Customer.Fullname; } }
+        public CustomerModel Customer { get; set; }
+    }
+
     public class SaleTransactionModel
     {
         public string TransactionNo { get; set; }
