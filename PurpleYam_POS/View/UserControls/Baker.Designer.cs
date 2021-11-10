@@ -35,6 +35,7 @@
             this.flpProducts = new System.Windows.Forms.FlowLayoutPanel();
             this.dgOrders = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnReload = new System.Windows.Forms.Button();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductBS = new System.Windows.Forms.BindingSource(this.components);
@@ -49,7 +50,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(16, 44);
+            this.label1.Location = new System.Drawing.Point(16, 79);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(5);
             this.label1.Size = new System.Drawing.Size(589, 39);
@@ -63,7 +64,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flpProducts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpProducts.Location = new System.Drawing.Point(16, 81);
+            this.flpProducts.Location = new System.Drawing.Point(16, 116);
             this.flpProducts.Name = "flpProducts";
             this.flpProducts.Size = new System.Drawing.Size(589, 433);
             this.flpProducts.TabIndex = 13;
@@ -102,7 +103,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgOrders.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgOrders.EnableHeadersVisualStyles = false;
-            this.dgOrders.Location = new System.Drawing.Point(611, 81);
+            this.dgOrders.Location = new System.Drawing.Point(611, 116);
             this.dgOrders.Name = "dgOrders";
             this.dgOrders.ReadOnly = true;
             this.dgOrders.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -122,13 +123,33 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(611, 44);
+            this.label2.Location = new System.Drawing.Point(611, 79);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.label2.Size = new System.Drawing.Size(273, 39);
             this.label2.TabIndex = 14;
             this.label2.Text = "Productions completed";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnReload
+            // 
+            this.btnReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
+            this.btnReload.FlatAppearance.BorderSize = 0;
+            this.btnReload.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnReload.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReload.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnReload.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReload.Location = new System.Drawing.Point(21, 19);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(197, 43);
+            this.btnReload.TabIndex = 38;
+            this.btnReload.Text = "Reload Pending";
+            this.btnReload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReload.UseVisualStyleBackColor = false;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // productDataGridViewTextBoxColumn
             // 
@@ -156,6 +177,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnReload);
             this.Controls.Add(this.dgOrders);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.flpProducts);
@@ -179,5 +201,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnReload;
     }
 }

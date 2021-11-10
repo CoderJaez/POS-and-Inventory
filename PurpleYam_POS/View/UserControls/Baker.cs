@@ -29,5 +29,10 @@ namespace PurpleYam_POS.View.UserControls
         {
             viewModel.LoadPendingProduction();
         }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            viewModel.LoadPendingProduction();
+        }
     }
 }
