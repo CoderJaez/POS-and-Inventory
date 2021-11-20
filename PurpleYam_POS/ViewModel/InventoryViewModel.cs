@@ -56,6 +56,7 @@ namespace PurpleYam_POS.ViewModel
         public BindingSource ProductBS { get; set; }
         public BindingSource ProductInvBS { get; set; }
         public BindingSource ProductStockinBS { get; set; }
+        public BindingSource ProductAdjBS { get; set; }
         public BindingSource ProductPendingBS { get; set; }
 
         private BackgroundWorker backgroundWorker;
@@ -346,7 +347,10 @@ namespace PurpleYam_POS.ViewModel
                 if (StockInBS.List.OfType<RawMaterial>().ToList().Find(r => r.Id == currentRow.Id) == null)
                 {
                     StockInBS.Add(currentRow);
-                        ucRawmatStockin.DgStockIn.Rows[0].Selected = false;
+                }
+                else
+                {
+                    MessageBox.Show("test");
                 }
                
 
@@ -514,7 +518,7 @@ namespace PurpleYam_POS.ViewModel
         public async void ProductionInvCellClick(object sender, DataGridViewCellEventArgs e)
         {
             var obj = ProductInvBS.Current as ProductModel;
-            ProductStockinBS.DataSource = await LoadData<ProductModel, dynamic>("select Id,ProductId, Product, Particulars, Quality, sum(QtyOnhand) as Qty, DateStockin from production_stockin where ProductId = @ProductId and QtyOnhand > 0 ORDER by DateStockin DESC ", new { ProductId = obj.ProductId });
+            ProductAdjBS.DataSource = await LoadData<ProductModel, dynamic>("select Id,ProductId, Product, Particulars, Quality, sum(QtyOnhand) as Qty, DateStockin from production_stockin where ProductId = @ProductId and QtyOnhand > 0 ORDER by DateStockin DESC ", new { ProductId = obj.ProductId });
         }
 
 

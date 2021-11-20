@@ -44,7 +44,7 @@ namespace PurpleYam_POS.View.UserControls
             InitializeComponent();
             viewModel = _viewModel;
             viewModel.ProductInvBS = ProductionInvBS;
-            viewModel.ProductStockinBS = ProductionStockBS;
+            viewModel.ProductAdjBS = ProductionStockBS;
             dgProductionInv.CellClick += viewModel.ProductionInvCellClick;
             dgProductionStock.CellClick += viewModel.ProductionStockCellClick;
             btnSave.Click += delegate { viewModel.AdjustProductiontStock(); };
@@ -71,16 +71,16 @@ namespace PurpleYam_POS.View.UserControls
         {
             // allowed numeric and one dot  ex. 10.23
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)
-                 && e.KeyChar != '.')
+               /*  && e.KeyChar != '.'*/)
             {
                 e.Handled = true;
             }
 
-            // only allow one decimal point
-            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
-            {
-                e.Handled = true;
-            }
+            //// only allow one decimal point
+            //if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            //{
+            //    e.Handled = true;
+            //}
         }
 
         private void dgRawMat_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
