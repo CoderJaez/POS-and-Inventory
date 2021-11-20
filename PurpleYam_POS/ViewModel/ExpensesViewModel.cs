@@ -52,7 +52,7 @@ namespace PurpleYam_POS.ViewModel
 
             if (expensesModel.Id == 0)
             {
-                SaveData("insert into tbl_expenses_cat (Description) values (@Description)", p);
+                expensesModel.Id = SaveGetId("insert into tbl_expenses_cat (Description) values (@Description); SELECT last_insert_id();", p);
                 ExpenseCatBS.Add(expensesModel);
                 Notification.AlertMessage("New expenses description added", "Success", Notification.AlertType.SUCCESS);
 
@@ -61,6 +61,7 @@ namespace PurpleYam_POS.ViewModel
             {
                 SaveData("update tbl_expenses_cat set Description = @Description where Id = @Id", p);
                 Notification.AlertMessage("Expenses description updated", "Success", Notification.AlertType.SUCCESS);
+                ((DataGridView)ucExpSettings.Controls["dgExpenses"]).ClearSelection();
             }
 
             ClearExpenseCat();
@@ -74,7 +75,7 @@ namespace PurpleYam_POS.ViewModel
 
         public void DgExpensesCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            expensesModel = (ExpensesModel)ExpensesBS.Current;
+            expensesModel = (ExpensesModel)ExpenseCatBS.Current;
             var dg = (DataGridView)sender;
 
             switch (dg.Columns[e.ColumnIndex].Name)
@@ -83,7 +84,7 @@ namespace PurpleYam_POS.ViewModel
                     if (Notification.Confim(FormMain.Instance, "Do you want to delete selected row?", "Delete expense decription.") == DialogResult.Yes)
                     {
                         SaveData("update tbl_expenses_cat set Deleted = true where Id = @Id", new { Id = expensesModel.Id });
-                        ExpensesBS.RemoveCurrent();
+                        ExpenseCatBS.RemoveCurrent();
                         Notification.AlertMessage("Expenses description deleted", "Success", Notification.AlertType.SUCCESS);
                         expensesModel = null;
                     }
@@ -91,6 +92,45 @@ namespace PurpleYam_POS.ViewModel
                 case "edit":
                     ucExpSettings.description = expensesModel.Description;
                     break;
+                case "Deleted":
+                    expensesModel.Deleted = !expensesModel.Deleted;
+                    ((DataGridView)ucExpSettings.Controls["dgExpenses"]).ClearSelection();
+                    break;
+            }
+
+        }
+
+        public void DeleteSelectedExpenseCat()
+        {
+            var ListToDelete = ExpenseCatBS.List.OfType<ExpensesModel>().ToList().FindAll(p => p.Deleted);
+           if(ListToDelete.Count.Equals(0))
+            {
+                Notification.AlertMessage("No expenses selected", "Select expenses", Notification.AlertType.WARNING);
+                return;
+            }
+
+            if (Notification.Confim(FormMain.Instance, "Do you to delete rows?", "Delete Raw Materials") == DialogResult.Yes)
+            {
+                var query = new StringBuilder();
+               
+                query.Append("UPDATE tbl_expenses_cat SET ");
+                ListToDelete.ForEach(model =>
+                {
+                    query.Append($"Deleted = CASE WHEN Id = {model.Id} THEN true ELSE Deleted END, ");
+                });
+
+                query.Remove(query.Length - 2, 1);
+                query.Append("WHERE Id IN ( ");
+                ListToDelete.ForEach(model =>
+                {
+                    query.Append($"{model.Id}, ");
+                });
+                query.Remove(query.Length - 2, 1);
+                query.Append(" )");
+                SaveData(query.ToString(), new { });
+                Notification.AlertMessage("Expenses deleted", "Success", Notification.AlertType.SUCCESS);
+                ListToDelete.ForEach(m => ExpenseCatBS.Remove(m));
+                ((CheckBox)ucExpSettings.Controls["cxbAll"]).Checked = false;
             }
 
         }
@@ -134,16 +174,19 @@ namespace PurpleYam_POS.ViewModel
 
             if (expensesModel.Id == 0)
             {
-                SaveData("insert into tbl_expenses (ExpenseId, Amount, DateTimeStamp, ReceiptNo, Remarks) values (@ExpenseId, @Amount, @Date, @ReceiptNo, @Remarks)", p);
+                expensesModel.Id = SaveGetId("insert into tbl_expenses (ExpenseId, Amount, DateTimeStamp, ReceiptNo, Remarks) values (@ExpenseId, @Amount, @Date, @ReceiptNo, @Remarks);select last_insert_id()", p);
                 ExpensesBS.Add(expensesModel);
                 Notification.AlertMessage("New expense added", "Success", Notification.AlertType.SUCCESS);
 
             }
             else
             {
-                SaveData("update tbl_expenses set ExpenseId = @ExpenseId, Amount = @Amount, DateTimeStamp = @Date, ReceipNo = @ReceiptNo, Remarks = @Remarks  where Id = @Id", p);
+                SaveData("update tbl_expenses set ExpenseId = @ExpenseId, Amount = @Amount, DateTimeStamp = @Date, ReceiptNo = @ReceiptNo, Remarks = @Remarks  where Id = @Id", p);
                 Notification.AlertMessage("Expense updated", "Success", Notification.AlertType.SUCCESS);
+                ExpensesBS.EndEdit();
+                ((DataGridView)ucExpenses.Controls["dgExpenses"]).ClearSelection();
             }
+            ucExpenses.BtnCancel.PerformClick();
         }
 
         public void DgExpenseCellClick(object sender, DataGridViewCellEventArgs e)

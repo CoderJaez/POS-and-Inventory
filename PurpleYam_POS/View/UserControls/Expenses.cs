@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PurpleYam_POS.ViewModel;
+using PurpleYam_POS.Components;
 
 namespace PurpleYam_POS.View.UserControls
 {
@@ -38,12 +39,11 @@ namespace PurpleYam_POS.View.UserControls
 
         public void SetExpenseField()
         {
-            var index = viewModel.ExpenseCatBS.List.OfType<Model.ExpensesModel>().ToList().Find(e => e.Id == viewModel.expensesModel.ExpenseId);
+            var obj = viewModel.ExpenseCatBS.List.OfType<Model.ExpensesModel>().ToList().Find(e => e.Id == viewModel.expensesModel.ExpenseId);
+            viewModel.ExpenseCatBS.Position = viewModel.ExpenseCatBS.IndexOf(obj);
             tbReciept.Text = viewModel.expensesModel.ReceiptNo;
             tbRemarks.Text = viewModel.expensesModel.Remarks;
             tbAmount.Text = viewModel.expensesModel.Amount.ToString() ;
-            viewModel.ExpenseCatBS.Position = viewModel.ExpenseCatBS.IndexOf(index);
-            cbDescription.SelectedValue = viewModel.expensesModel.ExpenseId;
         }
 
         private void Amount_KeyPress(object sender, KeyPressEventArgs e)
@@ -58,14 +58,21 @@ namespace PurpleYam_POS.View.UserControls
         private void btnCancel_Click(object sender, EventArgs e)
         {
             tbAmount.Clear();
+            tbReciept.Clear();
+            tbRemarks.Clear();
             dtp.Value = DateTime.Today;
+            viewModel.ExpenseCatBS.Position = 0;
             viewModel.expensesModel = null;
+            dgExpenses.ClearSelection();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(tbAmount.Text))
+            {
+                Notification.AlertMessage("The amount field is empty.","Manage Expense", Notification.AlertType.WARNING);
                 return;
+            }
 
             if(viewModel.expensesModel == null)
             {
@@ -80,20 +87,29 @@ namespace PurpleYam_POS.View.UserControls
                 };
             } else
             {
-                viewModel.expensesModel.ExpenseId = ((Model.ExpensesModel)ExpenseCatBS.Current).ExpenseId;
+                viewModel.expensesModel.ExpenseId = ((Model.ExpensesModel)ExpenseCatBS.Current).Id;
                 viewModel.expensesModel.Amount = decimal.Parse(tbAmount.Text);
                 viewModel.expensesModel.DateTimeStamp = dtp.Value;
                 viewModel.expensesModel.Remarks = tbRemarks.Text;
                 viewModel.expensesModel.ReceiptNo = tbReciept.Text;
-            }
 
+            }
             viewModel.SaveExpense();
-            btnCancel.PerformClick();
         }
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
             viewModel.LoadExpenses();
+        }
+
+        private void cbDescription_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgExpenses_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgExpenses.ClearSelection();
         }
     }
 }

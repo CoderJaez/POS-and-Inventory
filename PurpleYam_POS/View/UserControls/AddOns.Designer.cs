@@ -37,16 +37,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.mtbSearch = new MetroFramework.Controls.MetroTextBox();
             this.dgProducts = new System.Windows.Forms.DataGridView();
-            this.UnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isAvailableDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.UnitCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.AddonBS = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddonBS)).BeginInit();
             this.SuspendLayout();
@@ -161,6 +161,15 @@
             this.dgProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgProducts.Size = new System.Drawing.Size(742, 446);
             this.dgProducts.TabIndex = 38;
+            this.dgProducts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgProducts_DataBindingComplete);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
             // UnitId
             // 
@@ -169,6 +178,28 @@
             this.UnitId.Name = "UnitId";
             this.UnitId.ReadOnly = true;
             this.UnitId.Visible = false;
+            // 
+            // productDataGridViewTextBoxColumn
+            // 
+            this.productDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
+            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
+            this.productDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isAvailableDataGridViewCheckBoxColumn
+            // 
+            this.isAvailableDataGridViewCheckBoxColumn.DataPropertyName = "IsAvailable";
+            this.isAvailableDataGridViewCheckBoxColumn.HeaderText = "IsAvailable";
+            this.isAvailableDataGridViewCheckBoxColumn.Name = "isAvailableDataGridViewCheckBoxColumn";
+            this.isAvailableDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // UnitCode
             // 
@@ -195,6 +226,10 @@
             this.delete.ReadOnly = true;
             this.delete.Width = 6;
             // 
+            // AddonBS
+            // 
+            this.AddonBS.DataSource = typeof(PurpleYam_POS.Model.ProductModel);
+            // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
@@ -212,40 +247,6 @@
             this.btnAdd.Text = "&Add new";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = false;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // productDataGridViewTextBoxColumn
-            // 
-            this.productDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
-            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
-            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
-            this.productDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // isAvailableDataGridViewCheckBoxColumn
-            // 
-            this.isAvailableDataGridViewCheckBoxColumn.DataPropertyName = "IsAvailable";
-            this.isAvailableDataGridViewCheckBoxColumn.HeaderText = "IsAvailable";
-            this.isAvailableDataGridViewCheckBoxColumn.Name = "isAvailableDataGridViewCheckBoxColumn";
-            this.isAvailableDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
-            // AddonBS
-            // 
-            this.AddonBS.DataSource = typeof(PurpleYam_POS.Model.ProductModel);
             // 
             // AddOns
             // 

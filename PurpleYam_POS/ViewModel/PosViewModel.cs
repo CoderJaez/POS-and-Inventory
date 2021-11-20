@@ -105,6 +105,7 @@ namespace PurpleYam_POS.ViewModel
                 ClearCheckout();
             else
                 uc.BtnClearOrders.PerformClick();
+
             FormMain.Instance.Back.PerformClick();
         }
 
@@ -376,6 +377,7 @@ namespace PurpleYam_POS.ViewModel
                 FormMain.Instance.UserControl.Add("SettlePayments");
                 FormMain.Instance.MetroContainer.Controls["SettlePayments"].BringToFront();
             }
+            FormMain.Instance.Back.Visible = true;
 
         }
 
@@ -538,7 +540,7 @@ namespace PurpleYam_POS.ViewModel
                 ucReservation.viewModel.posViewModel = this;
                 FormMain.Instance.MetroContainer.Controls.Add(ucReservation);
             }
-
+            FormMain.Instance.Back.Visible = true;
             FormMain.Instance.UserControl.Add("Reservations");
             FormMain.Instance.MetroContainer.Controls["Reservations"].BringToFront();
             ucReservation.LoadData();

@@ -66,15 +66,16 @@ namespace PurpleYam_POS.helper
         private string itemFormat(string item, decimal qty, decimal price, decimal amnt)
         {
             lineheight10 = bft.GetHeight() + leading;
-            var outStr = getStrSplit(item, 10);
+            var outStr = getStrSplit(item, 15);
             var outlst = outStr.Split('\n').ToList();
             string output = string.Empty;
-            output += string.Format("{0,-10}{1,10:N2}{2,8:N2}\n", qty + " " + outlst[0], price, " " + amnt);
+            var desc = $"{qty} {outlst[0]}";
+            output += string.Format("{0,-10}{1}{2}\n", desc.PadRight(30 ,' '), price.ToString("N2"),  amnt.ToString("N2").PadLeft(42 - price.ToString("N2").Length, ' '));
             if (outlst.Count > 1)
             {
                 foreach (var i in outlst.Skip(1))
                 {
-                    output += string.Format("{0,-10}\n", "   " + i);
+                    output += string.Format("{0,-15}\n", "   " + i);
                 }
             }
 
@@ -96,12 +97,12 @@ namespace PurpleYam_POS.helper
             prntAreaWidth = receipt.DefaultPageSettings.PaperSize.Width;
 
 
-            Body += string.Format("{0,-10}{1,10:N2}{2,10:N2}\n", "Description", "Price", "Amnt");
+            //Body += string.Format("{0,-10}{1,30:N2}{2,20:N2}\n", "Description", "Price", "Amnt");
 
-            orders.ForEach(p =>
-            {
-                Body += itemFormat(p.Product, p.Qty, p.Price, p.SubTotal);
-            });
+            //orders.ForEach(p =>
+            //{
+            //    Body += itemFormat(p.Product, p.Qty, p.Price, p.SubTotal);
+            //});
             
             receipt.Print();
             //ppd.Document = ReceiptDoc;
@@ -140,10 +141,16 @@ namespace PurpleYam_POS.helper
 
             offset += lineheight10;
             layout = new RectangleF(new PointF(startX, startY + offset), layoutSize);
-            e.Graphics.DrawString($"Date:{(st.TransactionType == "RESERVATION" ? st.ReservationDate :DateTime.Now)}", bft, new SolidBrush(Color.Black), layout, formatleft);
+            e.Graphics.DrawString($"Date:{(st.TransactionType == "RESERVATION" ? st.ReservationDate : DateTime.Now)}", bft, new SolidBrush(Color.Black), layout, formatleft);
+            if (st.TransactionType == "RESERVATION")
+            {
+                offset += lineheight10;
+                layout = new RectangleF(new PointF(startX, startY + offset), layoutSize);
+                e.Graphics.DrawString(st.TransactionType, bft, new SolidBrush(Color.Black), layout, formatleft);
+            }
             offset += lineheight10;
             layout = new RectangleF(new PointF(startX, startY + offset), layoutSize);
-            e.Graphics.DrawString($"Order by: {(st.TransactionType == "RESERVATION" ? st.Fullname :"Walk-In")}", bft, new SolidBrush(Color.Black), layout, formatleft);
+            e.Graphics.DrawString($"Order by: {(st.TransactionType == "RESERVATION" ? st.Fullname : "Walk-In")}", bft, new SolidBrush(Color.Black), layout, formatleft);
             offset += lineheight10;
             layout = new RectangleF(new PointF(startX, startY + offset), layoutSize);
             e.Graphics.DrawString($"Contact No :{st.Customer.ContactNo}", bft, new SolidBrush(Color.Black), layout, formatleft);
@@ -151,9 +158,27 @@ namespace PurpleYam_POS.helper
             offset += lineheight10;
             layout = new RectangleF(new PointF(startX, startY + offset), layoutSize);
             e.Graphics.DrawString("===========================", bft, new SolidBrush(Color.Black), layout, formatCenter);
+
+            //
+            //Item headers
             offset += lineheight10;
-            //int i = 1;
-            e.Graphics.DrawString(Body, bft, new SolidBrush(Color.Black), new Point((int)startX, (int)startY + (int)offset));
+            layout = new RectangleF(new PointF(startX, startY + offset), layoutSize);
+            e.Graphics.DrawString("Description", bft, new SolidBrush(Color.Black), layout, formatleft);
+            e.Graphics.DrawString("Amount", bft, new SolidBrush(Color.Black), layout, formatRight);
+            layout = new RectangleF(new PointF(startX + 100, startY + offset), layoutSize);
+            e.Graphics.DrawString("Price", bft, new SolidBrush(Color.Black), layout, formatleft);
+
+            //Item List
+            orders.ForEach(p => {
+                offset += lineheight10;
+                layout = new RectangleF(new PointF(startX, startY + offset), layoutSize);
+                e.Graphics.DrawString($"{p.Qty} {p.Product}", bft, new SolidBrush(Color.Black), layout, formatleft);
+                e.Graphics.DrawString(p.SubTotal.ToString("N2"), bft, new SolidBrush(Color.Black), layout, formatRight);
+                layout = new RectangleF(new PointF(startX + 100, startY + offset), layoutSize);
+                e.Graphics.DrawString(p.Price.ToString("N2"), bft, new SolidBrush(Color.Black), layout, formatleft);
+            });
+            //e.Graphics.DrawString(Body, bft, new SolidBrush(Color.Black), new Point((int)startX, (int)startY + (int)offset));
+            //Items
             offset += lineheight10 + offsetY;
             layout = new RectangleF(new PointF(startX, startY + offset), layoutSize);
             e.Graphics.DrawString("===========================", bft, new SolidBrush(Color.Black), layout, formatCenter); //Contact No
@@ -163,7 +188,7 @@ namespace PurpleYam_POS.helper
 
             offset += lineheight10;
             layout = new RectangleF(new PointF(startX, startY + offset), layoutSize);
-            e.Graphics.DrawString("TOTAL", bft, new SolidBrush(Color.Black), layout, formatleft);
+            e.Graphics.DrawString("Total", bft, new SolidBrush(Color.Black), layout, formatleft);
             e.Graphics.DrawString(st.TotalAmount.ToString("N"), bft, new SolidBrush(Color.Black), layout, formatRight);
 
             offset += lineheight10;

@@ -58,6 +58,8 @@ namespace PurpleYam_POS.View.UserControls
         private void dtpSales_ValueChanged(object sender, EventArgs e)
         {
             viewModel.GetDailySales(dtpSales.Value.Date);
+            var total = viewModel.DailySalesBS.List.OfType<Model.ProductionStock>().Select(p => p.TotalAmount).Sum();
+            lblTotalSales.Text = total.ToString("N");
 
         }
 
@@ -71,6 +73,9 @@ namespace PurpleYam_POS.View.UserControls
         private void dtpExpenses_ValueChanged(object sender, EventArgs e)
         {
             viewModel.GetExpenses(dtpEFrom.Value, dtpETo.Value);
+            
+            var total =  viewModel.ExpensesBS.List.OfType<Model.ExpensesModel>().Select(exp => exp.Amount).Sum();
+            lblTotalExpenses.Text = total.ToString("N");
 
         }
 

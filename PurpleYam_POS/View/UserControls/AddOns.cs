@@ -42,5 +42,10 @@ namespace PurpleYam_POS.View.UserControls
             if (e.KeyCode == Keys.Enter)
                 LoadData();
         }
+
+        private void dgProducts_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgProducts.ClearSelection();
+        }
     }
 }

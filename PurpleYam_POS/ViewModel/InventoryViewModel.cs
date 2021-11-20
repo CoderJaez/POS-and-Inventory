@@ -109,7 +109,7 @@ namespace PurpleYam_POS.ViewModel
 
             if(ucProductionStockin != null)
             {
-                Notification.AlertMessage("New Production stocks added.                    ", "Success", Notification.AlertType.SUCCESS);
+                Notification.AlertMessage("New Production stocks added.", "Success", Notification.AlertType.SUCCESS);
                 ProductStockinBS.Clear();
             }
            

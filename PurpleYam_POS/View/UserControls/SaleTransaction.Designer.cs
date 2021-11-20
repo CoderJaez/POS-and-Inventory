@@ -29,20 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dgProduction = new System.Windows.Forms.DataGridView();
+            this.WTransactionNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cashTenderedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.changeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleTransactionBS = new System.Windows.Forms.BindingSource(this.components);
             this.tabSales = new MetroFramework.Controls.MetroTabControl();
             this.walk_inTab = new MetroFramework.Controls.MetroTabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -58,22 +64,8 @@
             this.dtprFrom = new System.Windows.Forms.DateTimePicker();
             this.dtprTo = new System.Windows.Forms.DateTimePicker();
             this.dgReservation = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dgProduct = new System.Windows.Forms.DataGridView();
-            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subTotalDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductBS = new System.Windows.Forms.BindingSource(this.components);
-            this.SaleTransactionBS = new System.Windows.Forms.BindingSource(this.components);
-            this.ReservationBS = new System.Windows.Forms.BindingSource(this.components);
-            this.WTransactionNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashTenderedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.changeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.downPaymentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalAmountDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.balanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,18 +75,27 @@
             this.reservationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.claim = new System.Windows.Forms.DataGridViewImageColumn();
             this.cancel = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ReservationBS = new System.Windows.Forms.BindingSource(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dgProduct = new System.Windows.Forms.DataGridView();
+            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subTotalDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgProduction)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaleTransactionBS)).BeginInit();
             this.tabSales.SuspendLayout();
             this.walk_inTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.reservationTab.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgReservation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReservationBS)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SaleTransactionBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReservationBS)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -123,14 +124,14 @@
             this.dgProduction.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgProduction.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgProduction.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgProduction.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgProduction.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgProduction.ColumnHeadersHeight = 35;
             this.dgProduction.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.WTransactionNo,
@@ -139,15 +140,15 @@
             this.cashTenderedDataGridViewTextBoxColumn,
             this.changeDataGridViewTextBoxColumn});
             this.dgProduction.DataSource = this.SaleTransactionBS;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgProduction.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgProduction.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgProduction.EnableHeadersVisualStyles = false;
             this.dgProduction.Location = new System.Drawing.Point(20, 75);
             this.dgProduction.Margin = new System.Windows.Forms.Padding(40, 4, 40, 4);
@@ -155,23 +156,66 @@
             this.dgProduction.Name = "dgProduction";
             this.dgProduction.ReadOnly = true;
             this.dgProduction.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Purple;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgProduction.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgProduction.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgProduction.RowHeadersVisible = false;
             this.dgProduction.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgProduction.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgProduction.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgProduction.RowTemplate.Height = 30;
             this.dgProduction.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgProduction.Size = new System.Drawing.Size(539, 392);
             this.dgProduction.TabIndex = 27;
             this.dgProduction.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgProduction_DataBindingComplete);
+            // 
+            // WTransactionNo
+            // 
+            this.WTransactionNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.WTransactionNo.DataPropertyName = "TransactionNo";
+            this.WTransactionNo.HeaderText = "TransactionNo";
+            this.WTransactionNo.Name = "WTransactionNo";
+            this.WTransactionNo.ReadOnly = true;
+            this.WTransactionNo.Width = 5;
+            // 
+            // transactionDateDataGridViewTextBoxColumn
+            // 
+            this.transactionDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.transactionDateDataGridViewTextBoxColumn.DataPropertyName = "TransactionDate";
+            this.transactionDateDataGridViewTextBoxColumn.HeaderText = "TransactionDate";
+            this.transactionDateDataGridViewTextBoxColumn.Name = "transactionDateDataGridViewTextBoxColumn";
+            this.transactionDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.transactionDateDataGridViewTextBoxColumn.Width = 5;
+            // 
+            // totalAmountDataGridViewTextBoxColumn
+            // 
+            this.totalAmountDataGridViewTextBoxColumn.DataPropertyName = "TotalAmount";
+            this.totalAmountDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.totalAmountDataGridViewTextBoxColumn.Name = "totalAmountDataGridViewTextBoxColumn";
+            this.totalAmountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cashTenderedDataGridViewTextBoxColumn
+            // 
+            this.cashTenderedDataGridViewTextBoxColumn.DataPropertyName = "CashTendered";
+            this.cashTenderedDataGridViewTextBoxColumn.HeaderText = "Cash Tendered";
+            this.cashTenderedDataGridViewTextBoxColumn.Name = "cashTenderedDataGridViewTextBoxColumn";
+            this.cashTenderedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // changeDataGridViewTextBoxColumn
+            // 
+            this.changeDataGridViewTextBoxColumn.DataPropertyName = "Change";
+            this.changeDataGridViewTextBoxColumn.HeaderText = "Change";
+            this.changeDataGridViewTextBoxColumn.Name = "changeDataGridViewTextBoxColumn";
+            this.changeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // SaleTransactionBS
+            // 
+            this.SaleTransactionBS.DataSource = typeof(PurpleYam_POS.Model.SaleTransactionModel);
             // 
             // tabSales
             // 
@@ -270,7 +314,7 @@
             this.reservationTab.Controls.Add(this.dgReservation);
             this.reservationTab.HorizontalScrollbarBarColor = true;
             this.reservationTab.HorizontalScrollbarHighlightOnWheel = false;
-            this.reservationTab.HorizontalScrollbarSize = 6;
+            this.reservationTab.HorizontalScrollbarSize = 4;
             this.reservationTab.Location = new System.Drawing.Point(4, 41);
             this.reservationTab.Margin = new System.Windows.Forms.Padding(4);
             this.reservationTab.Name = "reservationTab";
@@ -279,7 +323,7 @@
             this.reservationTab.Text = "Reservation";
             this.reservationTab.VerticalScrollbarBarColor = true;
             this.reservationTab.VerticalScrollbarHighlightOnWheel = false;
-            this.reservationTab.VerticalScrollbarSize = 6;
+            this.reservationTab.VerticalScrollbarSize = 3;
             // 
             // groupBox2
             // 
@@ -330,6 +374,7 @@
             this.tbSearch.WaterMark = "Search customer/transactionNo";
             this.tbSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
             // 
             // label5
             // 
@@ -381,17 +426,18 @@
             this.dgReservation.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgReservation.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgReservation.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgReservation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgReservation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgReservation.ColumnHeadersHeight = 35;
             this.dgReservation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.transactionNoDataGridViewTextBoxColumn,
+            this.Fullname,
             this.downPaymentDataGridViewTextBoxColumn,
             this.totalAmountDataGridViewTextBoxColumn1,
             this.balanceDataGridViewTextBoxColumn,
@@ -402,15 +448,15 @@
             this.claim,
             this.cancel});
             this.dgReservation.DataSource = this.ReservationBS;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgReservation.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(3);
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgReservation.DefaultCellStyle = dataGridViewCellStyle18;
             this.dgReservation.EnableHeadersVisualStyles = false;
             this.dgReservation.Location = new System.Drawing.Point(22, 75);
             this.dgReservation.Margin = new System.Windows.Forms.Padding(40, 4, 40, 4);
@@ -418,192 +464,22 @@
             this.dgReservation.Name = "dgReservation";
             this.dgReservation.ReadOnly = true;
             this.dgReservation.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Purple;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgReservation.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgReservation.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dgReservation.RowHeadersVisible = false;
             this.dgReservation.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgReservation.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgReservation.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dgReservation.RowTemplate.Height = 30;
             this.dgReservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgReservation.Size = new System.Drawing.Size(539, 392);
             this.dgReservation.TabIndex = 28;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.dgProduct);
-            this.panel1.Location = new System.Drawing.Point(628, 193);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(352, 392);
-            this.panel1.TabIndex = 34;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(0);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(5);
-            this.label4.Size = new System.Drawing.Size(350, 39);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Orders";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // dgProduct
-            // 
-            this.dgProduct.AllowUserToAddRows = false;
-            this.dgProduct.AllowUserToResizeRows = false;
-            this.dgProduct.AutoGenerateColumns = false;
-            this.dgProduct.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgProduct.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgProduct.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgProduct.ColumnHeadersHeight = 35;
-            this.dgProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn,
-            this.qtyDataGridViewTextBoxColumn,
-            this.subTotalDataGridViewTextBoxColumn1});
-            this.dgProduct.DataSource = this.ProductBS;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgProduct.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dgProduct.EnableHeadersVisualStyles = false;
-            this.dgProduct.Location = new System.Drawing.Point(-1, 39);
-            this.dgProduct.Margin = new System.Windows.Forms.Padding(40, 0, 40, 4);
-            this.dgProduct.MultiSelect = false;
-            this.dgProduct.Name = "dgProduct";
-            this.dgProduct.ReadOnly = true;
-            this.dgProduct.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Purple;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgProduct.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.dgProduct.RowHeadersVisible = false;
-            this.dgProduct.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgProduct.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgProduct.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgProduct.Size = new System.Drawing.Size(351, 347);
-            this.dgProduct.TabIndex = 34;
-            // 
-            // productDataGridViewTextBoxColumn
-            // 
-            this.productDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
-            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
-            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
-            this.productDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productDataGridViewTextBoxColumn.Width = 5;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // qtyDataGridViewTextBoxColumn
-            // 
-            this.qtyDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
-            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
-            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
-            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
-            this.qtyDataGridViewTextBoxColumn.Width = 58;
-            // 
-            // subTotalDataGridViewTextBoxColumn1
-            // 
-            this.subTotalDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.subTotalDataGridViewTextBoxColumn1.DataPropertyName = "SubTotal";
-            this.subTotalDataGridViewTextBoxColumn1.HeaderText = "SubTotal";
-            this.subTotalDataGridViewTextBoxColumn1.Name = "subTotalDataGridViewTextBoxColumn1";
-            this.subTotalDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.subTotalDataGridViewTextBoxColumn1.Width = 90;
-            // 
-            // ProductBS
-            // 
-            this.ProductBS.DataSource = typeof(PurpleYam_POS.Model.SoldProductModel);
-            // 
-            // SaleTransactionBS
-            // 
-            this.SaleTransactionBS.DataSource = typeof(PurpleYam_POS.Model.SaleTransactionModel);
-            // 
-            // ReservationBS
-            // 
-            this.ReservationBS.DataSource = typeof(PurpleYam_POS.Model.SaleTransactionModel);
-            // 
-            // WTransactionNo
-            // 
-            this.WTransactionNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.WTransactionNo.DataPropertyName = "TransactionNo";
-            this.WTransactionNo.HeaderText = "TransactionNo";
-            this.WTransactionNo.Name = "WTransactionNo";
-            this.WTransactionNo.ReadOnly = true;
-            this.WTransactionNo.Width = 5;
-            // 
-            // transactionDateDataGridViewTextBoxColumn
-            // 
-            this.transactionDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.transactionDateDataGridViewTextBoxColumn.DataPropertyName = "TransactionDate";
-            this.transactionDateDataGridViewTextBoxColumn.HeaderText = "TransactionDate";
-            this.transactionDateDataGridViewTextBoxColumn.Name = "transactionDateDataGridViewTextBoxColumn";
-            this.transactionDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.transactionDateDataGridViewTextBoxColumn.Width = 5;
-            // 
-            // totalAmountDataGridViewTextBoxColumn
-            // 
-            this.totalAmountDataGridViewTextBoxColumn.DataPropertyName = "TotalAmount";
-            this.totalAmountDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.totalAmountDataGridViewTextBoxColumn.Name = "totalAmountDataGridViewTextBoxColumn";
-            this.totalAmountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cashTenderedDataGridViewTextBoxColumn
-            // 
-            this.cashTenderedDataGridViewTextBoxColumn.DataPropertyName = "CashTendered";
-            this.cashTenderedDataGridViewTextBoxColumn.HeaderText = "Cash Tendered";
-            this.cashTenderedDataGridViewTextBoxColumn.Name = "cashTenderedDataGridViewTextBoxColumn";
-            this.cashTenderedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // changeDataGridViewTextBoxColumn
-            // 
-            this.changeDataGridViewTextBoxColumn.DataPropertyName = "Change";
-            this.changeDataGridViewTextBoxColumn.HeaderText = "Change";
-            this.changeDataGridViewTextBoxColumn.Name = "changeDataGridViewTextBoxColumn";
-            this.changeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // transactionNoDataGridViewTextBoxColumn
             // 
@@ -613,6 +489,13 @@
             this.transactionNoDataGridViewTextBoxColumn.Name = "transactionNoDataGridViewTextBoxColumn";
             this.transactionNoDataGridViewTextBoxColumn.ReadOnly = true;
             this.transactionNoDataGridViewTextBoxColumn.Width = 5;
+            // 
+            // Fullname
+            // 
+            this.Fullname.DataPropertyName = "Fullname";
+            this.Fullname.HeaderText = "Customer";
+            this.Fullname.Name = "Fullname";
+            this.Fullname.ReadOnly = true;
             // 
             // downPaymentDataGridViewTextBoxColumn
             // 
@@ -681,6 +564,133 @@
             this.cancel.Name = "cancel";
             this.cancel.ReadOnly = true;
             // 
+            // ReservationBS
+            // 
+            this.ReservationBS.DataSource = typeof(PurpleYam_POS.Model.SaleTransactionModel);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.dgProduct);
+            this.panel1.Location = new System.Drawing.Point(628, 193);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(352, 392);
+            this.panel1.TabIndex = 34;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Margin = new System.Windows.Forms.Padding(0);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(5);
+            this.label4.Size = new System.Drawing.Size(350, 39);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Orders";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dgProduct
+            // 
+            this.dgProduct.AllowUserToAddRows = false;
+            this.dgProduct.AllowUserToResizeRows = false;
+            this.dgProduct.AutoGenerateColumns = false;
+            this.dgProduct.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgProduct.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgProduct.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            this.dgProduct.ColumnHeadersHeight = 35;
+            this.dgProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.productDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn,
+            this.qtyDataGridViewTextBoxColumn,
+            this.subTotalDataGridViewTextBoxColumn1});
+            this.dgProduct.DataSource = this.ProductBS;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgProduct.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dgProduct.EnableHeadersVisualStyles = false;
+            this.dgProduct.Location = new System.Drawing.Point(-1, 0);
+            this.dgProduct.Margin = new System.Windows.Forms.Padding(40, 0, 40, 4);
+            this.dgProduct.MultiSelect = false;
+            this.dgProduct.Name = "dgProduct";
+            this.dgProduct.ReadOnly = true;
+            this.dgProduct.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgProduct.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            this.dgProduct.RowHeadersVisible = false;
+            this.dgProduct.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgProduct.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            this.dgProduct.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgProduct.Size = new System.Drawing.Size(351, 391);
+            this.dgProduct.TabIndex = 34;
+            // 
+            // productDataGridViewTextBoxColumn
+            // 
+            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
+            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
+            this.productDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtyDataGridViewTextBoxColumn
+            // 
+            this.qtyDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
+            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
+            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
+            this.qtyDataGridViewTextBoxColumn.Width = 58;
+            // 
+            // subTotalDataGridViewTextBoxColumn1
+            // 
+            this.subTotalDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.subTotalDataGridViewTextBoxColumn1.DataPropertyName = "SubTotal";
+            this.subTotalDataGridViewTextBoxColumn1.HeaderText = "SubTotal";
+            this.subTotalDataGridViewTextBoxColumn1.Name = "subTotalDataGridViewTextBoxColumn1";
+            this.subTotalDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.subTotalDataGridViewTextBoxColumn1.Width = 90;
+            // 
+            // ProductBS
+            // 
+            this.ProductBS.DataSource = typeof(PurpleYam_POS.Model.SoldProductModel);
+            // 
             // SaleTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -693,6 +703,7 @@
             this.Name = "SaleTransaction";
             this.Size = new System.Drawing.Size(995, 655);
             ((System.ComponentModel.ISupportInitialize)(this.dgProduction)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaleTransactionBS)).EndInit();
             this.tabSales.ResumeLayout(false);
             this.walk_inTab.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -701,11 +712,10 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgReservation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReservationBS)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SaleTransactionBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReservationBS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -729,10 +739,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgProduct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subTotalDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridView dgReservation;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label5;
@@ -747,6 +753,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cashTenderedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn changeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn transactionNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fullname;
         private System.Windows.Forms.DataGridViewTextBoxColumn downPaymentDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalAmountDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn balanceDataGridViewTextBoxColumn;
@@ -756,5 +763,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn reservationDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn claim;
         private System.Windows.Forms.DataGridViewImageColumn cancel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subTotalDataGridViewTextBoxColumn1;
     }
 }

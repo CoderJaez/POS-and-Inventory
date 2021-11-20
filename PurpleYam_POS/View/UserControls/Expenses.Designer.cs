@@ -43,19 +43,15 @@
             this.dtp = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.cbDescription = new System.Windows.Forms.ComboBox();
-            this.ExpensesBS = new System.Windows.Forms.BindingSource(this.components);
             this.ExpenseCatBS = new System.Windows.Forms.BindingSource(this.components);
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.tbAmount = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.ExpensesBS = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.dgExpenses = new System.Windows.Forms.DataGridView();
-            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.ReceiptNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,9 +59,13 @@
             this.Remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpensesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpenseCatBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpensesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgExpenses)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,7 +155,6 @@
             // 
             // cbDescription
             // 
-            this.cbDescription.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.ExpensesBS, "ExpenseId", true));
             this.cbDescription.DataSource = this.ExpenseCatBS;
             this.cbDescription.DisplayMember = "Description";
             this.cbDescription.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -164,11 +163,7 @@
             this.cbDescription.Name = "cbDescription";
             this.cbDescription.Size = new System.Drawing.Size(258, 25);
             this.cbDescription.TabIndex = 47;
-            this.cbDescription.ValueMember = "ExpenseId";
-            // 
-            // ExpensesBS
-            // 
-            this.ExpensesBS.DataSource = typeof(PurpleYam_POS.Model.ExpensesModel);
+            this.cbDescription.ValueMember = "Id";
             // 
             // ExpenseCatBS
             // 
@@ -244,6 +239,10 @@
             this.label2.TabIndex = 41;
             this.label2.Text = "Manage Expense";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ExpensesBS
+            // 
+            this.ExpensesBS.DataSource = typeof(PurpleYam_POS.Model.ExpensesModel);
             // 
             // label1
             // 
@@ -321,42 +320,7 @@
             this.dgExpenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgExpenses.Size = new System.Drawing.Size(629, 446);
             this.dgExpenses.TabIndex = 42;
-            // 
-            // dtpFrom
-            // 
-            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFrom.Location = new System.Drawing.Point(26, 77);
-            this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(121, 23);
-            this.dtpFrom.TabIndex = 46;
-            this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 57);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 17);
-            this.label5.TabIndex = 47;
-            this.label5.Text = "Date from:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(168, 57);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 17);
-            this.label6.TabIndex = 49;
-            this.label6.Text = "Date to:";
-            // 
-            // dtpTo
-            // 
-            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTo.Location = new System.Drawing.Point(168, 77);
-            this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(121, 23);
-            this.dtpTo.TabIndex = 48;
-            this.dtpTo.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
+            this.dgExpenses.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgExpenses_DataBindingComplete);
             // 
             // ReceiptNo
             // 
@@ -413,6 +377,42 @@
             this.delete.ReadOnly = true;
             this.delete.Width = 6;
             // 
+            // dtpFrom
+            // 
+            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFrom.Location = new System.Drawing.Point(26, 77);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(121, 23);
+            this.dtpFrom.TabIndex = 46;
+            this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(26, 57);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 17);
+            this.label5.TabIndex = 47;
+            this.label5.Text = "Date from:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(168, 57);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 17);
+            this.label6.TabIndex = 49;
+            this.label6.Text = "Date to:";
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTo.Location = new System.Drawing.Point(168, 77);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(121, 23);
+            this.dtpTo.TabIndex = 48;
+            this.dtpTo.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
+            // 
             // Expenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -431,8 +431,8 @@
             this.Size = new System.Drawing.Size(1015, 568);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpensesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpenseCatBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpensesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgExpenses)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

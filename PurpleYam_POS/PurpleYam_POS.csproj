@@ -404,6 +404,7 @@
     <EmbeddedResource Include="Reports\DailySalesRpt.rdlc" />
     <EmbeddedResource Include="Reports\ExpensesRpt.rdlc" />
     <EmbeddedResource Include="Reports\ProductionStockinRpt.rdlc" />
+    <EmbeddedResource Include="Reports\RawmatStockinRpt.rdlc" />
     <EmbeddedResource Include="Reports\ReservationRpt.rdlc" />
     <EmbeddedResource Include="Reports\StockRoomRpt.rdlc" />
     <EmbeddedResource Include="View\Forms\FormManageAddons.resx">

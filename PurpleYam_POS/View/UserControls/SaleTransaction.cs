@@ -58,5 +58,11 @@ namespace PurpleYam_POS.View.UserControls
         {
             viewModel.LoadReservation();
         }
+
+        private void tbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                viewModel.LoadReservation();
+        }   
     }
 }

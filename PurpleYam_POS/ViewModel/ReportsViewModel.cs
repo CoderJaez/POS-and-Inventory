@@ -84,7 +84,7 @@ namespace PurpleYam_POS.ViewModel
         public async void GetRawmatStockin(DateTime dateF, DateTime dateT)
         {
             RawmatStockinBS.DataSource = await LoadData<RawMaterial, dynamic>(@"
-                select r.Product, u.UnitCode as DisplayUnit, rms.Qty, rms.DateArrival, rms.DateExpiry  from tbl_rawmat_stockin rms 
+                select r.Product, u.UnitCode as DisplayUnit, rms.Qty, rms.DateArrival, rms.DateExpiry, r.HasExpiry  from tbl_rawmat_stockin rms 
                 left join rawmaterial r on r.Id  = rms.RawmatId 
                 left join units u on u.Id = rms.GrpUnitId
                 Where rms.DateArrival between @DateFrom and @DateTo
@@ -116,7 +116,9 @@ namespace PurpleYam_POS.ViewModel
                 case "reservation":
                     PrintReservation();
                     break;
-
+                case "rawmat_stockin":
+                    PrintRawmatStockin();
+                    break;
 
             }
 
@@ -147,7 +149,20 @@ namespace PurpleYam_POS.ViewModel
         
             rdlcPath = "PurpleYam_POS.Reports.DailySalesRpt.rdlc";
         }
-        
+        private void PrintRawmatStockin()
+        {
+            rs = new ReportDataSource[]
+           {
+                 new ReportDataSource { Name = "Rawmat", Value = RawmatStockinBS.List },
+            };
+
+            rp = new ReportParameter[]
+            {
+                new ReportParameter("Logo", Convert.ToBase64String(ImageLoader.ImageBuffer(Properties.Resources.logo_header)))
+            };
+
+            rdlcPath = "PurpleYam_POS.Reports.RawmatStockinRpt.rdlc";
+        }
         private void PrintExpenses()
         {
             rs = new ReportDataSource[]

@@ -36,7 +36,7 @@ namespace PurpleYam_POS.View.UserControls
                 return;
             }
 
-            conn = string.Format("host={0};user={1};pass={2};database={3};port={4};", Server, Username, Password, Database, Port);
+            conn = string.Format("host={0};user={1};password={2};database={3};port={4};", Server, Username, Password, Database, Port);
             UpdateDBConfig(conn);
             Application.Restart();
 
@@ -51,7 +51,7 @@ namespace PurpleYam_POS.View.UserControls
                 return;
             }
 
-            conn = string.Format("host={0};user={1};pass={2};database={3};port={4};", Server, Username, Password, Database, Port);
+            conn = string.Format("host={0};user={1};password={2};database={3};port={4};", Server, Username, Password, Database, Port);
             if (IsDBConnected(conn))
                 Notification.AlertMessage("Connected successfully", "Success", Notification.AlertType.SUCCESS); 
             else
@@ -62,6 +62,11 @@ namespace PurpleYam_POS.View.UserControls
         private bool IsInValid()
         {
             return (string.IsNullOrEmpty(Server) || string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Database) || string.IsNullOrEmpty(Port));
+        }
+
+        private void tbServer_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

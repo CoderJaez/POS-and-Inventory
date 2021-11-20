@@ -143,42 +143,44 @@ namespace PurpleYam_POS.ViewModel
         /// <param name="e"></param>
         internal void DeleteSelected(object sender, EventArgs e)
         {
-            if (models.Count > 0)
+           var ListToDelete =  page.bindingSource.OfType<RawMaterial>().ToList().FindAll(p => p.Deleted == true);
+            if(ListToDelete.Count <= 0)
+            {
+                Notification.AlertMessage("No raw materials selected.", "Select raw material", Notification.AlertType.WARNING);
+                return;
+            }
+
+            if(Notification.Confim(FormMain.Instance, "Do you to delete rows?","Delete Raw Materials") == DialogResult.Yes)
             {
                 var query = new StringBuilder();
                 query.Append("UPDATE rawmaterial SET ");
-                models.ForEach(model =>
-               {
-                   query.Append($"Deleted = CASE WHEN Id = {model.Id} THEN true ELSE Deleted END, ");
-               });
-                
+                ListToDelete.ForEach(model =>
+                {
+                    query.Append($"Deleted = CASE WHEN Id = {model.Id} THEN true ELSE Deleted END, ");
+                });
+
                 query.Remove(query.Length - 2, 1);
                 query.Append("WHERE Id IN ( ");
-                models.ForEach(model =>
+                ListToDelete.ForEach(model =>
                 {
                     query.Append($"{model.Id}, ");
                 });
                 query.Remove(query.Length - 2, 1);
                 query.Append(" )");
                 SaveData(query.ToString(), new { });
-                var res = Notification.Confim(FormMain.Instance, "Do want to delete selecte raw materials?", "Delete raw material");
-                if(res == DialogResult.Yes)
-                {
-                    Notification.AlertMessage("Raw materials deleted", "Success", Notification.AlertType.SUCCESS);
-                    models.ForEach(m => page.bindingSource.Remove(m));
-                }
-                
-            } else 
-                Notification.AlertMessage("No raw materials selected.", "Select raw material", Notification.AlertType.WARNING);
+                Notification.AlertMessage("Raw materials deleted", "Success", Notification.AlertType.SUCCESS);
+                ListToDelete.ForEach(m => page.bindingSource.Remove(m));
+                ((CheckBox)uc.Controls["cbAll"]).Checked = false;
+            }
+           
+
 
         }
 
         internal void rawMatCheckChanged(object sender, EventArgs e)
         {
             var checkbox = (CheckBox)sender;
-            checkbox.Checked = checkbox.Checked?true:false;
-            if (!checkbox.Checked)
-                models.Clear();
+          
             foreach (DataGridViewRow row in uc.dataGridView.Rows)
             {
                 row.Cells["checkbox"].Value = checkbox.Checked;
@@ -245,6 +247,8 @@ namespace PurpleYam_POS.ViewModel
                             PrudUnitBS.Remove(obj);
                         }
                         break;
+                    default:
+                        break;
                 }
             }
         }
@@ -273,13 +277,14 @@ namespace PurpleYam_POS.ViewModel
                         if(obj.Deleted)
                         {
                             obj.Deleted = false;
-                            models.Remove(obj);
                         } else
                         {
                             obj.Deleted = true;
-                            models.Add(obj);
                         }
                         page.bindingSource.EndEdit();
+                        break;
+                    default:
+                        MessageBox.Show(obj.Deleted.ToString());
                         break;
                 }
             }

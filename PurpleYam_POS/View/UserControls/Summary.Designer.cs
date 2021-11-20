@@ -380,7 +380,6 @@
             this.chartProductSold.TabIndex = 3;
             title1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             title1.Name = "Title1";
-            title1.Text = "Product sold(qty) as of ";
             this.chartProductSold.Titles.Add(title1);
             // 
             // chartReservation
@@ -402,7 +401,6 @@
             this.chartReservation.TabIndex = 4;
             title2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             title2.Name = "Title1";
-            title2.Text = "Monthly number of reservation as of ";
             this.chartReservation.Titles.Add(title2);
             // 
             // chartSalesExpenses
@@ -427,7 +425,6 @@
             this.chartSalesExpenses.TabIndex = 5;
             title3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             title3.Name = "Title1";
-            title3.Text = "Monthly Sales and Expenses as of";
             this.chartSalesExpenses.Titles.Add(title3);
             // 
             // Summary

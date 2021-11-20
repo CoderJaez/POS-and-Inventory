@@ -96,15 +96,15 @@ namespace PurpleYam_POS.View.UserControls
                     return;
                 }
 
+                               
                 viewModel.stModel.TransactionNo = TransactionNo;
                 viewModel.stModel.CashTendered = decimal.Parse(CashTendered);
-                viewModel.stModel.Change = viewModel.stModel.CashTendered - viewModel.stModel.TotalAmount;
+                viewModel.stModel.Change = viewModel.stModel.CashTendered - decimal.Parse(Balance);
                 viewModel.stModel.Customer = new Model.CustomerModel();
                 viewModel.stModel.DownPayment = 0;
                 viewModel.stModel.Balance = 0;
-                viewModel.SettlePayment();
-
-            } else
+            }
+            else
             {
                if(decimal.Parse(CashTendered) < decimal.Parse(TotalAmount))
                 {
@@ -115,8 +115,8 @@ namespace PurpleYam_POS.View.UserControls
                 viewModel.stModel.Change = viewModel.stModel.CashTendered - viewModel.stModel.TotalAmount;
                 viewModel.stModel.Customer = new Model.CustomerModel();
                 viewModel.stModel.DownPayment = 0;
-                viewModel.SettlePayment();
             }
+            viewModel.SettlePayment();
         }
     }
 }

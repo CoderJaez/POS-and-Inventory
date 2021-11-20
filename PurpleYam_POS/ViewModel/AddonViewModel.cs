@@ -99,21 +99,18 @@ namespace PurpleYam_POS.ViewModel
             {
                 sql = "INSERT INTO tbl_product (Product,Price, Type, IsAvailable,UnitId) VALUES (@Product, @Price, @Type, @IsAvailable, @UnitId);SELECT last_insert_id();";
                 AddonModel.Id = SaveGetId(sql, p);
-              
                 AddonsBS.Add(AddonModel);
                 Notification.AlertMessage("New Add-ons saved.", "Success", Notification.AlertType.SUCCESS);
-                AddonModel = null;
                 form.ResetAllFields();
             }
             else
             {
                 sql = "UPDATE tbl_product SET Product = @Product,Price = @Price, IsAvailable = @IsAvailable, UnitId = @UnitId WHERE Id = @Id";
                 SaveData(sql, p);
-                AddonsBS.EndEdit();
                 Notification.AlertMessage("Add-ons update.", "Success", Notification.AlertType.SUCCESS);
                 uc.DgAddons.ClearSelection();
             }
-
+            AddonModel = null;
         }
         #endregion
 

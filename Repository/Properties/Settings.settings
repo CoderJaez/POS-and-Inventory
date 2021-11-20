@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ConnString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">host=localhost;user=root;pass=;database=purpleyam_db;port=3307;</Value>
+      <Value Profile="(Default)">host=localhost;user=root;password=;database=purpleyam_db;port=3307;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

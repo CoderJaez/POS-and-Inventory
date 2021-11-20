@@ -17,6 +17,8 @@ namespace PurpleYam_POS.View.UserControls
         Expenses expenses;
         Accounts account;
         Reports report;
+        Summary summary;
+
         public static Dashboard Instance
         {
             get
@@ -34,7 +36,7 @@ namespace PurpleYam_POS.View.UserControls
         private void Dashboard_Load(object sender, EventArgs e)
         {
             _instance = this;
-            Summary summary = new Summary();
+            summary = new Summary();
             summary.Dock = DockStyle.Fill;
             mPanel.Controls.Add(summary);
         }
@@ -44,10 +46,11 @@ namespace PurpleYam_POS.View.UserControls
             isClicked(btnDashboard);
             if (!mPanel.Controls.ContainsKey("Summary"))
             {
-                Summary summary = new Summary();
+               summary = new Summary();
                 summary.Dock = DockStyle.Fill;
                 mPanel.Controls.Add(summary);
             }
+            summary.LoadSummary();
             FormMain.Instance.UserControl.Add("Summary");
             mPanel.Controls["Summary"].BringToFront();
         }

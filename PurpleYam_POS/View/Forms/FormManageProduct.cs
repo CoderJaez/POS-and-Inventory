@@ -13,6 +13,7 @@ using PurpleYam_POS.Model;
 using System.IO;
 using System.Drawing.Drawing2D;
 using PurpleYam_POS.helper;
+using PurpleYam_POS.Components;
 
 namespace PurpleYam_POS.View.Forms
 {
@@ -48,11 +49,22 @@ namespace PurpleYam_POS.View.Forms
             viewModel.RecipeBS = RecipeBS;
             mcbRawMat.SelectedValueChanged +=  delegate
             {
-                if (mcbRawMat.SelectedValue != null)
+                try
                 {
-                    unit = viewModel.BaseUnit((int)mcbRawMat.SelectedValue);
-                    labelUnit.Text = unit.UnitCode;
+                    if (mcbRawMat.SelectedValue != null)
+                    {
+                        unit = viewModel.BaseUnit((int)mcbRawMat.SelectedValue);
+                        labelUnit.Text = unit.UnitCode;
+                        btnSaveRecipe.Enabled = false;
+                    }
+                        btnSaveRecipe.Enabled = true;
                 }
+                catch (Exception)
+                {
+                    Notification.AlertMessage("The selected recipe doesn't have base unit.", "Select other recipe", Notification.AlertType.WARNING);
+                    btnSaveRecipe.Enabled = false;
+                }
+               
             };
             btnSave.Click += delegate {
                 if (viewModel.productModel == null)
@@ -73,7 +85,7 @@ namespace PurpleYam_POS.View.Forms
                     viewModel.productModel.Product = tbProduct.Text;
                     viewModel.productModel.Particulars = mcbParticulars.Text;
                     viewModel.productModel.Quality = mcbQuality.Text;
-                    viewModel.productModel.Image = ms.GetBuffer();
+                    viewModel.productModel.Image = ImageLoader.ImageBuffer(Img.BackgroundImage);
                     viewModel.productModel.Price = tbPrice.Value;
                     viewModel.productModel.WithAddon = cbWithAddon.Checked;
                 }

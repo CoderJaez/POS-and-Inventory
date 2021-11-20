@@ -78,6 +78,7 @@ namespace PurpleYam_POS.ViewModel
             if(dg.Rows.Count > 0)
             {
                 var tr = ReservationBS.Current as SaleTransactionModel;
+                transactionNo = tr.TransactionNo;
                 GetProductOrdered(tr.TransactionNo);
                 switch(dg.Columns[e.ColumnIndex].Name)
                 {
@@ -132,11 +133,7 @@ namespace PurpleYam_POS.ViewModel
                             return;
                         }
 
-                        if(tr.ReservationDate >= DateTime.Now)
-                        {
-                            Notification.AlertMessage("Unable to make a reservation at this time.", "Claim reservation", Notification.AlertType.INFO);
-                            return;
-                        }
+                       
 
                         if (tr.ClaimStatus == null)
                         {
@@ -155,7 +152,7 @@ namespace PurpleYam_POS.ViewModel
         private void OrderClaim()
         {
             SaveData("update tbl_sale_transaction set ClaimStatus = 'CLAIMED' where TransactionNo = @TransactionNo", new { TransactionNo = transactionNo });
-            Notification.AlertMessage("", "Success", Notification.AlertType.SUCCESS);
+            Notification.AlertMessage("The reserved order is now claimed.", "Success", Notification.AlertType.SUCCESS);
             LoadReservation();
         }
         public async void GetProductOrdered(string TransactionNo)

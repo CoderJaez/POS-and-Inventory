@@ -36,10 +36,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpensesSettings));
             this.mtbSearch = new MetroFramework.Controls.MetroTextBox();
             this.dgExpenses = new System.Windows.Forms.DataGridView();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ExpenseCatBS = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -47,9 +43,16 @@
             this.tbDesciption = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.cxbAll = new System.Windows.Forms.CheckBox();
+            this.Deleted = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpenseCatBS = new System.Windows.Forms.BindingSource(this.components);
+            this.btnDeleteSelected = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgExpenses)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpenseCatBS)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpenseCatBS)).BeginInit();
             this.SuspendLayout();
             // 
             // mtbSearch
@@ -66,9 +69,9 @@
             this.mtbSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.mtbSearch.CustomButton.UseSelectable = true;
             this.mtbSearch.CustomButton.Visible = false;
-            this.mtbSearch.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.mtbSearch.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.mtbSearch.Lines = new string[0];
-            this.mtbSearch.Location = new System.Drawing.Point(24, 60);
+            this.mtbSearch.Location = new System.Drawing.Point(24, 53);
             this.mtbSearch.MaxLength = 32767;
             this.mtbSearch.Name = "mtbSearch";
             this.mtbSearch.PasswordChar = '\0';
@@ -97,15 +100,18 @@
             this.dgExpenses.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgExpenses.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(114)))), ((int)(((byte)(165)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgExpenses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgExpenses.ColumnHeadersHeight = 30;
+            this.dgExpenses.ColumnHeadersHeight = 35;
+            this.dgExpenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgExpenses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Deleted,
             this.descriptionDataGridViewTextBoxColumn,
             this.edit,
             this.delete});
@@ -141,49 +147,19 @@
             this.dgExpenses.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgExpenses.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgExpenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgExpenses.Size = new System.Drawing.Size(358, 446);
+            this.dgExpenses.Size = new System.Drawing.Size(420, 446);
             this.dgExpenses.TabIndex = 38;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // edit
-            // 
-            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.edit.HeaderText = "";
-            this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
-            this.edit.Name = "edit";
-            this.edit.ReadOnly = true;
-            this.edit.Width = 6;
-            // 
-            // delete
-            // 
-            this.delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.delete.HeaderText = "";
-            this.delete.Image = ((System.Drawing.Image)(resources.GetObject("delete.Image")));
-            this.delete.Name = "delete";
-            this.delete.ReadOnly = true;
-            this.delete.Width = 6;
-            // 
-            // ExpenseCatBS
-            // 
-            this.ExpenseCatBS.DataSource = typeof(PurpleYam_POS.Model.ExpensesModel);
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(5);
-            this.label1.Size = new System.Drawing.Size(742, 39);
+            this.label1.Size = new System.Drawing.Size(816, 39);
             this.label1.TabIndex = 40;
             this.label1.Text = "Expenses";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -196,7 +172,7 @@
             this.panel1.Controls.Add(this.tbDesciption);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(417, 89);
+            this.panel1.Location = new System.Drawing.Point(457, 89);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(300, 196);
             this.panel1.TabIndex = 41;
@@ -257,7 +233,7 @@
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -269,11 +245,80 @@
             this.label2.Text = "Manage Expense";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // cxbAll
+            // 
+            this.cxbAll.AutoSize = true;
+            this.cxbAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
+            this.cxbAll.Location = new System.Drawing.Point(36, 101);
+            this.cxbAll.Name = "cxbAll";
+            this.cxbAll.Size = new System.Drawing.Size(15, 14);
+            this.cxbAll.TabIndex = 42;
+            this.cxbAll.UseVisualStyleBackColor = false;
+            // 
+            // Deleted
+            // 
+            this.Deleted.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Deleted.DataPropertyName = "Deleted";
+            this.Deleted.HeaderText = "";
+            this.Deleted.Name = "Deleted";
+            this.Deleted.ReadOnly = true;
+            this.Deleted.Width = 6;
+            // 
+            // edit
+            // 
+            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.edit.HeaderText = "";
+            this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
+            this.edit.Name = "edit";
+            this.edit.ReadOnly = true;
+            this.edit.Width = 6;
+            // 
+            // delete
+            // 
+            this.delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.delete.HeaderText = "";
+            this.delete.Image = ((System.Drawing.Image)(resources.GetObject("delete.Image")));
+            this.delete.Name = "delete";
+            this.delete.ReadOnly = true;
+            this.delete.Width = 6;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "      Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ExpenseCatBS
+            // 
+            this.ExpenseCatBS.DataSource = typeof(PurpleYam_POS.Model.ExpensesModel);
+            // 
+            // btnDeleteSelected
+            // 
+            this.btnDeleteSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(45)))), ((int)(((byte)(148)))));
+            this.btnDeleteSelected.FlatAppearance.BorderSize = 0;
+            this.btnDeleteSelected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnDeleteSelected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(12)))), ((int)(((byte)(61)))));
+            this.btnDeleteSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteSelected.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteSelected.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDeleteSelected.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeleteSelected.Location = new System.Drawing.Point(309, 53);
+            this.btnDeleteSelected.Name = "btnDeleteSelected";
+            this.btnDeleteSelected.Size = new System.Drawing.Size(137, 30);
+            this.btnDeleteSelected.TabIndex = 46;
+            this.btnDeleteSelected.Text = "&Delete Selected";
+            this.btnDeleteSelected.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDeleteSelected.UseVisualStyleBackColor = false;
+            // 
             // ExpensesSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnDeleteSelected);
+            this.Controls.Add(this.cxbAll);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mtbSearch);
@@ -281,12 +326,13 @@
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ExpensesSettings";
-            this.Size = new System.Drawing.Size(742, 554);
+            this.Size = new System.Drawing.Size(816, 554);
             ((System.ComponentModel.ISupportInitialize)(this.dgExpenses)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpenseCatBS)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpenseCatBS)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -302,8 +348,11 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.BindingSource ExpenseCatBS;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Deleted;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn delete;
+        private System.Windows.Forms.CheckBox cxbAll;
+        private System.Windows.Forms.Button btnDeleteSelected;
     }
 }

@@ -50,7 +50,8 @@ namespace PurpleYam_POS.View.UserControls
 
         public  void ProductSeries()
         {
-            chartProductSold.Titles[0].Text += $" {DateTime.Now.Year}";
+            chartProductSold.Titles[0].Text = $"Product sold(qty) as of  {DateTime.Now.Year}";
+            chartProductSold.Series.Clear();
             viewModel.productSeries.ForEach( p => 
             {
 
@@ -75,6 +76,8 @@ namespace PurpleYam_POS.View.UserControls
 
         public void MonthlySalesExpenses()
         {
+            chartSalesExpenses.Titles[0].Text = $"Monthly Sales and Expenses as of {DateTime.Now.Year}";
+            chartSalesExpenses.Series.ToList().ForEach(series => series.Points.Clear());
             viewModel.monthlySalesExpenses.ForEach(se => {
                 chartSalesExpenses.Series["Sales"].Points.AddXY(se.Month, se.Sales);
                 chartSalesExpenses.Series["Expenses"].Points.AddXY(se.Month, se.Expenses);
@@ -84,9 +87,10 @@ namespace PurpleYam_POS.View.UserControls
 
         public async void MonthlyReservation()
         {
-            chartReservation.Titles[0].Text += $" {DateTime.Now.Year}";
+            chartReservation.Titles[0].Text = $"Monthly number of reservation as of  {DateTime.Now.Year}";
             var list = await viewModel.LoadMonthlyReservation();
 
+            chartReservation.Series.ToList().ForEach(series => series.Points.Clear());
             list.ForEach(r => {
                 chartReservation.Series["Reservation"].Points.AddXY(r.Month, r.Qty);
             });

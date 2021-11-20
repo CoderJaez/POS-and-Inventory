@@ -46,8 +46,8 @@ namespace PurpleYam_POS.ViewModel
             {
                 if(Notification.Confim(FormMain.Instance, "Do you want to delete selected user?", "Delete User Account") == DialogResult.Yes)
                 {
-                    var id = ((Repository.Model.UserModel)AccountBS.Current).Id;
-                    SaveData("update tbl_user u left join tbl_customer c on c.Id = u.CustomerId  set c.Deleted = true, u.Deleted = false where u.Id = @Id", new { Id = id });
+                    var id = ((UserModel)AccountBS.Current).Id;
+                    SaveData("update tbl_user u left join tbl_customer c on c.Id = u.CustomerId  set c.Deleted = true, u.Deleted = true where u.Id = @Id", new { Id = id });
                     Notification.AlertMessage("Selected user account deleted.", "Success", Notification.AlertType.SUCCESS);
                     AccountBS.RemoveCurrent();
                 }
@@ -145,8 +145,8 @@ namespace PurpleYam_POS.ViewModel
 
                 }
                 FormMain.Instance.MetroContainer.Controls["ManagePassword"].BringToFront();
-                Thread.Sleep(300);
-                UserAccessRole();
+                //Thread.Sleep(300);
+                //UserAccessRole();
             }
             else
                 UserAccessRole();
@@ -169,7 +169,6 @@ namespace PurpleYam_POS.ViewModel
                     FormMain.Instance.Back.Visible = false;
                     break;
                 case "ADMIN":
-
                     if (!FormMain.Instance.MetroContainer.Controls.ContainsKey("Dashboard"))
                     {
                         Dashboard uc = new Dashboard();

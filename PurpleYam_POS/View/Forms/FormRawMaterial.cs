@@ -77,6 +77,7 @@ namespace PurpleYam_POS.View.Forms
             btnNewRawmat.Click += delegate
              {
                  vModel.model = new RawMaterial();
+                 ProductUnitBS.Clear();
                  mtProduct.Text = null;
                  mtbReOrder.Text = null;
                  mtbDaysBeforeExpiry.Text = null;
@@ -125,6 +126,11 @@ namespace PurpleYam_POS.View.Forms
         private void cbxHasExpiry_CheckedChanged(object sender, EventArgs e)
         {
             mtbDaysBeforeExpiry.Enabled = cbxHasExpiry.Checked;
+        }
+
+        private void dgRawMat_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgRawmatunit.ClearSelection();
         }
     }
 }

@@ -41,6 +41,12 @@ namespace PurpleYam_POS.View.UserControls
             dgExpenses.DataBindingComplete += delegate { dgExpenses.ClearSelection(); };
             dgExpenses.CellClick += viewModel.DgExpensesCellClick;
             btnCancel.Click += delegate { viewModel.ClearExpenseCat(); };
+            cxbAll.CheckedChanged += delegate
+            {
+                foreach (DataGridViewRow row in dgExpenses.Rows)
+                    row.Cells["Deleted"].Value = cxbAll.Checked;
+            };
+            btnDeleteSelected.Click += delegate { viewModel.DeleteSelectedExpenseCat(); };
 
         }
 

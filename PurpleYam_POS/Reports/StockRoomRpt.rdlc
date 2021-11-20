@@ -917,7 +917,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>StockRoom</DataSetName>
-        <Top>0.61112in</Top>
+        <Top>1.11112in</Top>
         <Left>0.44943in</Left>
         <Height>0.73958in</Height>
         <Width>6.57906in</Width>
@@ -955,7 +955,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox103</rd:DefaultName>
-        <Top>0.06944in</Top>
+        <Top>0.56944in</Top>
         <Left>0.44943in</Left>
         <Height>0.25in</Height>
         <Width>2.78714in</Width>
@@ -971,7 +971,7 @@
         </Style>
       </Textbox>
       <Line Name="Line3">
-        <Top>0.58334in</Top>
+        <Top>1.08334in</Top>
         <Left>1.49163in</Left>
         <Height>0in</Height>
         <Width>1.80173in</Width>
@@ -997,7 +997,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.38889in</Top>
+        <Top>0.88889in</Top>
         <Left>0.44943in</Left>
         <Height>0.25in</Height>
         <Width>0.86668in</Width>
@@ -1012,8 +1012,44 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox101">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>STOCKROOM INVENTORY SHEET</Value>
+                <Style>
+                  <FontFamily>century gothic</FontFamily>
+                  <FontSize>15pt</FontSize>
+                  <FontWeight>SemiBold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox101</rd:DefaultName>
+        <Top>0.06944in</Top>
+        <Left>2.12438in</Left>
+        <Height>0.35417in</Height>
+        <Width>3.22917in</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>1.3507in</Height>
+    <Height>1.8507in</Height>
     <Style />
   </Body>
   <Width>7.47792in</Width>

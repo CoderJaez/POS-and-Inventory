@@ -25,7 +25,7 @@ namespace Repository.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("host=localhost;user=root;pass=;database=purpleyam_db;port=3307;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("host=localhost;user=root;password=;database=purpleyam_db;port=3307;")]
         public string ConnString {
             get {
                 return ((string)(this["ConnString"]));

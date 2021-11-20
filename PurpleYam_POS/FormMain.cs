@@ -86,16 +86,10 @@ namespace PurpleYam_POS
 
         private void mlBack_Click(object sender, EventArgs e)
         {
-            
-            if (UserControl.Count > 0)
-            {
-                MainPanel.Controls[UserControl.Last()].SendToBack();
-                mlBack.Visible = UserControl.Last() == "Dashboard" ? false : true;
-                UserControl.RemoveAt(UserControl.Count - 1);
-                mlBack.Visible = UserControl.Count > 0 ? true : false;
-            }
-            else
-                mlBack.Visible = false;
+            MainPanel.Controls[UserControl.Last()].SendToBack();
+            UserControl.RemoveAt(UserControl.Count - 1);
+
+            mlBack.Visible = (UserControl.Count > 0);
         }
 
         private void lblFullname_MouseHover(object sender, EventArgs e)
