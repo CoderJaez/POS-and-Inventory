@@ -26,13 +26,24 @@ namespace PurpleYam_POS.ViewModel
         private FormTransaction formTransaction;
         //UserControl
         public PointOfSale uc;
+
+        
         private Checkout ucCheckout;
         public SettlePayments ucSettlePayment;
+
+       
+
         //Model
         private SoldProductModel pProductModel;
+
+        
         public SaleTransactionModel stModel = new SaleTransactionModel();
+
+      
+
         //BingdingSources
         public BindingSource OrderList { get; set; }
+
 
         //Local variables
         private string sql;
@@ -446,14 +457,39 @@ namespace PurpleYam_POS.ViewModel
         private FormManageCustomer formCustomer;
         public BindingSource CustomerBS { get; set; }
         public CustomerModel customerModel { get; set; }
+        public Pagination page { get; set; }
 
         public async void LoadCustomers(string search = null)
         {
             sql = "select * from tbl_customer where Deleted = false and (Firstname LIKE @search or Lastname LIKE @search or Middlename LIKE @search) order by Lastname asc ";
-            CustomerBS.DataSource = await LoadData<CustomerModel, dynamic>(sql, new { search = $"%{search}%" });
+
+            var p = new
+            {
+                search = $"%{search}%"
+            };
+
+            page.sql = sql;
+            page.search = search;
+            page.totalRowsQry = @"select count(*) AS total from tbl_customer where Deleted = false ";
+            page.fileteredQry = @"SELECT COUNT(*) AS total  from tbl_customer where Deleted = false and (Firstname LIKE @search or Lastname LIKE @search or Middlename LIKE @search)  ";
+            await page.LoadDataTableAsync<CustomerModel, dynamic>(p);
         }
 
+        private bool DeleteCustomer(int CustomerId)
+        {
+            try
+            {
+                SaveData("update tbl_customer set Deleted = true where Id = @Id", new { Id = CustomerId });
+                Notification.AlertMessage("Customer deleted", "Success", Notification.AlertType.SUCCESS);
 
+                return true;
+            }
+            catch (Exception e)
+            {
+                Notification.AlertMessage("Failed to delete customer", "Error", Notification.AlertType.ERROR);
+                return false;
+            }
+        }
         public void SaveCustomer()
         {
             ValidationContext context = new ValidationContext(customerModel);
@@ -481,7 +517,7 @@ namespace PurpleYam_POS.ViewModel
                 sql = "insert into tbl_customer(Lastname, Firstname, Middlename, ContactNo) values (@Lastname, @Firstname, @Middlename, @ContactNo); SELECT last_insert_id();";
                 customerModel.Id = SaveGetId(sql, p);
                 Notification.AlertMessage("New Customer info saved.", "Success", Notification.AlertType.SUCCESS);
-                CustomerBS.Add(customerModel);
+                page.bindingSource.Add(customerModel);
             }
             else
             {
@@ -510,15 +546,20 @@ namespace PurpleYam_POS.ViewModel
             switch (dg.Columns[e.ColumnIndex].Name)
             {
                 case "edit":
-                    customerModel = CustomerBS.Current as CustomerModel;
+                    customerModel = page.bindingSource.Current as CustomerModel;
                     formCustomer.SetCustomerField();
+                    break;
+                case "delete":
+                    if (Notification.Confim(FormMain.Instance, "Do you want to delete selected customer?", "Delete customer") == DialogResult.Yes)
+                        if (DeleteCustomer(((CustomerModel)page.bindingSource.Current).Id))
+                             page.bindingSource.RemoveCurrent();
                     break;
                  default:
                     if(CheckoutBS != null && CheckoutBS.List.Count > 0)
                     {
                         if(Notification.Confim(FormMain.Instance, "Please click YES to confirm","Select customer") == DialogResult.Yes)
                         {
-                            stModel.Customer = CustomerBS.Current as CustomerModel;
+                            stModel.Customer = page.bindingSource.Current as CustomerModel;
                             ucCheckout.AssignCustomer();
                             formCustomer.Close();
                         }
@@ -526,6 +567,80 @@ namespace PurpleYam_POS.ViewModel
                     break;
             }
 
+        }
+
+
+        internal  void NextPage(object sender, EventArgs e)
+        {
+            page.start += page.limit;
+            page.page += 1;
+
+            if ((page.totalRows - page.start) <= page.limit)
+            {
+
+                page.btnLastPage.Enabled = false;
+                page.btnNext.Enabled = false;
+            }
+
+            page.btnPrev.Enabled = true;
+            page.btnFirstPage.Enabled = true;
+             LoadCustomers(formCustomer.Search);
+
+        }
+
+
+
+        internal  void FirstPage(object sender, EventArgs e)
+        {
+            page.start = 0;
+            page.page = 1;
+            page.btnFirstPage.Enabled = false;
+            page.btnLastPage.Enabled = true;
+            page.btnPrev.Enabled = false;
+
+            LoadCustomers(formCustomer.Search);
+        }
+
+        internal void mcUnitCodeSelectedValueChanged(object sender, EventArgs e)
+        {
+            //if(unitmodel == null)
+            //    unitmodel = UnitCodeBS.Current as ProduUnitModel;
+        }
+
+        internal  void LimitPerPage(object sender, EventArgs e)
+        {
+            var cb = (ComboBox)sender;
+            page.limit = cb.Text == "" ? 50 : int.Parse(cb.Text);
+            page.start = 0;
+            page.page = 1;
+
+             LoadCustomers(formCustomer.Search);
+        }
+
+        internal  void LastPage(object sender, EventArgs e)
+        {
+            page.page = page.totalRows / page.limit;
+            page.start = page.page * page.limit;
+            page.btnPrev.Enabled = true;
+            page.btnLastPage.Enabled = false;
+            page.btnFirstPage.Enabled = true;
+
+             LoadCustomers(formCustomer.Search);
+        }
+
+        internal  void PreviousPage(object sender, EventArgs e)
+        {
+            page.start -= page.limit;
+            page.page -= 1;
+            if (page.start <= 0)
+            {
+                page.start = 0;
+                page.page = 1;
+                page.btnPrev.Enabled = false;
+                page.btnFirstPage.Enabled = false;
+            }
+            page.btnLastPage.Enabled = true;
+             LoadCustomers(formCustomer.Search);
         }
         #endregion
 

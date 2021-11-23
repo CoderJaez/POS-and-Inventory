@@ -31,10 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageCustomer));
             this.dgCustomer = new System.Windows.Forms.DataGridView();
-            this.Fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.tbSearch = new MetroFramework.Controls.MetroTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
@@ -47,10 +44,13 @@
             this.tbLastname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.PaginationFlp = new System.Windows.Forms.FlowLayoutPanel();
+            this.Fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerBS = new System.Windows.Forms.BindingSource(this.components);
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomer)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerBS)).BeginInit();
@@ -77,7 +77,8 @@
             this.idDataGridViewTextBoxColumn,
             this.Fullname,
             this.contactNoDataGridViewTextBoxColumn,
-            this.edit});
+            this.edit,
+            this.delete});
             this.dgCustomer.DataSource = this.CustomerBS;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -89,8 +90,9 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgCustomer.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgCustomer.EnableHeadersVisualStyles = false;
-            this.dgCustomer.Location = new System.Drawing.Point(82, 116);
+            this.dgCustomer.Location = new System.Drawing.Point(44, 116);
             this.dgCustomer.Margin = new System.Windows.Forms.Padding(30);
+            this.dgCustomer.MultiSelect = false;
             this.dgCustomer.Name = "dgCustomer";
             this.dgCustomer.ReadOnly = true;
             this.dgCustomer.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -101,25 +103,8 @@
             this.dgCustomer.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgCustomer.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomer.Size = new System.Drawing.Size(445, 469);
+            this.dgCustomer.Size = new System.Drawing.Size(526, 469);
             this.dgCustomer.TabIndex = 22;
-            // 
-            // Fullname
-            // 
-            this.Fullname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Fullname.DataPropertyName = "Fullname";
-            this.Fullname.HeaderText = "Fullname";
-            this.Fullname.Name = "Fullname";
-            this.Fullname.ReadOnly = true;
-            // 
-            // edit
-            // 
-            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.edit.HeaderText = "";
-            this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
-            this.edit.Name = "edit";
-            this.edit.ReadOnly = true;
-            this.edit.Width = 11;
             // 
             // tbSearch
             // 
@@ -136,7 +121,7 @@
             this.tbSearch.CustomButton.UseSelectable = true;
             this.tbSearch.CustomButton.Visible = false;
             this.tbSearch.Lines = new string[0];
-            this.tbSearch.Location = new System.Drawing.Point(82, 86);
+            this.tbSearch.Location = new System.Drawing.Point(45, 86);
             this.tbSearch.MaxLength = 32767;
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.PasswordChar = '\0';
@@ -272,6 +257,41 @@
             this.label1.Text = "Manage Customer infomation";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // PaginationFlp
+            // 
+            this.PaginationFlp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PaginationFlp.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.PaginationFlp.Location = new System.Drawing.Point(45, 596);
+            this.PaginationFlp.Name = "PaginationFlp";
+            this.PaginationFlp.Size = new System.Drawing.Size(525, 36);
+            this.PaginationFlp.TabIndex = 33;
+            // 
+            // Fullname
+            // 
+            this.Fullname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Fullname.DataPropertyName = "Fullname";
+            this.Fullname.HeaderText = "Fullname";
+            this.Fullname.Name = "Fullname";
+            this.Fullname.ReadOnly = true;
+            // 
+            // edit
+            // 
+            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.edit.HeaderText = "";
+            this.edit.Image = global::PurpleYam_POS.Properties.Resources.edit;
+            this.edit.Name = "edit";
+            this.edit.ReadOnly = true;
+            this.edit.Width = 11;
+            // 
+            // delete
+            // 
+            this.delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.delete.HeaderText = "";
+            this.delete.Image = global::PurpleYam_POS.Properties.Resources.delete;
+            this.delete.Name = "delete";
+            this.delete.ReadOnly = true;
+            this.delete.Width = 11;
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -291,21 +311,12 @@
             // 
             this.CustomerBS.DataSource = typeof(PurpleYam_POS.Model.CustomerModel);
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(82, 596);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(445, 36);
-            this.flowLayoutPanel1.TabIndex = 33;
-            // 
             // FormManageCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1044, 641);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.PaginationFlp);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.dgCustomer);
@@ -339,10 +350,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.FlowLayoutPanel PaginationFlp;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fullname;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn edit;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.DataGridViewImageColumn delete;
     }
 }
