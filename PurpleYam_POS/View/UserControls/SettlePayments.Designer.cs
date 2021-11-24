@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgOrders = new System.Windows.Forms.DataGridView();
@@ -110,14 +110,14 @@
             this.dgOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgOrders.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgOrders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(44)))), ((int)(((byte)(121)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgOrders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgOrders.ColumnHeadersHeight = 30;
             this.dgOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -128,15 +128,15 @@
             this.qtyDataGridViewTextBoxColumn,
             this.subTotalDataGridViewTextBoxColumn});
             this.dgOrders.DataSource = this.ProductBS;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgOrders.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgOrders.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgOrders.EnableHeadersVisualStyles = false;
             this.dgOrders.Location = new System.Drawing.Point(11, 58);
             this.dgOrders.Margin = new System.Windows.Forms.Padding(30);
@@ -383,9 +383,10 @@
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(55, 48);
             this.button15.TabIndex = 38;
-            this.button15.Text = "1000";
+            this.button15.Tag = "1000";
+            this.button15.Text = "+1000";
             this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button15.Click += new System.EventHandler(this.btnNumberAdd_Click);
             // 
             // button14
             // 
@@ -399,9 +400,10 @@
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(55, 48);
             this.button14.TabIndex = 37;
-            this.button14.Text = "500";
+            this.button14.Tag = "500";
+            this.button14.Text = "+500";
             this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button14.Click += new System.EventHandler(this.btnNumberAdd_Click);
             // 
             // button13
             // 
@@ -431,9 +433,10 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(55, 48);
             this.button12.TabIndex = 35;
-            this.button12.Text = "200";
+            this.button12.Tag = "200";
+            this.button12.Text = "+200";
             this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button12.Click += new System.EventHandler(this.btnNumberAdd_Click);
             // 
             // button11
             // 
@@ -447,9 +450,10 @@
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(55, 48);
             this.button11.TabIndex = 34;
-            this.button11.Text = "100";
+            this.button11.Tag = "100";
+            this.button11.Text = "+100";
             this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button11.Click += new System.EventHandler(this.btnNumberAdd_Click);
             // 
             // button10
             // 
