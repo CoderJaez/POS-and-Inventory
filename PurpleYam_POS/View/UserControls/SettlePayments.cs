@@ -76,6 +76,14 @@ namespace PurpleYam_POS.View.UserControls
             tbCashTendered.Text += $"{btn.Text}";
         }
 
+        private void btnNumberAdd_Click(object sender, EventArgs e)
+        {
+            var btn = (Button)sender;
+            var cash = string.IsNullOrEmpty(CashTendered) ?  0 : decimal.Parse(CashTendered);
+            cash += decimal.Parse(btn.Tag.ToString());
+            CashTendered = cash.ToString();
+        }
+
         private void btnClearCashTendered(object sender, EventArgs e)
         {
             tbCashTendered.Clear();

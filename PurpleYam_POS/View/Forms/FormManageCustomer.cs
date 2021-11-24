@@ -19,7 +19,13 @@ namespace PurpleYam_POS.View.Forms
         {
             InitializeComponent();
             viewModel = vm;
-            viewModel.CustomerBS = CustomerBS;
+            viewModel.page = new helper.Pagination(PaginationFlp);
+            viewModel.page.btnFirstPage.Click += viewModel.FirstPage;
+            viewModel.page.btnLastPage.Click += viewModel.LastPage;
+            viewModel.page.btnNext.Click += viewModel.NextPage;
+            viewModel.page.btnPrev.Click += viewModel.PreviousPage;
+            viewModel.page.cbPerPage.SelectedValueChanged += viewModel.LimitPerPage;
+            viewModel.page.bindingSource = CustomerBS;
             btnSave.Click += delegate {
                 if(viewModel.customerModel == null)
                 {
@@ -66,7 +72,11 @@ namespace PurpleYam_POS.View.Forms
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
-                 viewModel.LoadCustomers(Search);
+            {
+                viewModel.page.start = 0;
+                viewModel.page.page = 0;
+                viewModel.LoadCustomers(Search);
+            }
         }
     }
 }

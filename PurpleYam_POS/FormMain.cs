@@ -86,10 +86,17 @@ namespace PurpleYam_POS
 
         private void mlBack_Click(object sender, EventArgs e)
         {
-            MainPanel.Controls[UserControl.Last()].SendToBack();
-            UserControl.RemoveAt(UserControl.Count - 1);
+            if (UserControl.Count > 0)
+            {
+                MainPanel.Controls[UserControl.Last()].SendToBack();
+                UserControl.RemoveAt(UserControl.Count - 1);
 
-            mlBack.Visible = (UserControl.Count > 0);
+                mlBack.Visible = (UserControl.Count > 0);
+            }
+            else
+                mlBack.Visible = false;
+
+
         }
 
         private void lblFullname_MouseHover(object sender, EventArgs e)
@@ -124,6 +131,7 @@ namespace PurpleYam_POS
         {
             panelUser.Visible = false;
             MainPanel.Controls["Login"].BringToFront();
+            Back.PerformClick();
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
