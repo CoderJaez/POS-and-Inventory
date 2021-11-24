@@ -528,7 +528,7 @@ namespace PurpleYam_POS.ViewModel
             var dg = sender as DataGridView;
             if(dg.Rows.Count > 0)
             {
-                productModel = ProductStockinBS.Current as ProductModel;
+                productModel = ProductAdjBS.Current as ProductModel;
                 ucProductionAdj.TbProduct.Text = productModel.Product;
             }
         }
