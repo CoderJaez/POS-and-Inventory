@@ -331,6 +331,7 @@
             this.dgProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgProducts.Size = new System.Drawing.Size(953, 512);
             this.dgProducts.TabIndex = 39;
+            this.dgProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProducts_CellContentClick);
             this.dgProducts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DataGrid_DataBindingComplete);
             // 
             // rawMaterialDataGridViewTextBoxColumn
@@ -419,6 +420,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(953, 65);
             this.panel1.TabIndex = 2;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button1
             // 

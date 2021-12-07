@@ -96,6 +96,14 @@ namespace PurpleYam_POS.View.UserControls
             });
         }
 
-        
+        private void lblProduction_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chartProductSold_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

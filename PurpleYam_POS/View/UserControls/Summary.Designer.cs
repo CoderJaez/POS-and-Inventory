@@ -322,6 +322,7 @@
             this.lblProduction.TabIndex = 1;
             this.lblProduction.Text = "1000.00";
             this.lblProduction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblProduction.Click += new System.EventHandler(this.lblProduction_Click);
             // 
             // label4
             // 
@@ -381,6 +382,7 @@
             title1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             title1.Name = "Title1";
             this.chartProductSold.Titles.Add(title1);
+            this.chartProductSold.Click += new System.EventHandler(this.chartProductSold_Click);
             // 
             // chartReservation
             // 

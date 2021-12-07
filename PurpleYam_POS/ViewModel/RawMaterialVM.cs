@@ -283,8 +283,7 @@ namespace PurpleYam_POS.ViewModel
                         }
                         page.bindingSource.EndEdit();
                         break;
-                    default:
-                        MessageBox.Show(obj.Deleted.ToString());
+                    default: // Diri to :D
                         break;
                 }
             }

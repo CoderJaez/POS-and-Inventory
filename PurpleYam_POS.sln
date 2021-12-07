@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PurpleYam_POS", "PurpleYam_POS\PurpleYam_POS.csproj", "{45F6D510-6779-4E0F-93BF-E2FCA1F9BA49}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{673D2766-F88B-46C5-A93D-93C6F6094D79}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{6A6F05A9-FD6D-4B46-AF1C-D152344F6316}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Purple Yam Setup", "Purple Yam Setup\Purple Yam Setup.vdproj", "{D0849A15-9BAB-40E2-ADC7-139A4F846AEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,8 +23,8 @@ Global
 		{673D2766-F88B-46C5-A93D-93C6F6094D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{673D2766-F88B-46C5-A93D-93C6F6094D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{673D2766-F88B-46C5-A93D-93C6F6094D79}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6A6F05A9-FD6D-4B46-AF1C-D152344F6316}.Debug|Any CPU.ActiveCfg = Debug
-		{6A6F05A9-FD6D-4B46-AF1C-D152344F6316}.Release|Any CPU.ActiveCfg = Release
+		{D0849A15-9BAB-40E2-ADC7-139A4F846AEC}.Debug|Any CPU.ActiveCfg = Debug
+		{D0849A15-9BAB-40E2-ADC7-139A4F846AEC}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

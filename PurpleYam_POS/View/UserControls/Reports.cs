@@ -97,6 +97,14 @@ namespace PurpleYam_POS.View.UserControls
 
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
+
+        private void dgProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
